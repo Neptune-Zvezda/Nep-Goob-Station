@@ -223,7 +223,7 @@
   special:
   - !type:AddComponentSpecial
     components:
-    - type: BibleUser #Lets them heal with bibles
+    - type: BibleUser #Lets them heal with bibles and transform null rods.
 
 - type: startingGear
   id: ERTChaplainGear
@@ -256,6 +256,7 @@
     - FoodBakedBunHotX
     - Lighter
     - ExecutiveIDCard # Goobstation - Executive Access!
+    - NullRodDefault
 
 - type: startingGear
   id: ERTChaplainGearEVA
@@ -288,6 +289,7 @@
     - FoodBakedBunHotX
     - Lighter
     - ExecutiveIDCard # Goobstation - Executive Access!
+    - NullRodDefault
 
 # Engineer
 - type: job

@@ -178,10 +178,6 @@
     reflectProb: .22
     spread: 120
   - type: Fiber
-    fiberMaterial: fibers-metallic
-    fiberColor: fibers-silver
-  - type: MeleeSpeech
-  - type: ActivatableUI
     key: enum.MeleeSpeechUiKey.Key
     verbOnly: true
   - type: Actions

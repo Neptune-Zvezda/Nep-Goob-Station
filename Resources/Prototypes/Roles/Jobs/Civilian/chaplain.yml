@@ -75,7 +75,7 @@
   special:
   - !type:AddComponentSpecial
     components:
-    - type: BibleUser #Lets them heal with bibles
+    - type: BibleUser #Lets them heal with bibles and transform null rods.
 
 - type: startingGear
   id: ChaplainGear
@@ -87,3 +87,19 @@
     back:
     - Bible
     - RubberStampChaplain
+    - NullRodDefault
+
+# funkystation - cry about it
+- type: loadoutEffectGroup
+  id: ChaplainAnnabelleRighteousness
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobChaplain
+      time: 72000 #20 hrs
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobSecurityOfficer
+      time: 36000 #10 hrs

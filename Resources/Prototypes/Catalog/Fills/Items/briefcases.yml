@@ -102,7 +102,7 @@
       - id: MagazineBoxAntiMateriel
       - id: ClothingNeckTieRed
       - id: ClothingHandsGlovesLatex
-      - id: ClothingUniformJumpsuitLawyerBlack
+      - id: ClothingUniformHitmanSuit #imp
       - id: BarberScissors
 
 - type: entity

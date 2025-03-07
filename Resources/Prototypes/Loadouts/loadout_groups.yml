@@ -410,6 +410,10 @@
   - BartenderJumpskirt
   - BartenderJumpsuitPurple
   - ServiceMJ # goob
+  - ClothingUniformNightclubSuit #imp
+  - ClothingUniformNightclubSuitSkirt #imp
+  - ClothingUniformSeniorBartender #imp
+  - ClothingUniformSeniorBartenderSkirt #imp
 
 - type: loadoutGroup
   id: BartenderOuterClothing
@@ -460,9 +464,9 @@
   - CuratorJumpsuit
   - CuratorJumpskirt
   - ServiceMJ # goob
+  - ClothingUniformBrownSuitSkirt #imp
 
 - type: loadoutGroup
-  id: LawyerJumpsuit
   name: loadout-group-lawyer-jumpsuit
   loadouts:
   - LawyerJumpsuit
@@ -475,7 +479,7 @@
   - LawyerJumpskirtRed
   - LawyerJumpsuitGood
   - LawyerJumpskirtGood
-  - ServiceMJ # goob
+  - ClothingUniformCreamSuitSkirt #imp
 
 - type: loadoutGroup
   id: LawyerNeck
@@ -490,6 +494,11 @@
   minLimit: 0
   loadouts:
   - ChaplainHead
+  - ChaplainHeadDruid # imp
+  - ChaplainHeadMoon # imp
+  - ChaplainHeadSun # imp
+  - ChaplainHeadTidal # imp
+  - ChaplainHeadVeil # imp
   - ChaplainNunHood
   - ChaplainPlagueHat
   - ChaplainWitchHat
@@ -501,6 +510,8 @@
   minLimit: 0
   loadouts:
   - ChaplainMask
+  - ChaplainMaskClayshaper # imp
+  - ChaplainMaskFire # imp
 
 - type: loadoutGroup
   id: ChaplainJumpsuit
@@ -511,16 +522,30 @@
   - ChaplainRobesLight
   - ChaplainRobesDark
   - ServiceMJ # goob
+  - ChaplainSkirtClayshaper # imp
+  - ChaplainSkirtDruid # imp
+  - ChaplainSkirtMoon # imp
+  - ChaplainUniformSun # imp
+  - ClothingUniformFuneralSuit #imp
+  - ClothingUniformFuneralSuitSkirt #imp
+
+# funkystation
+- type: loadoutGroup
+  id: ChaplainAnnabelle
+  name: loadout-group-chaplain-weapon
+  loadouts:
+  - ChaplainAnnabelle
 
 - type: loadoutGroup
   id: ChaplainOuterClothing
   name: loadout-group-chaplain-outerclothing
   minLimit: 0
-  loadouts:
   - ChaplainPlagueSuit
   - ChaplainNunRobe
   - ChaplainBlackHoodie
   - ChaplainHoodie
+  - ChaplainOuterMoon # imp
+  - ChaplainHonkrobes # imp
 
 - type: loadoutGroup
   id: ChaplainNeck
@@ -528,6 +553,12 @@
   minLimit: 0
   loadouts:
   - ChaplainNeck
+  - ChaplainNeckClayshaper # imp
+  - ChaplainNeckDragon # imp
+  - ChaplainNeckDruid # imp
+  - ChaplainNeckDruidMantle # imp
+  - ChaplainNeckSun # imp
+  - ChaplainNeckTidal # imp
 
 - type: loadoutGroup
   id: JanitorHead
@@ -717,18 +748,17 @@
   - MusicianJumpsuit
   - MusicianJumpskirt
   - ServiceMJ # goob
+  - ClothingUniformMrSpaceWide #imp
+  - ClothingUniformMrSpaceWideSkirt #imp
 
 - type: loadoutGroup
   id: MusicianOuterClothing
   name: loadout-group-musician-outerclothing
   minLimit: 0
   loadouts:
-  - MusicianWintercoat
 
-- type: loadoutGroup
   id: Instruments
   name: loadout-group-instruments
-  minLimit: 0
   maxLimit: 2
   loadouts:
   - Glockenspiel
@@ -1285,6 +1315,10 @@
   - DetectiveJumpskirt
   - NoirJumpsuit
   - NoirJumpskirt
+  - ClothingUniformMiamiVice #imp
+  - ClothingUniformMiamiViceSkirt #imp
+  - ClothingUniformDetectiveSuit #imp
+  - ClothingUniformDetectiveSuitSkirt #imp
 
 - type: loadoutGroup
   id: DetectiveOuterClothing
@@ -1515,6 +1549,8 @@
   - ReporterJumpsuit
   - JournalistJumpsuit
   - ReporterDress
+  - ClothingUniformBrosBlazer #imp
+  - ClothingUniformBrosBlazerSkirt #imp
 
 - type: loadoutGroup
   id: PsychologistJumpsuit
