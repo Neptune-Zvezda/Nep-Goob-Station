@@ -165,3 +165,25 @@
       emergencyLightColor: Ivory
       forceEnableEmergencyLights: true
       shuttleTime: 2400
+    amber: # impstation dino wars
+      announcement: alert-level-amber-announcement
+      selectable: false
+      sound:
+        path: /Audio/_Goobstation/Misc/omicron.ogg
+      disableSelection: true
+      color: Ivory
+      emergencyLightColor: Ivory
+      forceEnableEmergencyLights: true
+      shuttleTime: 1200
+    octarine: # impstation cosmic cult
+      announcement: alert-level-octarine-announcement
+      selectable: false
+      sound:
+        path: /Audio/_Impstation/Misc/octarine.ogg # i think this is deprecated bc of random announcers
+        params:
+          volume: -3
+      disableSelection: true
+      color: CadetBlue
+      emergencyLightColor: CadetBlue
+      forceEnableEmergencyLights: true
+      shuttleTime: 1200

@@ -178,6 +178,8 @@
     - id: LoneAbductorSpawn # Shitmed - Starlight Abductors
     - id: DuoAbductorSpawn # Shitmed - Starlight Abductors
     - id: BingleSpawn #Goobstation - Bingle
+    - id: WizardSpawn
+    - id: RogueAscendedSpawn # imp
 
 - type: entity
   id: BaseStationEvent

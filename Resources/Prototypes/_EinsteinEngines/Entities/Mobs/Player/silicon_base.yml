@@ -237,6 +237,10 @@
           type: LivingHeartMenuBoundUserInterface
         enum.WizardTeleportUiKey.Key: # Goobstation - wizard
           type: WizardTeleportBoundUserInterface
+        enum.SurgeryUIKey.Key: # Shitmed
+          type: SurgeryBui
+        enum.ThavenMoodsUiKey.Key: # impstation edit
+          type: ThavenMoodsBoundUserInterface
           requireInputValidation: false
     - type: Emoting
     - type: Grammar
