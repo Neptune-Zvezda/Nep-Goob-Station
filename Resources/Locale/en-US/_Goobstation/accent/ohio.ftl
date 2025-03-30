@@ -418,3 +418,12 @@ accent-ohio-words-replace-132 = zesty
 
 accent-ohio-words-133 = tajaran
 accent-ohio-words-replace-133 = hecking chonker
+
+# accent-ohio-words-134 = king
+# accent-ohio-words-replace-133 = The Rizzler
+
+# accent-ohio-words-135 = joker
+# accent-ohio-words-replace-133 = The Rizzler
+
+# accent-ohio-words-136 = queen
+# accent-ohio-words-replace-133 = The Rizzlet
