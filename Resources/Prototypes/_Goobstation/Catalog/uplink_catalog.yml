@@ -26,7 +26,7 @@
   description: uplink-signaller-desc
   productEntity: RemoteSignallerAdvanced
   cost:
-    Telecrystal: 8
+    Telecrystal: 5
   categories:
     -  UplinkDisruption
 
@@ -57,16 +57,16 @@
 
 # Weaponry
 
-# - type: listing
-#   id: UplinkEswordDouble
-#   name: uplink-esword-double-name
-#   description: uplink-esword-double-desc
-#   icon: { sprite: /Textures/Objects/Weapons/Melee/e_sword_double.rsi, state: icon }
-#   productEntity: EnergySwordDouble
-#   cost:
-#     Telecrystal: 80
-#   categories:
-#   - UplinkWeaponry
+ - type: listing
+   id: UplinkEswordDouble
+   name: uplink-esword-double-name
+   description: uplink-esword-double-desc
+   icon: { sprite: /Textures/Objects/Weapons/Melee/e_sword_double.rsi, state: icon }
+   productEntity: EnergySwordDouble
+   cost:
+     Telecrystal: 70
+   categories:
+   - UplinkWeaponry
 
 - type: listing
   id: UplinkContractorBaton
@@ -114,14 +114,14 @@
   icon: { sprite:  /Textures/_Goobstation/Objects/Weapons/Guns/Battery/miniature_ebow.rsi, state: icon }
   productEntity: MiniatureEnergyCrossbow
   cost:
-    Telecrystal: 50
+    Telecrystal: 30
   categories:
   - UplinkWeaponry
-  conditions:
-  - !type:StoreWhitelistCondition
-    blacklist:
-      tags:
-      - NukeOpsUplink
+#  conditions:
+#  - !type:StoreWhitelistCondition
+#    blacklist:
+#      tags:
+#      - NukeOpsUplink
 
 - type: listing
   id: UplinkWSPR
@@ -151,7 +151,7 @@
   icon: { sprite:  /Textures/_Goobstation/Objects/Weapons/Guns/Bow/hardlight_bow.rsi, state: icon }
   productEntity: BowHardlight
   cost:
-    Telecrystal: 75
+    Telecrystal: 50
   categories:
   - UplinkWeaponry
   conditions:
@@ -448,7 +448,7 @@
   icon: { sprite: /Textures/Objects/Specific/Medical/syndi_implanter.rsi, state: implanter0 }
   productEntity: MindcontrolImplanter
   cost:
-    Telecrystal: 50 # Half the budget
+    Telecrystal: 25 
   categories:
     - UplinkImplants
   conditions:
@@ -489,7 +489,7 @@
   icon: { sprite: Clothing/Back/Satchels/satchel.rsi, state: icon }
   productEntity: ClothingSatchelSmuggler
   cost:
-    Telecrystal: 15
+    Telecrystal: 10
   categories:
   - UplinkDeception
 
@@ -634,7 +634,7 @@
   icon: { sprite: /Textures/Objects/Vehicles/syndicatesegway.rsi, state: icon }
   productEntity: CrateFunSyndicateSegway
   cost:
-    Telecrystal: 25 # Same as what it was before being removed
+    Telecrystal: 15 # Same as what it was before being removed
   categories:
   - UplinkDisruption
   conditions:
@@ -649,7 +649,7 @@
   description: uplink-syndicate-weapon-module-advanced-desc
   productEntity: BorgModuleSyndicateWeaponAdvanced
   cost:
-    Telecrystal: 40 # goob
+    Telecrystal: 30 # goob
   categories:
   - UplinkDisruption
 
@@ -689,14 +689,14 @@
   description: uplink-cqc-desc
   productEntity: CQCManual
   cost:
-    Telecrystal: 60
+    Telecrystal: 40
   categories:
   - UplinkDeception
-  conditions:
-  - !type:StoreWhitelistCondition
-    whitelist:
-      tags:
-      - NukeOpsUplink
+#  conditions:
+#  - !type:StoreWhitelistCondition
+#    whitelist:
+#      tags:
+#      - NukeOpsUplink
 
 - type: listing
   id: UplinkMysteriousScroll
@@ -704,14 +704,14 @@
   description: uplink-sleeping-carp-desc
   productEntity: SleepingCarpScroll
   cost:
-    Telecrystal: 70
+    Telecrystal: 50
   categories:
   - UplinkWeaponry
-  conditions:
-  - !type:StoreWhitelistCondition
-    blacklist:
-      tags:
-      - NukeOpsUplink
+#  conditions:
+#  - !type:StoreWhitelistCondition
+#    blacklist:
+#      tags:
+#      - NukeOpsUplink  Nep is evil and removed restrict
 
 # Explosives
 

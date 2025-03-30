@@ -6,14 +6,14 @@
     - changeling
   name: changeling-gamemode-title
   description: changeling-gamemode-description
-  showInVote: false
+  showInVote: true
   rules:
     - Changeling
     - SubGamemodesRule
     - BasicStationEventScheduler
     #- MeteorSwarmScheduler Goobstation - nuh uh
     - BasicRoundstartVariation
-    - LavalandStormScheduler # Lavaland Change
+    #- LavalandStormScheduler # Lavaland Change
 
 - type: gamePreset
   id: Traitorling
@@ -22,14 +22,14 @@
     - traitorling
   name: traitorling-title
   description: traitorling-description
-  showInVote: false
+  showInVote: true
   rules:
     - CalmLing
     - CalmTraitor
     - BasicStationEventScheduler
     #- MeteorSwarmScheduler Goobstation - nuh uh
     - BasicRoundstartVariation
-    - LavalandStormScheduler # Lavaland Change
+   # - LavalandStormScheduler # Lavaland Change
 
 - type: gamePreset
   id: NukeTraitor
@@ -39,14 +39,14 @@
     - optot
   name: nukeops-title
   description: nukeops-description
-  showInVote: false
+  showInVote: true
   rules:
     - Calmops
     - CalmTraitor
     - BasicStationEventScheduler
     #- MeteorSwarmScheduler Goobstation - nuh uh
     - BasicRoundstartVariation
-    - LavalandStormScheduler # Lavaland Change
+    #- LavalandStormScheduler # Lavaland Change
 
 - type: gamePreset
   id: NukeLing
@@ -55,14 +55,14 @@
     - opling
   name: nukeops-title
   description: nukeops-description
-  showInVote: false
+  showInVote: true
   rules:
     - Calmops
     - CalmLing
     - BasicStationEventScheduler
     #- MeteorSwarmScheduler Goobstation - nuh uh
     - BasicRoundstartVariation
-    - LavalandStormScheduler # Lavaland Change
+   # - LavalandStormScheduler # Lavaland Change
 
 - type: gamePreset
   id: RevTraitor
@@ -72,13 +72,13 @@
     - totrevs
   name: revtraitor-title
   description: revtraitor-description
-  showInVote: false
+  showInVote: true
   rules:
     - CalmRevs
     - CalmTraitor
     - BasicStationEventScheduler
     #- MeteorSwarmScheduler Goobstation - nuh uh
-    - LavalandStormScheduler # Lavaland Change
+    #- LavalandStormScheduler # Lavaland Change
 
 - type: gamePreset
   id: RevLing
@@ -87,7 +87,7 @@
     - lingrevs
   name: revling-title
   description: revling-description
-  showInVote: false
+  showInVote: true
   rules:
     - CalmRevs
     - CalmLing
@@ -95,7 +95,7 @@
     #- MeteorSwarmScheduler Goobstation - nuh uh
     - BasicRoundstartVariation
     - BasicRoundstartVariation
-    - LavalandStormScheduler # Lavaland Change
+    #- LavalandStormScheduler # Lavaland Change
 
 - type: gamePreset
   id: Blob
@@ -103,14 +103,14 @@
   - blab
   name: blob-title
   description: blob-description
-  showInVote: false
+  showInVote: true
   rules:
   - BlobGameMode
   - BasicStationEventScheduler
   - AntagStationEventScheduler
   - BasicRoundstartVariation
   - SubGamemodesRule
-  - LavalandStormScheduler # Lavaland Change
+  #- LavalandStormScheduler # Lavaland Change
 
 - type: gamePreset
   id: Honkops
@@ -118,7 +118,7 @@
     - honkops
   name: honkops-title
   description: honkops-description
-  showInVote: false
+  showInVote: true
   rules:
     - Honkops
     - SubGamemodesRule
@@ -126,7 +126,7 @@
   #  - MeteorSwarmScheduler Goobstation - nuh uh
     - SpaceTrafficControlEventScheduler
     - BasicRoundstartVariation
-    - LavalandStormScheduler # Lavaland Change
+    #- LavalandStormScheduler # Lavaland Change
 
 - type: gamePreset
   id: TheSleeper
@@ -139,7 +139,7 @@
   minPlayers: 5
   rules:
     - CalmDynamic
-    - LavalandStormScheduler # Lavaland Change
+    #- LavalandStormScheduler # Lavaland Change
 
 - type: gamePreset
   id: TheGuide
@@ -152,4 +152,4 @@
   minPlayers: 25
   rules:
     - CombatDynamic
-    - LavalandStormScheduler # Lavaland Change
+    #- LavalandStormScheduler # Lavaland Change
