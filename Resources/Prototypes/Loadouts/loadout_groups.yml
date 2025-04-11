@@ -467,6 +467,7 @@
   - ClothingUniformBrownSuitSkirt #imp
 
 - type: loadoutGroup
+  id: LawyerJumpsuit
   name: loadout-group-lawyer-jumpsuit
   loadouts:
   - LawyerJumpsuit
@@ -757,6 +758,7 @@
   name: loadout-group-musician-outerclothing
   minLimit: 0
   loadouts:
+  - BartenderVest
 
 - type: loadoutGroup
   id: Instruments
