@@ -146,7 +146,7 @@
 - type: entity
   name: divine grasp
   id: NullRodGlove
-  parent: [ NullRodBase, ClothingHandsInedibleBase]
+  parent: [ NullRodBase, ClothingHandsBase]
   description: The touch of god! Or whatever you believe in, really. I don't think the gauntlet cares.
   components:
   - type: Sprite
