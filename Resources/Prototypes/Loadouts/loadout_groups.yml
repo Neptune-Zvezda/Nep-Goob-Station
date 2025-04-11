@@ -540,6 +540,7 @@
   id: ChaplainOuterClothing
   name: loadout-group-chaplain-outerclothing
   minLimit: 0
+  loadouts:
   - ChaplainPlagueSuit
   - ChaplainNunRobe
   - ChaplainBlackHoodie
@@ -757,6 +758,7 @@
   minLimit: 0
   loadouts:
 
+- type: loadoutGroup
   id: Instruments
   name: loadout-group-instruments
   maxLimit: 2
