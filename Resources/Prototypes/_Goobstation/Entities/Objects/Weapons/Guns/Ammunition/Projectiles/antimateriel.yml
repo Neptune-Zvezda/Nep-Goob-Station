@@ -31,7 +31,7 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 50
+        Piercing: 75
         Structural: 800 # kills 3 regular walls, mutually destructs on a fourth. kills one R wall, MD's on the second
     armorPenetration: 0.9
     penetrationThreshold: 800 # the bigger this is the more PP (penetrative power)
