@@ -216,7 +216,7 @@ chatsan-word-70 = ass
 chatsan-replacement-70 = butt
 
 chatsan-word-71 = ballsack
-chatsan-replacement-71 = bag 
+chatsan-replacement-71 = bag
 
 chatsan-word-72 = bastard
 chatsan-replacement-72 = buddy
@@ -239,33 +239,3 @@ chatsan-word-83 = penis
 chatsan-word-84 = scrotum
 chatsan-word-85 = vagina
 chatsan-replacement-part = part
-
-chatsan-word- = 
-chatsan-replacement- = 
-
-chatsan-word- = 
-chatsan-replacement- = 
-
-chatsan-word- = 
-chatsan-replacement- = 
-
-chatsan-word- = 
-chatsan-replacement- = 
-
-chatsan-word- = 
-chatsan-replacement- = 
-
-chatsan-word- = 
-chatsan-replacement- = 
-
-chatsan-word- = 
-chatsan-replacement- = 
-
-chatsan-word- = 
-chatsan-replacement- = 
-
-chatsan-word- = 
-chatsan-replacement- = 
-
-chatsan-word- = 
-chatsan-replacement- = 
