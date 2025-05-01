@@ -68,7 +68,7 @@
     heavyStaminaCost: 10 # goob edit
     damage:
       types:
-        Blunt: 12
+        Blunt: 15 # Nepustation - the demon
     soundHit:
       path: "/Audio/Weapons/smash.ogg"
   - type: Tag
@@ -185,7 +185,7 @@
     heavyStaminaCost: 10 # goob edit
     damage:
       types:
-        Blunt: 20
+        Blunt: 25 # Nepustation - evil ass kill toolbox is evil ass kill
 
 - type: entity
   name: golden toolbox
@@ -198,6 +198,13 @@
     state: icon
   - type: Item
     sprite: Objects/Tools/Toolboxes/toolbox_gold.rsi
+  - type: MeleeWeapon
+    attackRate: 0.8
+    flipAnimation: false
+    heavyStaminaCost: 1 # Nepustation - hur dur gold heavy
+    damage:
+      types:
+        Blunt: 30
 
 - type: entity
   id: ToolboxThief

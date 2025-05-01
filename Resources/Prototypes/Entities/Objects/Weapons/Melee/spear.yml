@@ -107,7 +107,7 @@
     wideAnimationRotation: -135
     damage:
       types:
-        Piercing: 12
+        Piercing: 15
     angle: 0
     animation: WeaponArcThrust
     soundHit:
@@ -115,7 +115,7 @@
   - type: DamageOtherOnHit
     damage:
       types:
-        Piercing: 15
+        Piercing: 20
   - type: Item
     size: Large # goobstation
   - type: Clothing
@@ -204,11 +204,11 @@
     wideAnimationRotation: -135
     damage:
       types:
-        Piercing: 15
+        Piercing: 20
   - type: DamageOtherOnHit
     damage:
       types:
-        Piercing: 17
+        Piercing: 25
   - type: Construction
     graph: SpearReinforced
 
@@ -224,12 +224,14 @@
     animationRotation: -135 # WWDP
     wideAnimationRotation: -135
     damage:
-      types:
-        Piercing: 18
+      types: # Nepustation - plasma burns your insides
+        Piercing: 15
+        Heat: 5
   - type: DamageOtherOnHit
     damage:
       types:
-        Piercing: 21
+        Piercing: 20
+        Heat: 5
   - type: Construction
     graph: SpearPlasma
 
@@ -246,13 +248,13 @@
     wideAnimationRotation: -135
     damage:
       types:
-        Piercing: 10
-        Radiation: 8
+        Piercing: 20
+        Radiation: 5
   - type: DamageOtherOnHit
     damage:
       types:
-        Piercing: 12
-        Radiation: 9
+        Piercing: 20
+        Radiation: 10 # Nepustation - something something uranium sticking in your insides instead of being stabbed does more rads
   - type: Construction
     graph: SpearUranium
 

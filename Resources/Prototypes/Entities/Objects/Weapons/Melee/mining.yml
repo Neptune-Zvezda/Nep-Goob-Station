@@ -103,9 +103,9 @@
   - type: IncreaseDamageOnWield
     damage:
       groups:
-        Brute: 10
+        Brute: 15
       types:
-        Structural: 30
+        Structural: 50
   - type: Item
     size: Normal
     shape:
@@ -144,7 +144,7 @@
     heavyStaminaCost: 0 # Shitmed: Mining drill is for mining
     damage:
       groups:
-        Brute: 3
+        Brute: 5 # Nepustation - drills hurt, whodathunkit
       types:
         Structural: 15
   - type: PhysicalComposition #Goobstation - Recycle update
@@ -171,9 +171,9 @@
     attackRate: 4
     damage:
       groups:
-        Brute: 6
+        Brute: 10 # Nepustation - a diamond drill would hurt *more*
       types:
-        Structural: 30
+        Structural: 45
   - type: PhysicalComposition #Goobstation - Recycle update
     materialComposition:
       Steel: 150
@@ -228,7 +228,7 @@
     wideAnimationRotation: -135
     damage:
       types:
-        Blunt: 10 # Lavaland Change: no damage when unwielded2
+        Blunt: 15 # Lavaland Change: no damage when unwielded2
         Slash: 5
     soundHit:
       collection: MetalThud
@@ -244,13 +244,13 @@
     fumbleOnAttempt: true
   - type: DamageBoostOnMarker
     boost:
-      types: # Totals to 70 damage when hitting marked targets
-        Blunt: 32
-        Slash: 18
-    backstabBoost: # And 30 extra for a backstab. Adding up to 100
+      types: # Totals to 80 damage when hitting marked targets
+        Blunt: 35
+        Slash: 25
+    backstabBoost: # then 115
       types:
-        Blunt: 19
-        Slash: 11
+        Blunt: 20
+        Slash: 15
 
 - type: entity
   parent: [ BaseKnife, BaseWeaponCrusher, BaseSecurityCargoContraband]
@@ -268,7 +268,7 @@
     attackRate: 2
     damage:
       types:
-        Slash: 15
+        Slash: 20
   - type: Tag
     tags:
     - Knife
@@ -279,7 +279,7 @@
   - type: DamageOtherOnHit
     damage:
       types:
-        Slash: 10
+        Slash: 15
   - type: DisarmMalus
     malus: 0.225
   - type: ThrowingAngle
@@ -299,7 +299,7 @@
   - type: LeechOnMarker
     leech:
       groups:
-        Brute: -10 # Lavaland Change: lower crusher healing
+        Brute: -20 # Nepustation Change: unnerf crusher healing
   - type: MeleeWeapon
   - type: Tag
     tags:

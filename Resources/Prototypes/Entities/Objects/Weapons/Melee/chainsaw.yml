@@ -39,8 +39,7 @@
     attackRate: 4
     damage:
       types:
-        Slash: 2
-        Blunt: 2
+        Slash: 5
         Structural: 4
     soundHit:
       path: /Audio/Weapons/chainsaw.ogg
@@ -49,7 +48,7 @@
   - type: IncreaseDamageOnWield
     damage:
       types:
-        Slash: 4
+        Slash: 10
         Structural: 4
   - type: Item
     size: Normal

@@ -17,7 +17,7 @@
     wideAnimationRotation: -120
     damage:
       types:
-        Slash: 16
+        Slash: 25
     soundHit:
       path: /Audio/Weapons/bladeslice.ogg
   - type: Reflect

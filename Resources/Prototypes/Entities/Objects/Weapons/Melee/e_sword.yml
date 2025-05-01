@@ -184,8 +184,8 @@
         variation: 0.125
     activatedDamage:
       types:
-        Slash: 15
-        Heat: 15
+        Slash: 10
+        Heat: 25
         Structural: 20
   - type: MeleeWeapon
     animationRotation: -45 # WWDP
@@ -278,8 +278,8 @@
         variation: 0.250
     activatedDamage:
         types:
-            Slash: 10
-            Heat: 10
+            Slash: 5
+            Heat: 15
     deactivatedSecret: true
   - type: ItemToggleActiveSound
     activeSound:
@@ -354,8 +354,8 @@
         variation: 0.250
     activatedDamage:
       types:
-        Slash: 10
-        Heat: 10
+        Slash: 5
+        Heat: 15
   - type: ComponentToggler
     components:
     - type: Sharp
@@ -430,7 +430,7 @@
     activatedDamage:
         types:
             Slash: 10
-            Heat: 12
+            Heat: 25
     deactivatedSecret: true
   - type: Sprite
     sprite: Objects/Weapons/Melee/e_cutlass.rsi
@@ -477,8 +477,8 @@
         variation: 0.250
     activatedDamage:
         types:
-            Slash: 17   #Goob Station rebalance, was originally 12
-            Heat: 17    #Goob Station rebalance, was originally 12
+            Slash: 15   #Goob Station rebalance, was originally 12
+            Heat: 30    #Goob Station rebalance, was originally 12
             Structural: 40 # Goob edit
   - type: ItemToggleActiveSound
     activeSound:

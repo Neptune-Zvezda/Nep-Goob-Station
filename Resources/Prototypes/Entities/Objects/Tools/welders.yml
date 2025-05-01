@@ -151,7 +151,7 @@
       collection: MetalThud
     activatedDamage:
         types:
-            Heat: 8
+            Heat: 10
   - type: ItemToggleSize
     activatedSize: Large
   - type: ItemToggleHot
@@ -266,6 +266,10 @@
         - ReagentId: WeldingFuel
           Quantity: 250
         maxVol: 250
+  - type: ItemToggleMeleeWeapon
+    activatedDamage:
+        types:
+            Heat: 15 #hothot welder ouch
   - type: Tool
     speedModifier: 1.3
 
