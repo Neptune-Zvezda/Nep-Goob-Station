@@ -162,6 +162,11 @@
         Slash: 0.65
         Piercing: 0.67 #Can save you, but bullets will still hurt. Will take about 10 shots from a Viper before critting, as opposed to 7 while unarmored and 16~ with a bulletproof vest.
         Heat: 0.80
+      flatReductions:
+        Blunt: 7.5
+        Slash: 7.5
+        Piercing: 7.5
+        Heat: 5
   - type: ExplosionResistance
     damageCoefficient: 0.90
   - type: ModifyDelayedKnockdown # Goobstation
@@ -206,6 +211,11 @@
         Piercing: 0.7
         Heat: 0.9
         Caustic: 0.9
+      flatReductions:
+        Blunt: 7.5
+        Slash: 7.5
+        Piercing: 2.5
+        Heat: 2.5
   - type: ExplosionResistance
     damageCoefficient: 0.9
   - type: GroupExamine
@@ -228,10 +238,15 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.9
-        Slash: 0.9
+        Blunt: 0.75
+        Slash: 0.75
         Piercing: 0.4
-        Heat: 0.9
+        Heat: 0.8
+      flatReductions:
+        Blunt: 5
+        Slash: 5
+        Piercing: 15
+        Heat: 5
   - type: ExplosionResistance
     damageCoefficient: 0.80
 
@@ -248,10 +263,15 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.9
-        Slash: 0.9
-        Piercing: 0.9
-        Heat: 0.4 # this technically means it protects against fires pretty well? -heat is just for lasers and stuff, not atmos temperature
+        Blunt: 0.75
+        Slash: 0.75
+        Piercing: 0.8
+        Heat: 0.4 # counter for esword technically
+      flatReductions:
+        Blunt: 5
+        Slash: 5
+        Piercing: 5
+        Heat: 10
   - type: Reflect
     reflectProb: 1
     reflects:
@@ -281,6 +301,11 @@
         Piercing: 0.35
         Heat: 0.35
         Caustic: 0.5
+      flatReductions: # space raidsuiters to win
+        Blunt: 7.5
+        Slash: 7.5
+        Piercing: 10
+        Heat: 5
   - type: ExplosionResistance
     damageCoefficient: 0.35
   - type: ClothingSpeedModifier
@@ -355,6 +380,11 @@
         Slash: 0.5
         Piercing: 0.6
         Heat: 0.5
+      flatReductions:
+        Blunt: 5
+        Slash: 5
+        Piercing: 5
+        Heat: 5
   - type: GroupExamine
   - type: ModifyDelayedKnockdown # Goobstation
     delayDelta: 2.5
@@ -381,6 +411,11 @@
         Heat: 0.5
         Radiation: 0
         Caustic: 0.75
+      flatReductions:
+        Blunt: 5
+        Slash: 5
+        Piercing: 5
+        Heat: 5
   - type: GroupExamine
   - type: ProtectedFromStepTriggers
     slots: WITHOUT_POCKET
@@ -467,6 +502,11 @@
         Piercing: 0.6
         Heat: 0.5
         Caustic: 0.9
+      flatReductions: # cap gets better flat reductions
+        Blunt: 7.5
+        Slash: 7.5
+        Piercing: 7.5
+        Heat: 7.5
   - type: ClothingSpeedModifier
     walkModifier: 1.0
     sprintModifier: 1.0
@@ -536,9 +576,13 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.6
-        Slash: 0.8
+        Blunt: 0.8
+        Slash: 0.6
         Piercing: 0.4
+      flatReductions:
+        Blunt: 2.5
+        Slash: 7.5
+        Piercing: 7.5
   - type: ClothingSpeedModifier
     walkModifier: 0.8
   - type: HeldSpeedModifier
@@ -573,6 +617,11 @@
         Slash: 0.5
         Piercing: 0.6
         Heat: 0.5
+      flatReductions: # hark, the cossacks are back from the past
+        Blunt: 7.5
+        Slash: 7.5
+        Piercing: 7.5
+        Heat: 7.5
   - type: GroupExamine
   - type: ProtectedFromStepTriggers
     slots: WITHOUT_POCKET
