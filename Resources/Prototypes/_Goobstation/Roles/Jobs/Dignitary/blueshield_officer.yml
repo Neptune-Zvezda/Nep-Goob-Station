@@ -65,6 +65,7 @@
   - Service
   - Hydroponics
   - Cargo
+  - Brigmedic
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant, BluespaceLifelineImplant ] # Go big, or go home.

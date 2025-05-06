@@ -109,21 +109,8 @@
   canBeAntag: false
   goobcoins: 40
   access:
-  - Security
-  - Brig
-  - External
-  - Cryogenics
-  - Maintenance
-  - Engineering
-  - Medical
-  - Research
-  - Command
+  - AllAccess
   - CentralCommand
-  - Service
-  - Hydroponics
-  - Kitchen
-  - Cargo
-  - Theatre
   - NanotrasenRepresentative
   special:
   - !type:AddImplantSpecial

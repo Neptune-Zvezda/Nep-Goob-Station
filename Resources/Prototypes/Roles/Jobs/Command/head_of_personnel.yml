@@ -182,6 +182,7 @@
   - Cargo
   - Atmospherics
   - Medical
+  - Brigmedic
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]
