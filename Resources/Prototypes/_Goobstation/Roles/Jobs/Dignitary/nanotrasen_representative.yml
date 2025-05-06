@@ -109,9 +109,10 @@
   canBeAntag: false
   goobcoins: 40
   access:
-  - AllAccess
   - CentralCommand
   - NanotrasenRepresentative
+  accessGroups:
+  - AllAccess
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]
