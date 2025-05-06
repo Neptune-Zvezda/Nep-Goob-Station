@@ -34,7 +34,7 @@ If you want to host or create content for SS14, go to the [Space Station 14 repo
 
 ## Documentation/Wiki
 
-The Goob Station [docs site](https://docs.goobstation.com/) has documentation on GS14's content, engine, game design, and more. It also has lots of resources for new contributors to the project.
+The Goob Station [docs site](https://docs.goobstation.com/) has documentation on GS14's content, engine, game design, and more. It also has lots of resources for new contributors to the project. We are not the ones in control of that site as it is from Goob Station and not Nepu Station.
 
 ## Contributing
 
