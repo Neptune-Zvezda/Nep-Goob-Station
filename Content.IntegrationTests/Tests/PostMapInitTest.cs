@@ -222,6 +222,7 @@ namespace Content.IntegrationTests.Tests
             "Lavatest", // Lavaland Change
             "Loop",
             "Delta" // Goobstation - add Delta
+            "BoxSunday"
         };
 
         /// <summary>
