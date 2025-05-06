@@ -65,12 +65,15 @@
   - Service
   - Hydroponics
   - Cargo
+  - Brigmedic
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant, BluespaceLifelineImplant ] # Go big, or go home.
   - !type:AddComponentSpecial
     components:
       - type: CommandStaff
+      - type: Condemned
+        soulOwnedNotDevil: true
 
 - type: startingGear
   id: BlueshieldOfficerGear

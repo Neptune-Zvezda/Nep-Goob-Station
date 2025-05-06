@@ -109,28 +109,18 @@
   canBeAntag: false
   goobcoins: 40
   access:
-  - Security
-  - Brig
-  - External
-  - Cryogenics
-  - Maintenance
-  - Engineering
-  - Medical
-  - Research
-  - Command
   - CentralCommand
-  - Service
-  - Hydroponics
-  - Kitchen
-  - Cargo
-  - Theatre
   - NanotrasenRepresentative
+  accessGroups:
+  - AllAccess
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]
   - !type:AddComponentSpecial
     components:
       - type: CommandStaff
+      - type: Condemned
+        soulOwnedNotDevil: true
 
 - type: startingGear
   id: NanotrasenRepresentativeGear
