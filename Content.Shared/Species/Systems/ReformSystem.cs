@@ -1,13 +1,6 @@
-// SPDX-FileCopyrightText: 2024 LankLTE <135308300+LankLTE@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 nikthechampiongr <32041239+nikthechampiongr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aviu00 <93730715+Aviu00@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Piras314 <p1r4s@proton.me>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using Content.Shared.Species.Components;
 using Content.Shared.Actions;
+using Content.Shared._NF.Bank.Components; // Frontier
 using Content.Shared.DoAfter;
 using Content.Shared.Popups;
 using Content.Shared.Stunnable;
@@ -82,7 +75,6 @@ public sealed partial class ReformSystem : EntitySystem
             BreakOnDamage = true,
             CancelDuplicate = true,
             RequireCanInteract = false,
-            MultiplyDelay = false, // Goobstation
         };
 
         _doAfterSystem.TryStartDoAfter(doAfter);
@@ -105,6 +97,15 @@ public sealed partial class ReformSystem : EntitySystem
         if (_mindSystem.TryGetMind(uid, out var mindId, out var mind))
             _mindSystem.TransferTo(mindId, child, mind: mind);
 
+        // Frontier: bank account transfer
+        if (HasComp<BankAccountComponent>(uid))
+        {
+            EnsureComp<BankAccountComponent>(child);
+        }
+
+        // Frontier
+        RaiseLocalEvent(child, new SetDionaCargoBlacklistEvent(child), true);
+
         // Delete the old entity
         QueueDel(uid);
     }
@@ -115,7 +116,12 @@ public sealed partial class ReformSystem : EntitySystem
     }
 
     public sealed partial class ReformEvent : InstantActionEvent { }
-
+    
     [Serializable, NetSerializable]
     public sealed partial class ReformDoAfterEvent : SimpleDoAfterEvent { }
+
+    public sealed partial class SetDionaCargoBlacklistEvent(EntityUid entity) : EntityEventArgs
+    {
+        public EntityUid ReformedDiona { get; } = entity;
+    }
 }

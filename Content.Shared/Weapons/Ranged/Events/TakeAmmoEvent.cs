@@ -1,16 +1,3 @@
-// SPDX-FileCopyrightText: 2022 ElectroJr <leonsfriedrich@gmail.com>
-// SPDX-FileCopyrightText: 2022 Kara <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2022 T-Stalker <43253663+DogZeroX@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 T-Stalker <le0nel_1van@hotmail.com>
-// SPDX-FileCopyrightText: 2022 metalgearsloth <metalgearsloth@gmail.com>
-// SPDX-FileCopyrightText: 2023 TaralGit <76408146+TaralGit@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 and_a <and_a@DESKTOP-RJENGIR>
-// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 metalgearsloth <comedian_vs_clown@hotmail.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: MIT
-
 using Robust.Shared.Map;
 
 namespace Content.Shared.Weapons.Ranged.Events;
@@ -34,11 +21,19 @@ public sealed class TakeAmmoEvent : EntityEventArgs
     /// </summary>
     public EntityCoordinates Coordinates;
 
-    public TakeAmmoEvent(int shots, List<(EntityUid? Entity, IShootable Shootable)> ammo, EntityCoordinates coordinates, EntityUid? user)
+    // Frontier: better revolver reloading
+    /// <summary>
+    /// Does this event represent an intent to fire, or to safely remove ammo from an entity?
+    /// </summary>
+    public bool WillBeFired;
+    // End Frontier
+
+    public TakeAmmoEvent(int shots, List<(EntityUid? Entity, IShootable Shootable)> ammo, EntityCoordinates coordinates, EntityUid? user, bool willBeFired = false) // Frontier: add willBeFired
     {
         Shots = shots;
         Ammo = ammo;
         Coordinates = coordinates;
         User = user;
+        WillBeFired = willBeFired; // Frontier
     }
 }

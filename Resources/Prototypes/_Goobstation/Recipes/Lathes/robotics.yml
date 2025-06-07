@@ -1,20 +1,6 @@
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aiden <aiden@djkraz.com>
-# SPDX-FileCopyrightText: 2025 BombasterDS <115770678+BombasterDS@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 BombasterDS <deniskaporoshok@gmail.com>
-# SPDX-FileCopyrightText: 2025 BombasterDS2 <shvalovdenis.workmail@gmail.com>
-# SPDX-FileCopyrightText: 2025 SX_7 <sn1.test.preria.2002@gmail.com>
-# SPDX-FileCopyrightText: 2025 Solstice <solsticeofthewinter@gmail.com>
-# SPDX-FileCopyrightText: 2025 Ted Lukin <66275205+pheenty@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 gluesniffler <linebarrelerenthusiast@gmail.com>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
 - type: latheRecipe
   id: ModsuitChestplate
   result: ModsuitChestplate
-  categories:
-  - Modsuit
   completetime: 5
   materials:
     Steel: 250
@@ -22,8 +8,6 @@
 - type: latheRecipe
   id: ModsuitBoots
   result: ModsuitBoots
-  categories:
-  - Modsuit
   completetime: 5
   materials:
     Steel: 250
@@ -31,8 +15,6 @@
 - type: latheRecipe
   id: ModsuitHelmet
   result: ModsuitHelmet
-  categories:
-  - Modsuit
   completetime: 5
   materials:
     Steel: 250
@@ -40,8 +22,6 @@
 - type: latheRecipe
   id: ModsuitGauntlets
   result: ModsuitGauntlets
-  categories:
-  - Modsuit
   completetime: 5
   materials:
     Steel: 250
@@ -49,8 +29,6 @@
 - type: latheRecipe
   id: ModsuitShell
   result: ModsuitShell
-  categories:
-  - Modsuit
   completetime: 5
   materials:
     Steel: 500
@@ -59,22 +37,16 @@
 - type: latheRecipe
   id: ModsuitPlatingExternal
   result: ModsuitPlatingExternal
-  categories:
-  - Modsuit
   completetime: 5
   materials:
     Steel: 300
     Glass: 150
     Plasma: 50
 
-# Modules
-
 - type: latheRecipe
-  parent: BaseBorgModuleRecipe
-  id: BorgModuleLollipop
-  result: BorgModuleLollipop
-
-- type: latheRecipe
-  parent: BaseGoldBorgModuleRecipe
-  id: BorgModuleAdvancedMining
-  result: BorgModuleAdvancedMining
+  id: ModsuitCoreStandard
+  result: ModsuitCoreStandard
+  completetime: 5
+  materials:
+    Glass: 550
+    Plasma: 250

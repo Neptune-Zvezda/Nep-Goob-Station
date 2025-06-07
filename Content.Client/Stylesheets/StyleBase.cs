@@ -1,24 +1,3 @@
-// SPDX-FileCopyrightText: 2020 AJCM-git <60196617+AJCM-git@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2020 Swept <sweptwastaken@protonmail.com>
-// SPDX-FileCopyrightText: 2021 Acruid <shatter66@gmail.com>
-// SPDX-FileCopyrightText: 2021 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2021 E F R <602406+Efruit@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2021 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2021 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-// SPDX-FileCopyrightText: 2021 chairbender <kwhipke1@gmail.com>
-// SPDX-FileCopyrightText: 2022 Julian Giebel <juliangiebel@live.de>
-// SPDX-FileCopyrightText: 2022 Paul Ritter <ritter.paul1@googlemail.com>
-// SPDX-FileCopyrightText: 2022 wrexbe <81056464+wrexbe@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 ike709 <ike709@github.com>
-// SPDX-FileCopyrightText: 2024 ike709 <ike709@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2025 Rane <60792108+Elijahrane@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 bedroomvampire <leannetoni@proton.me>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using System.Numerics;
 using Content.Client.Resources;
 using Robust.Client.Graphics;
@@ -40,8 +19,10 @@ namespace Content.Client.Stylesheets
         public const string ClassAngleRect = "AngleRect";
 
         public const string ButtonOpenRight = "OpenRight";
+        public const string ButtonOpenRightSelected = "OpenRightSelected";
         public const string ButtonOpenLeft = "OpenLeft";
         public const string ButtonOpenBoth = "OpenBoth";
+        public const string ButtonOpenBothSelected = "OpenBothSelected";
         public const string ButtonSquare = "ButtonSquare";
 
         public const string ButtonCaution = "Caution";
@@ -69,7 +50,6 @@ namespace Content.Client.Stylesheets
                 new []
                 {
                     "/Fonts/NotoSans/NotoSans-Regular.ttf",
-                    "/Fonts/NotoSans/NotoSansSC-Regular.ttf",
                     "/Fonts/NotoSans/NotoSansSymbols-Regular.ttf",
                     "/Fonts/NotoSans/NotoSansSymbols2-Regular.ttf",
                 },
@@ -80,7 +60,6 @@ namespace Content.Client.Stylesheets
                 new []
                 {
                     "/Fonts/NotoSans/NotoSans-Italic.ttf",
-                    "/Fonts/NotoSans/NotoSansSC-Regular.ttf",
                     "/Fonts/NotoSans/NotoSansSymbols-Regular.ttf",
                     "/Fonts/NotoSans/NotoSansSymbols2-Regular.ttf",
                 },
@@ -200,7 +179,7 @@ namespace Content.Client.Stylesheets
                     new[]
                     {
                         new StyleProperty(TextureButton.StylePropertyTexture, textureCloseButton),
-                        new StyleProperty(Control.StylePropertyModulateSelf, Color.FromHex("#4B596A")),
+                        new StyleProperty(Control.StylePropertyModulateSelf, Color.FromHex("#545454")),
                     }),
                 // Window close button hover.
                 new StyleRule(

@@ -1,24 +1,3 @@
-// SPDX-FileCopyrightText: 2022 metalgearsloth <comedian_vs_clown@hotmail.com>
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <drsmugleaf@gmail.com>
-// SPDX-FileCopyrightText: 2023 Jezithyr <jezithyr@gmail.com>
-// SPDX-FileCopyrightText: 2023 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 deltanedas <@deltanedas:kde.org>
-// SPDX-FileCopyrightText: 2023 keronshb <54602815+keronshb@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 keronshb <keronshb@live.com>
-// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Fishbait <Fishbait@git.ml>
-// SPDX-FileCopyrightText: 2024 Ilya246 <57039557+Ilya246@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Simon <63975668+Simyon264@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 fishbait <gnesse@gmail.com>
-// SPDX-FileCopyrightText: 2024 nikthechampiongr <32041239+nikthechampiongr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 SlamBamActionman <83650252+SlamBamActionman@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Zachary Higgs <compgeek223@gmail.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using System.Linq;
 using Content.Server.Popups;
 using Content.Shared.DoAfter;
@@ -64,9 +43,7 @@ public sealed partial class ImplanterSystem : SharedImplanterSystem
         }
         else
         {
-            // Goobstation - allow traitors to buy suicide implants
-            bool canImplant = CanImplant(args.User, target, uid, component, out var implant, out var implantComp);
-            if (!canImplant)
+            if (!CanImplant(args.User, target, uid, component, out var implant, out _))
             {
                 // no popup if implant doesn't exist
                 if (implant == null)
@@ -81,13 +58,11 @@ public sealed partial class ImplanterSystem : SharedImplanterSystem
                 return;
             }
 
-
-
             //Implant self instantly, otherwise try to inject the target.
             if (args.User == target)
                 Implant(target, target, uid, component);
-            else if (implantComp != null)
-                TryImplant(component, args.User, target, uid, implantComp.ImplantationTimeMultiplier); // Goobstation - allow traitors to buy suicide implants (add time multiplier)
+            else
+                TryImplant(component, args.User, target, uid);
         }
 
         args.Handled = true;
@@ -100,10 +75,9 @@ public sealed partial class ImplanterSystem : SharedImplanterSystem
     /// <param name="user">The entity using the implanter</param>
     /// <param name="target">The entity being implanted</param>
     /// <param name="implanter">The implanter being used</param>
-    // Goobstation - allow traitors to buy suicide implants (add time multiplier)
-    public void TryImplant(ImplanterComponent component, EntityUid user, EntityUid target, EntityUid implanter, float timeMultiplier = 1)
+    public void TryImplant(ImplanterComponent component, EntityUid user, EntityUid target, EntityUid implanter)
     {
-        var args = new DoAfterArgs(EntityManager, user, component.ImplantTime * timeMultiplier, new ImplantEvent(), implanter, target: target, used: implanter)
+        var args = new DoAfterArgs(EntityManager, user, component.ImplantTime, new ImplantEvent(), implanter, target: target, used: implanter)
         {
             BreakOnDamage = true,
             BreakOnMove = true,

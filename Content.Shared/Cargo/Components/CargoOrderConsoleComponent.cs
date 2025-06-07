@@ -1,14 +1,9 @@
-// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 icekot8 <93311212+icekot8@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: MIT
-
 using Content.Shared.Cargo.Prototypes;
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 using Content.Shared.Radio;
 using Robust.Shared.Prototypes;
+using Content.Shared._NF.Bank.Components;
 
 namespace Content.Shared.Cargo.Components;
 
@@ -35,4 +30,10 @@ public sealed partial class CargoOrderConsoleComponent : Component
     /// </summary>
     [DataField, ViewVariables(VVAccess.ReadWrite)]
     public ProtoId<RadioChannelPrototype> AnnouncementChannel = "Supply";
+
+    // Frontier: station taxes
+    // Accounts to receive tax value (each currently receives the entirety of the taxed value)
+    [DataField, ViewVariables(VVAccess.ReadWrite)]
+    public Dictionary<SectorBankAccount, float> TaxAccounts = new();
+    // End Frontier
 }

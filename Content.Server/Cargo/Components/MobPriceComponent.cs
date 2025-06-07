@@ -1,9 +1,3 @@
-// SPDX-FileCopyrightText: 2022 Moony <moonheart08@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: MIT
-
 namespace Content.Server.Cargo.Components;
 
 /// <summary>
@@ -29,4 +23,10 @@ public sealed partial class MobPriceComponent : Component
     /// </summary>
     [DataField("deathPenalty")]
     public double DeathPenalty = 0.2f;
+
+    /// <summary>
+    /// The percentage of the actual price that should be granted should the appraised mob be lab grown calc added after DeathPenalty, will use tag "LabGrown".
+    /// </summary>
+    [DataField("labGrownPenalty")]
+    public double LabGrownPenalty = 0.2f;
 }

@@ -1,8 +1,3 @@
-// SPDX-FileCopyrightText: 2024 Aidenkrz <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using Content.Shared.Item;
 using Robust.Shared.Prototypes;
 
@@ -27,6 +22,9 @@ public sealed partial class PseudoItemComponent : Component
 
     [DataField, AutoNetworkedField]
     public Vector2i StoredOffset;
+
+    [DataField, AutoNetworkedField] // Frontier
+    public float StoredRotation; // Frontier
 
     public bool Active = false;
 

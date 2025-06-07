@@ -1,27 +1,8 @@
-# SPDX-FileCopyrightText: 2021 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2021 SETh lafuente <cetaciocascarudo@gmail.com>
-# SPDX-FileCopyrightText: 2021 SethLafuente <84478872+SethLafuente@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2021 Swept <sweptwastaken@protonmail.com>
-# SPDX-FileCopyrightText: 2021 Tarlan2 <76408146+Tarlan2@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2021 Vera Aguilera Puerto <gradientvera@outlook.com>
-# SPDX-FileCopyrightText: 2022 Peptide90 <78795277+Peptide90@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2022 Rane <60792108+Elijahrane@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 Moony <moony@hellomouse.net>
-# SPDX-FileCopyrightText: 2023 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 ArZarLordOfMango <96249677+ArZarLordOfMango@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 GreyMario <mariomister541@gmail.com>
-# SPDX-FileCopyrightText: 2024 RumiTiger <154005209+RumiTiger@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 deltanedas <39013340+deltanedas@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 deltanedas <@deltanedas:kde.org>
-# SPDX-FileCopyrightText: 2024 slarticodefast <161409025+slarticodefast@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
 - type: latheRecipe
   parent: BaseToolRecipe
   id: ButchCleaver
   result: ButchCleaver
+  categories: [KitchenNF] # Frontier
   materials:
     Steel: 300
     Plastic: 50
@@ -30,6 +11,7 @@
   parent: BaseToolRecipe
   id: KitchenKnife
   result: KitchenKnife
+  categories: [KitchenNF] # Frontier
   materials:
     Steel: 200
     Plastic: 50
@@ -38,6 +20,7 @@
   abstract: true
   id: BaseGlasswareRecipe
   completetime: 0.8
+  categories: [KitchenNF] # Frontier
   materials:
     Glass: 100
 
@@ -72,6 +55,7 @@
 - type: latheRecipe
   id: CustomDrinkJug
   result: CustomDrinkJug
+  categories: [KitchenNF] # Frontier
   completetime: 2
   materials:
     Plastic: 200
@@ -85,6 +69,7 @@
   id: FoodPlateSmall
   result: FoodPlateSmall
   completetime: 0.4
+  categories: [KitchenNF] # Frontier
   materials:
     Glass: 50
 
@@ -110,6 +95,7 @@
 - type: latheRecipe
   id: FoodPlateTin
   result: FoodPlateTin
+  categories: [KitchenNF] # Frontier
   completetime: 0.4
   materials:
     Steel: 100
@@ -124,6 +110,7 @@
 - type: latheRecipe
   id: FoodKebabSkewer
   result: FoodKebabSkewer
+  categories: [KitchenNF] # Frontier
   completetime: 0.4
   materials:
     Steel: 100

@@ -1,21 +1,15 @@
-# SPDX-FileCopyrightText: 2024 KittenColony <149278380+KittenColony@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Арт <123451459+JustArt1m@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aiden <aiden@djkraz.com>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
+# Frontier: all entries capitalized
+marking-GauzeLefteyePatch-gauze_lefteye_2 = Gauze Eyepatch (Left)
+marking-GauzeLefteyePatch = Gauze Eyepatch (Left)
 
-marking-GauzeLefteyePatch-gauze_lefteye_2 = Gauze eyepatch (Left)
-marking-GauzeLefteyePatch = Gauze eyepatch (Left)
+marking-GauzeLefteyePad-gauze_lefteye_1 = Gauze Eyepad (Left)
+marking-GauzeLefteyePad = Gauze Eyepad (Left)
 
-marking-GauzeLefteyePad-gauze_lefteye_1 = Gauze eyepad (Left)
-marking-GauzeLefteyePad = Gauze eyepad (Left)
+marking-GauzeRighteyePatch-gauze_righteye_2 = Gauze Eyepatch (Right)
+marking-GauzeRighteyePatch = Gauze Eyepatch (Right)
 
-marking-GauzeRighteyePatch-gauze_righteye_2 = Gauze eyepatch (Right)
-marking-GauzeRighteyePatch = Gauze eyepatch (Right)
-
-marking-GauzeRighteyePad-gauze_righteye_1 = Gauze eyepad (Right)
-marking-GauzeRighteyePad = Gauze eyepad (Right)
+marking-GauzeRighteyePad-gauze_righteye_1 = Gauze Eyepad (Right)
+marking-GauzeRighteyePad = Gauze Eyepad (Right)
 
 marking-GauzeShoulder-gauze_shoulder = Gauze Shoulder Sling
 marking-GauzeShoulder = Gauze Shoulder Sling

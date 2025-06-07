@@ -1,9 +1,4 @@
-// SPDX-FileCopyrightText: 2022 Kara <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: MIT
-
-using Content.Server.Kitchen.Components;
+﻿using Content.Server.Kitchen.Components;
 using Content.Server.Xenoarchaeology.XenoArtifacts.Triggers.Components;
 
 namespace Content.Server.Xenoarchaeology.XenoArtifacts.Triggers.Systems;
@@ -20,6 +15,11 @@ public sealed class ArtifactMicrowaveTriggerSystem : EntitySystem
 
     private void OnMicrowaved(EntityUid uid, ArtifactMicrowaveTriggerComponent component, BeingMicrowavedEvent args)
     {
+        // Frontier: microwave trigger requires radiation, check if this can irradiate
+        if (!args.BeingIrradiated)
+            return;
+        // End Frontier
+
         _artifact.TryActivateArtifact(uid);
     }
 }

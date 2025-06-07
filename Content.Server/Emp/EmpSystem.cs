@@ -1,23 +1,22 @@
-// SPDX-FileCopyrightText: 2023 Pspritechologist <81725545+Pspritechologist@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Slava0135 <40753025+Slava0135@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 deltanedas <@deltanedas:kde.org>
-// SPDX-FileCopyrightText: 2024 Kara <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-// SPDX-FileCopyrightText: 2024 TemporalOroboros <TemporalOroboros@gmail.com>
-// SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
+using Content.Server.Entry;
 using Content.Server.Explosion.EntitySystems;
+using Content.Server.Power.Components;
 using Content.Server.Power.EntitySystems;
 using Content.Server.Radio;
+using Content.Server.Station.Components;
 using Content.Server.SurveillanceCamera;
 using Content.Shared.Emp;
 using Content.Shared.Examine;
+using Content.Shared.Tiles; // Frontier
 using Robust.Server.GameObjects;
 using Robust.Shared.Map;
+using Content.Shared._NF.Emp.Components; // Frontier
+using Robust.Server.GameStates; // Frontier: EMP Blast PVS
+using Robust.Shared.Configuration; // Frontier: EMP Blast PVS
+using Robust.Shared; // Frontier: EMP Blast PVS
+using Content.Shared.Verbs; // Frontier: examine verb
+using Robust.Shared.Utility; // Frontier: examine verb
+using Content.Server.Examine; // Frontier: examine verb
 
 namespace Content.Server.Emp;
 
@@ -25,19 +24,24 @@ public sealed class EmpSystem : SharedEmpSystem
 {
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly TransformSystem _transform = default!;
+    [Dependency] private readonly PvsOverrideSystem _pvs = default!; // Frontier: EMP Blast PVS
+    [Dependency] private readonly IConfigurationManager _cfg = default!; // Frontier: EMP Blast PVS
+    [Dependency] private readonly ExamineSystem _examine = default!; // Frontier: examine verb
 
-    public const string EmpPulseEffectPrototype = "EffectEmpPulse";
+    public const string EmpPulseEffectPrototype = "EffectEmpBlast"; // Frontier: EffectEmpPulse
 
     public override void Initialize()
     {
         base.Initialize();
         SubscribeLocalEvent<EmpDisabledComponent, ExaminedEvent>(OnExamine);
         SubscribeLocalEvent<EmpOnTriggerComponent, TriggerEvent>(HandleEmpTrigger);
+        SubscribeLocalEvent<EmpOnTriggerComponent, GetVerbsEvent<ExamineVerb>>(OnEmpTriggerExamine); // Frontier
+        SubscribeLocalEvent<EmpDescriptionComponent, GetVerbsEvent<ExamineVerb>>(OnEmpDescriptorExamine); // Frontier
 
         SubscribeLocalEvent<EmpDisabledComponent, RadioSendAttemptEvent>(OnRadioSendAttempt);
         SubscribeLocalEvent<EmpDisabledComponent, RadioReceiveAttemptEvent>(OnRadioReceiveAttempt);
-        SubscribeLocalEvent<EmpDisabledComponent, ApcToggleMainBreakerAttemptEvent>(OnApcToggleMainBreaker);
-        SubscribeLocalEvent<EmpDisabledComponent, SurveillanceCameraSetActiveAttemptEvent>(OnCameraSetActive);
+        //SubscribeLocalEvent<EmpDisabledComponent, ApcToggleMainBreakerAttemptEvent>(OnApcToggleMainBreaker); // Frontier: Upstream - #28984
+        //SubscribeLocalEvent<EmpDisabledComponent, SurveillanceCameraSetActiveAttemptEvent>(OnCameraSetActive); // Frontier: Upstream - #28984
     }
 
     /// <summary>
@@ -47,13 +51,30 @@ public sealed class EmpSystem : SharedEmpSystem
     /// <param name="range">The range of the EMP pulse.</param>
     /// <param name="energyConsumption">The amount of energy consumed by the EMP pulse.</param>
     /// <param name="duration">The duration of the EMP effects.</param>
-    public void EmpPulse(MapCoordinates coordinates, float range, float energyConsumption, float duration)
+    /// <param name="immuneGrids">Frontier: a list of the grids that should not be affected by the pulse.</param>
+    public void EmpPulse(MapCoordinates coordinates, float range, float energyConsumption, float duration, List<EntityUid>? immuneGrids = null)
     {
         foreach (var uid in _lookup.GetEntitiesInRange(coordinates, range))
         {
+            // Frontier: Block EMP on grid
+            var gridUid = Transform(uid).GridUid;
+            if (gridUid != null &&
+                (immuneGrids != null && immuneGrids.Contains(gridUid.Value) ||
+                TryComp<ProtectedGridComponent>(gridUid, out var prot) && prot.PreventEmpEvents))
+                continue;
+            // End Frontier: block EMP on grid
+
             TryEmpEffects(uid, energyConsumption, duration);
         }
-        Spawn(EmpPulseEffectPrototype, coordinates);
+
+        var empBlast = Spawn(EmpPulseEffectPrototype, coordinates); // Frontier: Added visual effect
+        EnsureComp<EmpBlastComponent>(empBlast, out var empBlastComp); // Frontier
+        empBlastComp.VisualRange = range; // Frontier
+
+        if (range > _cfg.GetCVar(CVars.NetMaxUpdateRange)) // Frontier
+            _pvs.AddGlobalOverride(empBlast); // Frontier
+
+        Dirty(empBlast, empBlastComp); // Frontier
     }
 
     /// <summary>
@@ -88,8 +109,22 @@ public sealed class EmpSystem : SharedEmpSystem
         }
         if (ev.Disabled)
         {
+            // Frontier: Upstream - #28984 start
+            //disabled.DisabledUntil = Timing.CurTime + TimeSpan.FromSeconds(duration);
             var disabled = EnsureComp<EmpDisabledComponent>(uid);
-            disabled.DisabledUntil = Timing.CurTime + TimeSpan.FromSeconds(duration);
+            if (disabled.DisabledUntil == TimeSpan.Zero)
+            {
+                disabled.DisabledUntil = Timing.CurTime;
+            }
+            disabled.DisabledUntil = disabled.DisabledUntil + TimeSpan.FromSeconds(duration);
+
+            /// i tried my best to go through the Pow3r server code but i literally couldn't find in relation to PowerNetworkBatteryComponent that uses the event system
+            /// the code is otherwise too esoteric for my innocent eyes
+            if (TryComp<PowerNetworkBatteryComponent>(uid, out var powerNetBattery))
+            {
+                powerNetBattery.CanCharge = false;
+            }
+            // Frontier: Upstream - #28984 end
         }
     }
 
@@ -105,6 +140,11 @@ public sealed class EmpSystem : SharedEmpSystem
                 RemComp<EmpDisabledComponent>(uid);
                 var ev = new EmpDisabledRemoved();
                 RaiseLocalEvent(uid, ref ev);
+
+                if (TryComp<PowerNetworkBatteryComponent>(uid, out var powerNetBattery)) // Frontier: Upstream - #28984
+                {
+                    powerNetBattery.CanCharge = true;
+                }
             }
         }
     }
@@ -113,6 +153,47 @@ public sealed class EmpSystem : SharedEmpSystem
     {
         args.PushMarkup(Loc.GetString("emp-disabled-comp-on-examine"));
     }
+
+    // Frontier: examine EMP trigger objects
+    private void OnEmpTriggerExamine(EntityUid uid, EmpOnTriggerComponent component, GetVerbsEvent<ExamineVerb> args)
+    {
+        if (!args.CanInteract || !args.CanAccess)
+            return;
+
+        var msg = GetEmpDescription(component.Range, component.EnergyConsumption, component.DisableDuration);
+
+        _examine.AddDetailedExamineVerb(args, component, msg,
+            Loc.GetString("emp-examinable-verb-text"), "/Textures/Interface/VerbIcons/smite.svg.192dpi.png",
+            Loc.GetString("emp-examinable-verb-message"));
+    }
+    private void OnEmpDescriptorExamine(EntityUid uid, EmpDescriptionComponent component, GetVerbsEvent<ExamineVerb> args)
+    {
+        if (!args.CanInteract || !args.CanAccess)
+            return;
+
+        var msg = GetEmpDescription(component.Range, component.EnergyConsumption, component.DisableDuration);
+
+        _examine.AddDetailedExamineVerb(args, component, msg,
+            Loc.GetString("emp-examinable-verb-text"), "/Textures/Interface/VerbIcons/smite.svg.192dpi.png",
+            Loc.GetString("emp-examinable-verb-message"));
+    }
+
+    private FormattedMessage GetEmpDescription(float range, float energy, float time)
+    {
+        var msg = new FormattedMessage();
+        msg.AddMarkupOrThrow(Loc.GetString("emp-examine"));
+        msg.PushNewline();
+        msg.AddMarkupOrThrow(Loc.GetString("emp-range-value",
+            ("value", range)));
+        msg.PushNewline();
+        msg.AddMarkupOrThrow(Loc.GetString("emp-energy-value",
+            ("value", energy)));
+        msg.PushNewline();
+        msg.AddMarkupOrThrow(Loc.GetString("emp-time-value",
+            ("value", time)));
+        return msg;
+    }
+    // End Frontier
 
     private void HandleEmpTrigger(EntityUid uid, EmpOnTriggerComponent comp, TriggerEvent args)
     {
@@ -130,15 +211,16 @@ public sealed class EmpSystem : SharedEmpSystem
         args.Cancelled = true;
     }
 
-    private void OnApcToggleMainBreaker(EntityUid uid, EmpDisabledComponent component, ref ApcToggleMainBreakerAttemptEvent args)
-    {
-        args.Cancelled = true;
-    }
+    //private void OnApcToggleMainBreaker(EntityUid uid, EmpDisabledComponent component, ref ApcToggleMainBreakerAttemptEvent args) // Frontier: Upstream - #28984
+    //{
+    //    args.Cancelled = true;
+    //}
 
-    private void OnCameraSetActive(EntityUid uid, EmpDisabledComponent component, ref SurveillanceCameraSetActiveAttemptEvent args)
-    {
-        args.Cancelled = true;
-    }
+    //private void OnCameraSetActive(EntityUid uid, EmpDisabledComponent component, ref SurveillanceCameraSetActiveAttemptEvent args) // Frontier: Upstream - #28984
+    //{
+    //    args.Cancelled = true;
+    //}
+
 }
 
 /// <summary>

@@ -1,0 +1,53 @@
+- type: job
+  id: PirateCaptain
+  name: job-name-pirate-captain
+  description: job-description-pirate-captain
+  playTimeTracker: JobPirateCaptain
+  requirements:
+    - !type:OverallPlaytimeRequirement
+      time: 234000 # 65 hours - mono
+    - !type:RoleTimeRequirement
+      role: JobPirateFirstMate # mono
+      time: 54000 # 3 hours
+    - !type:DepartmentTimeRequirement
+      department: Security
+      time: 36000 # 10 hours # mono
+  whitelisted: true
+  startingGear: PirateCaptainNFGear
+  alwaysUseSpawner: true
+  hideConsoleVisibility: true
+  canBeAntag: true
+  icon: "JobIconPirateCaptain"
+  supervisors: job-supervisors-nobody
+  weight: 40
+  displayWeight: 40
+  setPreference: true
+  access:
+  - Pirate
+  accessGroups:
+  - GeneralAccess
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: MailDisabled
+    - type: SpecialSectorStationRecord
+      recordGeneration: FalseRecord
+    - type: NpcFactionMember
+      factions:
+      - PirateNF
+  - !type:AddImplantSpecial
+    implants: [ FreelanceTrackingImplant ]
+  - !type:GiveItemOnHolidaySpecial # Even pirates get a piece of cake.
+    holiday: FrontierBirthday
+    prototype: FrontierBirthdayGift
+
+- type: startingGear
+  id: PirateCaptainNFGear
+  equipment:
+    ears: ClothingHeadsetAltFreelancer
+    #belt: ClothingBeltUtility # mono
+    pocket1: BasePirateUplinkRadioPirateCaptain
+    pocket2: EnergyCutlass
+  storage:
+    back:
+    - RadioHandheldNF # mono

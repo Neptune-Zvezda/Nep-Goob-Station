@@ -1,11 +1,3 @@
-# SPDX-FileCopyrightText: 2024 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aiden <aiden@djkraz.com>
-# SPDX-FileCopyrightText: 2025 BombasterDS <deniskaporoshok@gmail.com>
-# SPDX-FileCopyrightText: 2025 BombasterDS2 <shvalovdenis.workmail@gmail.com>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
 - type: emote
   id: SiliconDeathgasp
   name: chat-emote-name-deathgasp
@@ -13,31 +5,18 @@
   chatMessages: ["chat-emote-msg-deathgasp-silicon"]
   chatTriggers:
   - sdeathgasp
-  whitelist:
-    components:
-    - Silicon
-    - BorgChassis
 
 - type: emote
   id: Boop
   name: chat-emote-name-boop
   category: Vocal
-  chatMessages: [ boops. ]
+  chatMessages: [ boops ]
   chatTriggers:
-  - boops
-  whitelist:
-    components:
-    - Silicon
-    - BorgChassis
+    - boops
 
 - type: emote
-  id: Whirr
+  id: Whirr # uncategorized as it is generic
   name: chat-emote-name-whirr
-  category: Vocal
-  chatMessages: [ whirrs. ]
+  chatMessages: [ whirrs ]
   chatTriggers:
-  - whirrs
-  whitelist:
-    components:
-    - Silicon
-    - BorgChassis
+    - whirrs

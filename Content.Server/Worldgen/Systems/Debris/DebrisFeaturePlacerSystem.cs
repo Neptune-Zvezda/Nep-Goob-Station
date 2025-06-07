@@ -1,16 +1,8 @@
-// SPDX-FileCopyrightText: 2023 20kdc <asdd2808@gmail.com>
-// SPDX-FileCopyrightText: 2023 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Moony <moony@hellomouse.net>
-// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 moonheart08 <moonheart08@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: MIT
-
 using System.Linq;
 using System.Numerics;
 using Content.Server.Worldgen.Components;
 using Content.Server.Worldgen.Components.Debris;
+using Content.Server.Worldgen.Systems.GC;
 using Content.Server.Worldgen.Tools;
 using JetBrains.Annotations;
 using Robust.Server.GameObjects;
@@ -18,6 +10,7 @@ using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
+using Content.Server._NF.Worldgen.Components.Debris; // Frontier
 
 namespace Content.Server.Worldgen.Systems.Debris;
 
@@ -26,6 +19,7 @@ namespace Content.Server.Worldgen.Systems.Debris;
 /// </summary>
 public sealed class DebrisFeaturePlacerSystem : BaseWorldSystem
 {
+    [Dependency] private readonly GCQueueSystem _gc = default!;
     [Dependency] private readonly NoiseIndexSystem _noiseIndex = default!;
     [Dependency] private readonly PoissonDiskSampler _sampler = default!;
     [Dependency] private readonly TransformSystem _xformSys = default!;
@@ -43,8 +37,17 @@ public sealed class DebrisFeaturePlacerSystem : BaseWorldSystem
         SubscribeLocalEvent<DebrisFeaturePlacerControllerComponent, WorldChunkUnloadedEvent>(OnChunkUnloaded);
         SubscribeLocalEvent<OwnedDebrisComponent, ComponentShutdown>(OnDebrisShutdown);
         SubscribeLocalEvent<OwnedDebrisComponent, MoveEvent>(OnDebrisMove);
+        SubscribeLocalEvent<OwnedDebrisComponent, TryCancelGC>(OnTryCancelGC);
         SubscribeLocalEvent<SimpleDebrisSelectorComponent, TryGetPlaceableDebrisFeatureEvent>(
             OnTryGetPlacableDebrisEvent);
+    }
+
+    /// <summary>
+    ///     Handles GC cancellation in case the chunk is still loaded.
+    /// </summary>
+    private void OnTryCancelGC(EntityUid uid, OwnedDebrisComponent component, ref TryCancelGC args)
+    {
+        args.Cancelled |= HasComp<LoadedChunkComponent>(component.OwningController);
     }
 
     /// <summary>
@@ -101,6 +104,12 @@ public sealed class DebrisFeaturePlacerSystem : BaseWorldSystem
     private void OnChunkUnloaded(EntityUid uid, DebrisFeaturePlacerControllerComponent component,
         ref WorldChunkUnloadedEvent args)
     {
+        foreach (var (_, debris) in component.OwnedDebris)
+        {
+            if (debris is not null)
+                _gc.TryGCEntity(debris.Value); // gonb.
+        }
+
         component.DoSpawns = true;
     }
 
@@ -219,6 +228,8 @@ public sealed class DebrisFeaturePlacerSystem : BaseWorldSystem
             var owned = EnsureComp<OwnedDebrisComponent>(ent);
             owned.OwningController = uid;
             owned.LastKey = point;
+
+            EnsureComp<SpaceDebrisComponent>(ent); // Frontier
         }
 
         if (failures > 0)
@@ -261,3 +272,4 @@ public record struct PrePlaceDebrisFeatureEvent(EntityCoordinates Coords, Entity
 [PublicAPI]
 public record struct TryGetPlaceableDebrisFeatureEvent(EntityCoordinates Coords, EntityUid Chunk,
     string? DebrisProto = null);
+

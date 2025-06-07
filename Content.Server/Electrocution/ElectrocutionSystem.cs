@@ -1,56 +1,4 @@
-// SPDX-FileCopyrightText: 2021 Clyybber <darkmine956@gmail.com>
-// SPDX-FileCopyrightText: 2021 Vera Aguilera Puerto <6766154+Zumorica@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2021 Vera Aguilera Puerto <gradientvera@outlook.com>
-// SPDX-FileCopyrightText: 2021 pointer-to-null <91910481+pointer-to-null@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 0x6273 <0x40@keemail.me>
-// SPDX-FileCopyrightText: 2022 Acruid <shatter66@gmail.com>
-// SPDX-FileCopyrightText: 2022 Chief-Engineer <119664036+Chief-Engineer@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Flipp Syder <76629141+vulppine@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Paul Ritter <ritter.paul1@googlemail.com>
-// SPDX-FileCopyrightText: 2022 Willhelm53 <97707302+Willhelm53@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 metalgearsloth <metalgearsloth@gmail.com>
-// SPDX-FileCopyrightText: 2022 mirrorcult <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2022 wrexbe <81056464+wrexbe@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 wrexbe <wrexbe@protonmail.com>
-// SPDX-FileCopyrightText: 2023 Dawid Bla <46636558+DawBla@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Errant <35878406+dmnct@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Kacper Urbańczyk <kacperjaroslawurbanczyk@gmail.com>
-// SPDX-FileCopyrightText: 2023 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-// SPDX-FileCopyrightText: 2023 Pieter-Jan Briers <pieterjan.briers@gmail.com>
-// SPDX-FileCopyrightText: 2023 Slava0135 <40753025+Slava0135@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Slava0135 <super.novalskiy_0135@inbox.ru>
-// SPDX-FileCopyrightText: 2023 TemporalOroboros <TemporalOroboros@gmail.com>
-// SPDX-FileCopyrightText: 2023 Tomás Alves <tomasalves35@gmail.com>
-// SPDX-FileCopyrightText: 2023 Visne <39844191+Visne@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Vordenburg <114301317+Vordenburg@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 chromiumboy <50505512+chromiumboy@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 deltanedas <@deltanedas:kde.org>
-// SPDX-FileCopyrightText: 2023 deltanedas <deltanedas@laptop>
-// SPDX-FileCopyrightText: 2023 deltanedas <user@zenith>
-// SPDX-FileCopyrightText: 2023 faint <46868845+ficcialfaint@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 keronshb <54602815+keronshb@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Aidenkrz <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2024 Ed <96445749+TheShuEd@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Fildrance <fildrance@gmail.com>
-// SPDX-FileCopyrightText: 2024 Jezithyr <jezithyr@gmail.com>
-// SPDX-FileCopyrightText: 2024 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 ScarKy0 <scarky0@onet.eu>
-// SPDX-FileCopyrightText: 2024 Varen <ychwack@hotmail.it>
-// SPDX-FileCopyrightText: 2024 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 pa.pecherskij <pa.pecherskij@interfax.ru>
-// SPDX-FileCopyrightText: 2024 slarticodefast <161409025+slarticodefast@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aviu00 <93730715+Aviu00@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
-using Content.Server._Goobstation.Wizard.Components;
 using Content.Server.Administration.Logs;
-using Content.Server.Beam.Components;
 using Content.Server.Light.Components;
 using Content.Server.NodeContainer;
 using Content.Server.NodeContainer.EntitySystems;
@@ -82,7 +30,6 @@ using Robust.Shared.Physics.Events;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
-using Robust.Shared.Spawners;
 using PullableComponent = Content.Shared.Movement.Pulling.Components.PullableComponent;
 using PullerComponent = Content.Shared.Movement.Pulling.Components.PullerComponent;
 
@@ -211,19 +158,8 @@ public sealed class ElectrocutionSystem : SharedElectrocutionSystem
 
     private void OnElectrifiedStartCollide(EntityUid uid, ElectrifiedComponent electrified, ref StartCollideEvent args)
     {
-        // Goob edit start
-        if (!electrified.OnBump)
-            return;
-        if (TryComp(uid, out BeamComponent? beam))
-        {
-            var struck = EnsureComp<StruckByLightningComponent>(args.OtherEntity);
-            if (!struck.BeamIndices.Add(beam.BeamIndex))
-                return;
-            if (TryComp(uid, out TimedDespawnComponent? despawn))
-                struck.Lifetime = MathF.Max(struck.Lifetime, despawn.Lifetime + 1f);
-        }
-        TryDoElectrifiedAct(uid, args.OtherEntity, 1, electrified);
-        // Goob edit end
+        if (electrified.OnBump)
+            TryDoElectrifiedAct(uid, args.OtherEntity, 1, electrified);
     }
 
     private void OnElectrifiedAttacked(EntityUid uid, ElectrifiedComponent electrified, AttackedEvent args)
@@ -285,7 +221,7 @@ public sealed class ElectrocutionSystem : SharedElectrocutionSystem
         _appearance.SetData(uid, ElectrifiedVisuals.ShowSparks, true);
 
         siemens *= electrified.SiemensCoefficient;
-        if (!DoCommonElectrocutionAttempt(targetUid, uid, ref siemens, electrified.IgnoreInsulation) || siemens <= 0) // Goob edit
+        if (!DoCommonElectrocutionAttempt(targetUid, uid, ref siemens) || siemens <= 0)
             return false; // If electrocution would fail, do nothing.
 
         var targets = new List<(EntityUid entity, int depth)>();
@@ -296,18 +232,13 @@ public sealed class ElectrocutionSystem : SharedElectrocutionSystem
             for (var i = targets.Count - 1; i >= 0; i--)
             {
                 var (entity, depth) = targets[i];
-
-                if (entity == electrified.IgnoredEntity) // Goobstation
-                    continue;
-
                 lastRet = TryDoElectrocution(
                     entity,
                     uid,
                     (int) (electrified.ShockDamage * MathF.Pow(RecursiveDamageMultiplier, depth)),
                     TimeSpan.FromSeconds(electrified.ShockTime * MathF.Pow(RecursiveTimeMultiplier, depth)),
                     true,
-                    electrified.SiemensCoefficient,
-                    ignoreInsulation: electrified.IgnoreInsulation // Goobstation
+                    electrified.SiemensCoefficient
                 );
             }
             return lastRet;
@@ -329,10 +260,6 @@ public sealed class ElectrocutionSystem : SharedElectrocutionSystem
             for (var i = targets.Count - 1; i >= 0; i--)
             {
                 var (entity, depth) = targets[i];
-
-                if (entity == electrified.IgnoredEntity) // Goobstation
-                    continue;
-
                 lastRet = TryDoElectrocutionPowered(
                     entity,
                     uid,
@@ -340,8 +267,7 @@ public sealed class ElectrocutionSystem : SharedElectrocutionSystem
                     (int) (electrified.ShockDamage * MathF.Pow(RecursiveDamageMultiplier, depth) * damageScalar),
                     TimeSpan.FromSeconds(electrified.ShockTime * MathF.Pow(RecursiveTimeMultiplier, depth) * timeScalar),
                     true,
-                    electrified.SiemensCoefficient,
-                    electrified.IgnoreInsulation); // Goob edit
+                    electrified.SiemensCoefficient);
             }
             return lastRet;
         }
@@ -387,11 +313,10 @@ public sealed class ElectrocutionSystem : SharedElectrocutionSystem
         TimeSpan time,
         bool refresh,
         float siemensCoefficient = 1f,
-        bool ignoreInsulation = false, // Goobstation
         StatusEffectsComponent? statusEffects = null,
         TransformComponent? sourceTransform = null)
     {
-        if (!DoCommonElectrocutionAttempt(uid, sourceUid, ref siemensCoefficient, ignoreInsulation)) // Goob edit
+        if (!DoCommonElectrocutionAttempt(uid, sourceUid, ref siemensCoefficient))
             return false;
 
         if (!DoCommonElectrocution(uid, sourceUid, shockDamage, time, refresh, siemensCoefficient, statusEffects))
@@ -435,7 +360,7 @@ public sealed class ElectrocutionSystem : SharedElectrocutionSystem
     {
 
         var attemptEvent = new ElectrocutionAttemptEvent(uid, sourceUid, siemensCoefficient,
-            ignoreInsulation ? SlotFlags.NONE : ~SlotFlags.POCKET & ~SlotFlags.HEAD); // Goobstation - insulated mouse can't be worn
+            ignoreInsulation ? SlotFlags.NONE : ~SlotFlags.POCKET);
         RaiseLocalEvent(uid, attemptEvent, true);
 
         // Cancel the electrocution early, so we don't recursively electrocute anything.
@@ -517,7 +442,7 @@ public sealed class ElectrocutionSystem : SharedElectrocutionSystem
     {
         var visited = new HashSet<EntityUid>();
 
-        GetChainedElectrocutionTargetsRecurse(source, 0, visited, all); // Goob edit
+        GetChainedElectrocutionTargetsRecurse(source, 1, visited, all);
     }
 
     private void GetChainedElectrocutionTargetsRecurse(

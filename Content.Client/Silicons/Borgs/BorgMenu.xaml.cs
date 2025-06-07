@@ -1,11 +1,3 @@
-// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-// SPDX-FileCopyrightText: 2024 ShadowCommander <shadowjjt@gmail.com>
-// SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using Content.Client.Stylesheets;
 using Content.Client.UserInterface.Controls;
 using Content.Shared.NameIdentifier;
@@ -63,8 +55,12 @@ public sealed partial class BorgMenu : FancyWindow
             NameIdentifierLabel.Text = nameIdentifierComponent.FullIdentifier;
 
             var fullName = _entity.GetComponent<MetaDataComponent>(Entity).EntityName;
-            var name = fullName.Substring(0, fullName.Length - nameIdentifierComponent.FullIdentifier.Length - 1);
-            NameLineEdit.Text = name;
+            // Frontier: prevent exceptions
+            if (fullName.Contains(nameIdentifierComponent.FullIdentifier))
+                NameLineEdit.Text = fullName.Substring(0, fullName.Length - nameIdentifierComponent.FullIdentifier.Length - 1);
+            else
+                NameLineEdit.Text = fullName;
+            // End Frontier
         }
         else
         {

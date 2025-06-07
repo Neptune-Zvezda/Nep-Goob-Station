@@ -1,12 +1,4 @@
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2025 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 deltanedas <@deltanedas:kde.org>
-// SPDX-FileCopyrightText: 2025 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
-using Content.Client._Shitmed.Choice.UI;
+using Content.Client._Shitmed.Xenonids.UI;
 using Content.Client.Administration.UI.CustomControls;
 using Content.Shared._Shitmed.Medical.Surgery;
 using Content.Shared.Body.Components;
@@ -60,6 +52,10 @@ public sealed class SurgeryBui : BoundUserInterface
 
     private void Update(SurgeryBuiState state)
     {
+        if (!_entities.TryGetComponent(_player.LocalEntity, out SurgeryTargetComponent? surgeryTargetComp)
+            || !surgeryTargetComp.CanOperate)
+            return;
+
         if (_window == null)
         {
             _window = new SurgeryWindow();
@@ -150,7 +146,7 @@ public sealed class SurgeryBui : BoundUserInterface
         {
             //var netPart = _entities.GetNetEntity(part.Owner);
             var surgeries = state.Choices[netEntity];
-            var partButton = new ChoiceControl();
+            var partButton = new XenoChoiceControl();
 
             partButton.Set(partName, null);
             partButton.Button.OnPressed += _ => OnPartPressed(netEntity, surgeries);
@@ -204,7 +200,7 @@ public sealed class SurgeryBui : BoundUserInterface
         // This apparently does not consider if theres multiple surgery requirements in one surgery. Maybe thats fine.
         if (surgery.Comp.Requirement is { } requirementId && _system.GetSingleton(requirementId) is { } requirement)
         {
-            var label = new ChoiceControl();
+            var label = new XenoChoiceControl();
             label.Button.OnPressed += _ =>
             {
                 _previousSurgeries.Add(surgeryId);
@@ -261,7 +257,7 @@ public sealed class SurgeryBui : BoundUserInterface
 
         foreach (var surgery in surgeries)
         {
-            var surgeryButton = new ChoiceControl();
+            var surgeryButton = new XenoChoiceControl();
             surgeryButton.Set(surgery.Name, null);
 
             surgeryButton.Button.OnPressed += _ => OnSurgeryPressed(surgery.Ent, netPart, surgery.Id);

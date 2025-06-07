@@ -1,0 +1,104 @@
+- type: entity
+  name: data chit
+  parent: BaseItem
+  id: Doubloon
+  suffix: 20 DC
+  description: A rugged, shielded disk containing encrypted intelligence.
+  components:
+  - type: Sprite
+    sprite: _Mono/Objects/Specific/Rogue/rogue_chits.rsi
+    state: chits
+  - type: Item
+    sprite: _Mono/Objects/Specific/Rogue/rogue_chits.rsi
+    size: Tiny
+  - type: Stack
+    count: 20
+    stackType: Doubloon
+  - type: StaticPrice
+    price: 0
+  - type: StackPrice
+    price: 200
+  - type: Currency
+    price:
+      Doubloon: 1
+
+- type: entity
+  parent: Doubloon
+  id: Doubloon1
+  suffix: 1 DC
+  components:
+  - type: Stack
+    count: 1
+
+- type: entity
+  parent: Doubloon
+  id: Doubloon5
+  suffix: 5 DC
+  components:
+  - type: Stack
+    count: 5
+
+- type: entity
+  parent: Doubloon
+  id: Doubloon10
+  suffix: 10 DC
+  components:
+  - type: Stack
+    count: 10
+
+# Uplinks
+- type: entity
+  parent: [ BaseItem, StorePresetPirateUplink ]
+  id: BasePirateUplink
+  name: rogue uplink
+  description: A scarred tablet encased in heat-resistant composite with slot for chits on the side.
+  suffix: Empty
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Mono/Objects/Devices/rogue_uplink.rsi
+    layers:
+    - state: icon
+      scale: 0.7, 0.7
+    - state: icon-overlay
+      scale: 0.7, 0.7
+      shader: unshaded
+  - type: Item
+    sprite: _Mono/Objects/Devices/rogue_uplink.rsi
+    heldPrefix: icon
+  - type: UserInterface
+    interfaces:
+      enum.StoreUiKey.Key:
+        type: StoreBoundUserInterface
+  - type: ActivatableUI
+    key: enum.StoreUiKey.Key
+  - type: Tag
+    tags:
+    - PirateUplink
+
+- type: entity
+  parent: BasePirateUplink
+  id: BasePirateUplinkRadioDebug
+  suffix: Pirate, DEBUG
+  components:
+  - type: Store
+    balance:
+      Doubloon: 99999
+
+- type: entity
+  parent: BasePirateUplink
+  id: BasePirateUplinkRadioPirateCaptain
+  suffix: P. Captain 20
+  components:
+  - type: Store
+    balance:
+      Doubloon: 20
+
+- type: entity
+  parent: BasePirateUplink
+  id: BasePirateUplinkPirateCrew
+  suffix: Crew 15
+  components:
+  - type: Store
+    balance:
+      Doubloon: 15

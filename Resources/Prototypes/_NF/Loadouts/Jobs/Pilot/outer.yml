@@ -1,0 +1,11 @@
+- type: loadout
+  id: PilotClothingOuterHardsuitPilot
+  price: 1200
+  equipment:
+    outerClothing: ClothingOuterHardsuitPilot
+
+- type: loadout
+  id: PilotClothingOuterCoatBomber
+  price: 0
+  equipment:
+    outerClothing: ClothingOuterCoatBomber

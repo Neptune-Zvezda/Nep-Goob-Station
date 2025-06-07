@@ -1,8 +1,3 @@
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Plykiya <58439124+Plykiya@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using Robust.Shared.GameStates;
 
 namespace Content.Shared.Weapons.Melee.EnergySword;
@@ -42,4 +37,12 @@ public sealed partial class EnergySwordComponent : Component
     /// </summary>
     [DataField]
     public float CycleRate = 1f;
+
+    // Frontier: block changing colour
+    /// <summary>
+    ///     RGB cycle rate for hacked e-swords.
+    /// </summary>
+    [DataField]
+    public bool BlockHacking = false;
+    // End Frontier
 }

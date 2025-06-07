@@ -1,9 +1,3 @@
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 chromiumboy <50505512+chromiumboy@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
 - type: entity
   parent: BaseStructure
   id: BaseWeaponTurret
@@ -82,7 +76,6 @@
   - type: NoRotateOnMove
   - type: Input
     context: "human"
-  - type: UnmannedWeaponry # Lavaland Change
 
 - type: entity
   parent: BaseWeaponTurret
@@ -91,19 +84,23 @@
   name: ballistic turret
   abstract: true
   components:
-  - type: ContainerContainer
-    containers:
-      ballistic-ammo: !type:Container
+  - type: Battery
+    maxCharge: 2000
+    startingCharge: 2000
   - type: Gun
     fireRate: 6
+    projectileSpeed: 55
     selectedMode: FullAuto
     availableModes:
     - FullAuto
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/gun_sentry.ogg
-  - type: BallisticAmmoProvider
+  - type: ProjectileBatteryAmmoProvider
     proto: CartridgeCaselessRifle
-    capacity: 500
+    fireCost: 25
+  - type: BatterySelfRecharger
+    autoRecharge: true
+    autoRechargeRate: 15
 
 - type: entity
   parent: BaseWeaponTurret

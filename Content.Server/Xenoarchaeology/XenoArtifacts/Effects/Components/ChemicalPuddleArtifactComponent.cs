@@ -1,17 +1,8 @@
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 ElectroJr <leonsfriedrich@gmail.com>
-// SPDX-FileCopyrightText: 2023 Emisse <99158783+Emisse@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 TemporalOroboros <TemporalOroboros@gmail.com>
-// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: MIT
-
-using Content.Server.Xenoarchaeology.XenoArtifacts.Effects.Systems;
+﻿using Content.Server.Xenoarchaeology.XenoArtifacts.Effects.Systems;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.Reagent;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.List;
+using Content.Shared.FixedPoint; // Frontier
 
 namespace Content.Server.Xenoarchaeology.XenoArtifacts.Effects.Components;
 
@@ -39,4 +30,10 @@ public sealed partial class ChemicalPuddleArtifactComponent : Component
     /// </summary>
     [DataField("chemAmount")]
     public int ChemAmount = 3;
+
+    /// <summary>
+    /// Frontier: the total maximum volume of chemicals to spawn.
+    /// </summary>
+    [DataField]
+    public FixedPoint2 MaximumVolume = 100.0f;
 }

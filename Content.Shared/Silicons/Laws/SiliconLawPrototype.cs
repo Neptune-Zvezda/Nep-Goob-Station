@@ -1,15 +1,4 @@
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 deltanedas <@deltanedas:kde.org>
-// SPDX-FileCopyrightText: 2024 DrSmugleaf <10968691+DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 ShadowCommander <shadowjjt@gmail.com>
-// SPDX-FileCopyrightText: 2024 slarticodefast <161409025+slarticodefast@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
-using Content.Shared.FixedPoint;
+﻿using Content.Shared.FixedPoint;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 
@@ -41,6 +30,12 @@ public partial class SiliconLaw : IComparable<SiliconLaw>, IEquatable<SiliconLaw
     /// </summary>
     [DataField, ViewVariables(VVAccess.ReadWrite)]
     public string? LawIdentifierOverride;
+
+    /// <summary>
+    /// Frontier: an identifier that overrides <see cref="Order"/> when printing the stated law.
+    /// </summary>
+    [DataField, ViewVariables(VVAccess.ReadWrite)]
+    public string? LawPrintOverride;
 
     public int CompareTo(SiliconLaw? other)
     {
@@ -80,7 +75,8 @@ public partial class SiliconLaw : IComparable<SiliconLaw>, IEquatable<SiliconLaw
         {
             LawString = LawString,
             Order = Order,
-            LawIdentifierOverride = LawIdentifierOverride
+            LawIdentifierOverride = LawIdentifierOverride,
+            LawPrintOverride = LawPrintOverride, // Frontier
         };
     }
 }

@@ -1,22 +1,13 @@
-// SPDX-FileCopyrightText: 2023 AJCM-git <60196617+AJCM-git@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Ed <96445749+TheShuEd@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Ted Lukin <66275205+pheenty@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 gluesniffler <linebarrelerenthusiast@gmail.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using Content.Server.Gatherable.Components;
+using Content.Shared.Destructible;
+using Content.Shared.Mining.Components;
 using Content.Shared.Projectiles;
 using Robust.Shared.Physics.Events;
-using Robust.Shared.Random; // Goobstation
 
 namespace Content.Server.Gatherable;
 
 public sealed partial class GatherableSystem
 {
-    [Dependency] private readonly IRobustRandom _robustRandom = default!; // Goobstation
     private void InitializeProjectile()
     {
         SubscribeLocalEvent<GatheringProjectileComponent, StartCollideEvent>(OnProjectileCollide);
@@ -27,15 +18,27 @@ public sealed partial class GatherableSystem
         if (!args.OtherFixture.Hard ||
             args.OurFixtureId != SharedProjectileSystem.ProjectileFixture ||
             gathering.Comp.Amount <= 0 ||
-            !TryComp<GatherableComponent>(args.OtherEntity, out var gatherable) || // Goobstation edit
-            gatherable.IsGathered || // Goobstation
-            !_robustRandom.Prob(gathering.Comp.Probability)) // Goobstation
+            !TryComp<GatherableComponent>(args.OtherEntity, out var gatherable))
         {
             return;
         }
 
+        // Frontier: gathering changes
+        // bad gatherer - not strong enough
+        if (_whitelistSystem.IsWhitelistFail(gatherable.ToolWhitelist, gathering.Owner))
+        {
+            QueueDel(gathering);
+            return;
+        }
+        // Too strong (e.g. overpen) - gathers ore but destroys it
+        if (TryComp<OreVeinComponent>(args.OtherEntity, out var oreVein)
+            && _whitelistSystem.IsWhitelistPass(oreVein.GatherDestructionWhitelist, gathering.Owner))
+        {
+            oreVein.PreventSpawning = true;
+        }
+        // End Frontier: gathering changes
+
         Gather(args.OtherEntity, gathering, gatherable);
-        gatherable.IsGathered = true; // Goobstation
         gathering.Comp.Amount--;
 
         if (gathering.Comp.Amount <= 0)

@@ -1,0 +1,15 @@
+- type: radioChannel
+  id: Traffic
+  name: chat-radio-traffic
+  keycode: 'd'
+  frequency: 1022
+  color: "#CC6633"
+  maxRange: 500
+
+- type: radioChannel
+  id: Nfsd
+  name: chat-radio-ncmc
+  keycode: 's'
+  frequency: 1023
+  color: "#0c8ad3"
+

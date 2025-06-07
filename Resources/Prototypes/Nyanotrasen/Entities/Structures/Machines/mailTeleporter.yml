@@ -1,13 +1,6 @@
-# SPDX-FileCopyrightText: 2024 BombasterDS <115770678+BombasterDS@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aidenkrz <aiden@djkraz.com>
-# SPDX-FileCopyrightText: 2025 RatherUncreative <RatherUncreativeName@proton.me>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
 - type: entity
   id: MailTeleporter
-  parent: [ BaseMachinePowered, ConstructibleMachine ]
+  parent: BaseStructureDynamic
   name: mail teleporter
   description: Teleports mail addressed to the crew of this station.
   components:
@@ -18,22 +11,13 @@
   - type: Transform
     anchored: true
     noRot: true
-  - type: Fixtures
-    fixtures:
-      fix1:
-        shape:
-          !type:PhysShapeAabb
-            bounds: "-0.45,-0.45,0.45,0.00"
-        density: 120
-        mask:
-        - HighImpassable
   - type: Sprite
+    netsync: false
     sprite: Nyanotrasen/Structures/mailbox.rsi
     layers:
     - state: icon
     - state: unlit
       shader: unshaded
-      visible: false
       map: ["enum.PowerDeviceVisualLayers.Powered"]
   - type: Damageable
     damageContainer: Inorganic
@@ -42,18 +26,10 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 75
-      behaviors:
-      - !type:PlaySoundBehavior
-        sound:
-          collection: MetalGlassBreak
-      - !type:ChangeConstructionNodeBehavior
-        node: machineFrame
-      - !type:DoActsBehavior
-        acts: ["Destruction"]
+        damage: 0
   - type: ApcPowerReceiver
     powerLoad: 1000 # TODO if we keep this make it spike power draw when teleporting
-    powerDisabled: true
+    powerDisabled: false # Frontier - true<false Start on
   - type: ExtensionCableReceiver
   - type: Appearance
   - type: GenericVisualizer
@@ -63,5 +39,9 @@
           True: {visible: true}
           False: {visible: false}
   - type: PowerSwitch
-  - type: Machine
-    board: MailTeleporterMachineCircuitboard
+  - type: ShipyardSellCondition # Frontier
+    blockSale: true # Frontier
+    reason: shipyard-console-station-resources # Frontier
+    allowedShipyardTypes: # Frontier: mail profits removed, sector in shambles
+    - Syndicate # Frontier
+    - BlackMarket # Frontier

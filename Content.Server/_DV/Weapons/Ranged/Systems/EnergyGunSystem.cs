@@ -1,14 +1,3 @@
-// SPDX-FileCopyrightText: 2024 Icepick <122653407+Icepicked@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2025 Aidenkrz <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2025 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2025 Solstice <solsticeofthewinter@gmail.com>
-// SPDX-FileCopyrightText: 2025 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 deltanedas <@deltanedas:kde.org>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using Content.Server.Popups;
 using Content.Server._DV.Weapons.Ranged.Components;
 using Content.Shared.Database;
@@ -147,7 +136,7 @@ public sealed class EnergyGunSystem : EntitySystem
             if (TryComp<AppearanceComponent>(uid, out var _) && TryComp<ItemComponent>(uid, out var item))
             {
                 _item.SetHeldPrefix(uid, component.CurrentFireMode.State, component: item);
-                switch (component.CurrentFireMode.State) // Holy shit this is shitcoded.
+                switch (component.CurrentFireMode.State)
                 {
                     case "disabler":
                         UpdateAppearance(uid, EnergyGunFireModeState.Disabler);
@@ -158,12 +147,17 @@ public sealed class EnergyGunSystem : EntitySystem
                     case "special":
                         UpdateAppearance(uid, EnergyGunFireModeState.Special);
                         break;
-                    case "heating":
-                        UpdateAppearance(uid, EnergyGunFireModeState.Heating);
+                    // Frontier: holoflare modes
+                    case "cyan":
+                        UpdateAppearance(uid, EnergyGunFireModeState.Cyan);
                         break;
-                    case "cooling":
-                        UpdateAppearance(uid, EnergyGunFireModeState.Cooling);
+                    case "red":
+                        UpdateAppearance(uid, EnergyGunFireModeState.Red);
                         break;
+                    case "yellow":
+                        UpdateAppearance(uid, EnergyGunFireModeState.Yellow);
+                        break;
+                    // End Frontier
                 }
             }
         }

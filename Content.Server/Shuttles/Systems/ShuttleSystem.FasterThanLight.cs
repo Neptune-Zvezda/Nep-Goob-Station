@@ -1,95 +1,14 @@
-// SPDX-FileCopyrightText: 2022 Justin Trotter <trotter.justin@gmail.com>
-// SPDX-FileCopyrightText: 2022 LittleBuilderJane <63973502+LittleBuilderJane@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 SpaceManiac <tad@platymuus.com>
-// SPDX-FileCopyrightText: 2022 metalgearsloth <metalgearsloth@gmail.com>
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Kevin Zheng <kevinz5000@gmail.com>
-// SPDX-FileCopyrightText: 2023 Tom Leys <tom@crump-leys.com>
-// SPDX-FileCopyrightText: 2023 Varen <ychwack@hotmail.it>
-// SPDX-FileCopyrightText: 2023 Visne <39844191+Visne@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 metalgearsloth <comedian_vs_clown@hotmail.com>
-// SPDX-FileCopyrightText: 2024 12rabbits <53499656+12rabbits@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Alzore <140123969+Blackern5000@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 ArtisticRoomba <145879011+ArtisticRoomba@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Brandon Hu <103440971+Brandon-Huu@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Dimastra <65184747+Dimastra@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Dimastra <dimastra@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 DrSmugleaf <10968691+DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Ed <96445749+TheShuEd@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Emisse <99158783+Emisse@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Eoin Mcloughlin <helloworld@eoinrul.es>
-// SPDX-FileCopyrightText: 2024 Errant <35878406+Errant-4@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Gansu <68031780+GansuLalan@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 IProduceWidgets <107586145+IProduceWidgets@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 JIPDawg <51352440+JIPDawg@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 JIPDawg <JIPDawg93@gmail.com>
-// SPDX-FileCopyrightText: 2024 JustCone <141039037+JustCone14@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Mervill <mervills.email@gmail.com>
-// SPDX-FileCopyrightText: 2024 MilenVolf <63782763+MilenVolf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Moomoobeef <62638182+Moomoobeef@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 PJBot <pieterjan.briers+bot@gmail.com>
-// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers@gmail.com>
-// SPDX-FileCopyrightText: 2024 Plykiya <58439124+Plykiya@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 PopGamer46 <yt1popgamer@gmail.com>
-// SPDX-FileCopyrightText: 2024 PursuitInAshes <pursuitinashes@gmail.com>
-// SPDX-FileCopyrightText: 2024 QueerNB <176353696+QueerNB@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Saphire Lattice <lattice@saphi.re>
-// SPDX-FileCopyrightText: 2024 ShadowCommander <10494922+ShadowCommander@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Simon <63975668+Simyon264@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Spessmann <156740760+Spessmann@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Tayrtahn <tayrtahn@gmail.com>
-// SPDX-FileCopyrightText: 2024 TemporalOroboros <TemporalOroboros@gmail.com>
-// SPDX-FileCopyrightText: 2024 Thomas <87614336+Aeshus@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Winkarst <74284083+Winkarst-cpu@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 aa5g21 <aa5g21@soton.ac.uk>
-// SPDX-FileCopyrightText: 2024 coolboy911 <85909253+coolboy911@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 eoineoineoin <github@eoinrul.es>
-// SPDX-FileCopyrightText: 2024 github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 lunarcomets <140772713+lunarcomets@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 lzk <124214523+lzk228@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 no <165581243+pissdemon@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 saintmuntzer <47153094+saintmuntzer@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 slarticodefast <161409025+slarticodefast@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 stellar-novas <stellar_novas@riseup.net>
-// SPDX-FileCopyrightText: 2024 themias <89101928+themias@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aidenkrz <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2025 Aineias1 <dmitri.s.kiselev@gmail.com>
-// SPDX-FileCopyrightText: 2025 Aviu00 <93730715+Aviu00@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 FaDeOkno <143940725+FaDeOkno@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 McBosserson <148172569+McBosserson@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Milon <plmilonpl@gmail.com>
-// SPDX-FileCopyrightText: 2025 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2025 Rouden <149893554+Roudenn@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 SX-7 <92227810+SX-7@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 TheBorzoiMustConsume <197824988+TheBorzoiMustConsume@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Unlumination <144041835+Unlumy@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 coderabbitai[bot] <136622811+coderabbitai[bot]@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 deltanedas <@deltanedas:kde.org>
-// SPDX-FileCopyrightText: 2025 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 gluesniffler <linebarrelerenthusiast@gmail.com>
-// SPDX-FileCopyrightText: 2025 username <113782077+whateverusername0@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 whateverusername0 <whateveremail>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Numerics;
+using Content.Server._NF.Shuttles.Components; // Frontier: FTL knockdown immunity
 using Content.Server.Shuttles.Components;
 using Content.Server.Shuttles.Events;
 using Content.Server.Station.Events;
-using Content.Shared._Lavaland.Shuttles;
 using Content.Shared.Body.Components;
-using Content.Shared.Buckle.Components;
 using Content.Shared.CCVar;
 using Content.Shared.Database;
+using Content.Shared.Ghost;
 using Content.Shared.Maps;
 using Content.Shared.Parallax;
 using Content.Shared.Shuttles.Components;
@@ -108,6 +27,7 @@ using Robust.Shared.Physics.Components;
 using Robust.Shared.Player;
 using Robust.Shared.Utility;
 using FTLMapComponent = Content.Shared.Shuttles.Components.FTLMapComponent;
+using Content.Server.Salvage.Expeditions;
 
 namespace Content.Server.Shuttles.Systems;
 
@@ -130,7 +50,7 @@ public sealed partial class ShuttleSystem
     public float DefaultStartupTime;
     public float DefaultTravelTime;
     public float DefaultArrivalTime;
-    private float FTLCooldown;
+    //private float FTLCooldown;
     public float FTLMassLimit;
     private TimeSpan _hyperspaceKnockdownTime = TimeSpan.FromSeconds(5);
 
@@ -147,18 +67,15 @@ public sealed partial class ShuttleSystem
     /// <summary>
     /// How many times we try to proximity warp close to something before falling back to map-wideAABB.
     /// </summary>
-    private const int FTLProximityIterations = 5;
+    private const int FTLProximityIterations = 15; // Frontier: 5<15
 
     private readonly HashSet<EntityUid> _lookupEnts = new();
     private readonly HashSet<EntityUid> _immuneEnts = new();
     private readonly HashSet<Entity<NoFTLComponent>> _noFtls = new();
 
     private EntityQuery<BodyComponent> _bodyQuery;
-    private EntityQuery<BuckleComponent> _buckleQuery;
     private EntityQuery<FTLSmashImmuneComponent> _immuneQuery;
-    private EntityQuery<PhysicsComponent> _physicsQuery;
     private EntityQuery<StatusEffectsComponent> _statusQuery;
-    private EntityQuery<TransformComponent> _xformQuery;
 
     private void InitializeFTL()
     {
@@ -166,16 +83,13 @@ public sealed partial class ShuttleSystem
         SubscribeLocalEvent<FTLComponent, ComponentShutdown>(OnFtlShutdown);
 
         _bodyQuery = GetEntityQuery<BodyComponent>();
-        _buckleQuery = GetEntityQuery<BuckleComponent>();
         _immuneQuery = GetEntityQuery<FTLSmashImmuneComponent>();
-        _physicsQuery = GetEntityQuery<PhysicsComponent>();
         _statusQuery = GetEntityQuery<StatusEffectsComponent>();
-        _xformQuery = GetEntityQuery<TransformComponent>();
 
         _cfg.OnValueChanged(CCVars.FTLStartupTime, time => DefaultStartupTime = time, true);
         _cfg.OnValueChanged(CCVars.FTLTravelTime, time => DefaultTravelTime = time, true);
         _cfg.OnValueChanged(CCVars.FTLArrivalTime, time => DefaultArrivalTime = time, true);
-        _cfg.OnValueChanged(CCVars.FTLCooldown, time => FTLCooldown = time, true);
+        //_cfg.OnValueChanged(CCVars.FTLCooldown, time => FTLCooldown = time, true); Monolith FTL Drive sets cooldown
         _cfg.OnValueChanged(CCVars.FTLMassLimit, time => FTLMassLimit = time, true);
         _cfg.OnValueChanged(CCVars.HyperspaceKnockdownTime, time => _hyperspaceKnockdownTime = TimeSpan.FromSeconds(time), true);
     }
@@ -330,6 +244,15 @@ public sealed partial class ShuttleSystem
             return false;
         }
 
+        // Check if the shuttle is in an expedition
+        if (TryComp<TransformComponent>(shuttleUid, out var xform) &&
+            xform.MapUid != null &&
+            HasComp<SalvageExpeditionComponent>(xform.MapUid))
+        {
+            reason = Loc.GetString("shuttle-console-in-expedition");
+            return false;
+        }
+
         var ev = new ConsoleFTLAttemptEvent(shuttleUid, false, string.Empty);
         RaiseLocalEvent(shuttleUid, ref ev, true);
 
@@ -355,6 +278,38 @@ public sealed partial class ShuttleSystem
         float? hyperspaceTime = null,
         string? priorityTag = null)
     {
+        // Check if destination is an expedition map
+        bool isExpedition = IsTargetExpedition(coordinates);
+
+        // If going to an expedition, undock all other shuttles before FTL
+        if (isExpedition)
+        {
+            // Get all docked shuttles, ignoring FTLLock status for expeditions
+            var dockedShuttles = new HashSet<EntityUid>();
+            GetAllDockedShuttlesIgnoringFTLLock(shuttleUid, dockedShuttles);
+
+            Log.Info($"FTL to expedition detected. Shuttle {ToPrettyString(shuttleUid)} has {dockedShuttles.Count} docked shuttles (including self)");
+
+            // Undock all other shuttles
+            foreach (var dockedUid in dockedShuttles)
+            {
+                if (dockedUid == shuttleUid)
+                    continue;
+
+                Log.Info($"Undocking {ToPrettyString(dockedUid)} from {ToPrettyString(shuttleUid)} before expedition FTL");
+
+                // Find docks connecting this shuttle to others
+                var dockedShuttleDocks = _dockSystem.GetDocks(dockedUid);
+                foreach (var dockPort in dockedShuttleDocks)
+                {
+                    if (!TryComp<DockingComponent>(dockPort, out var dockComp) || !dockComp.Docked || dockComp.DockedWith == null)
+                        continue;
+
+                    _dockSystem.Undock((dockPort, dockComp));
+                }
+            }
+        }
+
         if (!TrySetupFTL(shuttleUid, component, out var hyperspace))
             return;
 
@@ -390,24 +345,57 @@ public sealed partial class ShuttleSystem
         float? hyperspaceTime = null,
         string? priorityTag = null)
     {
-        if (!TrySetupFTL(shuttleUid, component, out var hyperspace))
+        // TODO: Validation
+        if (!TryComp<FTLDestinationComponent>(_mapManager.GetMapEntityId(_transform.GetMapId(target)), out var dest))
+        {
+            return;
+        }
+
+        if (!dest.Enabled)
             return;
 
-        startupTime ??= DefaultStartupTime;
-        hyperspaceTime ??= DefaultTravelTime;
+        // Check if destination is in an expedition map
+        var targetCoords = new EntityCoordinates(target, Vector2.Zero);
+        bool isExpedition = IsTargetExpedition(targetCoords);
 
-        var config = _dockSystem.GetDockingConfig(shuttleUid, target, priorityTag);
-        hyperspace.StartupTime = startupTime.Value;
-        hyperspace.TravelTime = hyperspaceTime.Value;
-        hyperspace.StateTime = StartEndTime.FromStartDuration(
-            _gameTiming.CurTime,
-            TimeSpan.FromSeconds(hyperspace.StartupTime));
-        hyperspace.PriorityTag = priorityTag;
+        // If going to an expedition, undock all other shuttles before FTL
+        if (isExpedition)
+        {
+            // Get all docked shuttles, ignoring FTLLock status for expeditions
+            var dockedShuttles = new HashSet<EntityUid>();
+            GetAllDockedShuttlesIgnoringFTLLock(shuttleUid, dockedShuttles);
 
-        _console.RefreshShuttleConsoles(shuttleUid);
+            Log.Info($"FTL dock to expedition detected. Shuttle {ToPrettyString(shuttleUid)} has {dockedShuttles.Count} docked shuttles (including self)");
 
-        // Valid dock for now time so just use that as the target.
-        if (config != null)
+            // Undock all other shuttles - for expeditions, ALL docked shuttles must be undocked
+            foreach (var dockedUid in dockedShuttles)
+            {
+                if (dockedUid == shuttleUid)
+                    continue;
+
+                Log.Info($"Undocking {ToPrettyString(dockedUid)} from {ToPrettyString(shuttleUid)} before expedition FTL");
+
+                // Find docks connecting this shuttle to others
+                var dockedShuttleDocks = _dockSystem.GetDocks(dockedUid);
+                foreach (var dockPort in dockedShuttleDocks)
+                {
+                    if (!TryComp<DockingComponent>(dockPort, out var dockComp) || !dockComp.Docked || dockComp.DockedWith == null)
+                        continue;
+
+                    _dockSystem.Undock((dockPort, dockComp));
+                }
+            }
+        }
+
+        var hyperspace = EnsureComp<FTLComponent>(shuttleUid);
+        SetupFTL(hyperspace, startupTime, hyperspaceTime, priorityTag);
+
+        if (TryComp<DockingComponent>(target, out var dock) && dock.Docked && dock.DockedWith != null)
+        {
+            hyperspace.TargetCoordinates = new EntityCoordinates(dock.DockedWith.Value, Vector2.Zero);
+            hyperspace.TargetAngle = _transform.GetWorldRotation(dock.DockedWith.Value) + Math.PI;
+        }
+        else if (TryFTLDock(shuttleUid, component, target, out var config))
         {
             hyperspace.TargetCoordinates = config.Coordinates;
             hyperspace.TargetAngle = config.Angle;
@@ -425,6 +413,111 @@ public sealed partial class ShuttleSystem
         }
     }
 
+    /// <summary>
+    /// Sets up the FTL component with startup and travel times and priority tag.
+    /// </summary>
+    private void SetupFTL(FTLComponent hyperspace, float? startupTime, float? hyperspaceTime, string? priorityTag)
+    {
+        startupTime ??= DefaultStartupTime;
+        hyperspaceTime ??= DefaultTravelTime;
+
+        hyperspace.StartupTime = startupTime.Value;
+        hyperspace.TravelTime = hyperspaceTime.Value;
+        hyperspace.StateTime = StartEndTime.FromStartDuration(
+            _gameTiming.CurTime,
+            TimeSpan.FromSeconds(hyperspace.StartupTime));
+        hyperspace.PriorityTag = priorityTag;
+
+        _console.RefreshShuttleConsoles(hyperspace.Owner);
+    }
+
+    /// <summary>
+    /// Recursively gets all docked shuttles to the target shuttle.
+    /// </summary>
+    public void GetAllDockedShuttles(EntityUid shuttleUid, HashSet<EntityUid> dockedShuttles)
+    {
+        if (!dockedShuttles.Add(shuttleUid))
+            return;  // Already processed this shuttle
+
+        var docks = _dockSystem.GetDocks(shuttleUid);
+        foreach (var dock in docks)
+        {
+            if (!TryComp<DockingComponent>(dock, out var dockComp) || dockComp.Docked == false)
+                continue;
+            if (dockComp.DockedWith == null)
+                continue;
+            var dockedGridUid = _transform.GetParentUid(dockComp.DockedWith.Value);
+            if (dockedGridUid == EntityUid.Invalid || !HasComp<ShuttleComponent>(dockedGridUid))
+                continue;
+
+            // If the docked shuttle has no FTLLockComponent or has it but it's disabled, skip adding it
+            // to the FTL travel group, but still check its connections for potential conflicts
+            if (!TryComp<FTLLockComponent>(dockedGridUid, out var ftlLock) || !ftlLock.Enabled)
+            {
+                // Still check this shuttle's connections without adding it to dockedShuttles
+                var nestedDocks = _dockSystem.GetDocks(dockedGridUid);
+                foreach (var nestedDock in nestedDocks)
+                {
+                    if (!TryComp<DockingComponent>(nestedDock, out var nestedDockComp) ||
+                        nestedDockComp.Docked == false ||
+                        nestedDockComp.DockedWith == null)
+                        continue;
+
+                    var nestedDockedGridUid = _transform.GetParentUid(nestedDockComp.DockedWith.Value);
+                    // Skip the original grid and any invalid grids
+                    if (nestedDockedGridUid == EntityUid.Invalid ||
+                        nestedDockedGridUid == shuttleUid ||
+                        !HasComp<ShuttleComponent>(nestedDockedGridUid))
+                        continue;
+
+                    // Check if this grid should be added to the FTL travel group
+                    if (TryComp<FTLLockComponent>(nestedDockedGridUid, out var nestedFtlLock) && nestedFtlLock.Enabled)
+                    {
+                        GetAllDockedShuttles(nestedDockedGridUid, dockedShuttles);
+                    }
+                }
+                continue;
+            }
+
+            // If we haven't processed this grid yet, recursively get its docked shuttles
+            if (!dockedShuttles.Contains(dockedGridUid))
+            {
+                GetAllDockedShuttles(dockedGridUid, dockedShuttles);
+            }
+        }
+    }
+
+    /// <summary>
+    /// Recursively gets all docked shuttles to the target shuttle, ignoring FTLLock status.
+    /// Used for expeditions where ALL docked shuttles must be undocked regardless of FTLLock.
+    /// </summary>
+    public void GetAllDockedShuttlesIgnoringFTLLock(EntityUid shuttleUid, HashSet<EntityUid> dockedShuttles)
+    {
+        if (!dockedShuttles.Add(shuttleUid))
+            return;  // Already processed this shuttle
+
+        var docks = _dockSystem.GetDocks(shuttleUid);
+        foreach (var dock in docks)
+        {
+            if (!TryComp<DockingComponent>(dock, out var dockComp) || dockComp.Docked == false)
+                continue;
+            if (dockComp.DockedWith == null)
+                continue;
+            var dockedGridUid = _transform.GetParentUid(dockComp.DockedWith.Value);
+            if (dockedGridUid == EntityUid.Invalid || !HasComp<ShuttleComponent>(dockedGridUid))
+                continue;
+
+            // For expeditions, we ignore FTLLock status and get ALL docked shuttles
+            if (!dockedShuttles.Contains(dockedGridUid))
+            {
+                GetAllDockedShuttlesIgnoringFTLLock(dockedGridUid, dockedShuttles);
+            }
+        }
+    }
+
+    /// <summary>
+    /// Sets up FTL for a shuttle after a console command.
+    /// </summary>
     private bool TrySetupFTL(EntityUid uid, ShuttleComponent shuttle, [NotNullWhen(true)] out FTLComponent? component)
     {
         component = null;
@@ -435,10 +528,82 @@ public sealed partial class ShuttleSystem
             return false;
         }
 
+        // Get all docked shuttles to determine which ones are traveling together
+        var dockedShuttles = new HashSet<EntityUid>();
+        GetAllDockedShuttles(uid, dockedShuttles);
+
+        // Force undock emergency and arrivals shuttles
+        if (HasComp<EmergencyShuttleComponent>(uid) || HasComp<ArrivalsShuttleComponent>(uid))
+        {
+            _dockSystem.UndockDocks(uid);
+        }
+        // For other shuttles, check if docked shuttles can FTL and only undock those that cannot
+        else
+        {
+            // Check if all docked shuttles can FTL
+            bool canAllFTL = true;
+            foreach (var dockedUid in dockedShuttles)
+            {
+                if (dockedUid == uid)
+                    continue;
+                if (!CanFTL(dockedUid, out var reason))
+                {
+                    Log.Warning($"Cannot FTL due to docked shuttle {ToPrettyString(dockedUid)}: {reason}");
+                    canAllFTL = false;
+                    break;
+                }
+            }
+
+            if (!canAllFTL)
+                return false;
+
+            // Instead of undocking all docks, we need to find docks that connect to non-shuttle entities
+            // or entities not in our FTL group and undock only those
+            var docks = _dockSystem.GetDocks(uid);
+            foreach (var dock in docks)
+            {
+                if (!TryComp<DockingComponent>(dock, out var dockComp) || !dockComp.Docked || dockComp.DockedWith == null)
+                    continue;
+
+                var connectedEntityUid = _transform.GetParentUid(dockComp.DockedWith.Value);
+
+                // If the connected entity is not in our FTL group or is not a shuttle, undock it
+                if (connectedEntityUid == EntityUid.Invalid ||
+                    !HasComp<ShuttleComponent>(connectedEntityUid) ||
+                    !dockedShuttles.Contains(connectedEntityUid))
+                {
+                    _dockSystem.Undock((dock, dockComp));
+                }
+            }
+
+            // Also check docks on other shuttles to handle the case where a shuttle with disabled FTLLock is in our dockedShuttles
+            // but has docks to entities outside our FTL group
+            foreach (var dockedShuttleUid in dockedShuttles)
+            {
+                if (dockedShuttleUid == uid)
+                    continue;
+
+                var dockedShuttleDocks = _dockSystem.GetDocks(dockedShuttleUid);
+                foreach (var dock in dockedShuttleDocks)
+                {
+                    if (!TryComp<DockingComponent>(dock, out var dockComp) || !dockComp.Docked || dockComp.DockedWith == null)
+                        continue;
+
+                    var connectedEntityUid = _transform.GetParentUid(dockComp.DockedWith.Value);
+
+                    // If the connected entity is not in our FTL group, undock it
+                    if (connectedEntityUid == EntityUid.Invalid ||
+                        !dockedShuttles.Contains(connectedEntityUid))
+                    {
+                        _dockSystem.Undock((dock, dockComp));
+                    }
+                }
+            }
+        }
+
         _thruster.DisableLinearThrusters(shuttle);
         _thruster.EnableLinearThrustDirection(shuttle, DirectionFlag.North);
         _thruster.SetAngularThrust(shuttle, false);
-        _dockSystem.UndockDocks(uid);
 
         component = AddComp<FTLComponent>(uid);
         component.State = FTLState.Starting;
@@ -447,95 +612,47 @@ public sealed partial class ShuttleSystem
         component.StartupStream = audio?.Entity;
 
         // TODO: Play previs here for docking arrival.
-
         // Make sure the map is setup before we leave to avoid pop-in (e.g. parallax).
         EnsureFTLMap();
         return true;
     }
 
     /// <summary>
-    /// Transitions shuttle to FTL map.
+    /// Checks if the target coordinates are in an expedition map.
     /// </summary>
-    private void UpdateFTLStarting(Entity<FTLComponent, ShuttleComponent> entity)
+    private bool IsTargetExpedition(EntityCoordinates coordinates)
     {
-        var uid = entity.Owner;
-        var comp = entity.Comp1;
-        var xform = _xformQuery.GetComponent(entity);
-        DoTheDinosaur(xform);
+        if (!Exists(coordinates.EntityId))
+            return false;
 
-        comp.State = FTLState.Travelling;
-        var fromMapUid = xform.MapUid;
-        var fromMatrix = _transform.GetWorldMatrix(xform);
-        var fromRotation = _transform.GetWorldRotation(xform);
+        var mapId = _transform.GetMapId(coordinates);
+        var mapUid = _mapSystem.GetMap(mapId);
 
-        var grid = Comp<MapGridComponent>(uid);
-        var width = grid.LocalAABB.Width;
-        var ftlMap = EnsureFTLMap();
-        var body = _physicsQuery.GetComponent(entity);
-        var shuttleCenter = grid.LocalAABB.Center;
-
-        // Leave audio at the old spot
-        // Just so we don't clip
-        if (fromMapUid != null && TryComp(comp.StartupStream, out AudioComponent? startupAudio))
-        {
-            var clippedAudio = _audio.PlayStatic(_startupSound, Filter.Broadcast(),
-                new EntityCoordinates(fromMapUid.Value, _mapSystem.GetGridPosition(entity.Owner)), true, startupAudio.Params);
-
-            _audio.SetPlaybackPosition(clippedAudio, entity.Comp1.StartupTime);
-            if (clippedAudio != null)
-                clippedAudio.Value.Component.Flags |= AudioFlags.NoOcclusion;
-        }
-
-        // Offset the start by buffer range just to avoid overlap.
-        var ftlStart = new EntityCoordinates(ftlMap, new Vector2(_index + width / 2f, 0f) - shuttleCenter);
-
-        // Store the matrix for the grid prior to movement. This means any entities we need to leave behind we can make sure their positions are updated.
-        // Setting the entity to map directly may run grid traversal (at least at time of writing this).
-        var oldMapUid = xform.MapUid;
-        var oldGridMatrix = _transform.GetWorldMatrix(xform);
-        _transform.SetCoordinates(entity.Owner, ftlStart);
-        LeaveNoFTLBehind((entity.Owner, xform), oldGridMatrix, oldMapUid);
-
-        // Reset rotation so they always face the same direction.
-        xform.LocalRotation = Angle.Zero;
-        _index += width + Buffer;
-        comp.StateTime = StartEndTime.FromCurTime(_gameTiming, comp.TravelTime - DefaultArrivalTime);
-
-        Enable(uid, component: body);
-        _physics.SetLinearVelocity(uid, new Vector2(0f, 20f), body: body);
-        _physics.SetAngularVelocity(uid, 0f, body: body);
-        _physics.SetLinearDamping(uid, body, 0f);
-        _physics.SetAngularDamping(uid, body, 0f);
-
-        _dockSystem.SetDockBolts(uid, true);
-        _console.RefreshShuttleConsoles(uid);
-
-        var ev = new FTLStartedEvent(uid, comp.TargetCoordinates, fromMapUid, fromMatrix, fromRotation);
-        RaiseLocalEvent(uid, ref ev, true);
-
-        // Audio
-        var wowdio = _audio.PlayPvs(comp.TravelSound, uid);
-        comp.TravelStream = wowdio?.Entity;
-        _audio.SetGridAudio(wowdio);
+        return HasComp<SalvageExpeditionComponent>(mapUid);
     }
 
     /// <summary>
-    /// Shuttle arriving.
+    /// Shuttle travelling.
     /// </summary>
     private void UpdateFTLTravelling(Entity<FTLComponent, ShuttleComponent> entity)
     {
-        var shuttle = entity.Comp2;
+        var uid = entity.Owner;
         var comp = entity.Comp1;
+        // If this is a linked shuttle, let the main shuttle handle the FTL
+        if (comp.LinkedShuttle.HasValue)
+            return;
+        var shuttle = entity.Comp2;
         comp.StateTime = StartEndTime.FromCurTime(_gameTiming, DefaultArrivalTime);
         comp.State = FTLState.Arriving;
 
-        if (entity.Comp1.VisualizerProto != null)
+        // Create visualizer if it doesn't exist
+        if (comp.VisualizerProto != null && comp.VisualizerEntity == null)
         {
-            comp.VisualizerEntity = SpawnAtPosition(entity.Comp1.VisualizerProto, entity.Comp1.TargetCoordinates);
+            comp.VisualizerEntity = SpawnAtPosition(comp.VisualizerProto, comp.TargetCoordinates);
             var visuals = Comp<FtlVisualizerComponent>(comp.VisualizerEntity.Value);
             visuals.Grid = entity.Owner;
             Dirty(comp.VisualizerEntity.Value, visuals);
-            _transform.SetLocalRotation(comp.VisualizerEntity.Value, entity.Comp1.TargetAngle);
+            _transform.SetLocalRotation(comp.VisualizerEntity.Value, comp.TargetAngle);
             _pvs.AddGlobalOverride(comp.VisualizerEntity.Value);
         }
 
@@ -550,51 +667,83 @@ public sealed partial class ShuttleSystem
     /// </summary>
     private void UpdateFTLArriving(Entity<FTLComponent, ShuttleComponent> entity)
     {
+        var globalFtlCooldown = 10f;
         var uid = entity.Owner;
+        var comp = entity.Comp1;
+        // If this is a linked shuttle, let the main shuttle handle the arrival
+        if (comp.LinkedShuttle.HasValue)
+            return;
         var xform = _xformQuery.GetComponent(uid);
         var body = _physicsQuery.GetComponent(uid);
-        var comp = entity.Comp1;
         DoTheDinosaur(xform);
         _dockSystem.SetDockBolts(entity, false);
 
+        if (TryGetFTLDrive(entity, out _, out var globalDrive))
+            globalFtlCooldown = globalDrive.Cooldown;
+
+        // Get all docked shuttles
+        var dockedShuttles = new HashSet<EntityUid>();
+        GetAllDockedShuttles(uid, dockedShuttles);
+        // Store relative positions and docking info before moving main shuttle
+        var relativeTransforms = new Dictionary<EntityUid, (Vector2 Position, Angle Rotation, List<(EntityUid DockA, EntityUid DockB)> Docks)>();
+        foreach (var dockedUid in dockedShuttles)
+        {
+            if (dockedUid == uid) continue;
+
+            var dockedXform = _xformQuery.GetComponent(dockedUid);
+            var mainPos = _transform.GetWorldPosition(uid);
+            var dockedPos = _transform.GetWorldPosition(dockedUid);
+            var mainRot = _transform.GetWorldRotation(uid);
+            var dockedRot = _transform.GetWorldRotation(dockedUid);
+
+            // Store position and rotation relative to main shuttle
+            var dockConnections = new List<(EntityUid DockA, EntityUid DockB)>();
+            var docks = _dockSystem.GetDocks(dockedUid);
+            foreach (var dock in docks)
+            {
+                if (!TryComp<DockingComponent>(dock, out var dockComp) || !dockComp.Docked || dockComp.DockedWith == null)
+                    continue;
+                dockConnections.Add((dock, dockComp.DockedWith.Value));
+            }
+            relativeTransforms[dockedUid] = (dockedPos - mainPos, dockedRot - mainRot, dockConnections);
+        }
+
+        // Handle physics for main shuttle
         _physics.SetLinearVelocity(uid, Vector2.Zero, body: body);
         _physics.SetAngularVelocity(uid, 0f, body: body);
         _physics.SetLinearDamping(uid, body, entity.Comp2.LinearDamping);
         _physics.SetAngularDamping(uid, body, entity.Comp2.AngularDamping);
 
-        var target = entity.Comp1.TargetCoordinates;
-
+        var target = comp.TargetCoordinates;
         MapId mapId;
 
-        QueueDel(entity.Comp1.VisualizerEntity);
-        entity.Comp1.VisualizerEntity = null;
+        QueueDel(comp.VisualizerEntity);
+        comp.VisualizerEntity = null;
 
-        if (!Exists(entity.Comp1.TargetCoordinates.EntityId))
+        if (!Exists(comp.TargetCoordinates.EntityId))
         {
             // Uhh good luck
             // Pick earliest map?
             var maps = EntityQuery<MapComponent>().Select(o => o.MapId).ToList();
             var map = maps.Min(o => o.GetHashCode());
-
             mapId = new MapId(map);
             TryFTLProximity(uid, _mapSystem.GetMap(mapId));
         }
         // Docking FTL
-        else if (HasComp<MapGridComponent>(target.EntityId) &&
-                 !HasComp<MapComponent>(target.EntityId))
+        else if (HasComp<MapGridComponent>(target.EntityId) && !HasComp<MapComponent>(target.EntityId))
         {
-            var config = _dockSystem.GetDockingConfigAt(uid, target.EntityId, target, entity.Comp1.TargetAngle);
+            var config = _dockSystem.GetDockingConfigAt(uid, target.EntityId, target, comp.TargetAngle);
             var mapCoordinates = _transform.ToMapCoordinates(target);
 
-            // Goob/LL edit start
-            // Added a retry to getting a valid docking config, in case concurrent FTL arrivals took the reserved spot
-            if (config != null)
-                FTLDock((uid, xform), config);
-            else if ((config = _dockSystem.GetDockingConfig(uid, target.EntityId, entity.Comp1.PriorityTag)) != null)
-                FTLDock((uid, xform), config);
-            else
+            // Couldn't dock somehow so just fallback to regular position FTL.
+            if (config == null)
+            {
                 TryFTLProximity(uid, target.EntityId);
-            // Goob/LL edit end
+            }
+            else
+            {
+                FTLDock((uid, xform), config);
+            }
 
             mapId = mapCoordinates.MapId;
         }
@@ -603,8 +752,105 @@ public sealed partial class ShuttleSystem
         {
             // TODO: This should now use tryftlproximity
             mapId = _transform.GetMapId(target);
-            _transform.SetCoordinates(uid, xform, target, rotation: entity.Comp1.TargetAngle);
+            _transform.SetCoordinates(uid, xform, target, rotation: comp.TargetAngle);
         }
+
+        // Now move all docked shuttles to maintain their relative positions
+        foreach (var dockedUid in dockedShuttles)
+        {
+            if (dockedUid == uid) continue;
+            var dockedXform = _xformQuery.GetComponent(dockedUid);
+            var (relativePos, relativeRot, dockConnections) = relativeTransforms[dockedUid];
+            var ftlCooldown = 10f;
+
+            var mainNewPos = _transform.GetWorldPosition(uid);
+            var mainNewRot = _transform.GetWorldRotation(uid);
+
+            var newPos = mainNewPos + relativePos;
+            var newRot = mainNewRot + relativeRot;
+            if (xform.MapUid != null)
+            {
+                _transform.SetParent(dockedUid, dockedXform, xform.MapUid.Value);
+                _transform.SetWorldPosition(dockedUid, newPos);
+                _transform.SetWorldRotation(dockedUid, newRot);
+            }
+
+            // Re-establish all docking connections
+            foreach (var (dockA, dockB) in dockConnections)
+            {
+                if (!TryComp<DockingComponent>(dockA, out var dockCompA) ||
+                    !TryComp<DockingComponent>(dockB, out var dockCompB))
+                    continue;
+                _dockSystem.Dock((dockA, dockCompA), (dockB, dockCompB));
+            }
+
+            if (TryComp<PhysicsComponent>(dockedUid, out var dockedBody))
+            {
+                _physics.SetLinearVelocity(dockedUid, Vector2.Zero, body: dockedBody);
+                _physics.SetAngularVelocity(dockedUid, 0f, body: dockedBody);
+                var dockedShuttle = Comp<ShuttleComponent>(dockedUid);
+                _physics.SetLinearDamping(dockedUid, dockedBody, dockedShuttle.LinearDamping);
+                _physics.SetAngularDamping(dockedUid, dockedBody, dockedShuttle.AngularDamping);
+                if (HasComp<MapGridComponent>(xform.MapUid))
+                {
+                    Disable(dockedUid, component: dockedBody);
+                }
+                else
+                {
+                    Enable(dockedUid, component: dockedBody, shuttle: dockedShuttle);
+                }
+            }
+
+            if (TryGetFTLDrive(dockedUid, out _, out var drive))
+                ftlCooldown = drive.Cooldown;
+
+            // Put linked shuttles in cooldown state instead of immediately removing the component
+            if (ftlCooldown > 0f && TryComp<FTLComponent>(dockedUid, out var dockedFtl))
+            {
+                dockedFtl.State = FTLState.Cooldown;
+                dockedFtl.StateTime = StartEndTime.FromCurTime(_gameTiming, ftlCooldown);
+            }
+            else
+            {
+                RemComp<FTLComponent>(dockedUid);
+            }
+
+            // Refresh consoles for this docked shuttle as well
+            _console.RefreshShuttleConsoles(dockedUid);
+        }
+
+        // Only remove visualizer after everything is in position
+        QueueDel(comp.VisualizerEntity);
+        comp.VisualizerEntity = null;
+        _thruster.DisableLinearThrusters(entity.Comp2);
+
+        comp.TravelStream = _audio.Stop(comp.TravelStream);
+        var audio = _audio.PlayPvs(_arrivalSound, uid);
+        _audio.SetGridAudio(audio);
+
+        // Re-enable map if it was paused.
+        if (TryComp<FTLDestinationComponent>(_mapManager.GetMapEntityId(mapId), out var dest))
+        {
+            dest.Enabled = true;
+        }
+
+        _mapManager.SetMapPaused(mapId, false);
+        Smimsh(uid, xform: xform);
+
+        // Add cooldown before removing the FTL component
+        if (globalFtlCooldown > 0f)
+        {
+            comp.State = FTLState.Cooldown;
+            comp.StateTime = StartEndTime.FromCurTime(_gameTiming, globalFtlCooldown);
+        }
+        else
+        {
+            RemComp(uid, comp);
+        }
+
+        var ftlEvent = new FTLCompletedEvent(uid, _mapSystem.GetMap(mapId));
+        RaiseLocalEvent(uid, ref ftlEvent, true);
+        _console.RefreshShuttleConsoles(uid);
 
         if (_physicsQuery.TryGetComponent(uid, out body))
         {
@@ -622,44 +868,48 @@ public sealed partial class ShuttleSystem
                 Enable(uid, component: body, shuttle: entity.Comp2);
             }
         }
-
-        _thruster.DisableLinearThrusters(entity.Comp2);
-
-        comp.TravelStream = _audio.Stop(comp.TravelStream);
-        var audio = _audio.PlayPvs(_arrivalSound, uid);
-        _audio.SetGridAudio(audio);
-
-        if (TryComp<FTLDestinationComponent>(uid, out var dest))
-        {
-            dest.Enabled = true;
-        }
-
-        comp.State = FTLState.Cooldown;
-        comp.StateTime = StartEndTime.FromCurTime(_gameTiming, FTLCooldown);
-        _console.RefreshShuttleConsoles(uid);
-        _mapManager.SetMapPaused(mapId, false);
-        Smimsh(uid, xform: xform);
-
-        var ftlEvent = new FTLCompletedEvent(uid, _mapSystem.GetMap(mapId));
-        RaiseLocalEvent(uid, ref ftlEvent, true);
     }
 
     private void UpdateFTLCooldown(Entity<FTLComponent, ShuttleComponent> entity)
     {
+        var uid = entity.Owner;
         RemCompDeferred<FTLComponent>(entity);
-        _console.RefreshShuttleConsoles(entity);
+
+        // Find any docked shuttles that might still be in cooldown from the same FTL trip
+        // and force them to also end cooldown at the same time
+        var linkedQuery = EntityQueryEnumerator<FTLComponent>();
+        while (linkedQuery.MoveNext(out var linkedUid, out var linkedComp))
+        {
+            if (linkedComp.LinkedShuttle == uid && linkedComp.State == FTLState.Cooldown)
+            {
+                RemCompDeferred<FTLComponent>(linkedUid);
+                _console.RefreshShuttleConsoles(linkedUid);
+            }
+        }
+
+        _console.RefreshShuttleConsoles(uid);
     }
 
     private void UpdateHyperspace()
     {
         var curTime = _gameTiming.CurTime;
-        var query = EntityQueryEnumerator<FTLComponent, ShuttleComponent>();
 
+        // Create a list to store entities that need to be processed to avoid collection modification issues
+        var entitiesToProcess = new List<(EntityUid Uid, FTLComponent Comp, ShuttleComponent Shuttle)>();
+
+        // First, gather all entities to process
+        var query = EntityQueryEnumerator<FTLComponent, ShuttleComponent>();
         while (query.MoveNext(out var uid, out var comp, out var shuttle))
         {
-            if (curTime < comp.StateTime.End)
-                continue;
+            if (curTime >= comp.StateTime.End)
+            {
+                entitiesToProcess.Add((uid, comp, shuttle));
+            }
+        }
 
+        // Then process them separately to avoid modifying the collection during enumeration
+        foreach (var (uid, comp, shuttle) in entitiesToProcess)
+        {
             var entity = (uid, comp, shuttle);
 
             switch (comp.State)
@@ -712,8 +962,9 @@ public sealed partial class ShuttleSystem
                 if (!_statusQuery.TryGetComponent(child, out var status))
                     continue;
 
-                // goob edit - stunmeta
-                _stuns.KnockdownOrStun(child, _hyperspaceKnockdownTime, true, status);
+                if (!HasComp<FTLKnockdownImmuneComponent>(child)) // Frontier: FTL knockdown immunity
+                    // goob edit - stunmeta
+                    _stuns.TryKnockdown(child, _hyperspaceKnockdownTime, true, status);
 
                 // If the guy we knocked down is on a spaced tile, throw them too
                 if (grid != null)
@@ -792,9 +1043,10 @@ public sealed partial class ShuttleSystem
         EntityUid shuttleUid,
         ShuttleComponent component,
         EntityUid targetUid,
-        string? priorityTag = null)
+        string? priorityTag = null,
+        DockType dockType = DockType.Airlock) // Frontier
     {
-        return TryFTLDock(shuttleUid, component, targetUid, out _, priorityTag);
+        return TryFTLDock(shuttleUid, component, targetUid, out _, priorityTag, dockType); // Frontier: add dockType
     }
 
     /// <summary>
@@ -806,7 +1058,8 @@ public sealed partial class ShuttleSystem
         ShuttleComponent component,
         EntityUid targetUid,
         [NotNullWhen(true)] out DockingConfig? config,
-        string? priorityTag = null)
+        string? priorityTag = null,
+        DockType dockType = DockType.Airlock) // Frontier
     {
         config = null;
 
@@ -818,7 +1071,7 @@ public sealed partial class ShuttleSystem
             return false;
         }
 
-        config = _dockSystem.GetDockingConfig(shuttleUid, targetUid, priorityTag);
+        config = _dockSystem.GetDockingConfig(shuttleUid, targetUid, priorityTag, dockType); // Frontier: add dockType
 
         if (config != null)
         {
@@ -874,7 +1127,7 @@ public sealed partial class ShuttleSystem
 
         // We essentially expand the Box2 of the target area until nothing else is added then we know it's valid.
         // Can't just get an AABB of every grid as we may spawn very far away.
-        var nearbyGrids = new HashSet<EntityUid>();
+        //var nearbyGrids = new HashSet<EntityUid>(); // Frontier
         var shuttleAABB = Comp<MapGridComponent>(shuttleUid).LocalAABB;
 
         // Start with small point.
@@ -883,65 +1136,117 @@ public sealed partial class ShuttleSystem
 
         // How much we expand the target AABB be.
         // We half it because we only need the width / height in each direction if it's placed at a particular spot.
-        var expansionAmount = MathF.Max(shuttleAABB.Width / 2f, shuttleAABB.Height / 2f);
+        var expansionAmount = MathF.Max(shuttleAABB.Width * 0.72f, shuttleAABB.Height * 0.72f); // Frontier: "/ 2" < "* 0.72" - a bit over sqrt 2, worst case for AABB shenanigans
 
         // Expand the starter AABB so we have something to query to start with.
         var targetAABB = _transform.GetWorldMatrix(targetXform)
             .TransformBox(targetLocalAABB)
             .Enlarged(expansionAmount);
 
+        // Frontier: our world is very dense in places, very sparse overall, and very large.
+        // Running a mapwise union results in ships sent very far away.
         var iteration = 0;
-        var lastCount = nearbyGrids.Count;
-        var mapId = targetXform.MapID;
         var grids = new List<Entity<MapGridComponent>>();
+        const float minMargin = 8.0f;
+        const float maxMargin = 32.0f;
 
+        // Pick a cardinal direction to move in.
+        // true: axis-positive movement
+        // false: axis-negative movement
+        // null: no movement in axis
+        var direction = _random.Next(8);
+        bool? positiveX;
+        bool? positiveY;
+        // Nasty but readable
+        switch (direction)
+        {
+            case 0:
+            default:
+                positiveX = true;
+                positiveY = null;
+                break;
+            case 1:
+                positiveX = true;
+                positiveY = true;
+                break;
+            case 2:
+                positiveX = null;
+                positiveY = true;
+                break;
+            case 3:
+                positiveX = false;
+                positiveY = true;
+                break;
+            case 4:
+                positiveX = false;
+                positiveY = null;
+                break;
+            case 5:
+                positiveX = false;
+                positiveY = false;
+                break;
+            case 6:
+                positiveX = null;
+                positiveY = false;
+                break;
+            case 7:
+                positiveX = true;
+                positiveY = false;
+                break;
+        }
         while (iteration < FTLProximityIterations)
         {
             grids.Clear();
-            // We pass in an expanded offset here so we can safely do a random offset later.
-            // We don't include this in the actual targetAABB because then we would be double-expanding it.
-            // Once in this loop, then again when placing the shuttle later.
-            // Note that targetAABB already has expansionAmount factored in already.
-            _mapManager.FindGridsIntersecting(mapId, targetAABB.Enlarged(maxOffset), ref grids);
+            _mapManager.FindGridsIntersecting(targetXform.MapID, targetAABB, ref grids);
+            if (grids.Count == 0)
+                break;
 
+            // Adjust our requested position to be clear of intersecting grids along our randomly chosen direction.
             foreach (var grid in grids)
             {
-                if (!nearbyGrids.Add(grid))
-                    continue;
+                var collidingBox = _transform.GetWorldMatrix(grid).TransformBox(Comp<MapGridComponent>(grid).LocalAABB);
 
-                // Include the other grid's AABB (expanded by ours) as well.
-                targetAABB = targetAABB.Union(
-                    _transform.GetWorldMatrix(grid)
-                    .TransformBox(Comp<MapGridComponent>(grid).LocalAABB.Enlarged(expansionAmount)));
+                if (positiveX == true)
+                {
+                    var newLeft = Math.Max(targetAABB.Left, collidingBox.Right + _random.NextFloat(minMargin, maxMargin));
+                    targetAABB.Right = newLeft + targetAABB.Width;
+                    targetAABB.Left = newLeft;
+                }
+                else if (positiveX == false)
+                {
+                    var newRight = Math.Min(targetAABB.Right, collidingBox.Left - _random.NextFloat(minMargin, maxMargin));
+                    targetAABB.Left = newRight - targetAABB.Width;
+                    targetAABB.Right = newRight;
+                }
+                else
+                {
+                    var margin = _random.NextFloat(-maxMargin, maxMargin);
+                    targetAABB.Left += margin;
+                    targetAABB.Right += margin;
+                }
+
+                if (positiveY == true)
+                {
+                    var newBottom = Math.Max(targetAABB.Bottom, collidingBox.Top + _random.NextFloat(minMargin, maxMargin));
+                    targetAABB.Top = newBottom + targetAABB.Height;
+                    targetAABB.Bottom = newBottom;
+                }
+                else if (positiveY == false)
+                {
+                    var newTop = Math.Min(targetAABB.Top, collidingBox.Bottom - _random.NextFloat(minMargin, maxMargin));
+                    targetAABB.Bottom = newTop - targetAABB.Height;
+                    targetAABB.Top = newTop;
+                }
+                else
+                {
+                    var margin = _random.NextFloat(-maxMargin, maxMargin);
+                    targetAABB.Bottom += margin;
+                    targetAABB.Top += margin;
+                }
             }
-
-            // Can do proximity
-            if (nearbyGrids.Count == lastCount)
-            {
-                break;
-            }
-
             iteration++;
-            lastCount = nearbyGrids.Count;
-
-            // Mishap moment, dense asteroid field or whatever
-            if (iteration != FTLProximityIterations)
-                continue;
-
-            var query = AllEntityQuery<MapGridComponent>();
-            while (query.MoveNext(out var uid, out var grid))
-            {
-                // Don't add anymore as it is irrelevant, but that doesn't mean we need to re-do existing work.
-                if (nearbyGrids.Contains(uid))
-                    continue;
-
-                targetAABB = targetAABB.Union(
-                    _transform.GetWorldMatrix(uid)
-                    .TransformBox(Comp<MapGridComponent>(uid).LocalAABB.Enlarged(expansionAmount)));
-            }
-
-            break;
         }
+        // End Frontier
 
         // Now we have a targetAABB. This has already been expanded to account for our fat ass.
         Vector2 spawnPos;
@@ -952,8 +1257,10 @@ public sealed partial class ShuttleSystem
             _physics.SetAngularVelocity(shuttleUid, 0f, body: shuttleBody);
         }
 
+        // Frontier: spawn in our AABB
         // TODO: This should prefer the position's angle instead.
         // TODO: This is pretty crude for multiple landings.
+        /*
         if (nearbyGrids.Count > 1 || !HasComp<MapComponent>(targetXform.GridUid))
         {
             // Pick a random angle
@@ -971,6 +1278,9 @@ public sealed partial class ShuttleSystem
         {
             spawnPos = _transform.GetWorldPosition(targetXform);
         }
+        */
+        spawnPos = targetAABB.Center;
+        // End Frontier
 
         var offset = Vector2.Zero;
 
@@ -1053,6 +1363,9 @@ public sealed partial class ShuttleSystem
 
         foreach (var fixture in manager.Fixtures.Values)
         {
+            if (xform.MapID == _ticker.DefaultMap)
+                break; //Frontier - FTL is too buggy to let it just fucking gib people wtf - so we disable for frontier's z-level
+
             if (!fixture.Hard)
                 continue;
 
@@ -1105,5 +1418,140 @@ public sealed partial class ShuttleSystem
 
         var ev = new ShuttleFlattenEvent(xform.MapUid.Value, aabbs);
         RaiseLocalEvent(ref ev);
+    }
+
+    /// <summary>
+    /// Transitions shuttle to FTL map.
+    /// </summary>
+    private void UpdateFTLStarting(Entity<FTLComponent, ShuttleComponent> entity)
+    {
+        var uid = entity.Owner;
+        var comp = entity.Comp1;
+        // If this is a linked shuttle, let the main shuttle handle the FTL
+        if (comp.LinkedShuttle.HasValue)
+            return;
+        var xform = _xformQuery.GetComponent(entity);
+        DoTheDinosaur(xform);
+
+        comp.State = FTLState.Travelling;
+        var fromMapUid = xform.MapUid;
+        var fromMatrix = _transform.GetWorldMatrix(xform);
+        var fromRotation = _transform.GetWorldRotation(xform);
+
+        var grid = Comp<MapGridComponent>(uid);
+        var width = grid.LocalAABB.Width;
+        var ftlMap = EnsureFTLMap();
+        var body = _physicsQuery.GetComponent(entity);
+        var shuttleCenter = grid.LocalAABB.Center;
+
+        // Get all docked shuttles
+        var dockedShuttles = new HashSet<EntityUid>();
+        GetAllDockedShuttles(uid, dockedShuttles);
+        // For docked shuttles, we want to move them as a single unit
+        // So we'll store their relative transforms to the main shuttle before moving
+        var relativeTransforms = new Dictionary<EntityUid, (Vector2 Position, Angle Rotation)>();
+        foreach (var dockedUid in dockedShuttles)
+        {
+            if (dockedUid == uid) continue;
+
+            var dockedXform = _xformQuery.GetComponent(dockedUid);
+            var mainPos = _transform.GetWorldPosition(uid);
+            var dockedPos = _transform.GetWorldPosition(dockedUid);
+            var mainRot = _transform.GetWorldRotation(uid);
+            var dockedRot = _transform.GetWorldRotation(dockedUid);
+
+            // Store position and rotation relative to main shuttle
+            // We need to rotate the relative position by the inverse of the main shuttle's rotation
+            var relativePos = dockedPos - mainPos;
+            relativePos = (-mainRot).RotateVec(relativePos);
+            var relativeRot = dockedRot - mainRot;
+            relativeTransforms[dockedUid] = (relativePos, relativeRot);
+        }
+
+        // Leave audio at the old spot
+        // Just so we don't clip
+        if (fromMapUid != null && TryComp(comp.StartupStream, out AudioComponent? startupAudio))
+        {
+            var clippedAudio = _audio.PlayStatic(_startupSound, Filter.Broadcast(),
+                new EntityCoordinates(fromMapUid.Value, _mapSystem.GetGridPosition(entity.Owner)), true, startupAudio.Params);
+
+            _audio.SetPlaybackPosition(clippedAudio, entity.Comp1.StartupTime);
+            if (clippedAudio != null)
+                clippedAudio.Value.Component.Flags |= AudioFlags.NoOcclusion;
+        }
+
+        // Offset the start by buffer range just to avoid overlap.
+        // Move main shuttle to FTL
+        var ftlStart = new EntityCoordinates(ftlMap, new Vector2(_index + width / 2f, 0f) - shuttleCenter);
+        // Store the matrix for the grid prior to movement. This means any entities we need to leave behind we can make sure their positions are updated.
+        // Setting the entity to map directly may run grid traversal (at least at time of writing this).
+        var oldMapUid = xform.MapUid;
+        var oldGridMatrix = _transform.GetWorldMatrix(xform);
+        // Move main shuttle to FTL and set its rotation to zero
+        _transform.SetCoordinates(entity.Owner, ftlStart);
+        _transform.SetWorldRotation(entity.Owner, Angle.Zero);
+        LeaveNoFTLBehind((entity.Owner, xform), oldGridMatrix, oldMapUid);
+
+        // Reset rotation so they always face the same direction.
+        xform.LocalRotation = Angle.Zero;
+        _index += width + Buffer;
+
+        // Move all docked shuttles maintaining their relative positions
+        foreach (var dockedUid in dockedShuttles)
+        {
+            if (dockedUid == uid) continue;
+            var dockedXform = _xformQuery.GetComponent(dockedUid);
+            var dockedOldMapUid = dockedXform.MapUid;
+            var dockedOldGridMatrix = _transform.GetWorldMatrix(dockedXform);
+            var (relativePos, relativeRot) = relativeTransforms[dockedUid];
+            var mainPos = _transform.GetWorldPosition(uid);
+            var mainRot = _transform.GetWorldRotation(uid);
+            // Apply the same relative transform in FTL space
+            // We need to rotate the relative position by the main shuttle's new rotation
+            var rotatedRelativePos = mainRot.RotateVec(relativePos);
+            var newPos = mainPos + rotatedRelativePos;
+            var newRot = mainRot + relativeRot;
+            // Ensure we move to the same map as the main shuttle
+            _transform.SetParent(dockedUid, dockedXform, ftlMap);
+            _transform.SetWorldPosition(dockedUid, newPos);
+            _transform.SetWorldRotation(dockedUid, newRot);
+            LeaveNoFTLBehind((dockedUid, dockedXform), dockedOldGridMatrix, dockedOldMapUid);
+
+            // Add FTL component to the docked shuttle and link it to the main shuttle
+            var dockedComp = EnsureComp<FTLComponent>(dockedUid);
+            dockedComp.LinkedShuttle = uid;
+            dockedComp.State = FTLState.Travelling;
+
+            if (TryComp<PhysicsComponent>(dockedUid, out var dockedBody))
+            {
+                Enable(dockedUid, component: dockedBody);
+                _physics.SetLinearVelocity(dockedUid, new Vector2(0f, 20f), body: dockedBody);
+                _physics.SetAngularVelocity(dockedUid, 0f, body: dockedBody);
+                _physics.SetLinearDamping(dockedUid, dockedBody, 0f);
+                _physics.SetAngularDamping(dockedUid, dockedBody, 0f);
+            }
+
+            // Refresh consoles for this docked shuttle as well
+            _console.RefreshShuttleConsoles(dockedUid);
+        }
+
+        comp.StateTime = StartEndTime.FromCurTime(_gameTiming, comp.TravelTime - DefaultArrivalTime);
+
+        Enable(uid, component: body);
+        _physics.SetLinearVelocity(uid, new Vector2(0f, 20f), body: body);
+        _physics.SetAngularVelocity(uid, 0f, body: body);
+        _physics.SetLinearDamping(uid, body, 0f);
+        _physics.SetAngularDamping(uid, body, 0f);
+
+        _dockSystem.SetDockBolts(uid, true);
+        _console.RefreshShuttleConsoles(uid);
+
+        var ev = new FTLStartedEvent(uid, comp.TargetCoordinates, fromMapUid, fromMatrix, fromRotation);
+        RaiseLocalEvent(uid, ref ev, true);
+
+        // Audio
+        var wowdio = _audio.PlayPvs(comp.TravelSound, uid);
+        comp.TravelStream = wowdio?.Entity;
+        _audio.SetGridAudio(wowdio);
     }
 }

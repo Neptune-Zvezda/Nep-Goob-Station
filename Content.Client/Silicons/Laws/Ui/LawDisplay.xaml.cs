@@ -1,13 +1,3 @@
-// SPDX-FileCopyrightText: 2023 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 chromiumboy <50505512+chromiumboy@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 0x6273 <0x40@keemail.me>
-// SPDX-FileCopyrightText: 2024 Hreno <hrenor@gmail.com>
-// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-// SPDX-FileCopyrightText: 2024 Tayrtahn <tayrtahn@gmail.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using Content.Client.Chat.Managers;
 using Content.Client.Message;
 using Content.Shared.Chat;
@@ -44,7 +34,8 @@ public sealed partial class LawDisplay : Control
         var identifier = law.LawIdentifierOverride ?? $"{law.Order}";
         var lawIdentifier = Loc.GetString("laws-ui-law-header", ("id", identifier));
         var lawDescription = Loc.GetString(law.LawString);
-        var lawIdentifierPlaintext = FormattedMessage.RemoveMarkupPermissive(lawIdentifier);
+        //var lawIdentifierPlaintext = FormattedMessage.RemoveMarkupPermissive(lawIdentifier); // Frontier
+        var lawIdentifierPlaintext = FormattedMessage.RemoveMarkupPermissive(law.LawPrintOverride != null ? Loc.GetString("laws-ui-law-header", ("id", law.LawPrintOverride)) : lawIdentifier); // Frontier
         var lawDescriptionPlaintext = FormattedMessage.RemoveMarkupPermissive(lawDescription);
 
         LawNumberLabel.SetMarkup(lawIdentifier);
@@ -59,8 +50,9 @@ public sealed partial class LawDisplay : Control
             Text = Loc.GetString("hud-chatbox-select-channel-Local"),
             Modulate = Color.DarkGray,
             StyleClasses = { "chatSelectorOptionButton" },
-            MinHeight = 35,
-            MinWidth = 75,
+            MinHeight = 30,
+            MinWidth = 80,
+            Margin = new Thickness(2, 0, 6, 0)
         };
 
         _nextAllowedPress[localButton] = TimeSpan.Zero;
@@ -86,8 +78,9 @@ public sealed partial class LawDisplay : Control
                 Text = Loc.GetString(radioChannelProto.Name),
                 Modulate = radioChannelProto.Color,
                 StyleClasses = { "chatSelectorOptionButton" },
-                MinHeight = 35,
-                MinWidth = 75,
+                MinHeight = 30,
+                MinWidth = 80,
+                Margin = new Thickness(2, 0, 6, 0)
             };
 
             _nextAllowedPress[radioChannelButton] = TimeSpan.Zero;

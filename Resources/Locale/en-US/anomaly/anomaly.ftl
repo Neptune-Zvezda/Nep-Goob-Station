@@ -1,19 +1,9 @@
-# SPDX-FileCopyrightText: 2023 0x6273 <0x40@keemail.me>
-# SPDX-FileCopyrightText: 2023 James Simonson <jamessimo89@gmail.com>
-# SPDX-FileCopyrightText: 2023 brainfood1183 <113240905+brainfood1183@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 chromiumboy <50505512+chromiumboy@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Ed <96445749+TheShuEd@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aiden <aiden@djkraz.com>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
 anomaly-component-contact-damage = The anomaly sears off your skin!
 
 anomaly-vessel-component-anomaly-assigned = Anomaly assigned to vessel.
 anomaly-vessel-component-not-assigned = This vessel is not assigned to any anomaly. Try using a scanner on it.
 anomaly-vessel-component-assigned = This vessel is currently assigned to an anomaly.
+anomaly-vessel-component-upgrade-output = point output
 
 anomaly-particles-delta = Delta particles
 anomaly-particles-epsilon = Epsilon particles
@@ -67,7 +57,7 @@ anomaly-sync-connect-verb-text = Attach anomaly
 anomaly-sync-connect-verb-message = Attach a nearby anomaly to {THE($machine)}.
 
 anomaly-generator-ui-title = Anomaly Generator
-anomaly-generator-fuel-display = Fuel:
+anomaly-generator-fuel-display = Bananium:
 anomaly-generator-cooldown = Cooldown: [color=gray]{$time}[/color]
 anomaly-generator-no-cooldown = Cooldown: [color=gray]Complete[/color]
 anomaly-generator-yes-fire = Status: [color=forestgreen]Ready[/color]

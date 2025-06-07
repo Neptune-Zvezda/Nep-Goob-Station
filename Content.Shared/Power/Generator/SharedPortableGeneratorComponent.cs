@@ -1,8 +1,3 @@
-// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: MIT
-
 using Robust.Shared.Audio;
 using Robust.Shared.Serialization;
 
@@ -47,6 +42,12 @@ public sealed partial class PortableGeneratorComponent : Component
     [DataField("startSoundEmpty")]
     [ViewVariables(VVAccess.ReadWrite)]
     public SoundSpecifier? StartSoundEmpty { get; set; }
+
+    /// <summary>
+    /// Frontier - Start the generator with the map.
+    /// </summary>
+    [DataField("startOnMapInit")]
+    public bool StartOnMapInit { get; set; } = false;
 }
 
 /// <summary>

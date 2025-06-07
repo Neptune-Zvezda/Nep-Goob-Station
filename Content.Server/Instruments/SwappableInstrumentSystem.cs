@@ -1,16 +1,7 @@
-// SPDX-FileCopyrightText: 2022 EmoGarbage404 <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Vera Aguilera Puerto <6766154+Zumorica@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2024 Tayrtahn <tayrtahn@gmail.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using Content.Shared.Instruments;
 using Content.Shared.Popups;
 using Content.Shared.Verbs;
+using Robust.Shared.Player;
 
 namespace Content.Server.Instruments;
 
@@ -33,6 +24,9 @@ public sealed class SwappableInstrumentSystem : EntitySystem
 
         if (!TryComp<InstrumentComponent>(uid, out var instrument))
             return;
+
+        if (component.OnlySetBySelf && uid != args.User) // Frontier: restrict instrument changes
+            return; // Frontier: restrict instrument changes
 
         var priority = 0;
         foreach (var entry in component.InstrumentList)

@@ -1,10 +1,3 @@
-// SPDX-FileCopyrightText: 2023 chromiumboy <50505512+chromiumboy@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Errant <35878406+Errant-4@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: MIT
-
 using Content.Client.Pinpointer.UI;
 using Robust.Client.Graphics;
 using Robust.Client.UserInterface.Controls;
@@ -14,6 +7,8 @@ namespace Content.Client.Medical.CrewMonitoring;
 
 public sealed partial class CrewMonitoringNavMapControl : NavMapControl
 {
+    [Dependency] private readonly IEntitySystemManager _entitySystem = default!;
+    private readonly SharedTransformSystem _transform = default!; // Frontier
     public NetEntity? Focus;
     public Dictionary<NetEntity, string> LocalizedNames = new();
 
@@ -22,6 +17,8 @@ public sealed partial class CrewMonitoringNavMapControl : NavMapControl
 
     public CrewMonitoringNavMapControl() : base()
     {
+        IoCManager.InjectDependencies(this); // Frontier
+        _transform = _entitySystem.GetEntitySystem<SharedTransformSystem>(); // Frontier
         WallColor = new Color(192, 122, 196);
         TileColor = new(71, 42, 72);
         BackgroundColor = Color.FromSrgb(TileColor.WithAlpha(BackgroundOpacity));
@@ -71,7 +68,10 @@ public sealed partial class CrewMonitoringNavMapControl : NavMapControl
             if (!LocalizedNames.TryGetValue(netEntity, out var name))
                 name = "Unknown";
 
-            var message = name + "\nLocation: [x = " + MathF.Round(blip.Coordinates.X) + ", y = " + MathF.Round(blip.Coordinates.Y) + "]";
+            // Text location of the blip will display GPS coordinates for the purpose of being able to find a person via GPS
+            // Previously it displayed coordinates relative to the center of the station, which had no use.
+            var mapCoords = _transform.ToMapCoordinates(blip.Coordinates); // Frontier
+            var message = name + "\nLocation: [x = " + MathF.Round(mapCoords.X) + ", y = " + MathF.Round(mapCoords.Y) + "]"; // Frontier: use map coords
 
             _trackedEntityLabel.Text = message;
             _trackedEntityPanel.Visible = true;

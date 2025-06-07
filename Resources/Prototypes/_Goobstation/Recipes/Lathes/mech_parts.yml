@@ -1,15 +1,7 @@
-# SPDX-FileCopyrightText: 2024 NULL882 <gost6865@yandex.ru>
-# SPDX-FileCopyrightText: 2024 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 SX_7 <sn1.test.preria.2002@gmail.com>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
 # Ripley MK-II
 - type: latheRecipe
   id: RipleyMKIIHarness
   result: RipleyMKIIHarness
-  categories:
-  - RipleyMKII
   completetime: 10
   materials:
     Steel: 1500
@@ -18,8 +10,6 @@
 - type: latheRecipe
   id: RipleyUpgradeKit
   result: RipleyUpgradeKit
-  categories:
-  - RipleyMKII
   completetime: 10
   materials:
     Steel: 500
@@ -28,8 +18,6 @@
 - type: latheRecipe
   id: ClarkeHarness
   result: ClarkeHarness
-  categories:
-  - Clarke
   completetime: 10
   materials:
     Steel: 2000
@@ -38,8 +26,6 @@
 - type: latheRecipe
   id: ClarkeHead
   result: ClarkeHead
-  categories:
-  - Clarke
   completetime: 10
   materials:
     Steel: 1550
@@ -48,8 +34,6 @@
 - type: latheRecipe
   id: ClarkeLArm
   result: ClarkeLArm
-  categories:
-  - Clarke
   completetime: 10
   materials:
     Steel: 900
@@ -58,8 +42,6 @@
 - type: latheRecipe
   id: ClarkeRArm
   result: ClarkeRArm
-  categories:
-  - Clarke
   completetime: 10
   materials:
     Steel: 900
@@ -68,8 +50,6 @@
 - type: latheRecipe
   id: ClarkeTreads
   result: ClarkeTreads
-  categories:
-  - Clarke
   completetime: 10
   materials:
     Steel: 950
@@ -78,8 +58,6 @@
 - type: latheRecipe
   id: DurandHarness
   result: DurandHarness
-  categories:
-  - Durand
   completetime: 10
   materials:
     Steel: 2500
@@ -89,8 +67,6 @@
 - type: latheRecipe
   id: DurandArmor
   result: DurandArmorPlate
-  categories:
-  - Durand
   completetime: 10
   materials:
     Steel: 3000
@@ -99,8 +75,6 @@
 - type: latheRecipe
   id: DurandHead
   result: DurandHead
-  categories:
-  - Durand
   completetime: 10
   materials:
     Steel: 1500
@@ -111,8 +85,6 @@
 - type: latheRecipe
   id: DurandLArm
   result: DurandLArm
-  categories:
-  - Durand
   completetime: 10
   materials:
     Steel: 1100
@@ -121,8 +93,6 @@
 - type: latheRecipe
   id: DurandLLeg
   result: DurandLLeg
-  categories:
-  - Durand
   completetime: 10
   materials:
     Steel: 1100
@@ -131,8 +101,6 @@
 - type: latheRecipe
   id: DurandRLeg
   result: DurandRLeg
-  categories:
-  - Durand
   completetime: 10
   materials:
     Steel: 1100
@@ -141,8 +109,6 @@
 - type: latheRecipe
   id: DurandRArm
   result: DurandRArm
-  categories:
-  - Durand
   completetime: 10
   materials:
     Steel: 1100
@@ -152,8 +118,6 @@
 - type: latheRecipe
   id: GygaxHarness
   result: GygaxHarness
-  categories:
-  - Gygax
   completetime: 10
   materials:
     Steel: 2500
@@ -162,8 +126,6 @@
 - type: latheRecipe
   id: GygaxArmor
   result: GygaxArmorPlate
-  categories:
-  - Gygax
   completetime: 10
   materials:
     Steel: 3000
@@ -171,8 +133,6 @@
 - type: latheRecipe
   id: GygaxHead
   result: GygaxHead
-  categories:
-  - Gygax
   completetime: 10
   materials:
     Steel: 1500
@@ -182,8 +142,6 @@
 - type: latheRecipe
   id: GygaxLArm
   result: GygaxLArm
-  categories:
-  - Gygax
   completetime: 10
   materials:
     Steel: 1100
@@ -191,8 +149,6 @@
 - type: latheRecipe
   id: GygaxLLeg
   result: GygaxLLeg
-  categories:
-  - Gygax
   completetime: 10
   materials:
     Steel: 1100
@@ -200,8 +156,6 @@
 - type: latheRecipe
   id: GygaxRLeg
   result: GygaxRLeg
-  categories:
-  - Gygax
   completetime: 10
   materials:
     Steel: 1100
@@ -209,18 +163,14 @@
 - type: latheRecipe
   id: GygaxRArm
   result: GygaxRArm
-  categories:
-  - Gygax
   completetime: 10
   materials:
     Steel: 1100
 
 # Vim
 - type: latheRecipe
-  id: VimHarness
+  id: GooVimHarness
   result: VimHarness
-  categories:
-  - Vim # Goobstation
   completetime: 5
   materials:
     Steel: 500
@@ -231,8 +181,6 @@
 - type: latheRecipe
   id: MechEquipmentDrill
   result: WeaponMechMeleeDrill
-  categories:
-  - MechEquipment
   completetime: 10
   materials:
     Steel: 1000
@@ -241,8 +189,6 @@
 - type: latheRecipe
   id: MechEquipmentDrillDiamond
   result: WeaponMechMeleeDrillDiamond
-  categories:
-  - MechEquipment
   completetime: 10
   materials:
     Steel: 1000
@@ -253,8 +199,6 @@
 - type: latheRecipe
   id: MechEquipmentGrabber
   result: MechEquipmentGrabber
-  categories:
-  - MechEquipment
   completetime: 10
   materials:
     Steel: 500
@@ -264,8 +208,6 @@
 - type: latheRecipe
   id: MechEquipmentHonkerBananaMortar
   result: WeaponMechSpecialBananaMortar
-  categories:
-  - MechEquipment
   completetime: 10
   materials:
     Steel: 1150
@@ -274,8 +216,6 @@
 - type: latheRecipe
   id: MechEquipmentHonkerMousetrapMortar
   result: WeaponMechSpecialMousetrapMortar
-  categories:
-  - MechEquipment
   completetime: 10
   materials:
     Steel: 1200
@@ -285,8 +225,6 @@
 - type: latheRecipe
   id: MechAirTank
   result: MechAirTank
-  categories:
-  - MechEquipment
   completetime: 10
   materials:
     Steel: 1000
@@ -295,8 +233,6 @@
 - type: latheRecipe
   id: MechThruster
   result: MechThruster
-  categories:
-  - MechEquipment
   completetime: 10
   materials:
     Steel: 1000

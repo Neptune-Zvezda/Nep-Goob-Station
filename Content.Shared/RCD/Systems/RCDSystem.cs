@@ -1,28 +1,4 @@
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <drsmugleaf@gmail.com>
-// SPDX-FileCopyrightText: 2023 Pieter-Jan Briers <pieterjan.briers@gmail.com>
-// SPDX-FileCopyrightText: 2023 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 deltanedas <@deltanedas:kde.org>
-// SPDX-FileCopyrightText: 2024 0x6273 <0x40@keemail.me>
-// SPDX-FileCopyrightText: 2024 August Eymann <august.eymann@gmail.com>
-// SPDX-FileCopyrightText: 2024 Jake Huxell <JakeHuxell@pm.me>
-// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-// SPDX-FileCopyrightText: 2024 Plykiya <58439124+Plykiya@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Steve <marlumpy@gmail.com>
-// SPDX-FileCopyrightText: 2024 Tayrtahn <tayrtahn@gmail.com>
-// SPDX-FileCopyrightText: 2024 TemporalOroboros <TemporalOroboros@gmail.com>
-// SPDX-FileCopyrightText: 2024 chromiumboy <50505512+chromiumboy@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 marc-pelletier <113944176+marc-pelletier@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 nikthechampiongr <32041239+nikthechampiongr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 plykiya <plykiya@protonmail.com>
-// SPDX-FileCopyrightText: 2024 yglop <95057024+yglop@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aviu00 <93730715+Aviu00@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Piras314 <p1r4s@proton.me>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
+using Content.Shared.Access.Components;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Charges.Components;
 using Content.Shared.Charges.Systems;
@@ -36,6 +12,7 @@ using Content.Shared.Maps;
 using Content.Shared.Physics;
 using Content.Shared.Popups;
 using Content.Shared.RCD.Components;
+using Content.Shared._NF.Shipyard.Components; // Frontier
 using Content.Shared.Tag;
 using Content.Shared.Tiles;
 using Robust.Shared.Audio.Systems;
@@ -50,7 +27,7 @@ using Robust.Shared.Serialization;
 using Robust.Shared.Timing;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using Content.Shared.FixedPoint;
+using Robust.Shared.Audio;
 
 namespace Content.Shared.RCD.Systems;
 
@@ -91,8 +68,7 @@ public class RCDSystem : EntitySystem
         SubscribeLocalEvent<RCDComponent, DoAfterAttemptEvent<RCDDoAfterEvent>>(OnDoAfterAttempt);
         SubscribeLocalEvent<RCDComponent, RCDSystemMessage>(OnRCDSystemMessage);
         SubscribeNetworkEvent<RCDConstructionGhostRotationEvent>(OnRCDconstructionGhostRotationEvent);
-        SubscribeNetworkEvent<RCDConstructionGhostFlipEvent>(OnRCDConstructionGhostFlipEvent);
-
+        SubscribeLocalEvent<IdCardComponent, AfterInteractEvent>(OnIdCardSwipeHappened); // Frontier
     }
 
     #region Event handling
@@ -112,8 +88,6 @@ public class RCDSystem : EntitySystem
         // The RCD has no valid recipes somehow? Get rid of it
         QueueDel(uid);
     }
-
-
 
     private void OnRCDSystemMessage(EntityUid uid, RCDComponent component, RCDSystemMessage args)
     {
@@ -154,6 +128,54 @@ public class RCDSystem : EntitySystem
         args.PushMarkup(msg);
     }
 
+    /**
+     * Frontier - ability to swipe rcd for authorizations to build on specific grids
+     */
+    private void OnIdCardSwipeHappened(EntityUid uid, IdCardComponent comp, ref AfterInteractEvent args)
+    {
+        if (args.Handled)
+            return;
+
+        if (args.Target is not { Valid: true } target || !args.CanReach)
+            return;
+
+        var rcdEntityUid = target;
+
+        // Is this id card interacting with a shipyard RCD? If not, ignore it.
+        if (!TryComp<RCDComponent>(rcdEntityUid, out var rcdComponent) || !rcdComponent.IsShipyardRCD)
+            return;
+
+        // RCD found, we're handling this event.
+        args.Handled = true;
+
+        // If the id card has no registered ship we cant continue.
+        if (!TryComp<ShuttleDeedComponent>(comp.Owner, out var shuttleDeedComponent))
+        {
+            _popup.PopupClient(Loc.GetString("rcd-component-missing-id-deed"),
+                uid, args.User, PopupType.Medium);
+            _audio.PlayPredicted(comp.ErrorSound, rcdEntityUid, args.User, AudioParams.Default.WithMaxDistance(0.01f));
+            return;
+        }
+
+        // Swiping it again removes the authorization on it.
+        if (rcdComponent.LinkedShuttleUid != null)
+        {
+            _popup.PopupClient(Loc.GetString("rcd-component-id-card-removed"),
+                uid, args.User, PopupType.Medium);
+            _audio.PlayPredicted(comp.SwipeSound, rcdEntityUid, args.User, AudioParams.Default.WithMaxDistance(0.01f));
+            rcdComponent.LinkedShuttleUid = null;
+        }
+        else
+        {
+            _popup.PopupClient(Loc.GetString("rcd-component-id-card-accepted"),
+                uid, args.User, PopupType.Medium);
+            _audio.PlayPredicted(comp.InsertSound, rcdEntityUid, args.User, AudioParams.Default.WithMaxDistance(0.01f));
+            rcdComponent.LinkedShuttleUid = shuttleDeedComponent.ShuttleUid;
+        }
+
+        Dirty(rcdComponent.Owner, rcdComponent);
+    }
+
     private void OnAfterInteract(EntityUid uid, RCDComponent component, AfterInteractEvent args)
     {
         if (args.Handled || !args.CanReach)
@@ -173,6 +195,9 @@ public class RCDSystem : EntitySystem
         }
 
         if (!IsRCDOperationStillValid(uid, component, mapGridData.Value, args.Target, args.User))
+            return;
+
+        if (!IsAuthorized(mapGridData.Value.GridUid, uid, component, args))
             return;
 
         if (!_net.IsServer)
@@ -244,14 +269,50 @@ public class RCDSystem : EntitySystem
             BreakOnMove = true,
             AttemptFrequency = AttemptFrequency.EveryTick,
             CancelDuplicate = false,
-            BlockDuplicate = false,
-            MultiplyDelay = false, // Goobstation
+            BlockDuplicate = false
         };
 
         args.Handled = true;
 
         if (!_doAfter.TryStartDoAfter(doAfterArgs))
             QueueDel(effect);
+    }
+
+    /**
+     * Frontier - Stops RCD functions if there is a protected grid component on it, and adds shipyard rcd limitations.
+     */
+    private bool IsAuthorized(EntityUid? gridId, EntityUid uid, RCDComponent comp, AfterInteractEvent args)
+    {
+        if (gridId == null)
+        {
+            return true;
+        }
+        var mapGrid = Comp<MapGridComponent>(gridId.Value);
+        var gridUid = mapGrid.Owner;
+
+        // Frontier - Remove all RCD use on outpost.
+        if (TryComp<ProtectedGridComponent>(gridUid, out var prot) && prot.PreventRCDUse)
+        {
+            _popup.PopupClient(Loc.GetString("rcd-component-use-blocked"), uid, args.User);
+            return false;
+        }
+
+        // Frontier - LinkedShuttleUid requirements to use Shipyard RCD.
+        if (comp.IsShipyardRCD)
+        {
+            if (comp.LinkedShuttleUid == null)
+            {
+                _popup.PopupClient(Loc.GetString("rcd-component-no-id-swiped"), uid, args.User);
+                return false;
+            }
+            if (comp.LinkedShuttleUid != gridUid)
+            {
+                _popup.PopupClient(Loc.GetString("rcd-component-can-only-build-authorized-ship"), uid, args.User);
+                return false;
+            }
+        }
+
+        return true;
     }
 
     private void OnDoAfterAttempt(EntityUid uid, RCDComponent component, DoAfterAttemptEvent<RCDDoAfterEvent> args)
@@ -303,11 +364,7 @@ public class RCDSystem : EntitySystem
 
         // Play audio and consume charges
         _audio.PlayPredicted(component.SuccessSound, uid, args.User);
-        // Goobstation - start
-        if (component.CachedPrototype.Mode == RcdMode.Deconstruct)
-            _charges.AddCharges(uid, args.Cost / 2);
-        else _charges.UseCharges(uid, args.Cost);
-        // Goobstation - end
+        _charges.UseCharges(uid, args.Cost);
     }
 
     private void OnRCDconstructionGhostRotationEvent(RCDConstructionGhostRotationEvent ev, EntitySessionEventArgs session)
@@ -329,28 +386,6 @@ public class RCDSystem : EntitySystem
         rcd.ConstructionDirection = ev.Direction;
         Dirty(uid, rcd);
     }
-
-
-    private void OnRCDConstructionGhostFlipEvent(RCDConstructionGhostFlipEvent ev, EntitySessionEventArgs session)
-    {
-        var uid = GetEntity(ev.NetEntity);
-
-        // Determine if player that send the message is carrying the specified RCD in their active hand
-        if (session.SenderSession.AttachedEntity == null)
-            return;
-
-        if (!TryComp<HandsComponent>(session.SenderSession.AttachedEntity, out var hands) ||
-            uid != hands.ActiveHand?.HeldEntity)
-            return;
-
-        if (!TryComp<RCDComponent>(uid, out var rcd))
-            return;
-
-        // Update the construction direction
-        rcd.UseMirrorPrototype = ev.UseMirrorPrototype;
-        Dirty(uid, rcd);
-    }
-
 
     #endregion
 
@@ -433,7 +468,7 @@ public class RCDSystem : EntitySystem
         if (component.CachedPrototype.Mode == RcdMode.ConstructTile)
         {
             // Check rule: Tile placement is valid
-            if (!_floors.CanPlaceTile(mapGridData.GridUid, mapGridData.Component, out var reason))
+            if (!_floors.CanPlaceTile(mapGridData.GridUid, mapGridData.Component, null, out var reason))
             {
                 if (popMsgs)
                     _popup.PopupClient(reason, uid, user);
@@ -506,13 +541,6 @@ public class RCDSystem : EntitySystem
         // Attempt to deconstruct a floor tile
         if (target == null)
         {
-            if (component.IsRpd)
-            {
-                if (popMsgs)
-                    _popup.PopupClient(Loc.GetString("rcd-component-deconstruct-target-not-on-whitelist-message"), uid, user);
-
-                return false;
-            }
             // The tile is empty
             if (mapGridData.Tile.Tile.IsEmpty)
             {
@@ -546,25 +574,16 @@ public class RCDSystem : EntitySystem
         // Attempt to deconstruct an object
         else
         {
-            // The object is not in the RPD whitelist
-            if (!TryComp<RCDDeconstructableComponent>(target, out var deconstructible) || !deconstructible.RpdDeconstructable && component.IsRpd)
-            {
-                if (popMsgs)
-                    _popup.PopupClient(Loc.GetString("rcd-component-deconstruct-target-not-on-whitelist-message"), uid, user);
-
-                return false;
-            }
-
             // The object is not in the whitelist
-            if (!deconstructible.Deconstructable)
+            if (!TryComp<RCDDeconstructableComponent>(target, out var deconstructible) || !deconstructible.Deconstructable)
             {
                 if (popMsgs)
                     _popup.PopupClient(Loc.GetString("rcd-component-deconstruct-target-not-on-whitelist-message"), uid, user);
 
                 return false;
             }
-
         }
+
         return true;
     }
 
@@ -588,12 +607,7 @@ public class RCDSystem : EntitySystem
                 break;
 
             case RcdMode.ConstructObject:
-                var proto = (component.UseMirrorPrototype &&
-                    !string.IsNullOrEmpty(component.CachedPrototype.MirrorPrototype))
-                    ? component.CachedPrototype.MirrorPrototype
-                    : component.CachedPrototype.Prototype;
-
-                var ent = Spawn(proto, _mapSystem.GridTileToLocal(mapGridData.GridUid, mapGridData.Component, mapGridData.Position));
+                var ent = Spawn(component.CachedPrototype.Prototype, _mapSystem.GridTileToLocal(mapGridData.GridUid, mapGridData.Component, mapGridData.Position));
 
                 switch (component.CachedPrototype.Rotation)
                 {
@@ -667,12 +681,8 @@ public class RCDSystem : EntitySystem
 
     public void UpdateCachedPrototype(EntityUid uid, RCDComponent component)
     {
-        if (component.ProtoId.Id != component.CachedPrototype?.Prototype ||
-            (component.CachedPrototype?.MirrorPrototype != null &&
-             component.ProtoId.Id!= component.CachedPrototype?.MirrorPrototype))
-        {
+        if (component.ProtoId.Id != component.CachedPrototype?.Prototype)
             component.CachedPrototype = _protoManager.Index(component.ProtoId);
-        }
     }
 
     #endregion
@@ -709,14 +719,14 @@ public sealed partial class RCDDoAfterEvent : DoAfterEvent
     public ProtoId<RCDPrototype> StartingProtoId { get; private set; } = default!;
 
     [DataField]
-    public FixedPoint2 Cost { get; private set; } = 1;
+    public int Cost { get; private set; } = 1;
 
     [DataField("fx")]
     public NetEntity? Effect { get; private set; } = null;
 
     private RCDDoAfterEvent() { }
 
-    public RCDDoAfterEvent(NetCoordinates location, Direction direction, ProtoId<RCDPrototype> startingProtoId, FixedPoint2 cost, NetEntity? effect = null)
+    public RCDDoAfterEvent(NetCoordinates location, Direction direction, ProtoId<RCDPrototype> startingProtoId, int cost, NetEntity? effect = null)
     {
         Location = location;
         Direction = direction;

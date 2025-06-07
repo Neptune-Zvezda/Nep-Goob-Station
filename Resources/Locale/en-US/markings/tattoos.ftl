@@ -1,16 +1,8 @@
-# SPDX-FileCopyrightText: 2022 Scribbles0 <91828755+Scribbles0@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2022 T-Stalker <43253663+DogZeroX@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2022 metalgearsloth <comedian_vs_clown@hotmail.com>
-# SPDX-FileCopyrightText: 2023 Nairod <110078045+Nairodian@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aiden <aiden@djkraz.com>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
+# Frontier: all entries capitalized
 marking-TattooHiveChest-tattoo_hive_chest = Back Tattoo (Hive)
 marking-TattooHiveChest = Back Tattoo (Hive)
 
-marking-TattooNightlingChest-tattoo_nightling = Chest Tattoo (nightling)
+marking-TattooNightlingChest-tattoo_nightling = Chest Tattoo (Nightling)
 marking-TattooNightlingChest = Chest Tattoo (Nightling)
 
 marking-TattooSilverburghLeftLeg-tattoo_silverburgh_l_leg = Left Leg Tattoo (Silverburg)
@@ -36,12 +28,3 @@ marking-TattooEyeRight = Right Eye
 
 marking-TattooEyeLeft-tattoo_eye_l = Left Eye
 marking-TattooEyeLeft = Left Eye
-
-marking-TattooLoops-tattoo_loops = Loops
-marking-TattooLoops = Loops
-
-marking-TattooTribal1-tattoo_tribal1 = Tribal Tattoo
-marking-TattooTribal1 = Tribal Tattoo
-
-marking-BuffChest_buff = Buff
-marking-BuffChest = Buff

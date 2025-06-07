@@ -1,15 +1,3 @@
-// SPDX-FileCopyrightText: 2024 Aviu00 <93730715+Aviu00@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Preston Smith <92108534+thetolbean@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Spatison <137375981+Spatison@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 whateverusername0 <whateveremail>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Misandry <mary@thughunt.ing>
-// SPDX-FileCopyrightText: 2025 gus <august.eymann@gmail.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
-using Content.Client._White.Animations;
-using Content.Goobstation.Common.Standing;
 using Content.Shared._White.Standing;
 using Content.Shared.Buckle;
 using Content.Shared.Rotation;
@@ -33,6 +21,8 @@ public sealed class LayingDownSystem : SharedLayingDownSystem
         base.Initialize();
 
         SubscribeLocalEvent<LayingDownComponent, MoveEvent>(OnMovementInput);
+
+        SubscribeNetworkEvent<CheckAutoGetUpEvent>(OnCheckAutoGetUp);
     }
 
     private void OnMovementInput(EntityUid uid, LayingDownComponent component, MoveEvent args)
@@ -69,19 +59,15 @@ public sealed class LayingDownSystem : SharedLayingDownSystem
         sprite.Rotation = Angle.FromDegrees(90);
     }
 
-    public override void UpdateSpriteRotation(EntityUid uid)
+    private void OnCheckAutoGetUp(CheckAutoGetUpEvent ev, EntitySessionEventArgs args)
     {
         if (!_timing.IsFirstTimePredicted)
             return;
 
+        var uid = GetEntity(ev.User);
+
         if (!TryComp<TransformComponent>(uid, out var transform) || !TryComp<RotationVisualsComponent>(uid, out var rotationVisuals))
             return;
-
-        if (_animation.HasRunningAnimation(uid, FlippingComponent.AnimationKey))
-        {
-            RemComp<FlippingComponent>(uid);
-            _animation.Stop(uid, FlippingComponent.AnimationKey);
-        }
 
         var rotation = transform.LocalRotation + (_eyeManager.CurrentEye.Rotation - (transform.LocalRotation - transform.WorldRotation));
 

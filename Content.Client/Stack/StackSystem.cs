@@ -1,19 +1,3 @@
-// SPDX-FileCopyrightText: 2021 Vera Aguilera Puerto <6766154+Zumorica@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2021 Vera Aguilera Puerto <gradientvera@outlook.com>
-// SPDX-FileCopyrightText: 2022 Alex Evgrashin <aevgrashin@yandex.ru>
-// SPDX-FileCopyrightText: 2022 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 mirrorcult <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2023 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 TemporalOroboros <TemporalOroboros@gmail.com>
-// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-// SPDX-FileCopyrightText: 2024 Plykiya <58439124+Plykiya@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 plykiya <plykiya@protonmail.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using System.Linq;
 using Content.Client.Items;
 using Content.Client.Storage.Systems;
@@ -24,7 +8,7 @@ using Robust.Client.GameObjects;
 namespace Content.Client.Stack
 {
     [UsedImplicitly]
-    public sealed class StackSystem : SharedStackSystem
+    public sealed partial class StackSystem : SharedStackSystem // Frontier: add partial to class definition
     {
         [Dependency] private readonly AppearanceSystem _appearanceSystem = default!;
         [Dependency] private readonly ItemCounterSystem _counterSystem = default!;
@@ -72,20 +56,25 @@ namespace Content.Client.Stack
             if (args.Sprite == null || comp.LayerStates.Count < 1)
                 return;
 
+            StackLayerData data = new StackLayerData(); // Frontier: use structure to store StackLayerData
+
             // Skip processing if no actual
-            if (!_appearanceSystem.TryGetData<int>(uid, StackVisuals.Actual, out var actual, args.Component))
+            if (!_appearanceSystem.TryGetData<int>(uid, StackVisuals.Actual, out data.Actual, args.Component))
                 return;
 
-            if (!_appearanceSystem.TryGetData<int>(uid, StackVisuals.MaxCount, out var maxCount, args.Component))
-                maxCount = comp.LayerStates.Count;
+            if (!_appearanceSystem.TryGetData<int>(uid, StackVisuals.MaxCount, out data.MaxCount, args.Component))
+                data.MaxCount = comp.LayerStates.Count;
 
-            if (!_appearanceSystem.TryGetData<bool>(uid, StackVisuals.Hide, out var hidden, args.Component))
-                hidden = false;
+            if (!_appearanceSystem.TryGetData<bool>(uid, StackVisuals.Hide, out data.Hidden, args.Component))
+                data.Hidden = false;
+
+            if (comp.LayerFunction != StackLayerFunction.None) // Frontier: use stack layer function to modify appearance if provided.
+                ApplyLayerFunction(uid, comp, ref data); // Frontier: definition in _NF/Stack/StackSystem.Layers.cs
 
             if (comp.IsComposite)
-                _counterSystem.ProcessCompositeSprite(uid, actual, maxCount, comp.LayerStates, hidden, sprite: args.Sprite);
+                _counterSystem.ProcessCompositeSprite(uid, data.Actual, data.MaxCount, comp.LayerStates, data.Hidden, sprite: args.Sprite);
             else
-                _counterSystem.ProcessOpaqueSprite(uid, comp.BaseLayer, actual, maxCount, comp.LayerStates, hidden, sprite: args.Sprite);
+                _counterSystem.ProcessOpaqueSprite(uid, comp.BaseLayer, data.Actual, data.MaxCount, comp.LayerStates, data.Hidden, sprite: args.Sprite);
         }
     }
 }

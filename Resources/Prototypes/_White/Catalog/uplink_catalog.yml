@@ -1,10 +1,3 @@
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Armok <155400926+ARMOKS@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aviu00 <93730715+Aviu00@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-# SPDX-FileCopyrightText: 2025 Spatison <137375981+Spatison@users.noreply.github.com>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
 # Weaponry
 
 - type: listing
@@ -14,7 +7,7 @@
   icon: { sprite: /Textures/_White/Objects/Weapons/Melee/Daggers/betrayal_knife.rsi, state: icon }
   productEntity: BetrayalKnife
   cost:
-    Telecrystal: 30 # goob
+    Telecrystal: 8 # goob TC converted 40->8
   categories:
   - UplinkWeaponry
   conditions:
@@ -31,7 +24,7 @@
   description: uplink-night-vision-desc
   productEntity: ClothingEyesNightVisionGogglesSyndie
   cost:
-    Telecrystal: 10 # goob
+    Telecrystal: 2 # Mono Edit Goob TC to Wizden TC 10->2
   categories:
   - UplinkWearables
   conditions:
@@ -46,7 +39,7 @@
   description: uplink-night-vision-desc
   productEntity: ClothingEyesNightVisionGogglesNukie
   cost:
-    Telecrystal: 10 # goob
+    Telecrystal: 2 # Mono Edit Goob TC to Wizden TC 10->2
   categories:
   - UplinkWearables
   conditions:
@@ -63,7 +56,7 @@
   description: uplink-thermal-vision-desc
   productEntity: ClothingEyesThermalVisionGogglesSyndie
   cost:
-    Telecrystal: 10 # goob
+    Telecrystal: 2 # Mono Edit Goob TC to Wizden TC 10->2
   categories:
   - UplinkWearables
   conditions:
@@ -78,7 +71,7 @@
   description: uplink-thermal-vision-desc
   productEntity: ClothingEyesThermalVisionGogglesNukie
   cost:
-    Telecrystal: 10 # goob
+    Telecrystal: 2 # Mono Edit Goob TC to Wizden TC 10->2
   categories:
   - UplinkWearables
   conditions:

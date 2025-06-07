@@ -1,16 +1,16 @@
-# SPDX-FileCopyrightText: 2022 Andreas Kämper <andreas@kaemper.tech>
-# SPDX-FileCopyrightText: 2022 Peptide90 <78795277+Peptide90@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 chromiumboy <50505512+chromiumboy@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 K-Dynamic <20566341+K-Dynamic@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
 - type: vendingMachineInventory
   id: TankDispenserEVAInventory
   startingInventory:
+#    EmergencyOxygenTankFilled: 5 # Frontier
+#    ExtendedEmergencyOxygenTankFilled: 5 # Frontier
+    AirTankFilled: 10
+    DoubleEmergencyAirTankFilled: 10
     OxygenTankFilled: 10
+    DoubleEmergencyOxygenTankFilled: 10
+#    EmergencyNitrogenTankFilled: 5 # Frontier
+#    ExtendedEmergencyNitrogenTankFilled: 5 # Frontier
     NitrogenTankFilled: 10
+    DoubleEmergencyNitrogenTankFilled: 10
 
 - type: vendingMachineInventory
   id: TankDispenserEngineeringInventory
@@ -18,3 +18,7 @@
     PlasmaTankFilled: 10
     NitrogenTankFilled: 10
     OxygenTankFilled: 10
+  emaggedInventory:
+    DoubleEmergencyAirTankFilled: 1
+    DoubleEmergencyOxygenTankFilled: 1
+    DoubleEmergencyNitrogenTankFilled: 1

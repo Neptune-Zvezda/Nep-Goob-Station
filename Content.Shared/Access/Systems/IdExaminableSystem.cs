@@ -1,25 +1,10 @@
-// SPDX-FileCopyrightText: 2022 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 ike709 <ike709@github.com>
-// SPDX-FileCopyrightText: 2022 ike709 <ike709@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 0x6273 <0x40@keemail.me>
-// SPDX-FileCopyrightText: 2023 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 TemporalOroboros <TemporalOroboros@gmail.com>
-// SPDX-FileCopyrightText: 2023 Ygg01 <y.laughing.man.y@gmail.com>
-// SPDX-FileCopyrightText: 2023 crazybrain23 <44417085+crazybrain23@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 metalgearsloth <comedian_vs_clown@hotmail.com>
-// SPDX-FileCopyrightText: 2024 DrSmugleaf <10968691+DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Winkarst <74284083+Winkarst-cpu@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 chavonadelal <156101927+chavonadelal@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using Content.Shared.Access.Components;
 using Content.Shared.Examine;
 using Content.Shared.Inventory;
 using Content.Shared.PDA;
 using Content.Shared.Verbs;
+using Content.Shared._Mono.Company;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 
 namespace Content.Shared.Access.Systems;
@@ -28,6 +13,7 @@ public sealed class IdExaminableSystem : EntitySystem
 {
     [Dependency] private readonly ExamineSystemShared _examineSystem = default!;
     [Dependency] private readonly InventorySystem _inventorySystem = default!;
+    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
 
     public override void Initialize()
     {
@@ -86,12 +72,28 @@ public sealed class IdExaminableSystem : EntitySystem
     {
         var jobSuffix = string.IsNullOrWhiteSpace(id.LocalizedJobTitle) ? string.Empty : $" ({id.LocalizedJobTitle})";
 
+        // Get company information if available
+        var companySuffix = string.Empty;
+        if (!string.IsNullOrWhiteSpace(id.CompanyName) && id.CompanyName != "None")
+        {
+            if (_prototypeManager.TryIndex<CompanyPrototype>(id.CompanyName, out var companyProto))
+            {
+                companySuffix = $" - [color={companyProto.Color.ToHex()}]{companyProto.Name}[/color]";
+            }
+            else
+            {
+                companySuffix = $" - {id.CompanyName}";
+            }
+        }
+
         var val = string.IsNullOrWhiteSpace(id.FullName)
             ? Loc.GetString(id.NameLocId,
-                ("jobSuffix", jobSuffix))
+                ("jobSuffix", jobSuffix),
+                ("companySuffix", companySuffix))
             : Loc.GetString(id.FullNameLocId,
                 ("fullName", id.FullName),
-                ("jobSuffix", jobSuffix));
+                ("jobSuffix", jobSuffix),
+                ("companySuffix", companySuffix));
 
         return val;
     }

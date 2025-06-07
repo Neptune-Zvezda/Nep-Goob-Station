@@ -1,0 +1,29 @@
+- type: loadout
+  id: MercenaryClothingHeadHelmetMercenary
+  price: 0
+  equipment:
+    head: ClothingHeadHelmetMercenary
+
+- type: loadout
+  id: MercenaryClothingHeadHelmetMercenaryBlack
+  price: 0
+  equipment:
+    head: ClothingHeadHelmetMercenaryBlack
+
+- type: loadout
+  id: MercenaryClothingHeadBandMercenary
+  price: 0
+  equipment:
+    head: ClothingHeadBandMercenary
+
+- type: loadout
+  id: MercenaryClothingHeadHatBeretMercenary
+  price: 0
+  equipment:
+    head: ClothingHeadHatBeretMercenary
+
+- type: loadout
+  id: MercenaryClothingHeadHatBeretCommander
+  price: 500
+  equipment:
+    head: ClothingHeadHatBeretCommander

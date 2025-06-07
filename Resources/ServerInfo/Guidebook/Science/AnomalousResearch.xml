@@ -1,11 +1,3 @@
-<!--
-SPDX-FileCopyrightText: 2023 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-SPDX-FileCopyrightText: 2023 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-
-SPDX-License-Identifier: MIT
--->
-
 <Document>
 # Anomalous Research
 
@@ -24,7 +16,7 @@ Scanners, vessels, and A.P.E.s are all used in the containment and observation o
 <GuideEntityEmbed Entity="MachineAnomalyGenerator"/>
 </Box>
 
-The anomaly generator can produce a random anomaly somewhere on the station at the cost of plasma.
+The anomaly generator can produce a random anomaly somewhere on the station at the cost of bananium.
 
 ## Anomalies
 Anomalies are static objects that appear on the station. They cannot be moved, and must be worked around, no matter their location.

@@ -8,7 +8,13 @@
     },
     "states": [
         {
-            "name": "icon-advanced-mining"
+            "name": "icon-advancedmining"
+        },
+        {
+            "name": "icon-jetpack"
+        },
+        {
+            "name": "icon-paramedic"
         }
     ]
 }

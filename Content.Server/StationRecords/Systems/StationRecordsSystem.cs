@@ -1,30 +1,3 @@
-// SPDX-FileCopyrightText: 2022 Flipp Syder <76629141+vulppine@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 wrexbe <81056464+wrexbe@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 0x6273 <0x40@keemail.me>
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Moony <moony@hellomouse.net>
-// SPDX-FileCopyrightText: 2023 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 TemporalOroboros <TemporalOroboros@gmail.com>
-// SPDX-FileCopyrightText: 2023 Theomund <34360334+Theomund@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 faint <46868845+ficcialfaint@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 metalgearsloth <comedian_vs_clown@hotmail.com>
-// SPDX-FileCopyrightText: 2023 moonheart08 <moonheart08@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 DrSmugleaf <drsmugleaf@gmail.com>
-// SPDX-FileCopyrightText: 2024 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Mervill <mervills.email@gmail.com>
-// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-// SPDX-FileCopyrightText: 2024 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 deltanedas <@deltanedas:kde.org>
-// SPDX-FileCopyrightText: 2024 nikthechampiongr <32041239+nikthechampiongr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Fishbait <Fishbait@git.ml>
-// SPDX-FileCopyrightText: 2025 ScarKy0 <106310278+ScarKy0@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Zachary Higgs <compgeek223@gmail.com>
-// SPDX-FileCopyrightText: 2025 fishbait <gnesse@gmail.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using System.Diagnostics.CodeAnalysis;
 using Content.Server.Access.Systems;
 using Content.Server.Forensics;
@@ -39,6 +12,7 @@ using Content.Shared.StationRecords;
 using Robust.Shared.Enums;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
+using Content.Server._NF.SectorServices; // Frontier
 
 namespace Content.Server.StationRecords.Systems;
 
@@ -68,6 +42,10 @@ public sealed class StationRecordsSystem : SharedStationRecordsSystem
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly IdCardSystem _idCard = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private readonly SectorServiceSystem _sectorService = default!; // Frontier
+    [Dependency] private readonly ForensicsSystem _forensics = default!; // Frontier
+
+    static readonly ProtoId<JobPrototype>[] FakeJobIds = ["Contractor", "Pilot", "Mercenary"]; // Frontier
 
     public override void Initialize()
     {
@@ -124,6 +102,30 @@ public sealed class StationRecordsSystem : SharedStationRecordsSystem
         TryComp<DnaComponent>(player, out var dnaComponent);
 
         CreateGeneralRecord(station, idUid.Value, profile.Name, profile.Age, profile.Species, profile.Gender, jobId, fingerprintComponent?.Fingerprint, dnaComponent?.DNA, profile, records);
+
+        /// Frontier: generate sector-wide station record
+        if (TryComp<SpecialSectorStationRecordComponent>(player, out var specialRecord) && specialRecord.RecordGeneration == RecordGenerationType.NoRecord)
+            return;
+
+        EntityUid serviceEnt = _sectorService.GetServiceEntity();
+
+        if (TryComp(serviceEnt, out StationRecordsComponent? stationRecords))
+        {
+            //Checks if certain information should be faked, if so, fake it.
+            string playerJob = jobId;
+            string? fingerprint = fingerprintComponent?.Fingerprint;
+            string? dna = dnaComponent?.DNA;
+            if (specialRecord != null
+                && specialRecord.RecordGeneration == RecordGenerationType.FalseRecord)
+            {
+                playerJob = _random.Pick(FakeJobIds);
+                fingerprint = _forensics.GenerateFingerprint();
+                dna = _forensics.GenerateDNA();
+            }
+
+            CreateGeneralRecord(serviceEnt, idUid.Value, profile.Name, profile.Age, profile.Species, profile.Gender, playerJob, fingerprint, dna, profile, stationRecords);
+        }
+        /// End Frontier
     }
 
 

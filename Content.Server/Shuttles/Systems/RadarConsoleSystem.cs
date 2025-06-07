@@ -1,18 +1,14 @@
-// SPDX-FileCopyrightText: 2023 TemporalOroboros <TemporalOroboros@gmail.com>
-// SPDX-FileCopyrightText: 2024 Ed <96445749+TheShuEd@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using System.Numerics;
+using Content.Server.UserInterface;
 using Content.Shared.Shuttles.BUIStates;
 using Content.Shared.Shuttles.Components;
 using Content.Shared.Shuttles.Systems;
+using Content.Shared.PowerCell;
+using Content.Shared.Movement.Components;
 using Robust.Server.GameObjects;
 using Robust.Shared.Map;
+using Content.Shared.PowerCell;
+using Content.Shared.Movement.Components;
 
 namespace Content.Server.Shuttles.Systems;
 
@@ -25,6 +21,7 @@ public sealed class RadarConsoleSystem : SharedRadarConsoleSystem
     {
         base.Initialize();
         SubscribeLocalEvent<RadarConsoleComponent, ComponentStartup>(OnRadarStartup);
+        SubscribeLocalEvent<RadarConsoleComponent, BoundUIOpenedEvent>(OnUIOpened); // Frontier
     }
 
     private void OnRadarStartup(EntityUid uid, RadarConsoleComponent component, ComponentStartup args)
@@ -32,17 +29,23 @@ public sealed class RadarConsoleSystem : SharedRadarConsoleSystem
         UpdateState(uid, component);
     }
 
+    // Frontier
+    private void OnUIOpened(EntityUid uid, RadarConsoleComponent component, ref BoundUIOpenedEvent args)
+    {
+        UpdateState(uid, component);
+    }
+    // End Frontier
+
     protected override void UpdateState(EntityUid uid, RadarConsoleComponent component)
     {
         var xform = Transform(uid);
         var onGrid = xform.ParentUid == xform.GridUid;
         EntityCoordinates? coordinates = onGrid ? xform.Coordinates : null;
         Angle? angle = onGrid ? xform.LocalRotation : null;
-
         if (component.FollowEntity)
         {
             coordinates = new EntityCoordinates(uid, Vector2.Zero);
-            angle = Angle.Zero;
+            angle = Angle.FromDegrees(180); // Frontier: Angle.Zero<Angle.FromDegrees(180)
         }
 
         if (_uiSystem.HasUi(uid, RadarConsoleUiKey.Key))
@@ -60,6 +63,12 @@ public sealed class RadarConsoleSystem : SharedRadarConsoleSystem
             }
 
             state.RotateWithEntity = !component.FollowEntity;
+
+            // Frontier: ghost radar restrictions
+            if (component.MaxIffRange != null)
+                state.MaxIffRange = component.MaxIffRange.Value;
+            state.HideCoords = component.HideCoords;
+            // End Frontier
 
             _uiSystem.SetUiState(uid, RadarConsoleUiKey.Key, new NavBoundUserInterfaceState(state));
         }

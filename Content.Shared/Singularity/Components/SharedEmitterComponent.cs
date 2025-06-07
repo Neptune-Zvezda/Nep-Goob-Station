@@ -1,22 +1,5 @@
-// SPDX-FileCopyrightText: 2020 L.E.D <10257081+unusualcrow@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2020 Paul Ritter <ritter.paul1@googlemail.com>
-// SPDX-FileCopyrightText: 2020 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-// SPDX-FileCopyrightText: 2020 Remie Richards <remierichards@gmail.com>
-// SPDX-FileCopyrightText: 2020 Víctor Aguilera Puerto <zddm@outlook.es>
-// SPDX-FileCopyrightText: 2020 unusualcrow <unusualcrow@protonmail.com>
-// SPDX-FileCopyrightText: 2021 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2021 Metal Gear Sloth <metalgearsloth@gmail.com>
-// SPDX-FileCopyrightText: 2021 Visne <39844191+Visne@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2021 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 wrexbe <81056464+wrexbe@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 0x6273 <0x40@keemail.me>
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: MIT
-
 using System.Threading;
+using Content.Shared.Construction.Prototypes;
 using Content.Shared.DeviceLinking;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
@@ -56,7 +39,7 @@ public sealed partial class EmitterComponent : Component
     /// The current amount of power being used.
     /// </summary>
     [DataField("powerUseActive")]
-    public int PowerUseActive = 600;
+    public int PowerUseActive = 1500; // Frontier 600<1500
 
     /// <summary>
     /// The amount of shots that are fired in a single "burst"
@@ -71,6 +54,12 @@ public sealed partial class EmitterComponent : Component
     public TimeSpan FireInterval = TimeSpan.FromSeconds(2);
 
     /// <summary>
+    /// The base amount of time between each shot during a burst.
+    /// </summary>
+    [DataField("baseFireInterval"), ViewVariables(VVAccess.ReadWrite)]
+    public TimeSpan BaseFireInterval = TimeSpan.FromSeconds(2);
+
+    /// <summary>
     /// The current minimum delay between bursts.
     /// </summary>
     [DataField("fireBurstDelayMin")]
@@ -81,6 +70,33 @@ public sealed partial class EmitterComponent : Component
     /// </summary>
     [DataField("fireBurstDelayMax")]
     public TimeSpan FireBurstDelayMax = TimeSpan.FromSeconds(10);
+
+    /// <summary>
+    /// The base minimum delay between shot bursts.
+    /// Used for machine part rating calculations.
+    /// </summary>
+    [DataField("baseFireBurstDelayMin")]
+    public TimeSpan BaseFireBurstDelayMin = TimeSpan.FromSeconds(4);
+
+    /// <summary>
+    /// The base maximum delay between shot bursts.
+    /// Used for machine part rating calculations.
+    /// </summary>
+    [DataField("baseFireBurstDelayMax")]
+    public TimeSpan BaseFireBurstDelayMax = TimeSpan.FromSeconds(10);
+
+    /// <summary>
+    /// The multiplier for the base delay between shot bursts as well as
+    /// the fire interval
+    /// </summary>
+    [DataField("fireRateMultiplier"), ViewVariables(VVAccess.ReadWrite)]
+    public float FireRateMultiplier = 0.8f;
+
+    /// <summary>
+    /// The machine part that affects burst delay.
+    /// </summary>
+    [DataField("machinePartFireRate", customTypeSerializer: typeof(PrototypeIdSerializer<MachinePartPrototype>))]
+    public string MachinePartFireRate = "Capacitor";
 
     /// <summary>
     /// The visual state that is set when the emitter is turned on

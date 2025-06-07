@@ -1,8 +1,3 @@
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 pathetic meowmeow <uhhadd@gmail.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Content.Client.Guidebook.Richtext;
@@ -57,6 +52,9 @@ public sealed partial class GuideMicrowaveGroupEmbed : BoxContainer, IDocumentTa
 
         foreach (var recipe in prototypes)
         {
+            if (recipe.HideInGuidebook) // Frontier: super secret recipes
+                continue; // Frontier: super secret recipes
+
             var embed = new GuideMicrowaveEmbed(recipe);
             AddChild(embed);
         }

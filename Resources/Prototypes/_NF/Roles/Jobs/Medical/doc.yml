@@ -1,0 +1,43 @@
+- type: job
+  id: DirectorOfCare
+  name: job-name-doc
+  description: job-description-doc
+  playTimeTracker: JobDirectorOfCare
+  requirements:
+    - !type:OverallPlaytimeRequirement
+      time: 54000 # 20 hrs # mono - change to 15hr
+  startingGear: DocGear
+  alwaysUseSpawner: true
+  icon: "JobIconDoc"
+  requireAdminNotify: true
+  supervisors: job-supervisors-centcom
+  weight: 170
+  displayWeight: 55 # Second from the top
+  canBeAntag: false
+  accessGroups:
+  - AllAccess
+  special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant, TrackingImplant ]
+  - !type:AddComponentSpecial
+    components:
+      - type: CommandStaff
+      - type: NpcFactionMember
+        factions:
+        - TSFMC
+      - type: SurgerySpeedModifier
+        SpeedModifier: 2
+  - !type:GiveItemOnHolidaySpecial
+    holiday: FrontierBirthday
+    prototype: FrontierBirthdayGift
+
+- type: startingGear
+  id: DocGear
+  equipment:
+    pocket1: HypoMini
+    pocket2: MedicalAppraisalTool
+  storage:
+    back:
+    - RubberStampDoc
+    - BoxFolderMedicalDoctor
+    - StationAdministrationConsoleFlatpack

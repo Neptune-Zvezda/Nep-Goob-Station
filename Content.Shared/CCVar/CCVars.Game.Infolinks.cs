@@ -1,10 +1,4 @@
-// SPDX-FileCopyrightText: 2024 Simon <63975668+Simyon264@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 c4llv07e <igor@c4llv07e.xyz>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
-using Robust.Shared.Configuration;
+﻿using Robust.Shared.Configuration;
 
 namespace Content.Shared.CCVar;
 
@@ -14,7 +8,7 @@ public sealed partial class CCVars
     ///     Link to Discord server to show in the launcher.
     /// </summary>
     public static readonly CVarDef<string> InfoLinksDiscord =
-        CVarDef.Create("infolinks.discord", "https://discord.gg/nEmZN66JGc", CVar.SERVER | CVar.REPLICATED);
+        CVarDef.Create("infolinks.discord", "", CVar.SERVER | CVar.REPLICATED);
 
     /// <summary>
     ///     Link to website to show in the launcher.
@@ -26,7 +20,7 @@ public sealed partial class CCVars
     ///     Link to GitHub page to show in the launcher.
     /// </summary>
     public static readonly CVarDef<string> InfoLinksGithub =
-        CVarDef.Create("infolinks.github", "https://github.com/Neptune-Zvezda/Nep-Goob-Station/", CVar.SERVER | CVar.REPLICATED);
+        CVarDef.Create("infolinks.github", "", CVar.SERVER | CVar.REPLICATED);
 
     /// <summary>
     ///     Link to website to show in the launcher.

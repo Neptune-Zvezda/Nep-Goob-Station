@@ -1,8 +1,3 @@
-// SPDX-FileCopyrightText: 2024 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using Content.Client.UserInterface.Systems.Hotbar.Widgets;
 using Content.Client.UserInterface.Systems.Storage.Controls;
 using Content.IntegrationTests.Tests.Interaction;
@@ -86,7 +81,7 @@ public sealed class StorageInteractionTest : InteractionTest
     {
         var uid = ToClient(target);
         var hotbar = GetWidget<HotbarGui>();
-        var storageContainer  = GetControlFromField<Control>(nameof(HotbarGui.StorageContainer), hotbar);
+        var storageContainer  = GetControlFromField<Control>(nameof(HotbarGui.SingleStorageContainer), hotbar); // Frontier: upstream#35041 - StorageContainer<SingleStorageContainer
         return GetControlFromChildren<ItemGridPiece>(c => c.Entity == uid, storageContainer);
     }
 }

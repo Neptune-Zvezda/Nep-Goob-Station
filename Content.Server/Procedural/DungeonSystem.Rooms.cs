@@ -1,20 +1,8 @@
-// SPDX-FileCopyrightText: 2024 Ed <96445749+TheShuEd@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2024 Plykiya <58439124+Plykiya@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 eoineoineoin <github@eoinrul.es>
-// SPDX-FileCopyrightText: 2024 plykiya <plykiya@protonmail.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 SX_7 <sn1.test.preria.2002@gmail.com>
-// SPDX-FileCopyrightText: 2025 TemporalOroboros <TemporalOroboros@gmail.com>
-// SPDX-FileCopyrightText: 2025 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using System.Numerics;
 using Content.Shared.Decals;
 using Content.Shared.Maps;
 using Content.Shared.Procedural;
+using Content.Shared.Random.Helpers;
 using Content.Shared.Whitelist;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
@@ -31,7 +19,7 @@ public sealed partial class DungeonSystem
     /// <summary>
     /// Gets a random dungeon room matching the specified area, whitelist and size.
     /// </summary>
-    public DungeonRoomPrototype? GetRoomPrototype(Vector2i size, Random random, EntityWhitelist? whitelist = null)
+    public DungeonRoomPrototype? GetRoomPrototype(Random random, EntityWhitelist? whitelist = null, Vector2i? size = null)
     {
         return GetRoomPrototype(random, whitelist, minSize: size, maxSize: size);
     }
@@ -125,6 +113,20 @@ public sealed partial class DungeonSystem
         return roomRotation;
     }
 
+    private static Box2 GetRotatedBox(Vector2 point1, Vector2 point2, double angle)
+    {
+        if (angle == 0)
+            return new Box2(point1, point2);
+        if (Math.Abs(angle - Math.PI / 2) < 1E-5)
+            return new Box2(point2.X, point1.Y, point1.X, point2.Y);
+        if (Math.Abs(angle - Math.PI) < 1E-5)
+            return new Box2(point2, point1);
+        if (Math.Abs(angle + Math.PI / 2) < 1E-5)
+            return new Box2(point1.X, point2.Y, point2.X, point1.Y);
+
+        throw new NotImplementedException();
+    }
+
     public void SpawnRoom(
         EntityUid gridUid,
         MapGridComponent grid,
@@ -138,6 +140,8 @@ public sealed partial class DungeonSystem
         var templateMapUid = _mapManager.GetMapEntityId(roomMap);
         var templateGrid = Comp<MapGridComponent>(templateMapUid);
         var roomDimensions = room.Size;
+
+        var entitySet = new HashSet<EntityUid>();
 
         var finalRoomRotation = roomTransform.Rotation();
 

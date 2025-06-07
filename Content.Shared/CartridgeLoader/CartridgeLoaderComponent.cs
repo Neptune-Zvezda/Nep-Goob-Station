@@ -1,13 +1,3 @@
-// SPDX-FileCopyrightText: 2022 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 BramvanZijp <56019239+BramvanZijp@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Julian Giebel <juliangiebel@live.de>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using Content.Shared.Containers.ItemSlots;
 using Robust.Shared.GameStates;
 
@@ -43,7 +33,7 @@ public sealed partial class CartridgeLoaderComponent : Component
     /// The maximum amount of programs that can be installed on the cartridge loader entity
     /// </summary>
     [DataField]
-    public int DiskSpace = 8;
+    public int DiskSpace = 12; // Frontier 8<12
 
     /// <summary>
     /// Controls whether the cartridge loader will play notifications if it supports it at all

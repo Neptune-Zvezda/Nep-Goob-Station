@@ -1,10 +1,3 @@
-// SPDX-FileCopyrightText: 2023 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 deltanedas <@deltanedas:kde.org>
-// SPDX-FileCopyrightText: 2024 themias <89101928+themias@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using Content.Server.Temperature.Systems;
 using Content.Shared.Temperature;
 using Robust.Shared.Audio;
@@ -29,6 +22,14 @@ public sealed partial class EntityHeaterComponent : Component
     /// </summary>
     [DataField]
     public EntityHeaterSetting Setting = EntityHeaterSetting.Off;
+
+    // Frontier: ghost power
+    /// <summary>
+    /// Passive power draw.  Takes this much while plugged in, even when off.
+    /// </summary>
+    [DataField, ViewVariables(VVAccess.ReadWrite)]
+    public float PassivePower = 0f;
+    // End Frontier
 
     /// <summary>
     /// An optional sound that plays when the setting is changed.

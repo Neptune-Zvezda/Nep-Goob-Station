@@ -1,22 +1,3 @@
-// SPDX-FileCopyrightText: 2023 CommieFlowers <rasmus.cedergren@hotmail.com>
-// SPDX-FileCopyrightText: 2023 Julian Giebel <juliangiebel@live.de>
-// SPDX-FileCopyrightText: 2023 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Pieter-Jan Briers <pieterjan.briers@gmail.com>
-// SPDX-FileCopyrightText: 2023 ShadowCommander <10494922+ShadowCommander@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 TemporalOroboros <TemporalOroboros@gmail.com>
-// SPDX-FileCopyrightText: 2023 deltanedas <@deltanedas:kde.org>
-// SPDX-FileCopyrightText: 2023 rolfero <45628623+rolfero@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Ed <96445749+TheShuEd@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Errant <35878406+Errant-4@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 MrFippik <48425912+MrFippik@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 avery <51971268+graevy@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 metalgearsloth <comedian_vs_clown@hotmail.com>
-// SPDX-FileCopyrightText: 2024 nikthechampiongr <32041239+nikthechampiongr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using Content.Server.DeviceLinking.Components;
 using Content.Server.DeviceLinking.Events;
 using Content.Shared.UserInterface;
@@ -51,6 +32,7 @@ public sealed class SignalTimerSystem : EntitySystem
         SubscribeLocalEvent<SignalTimerComponent, AfterActivatableUIOpenEvent>(OnAfterActivatableUIOpen);
 
         SubscribeLocalEvent<SignalTimerComponent, SignalTimerTextChangedMessage>(OnTextChangedMessage);
+        SubscribeLocalEvent<SignalTimerComponent, SignalTimerRepeatToggled>(OnRepeatChangedMessage); // Frontier: Repeat toggle event subscribe
         SubscribeLocalEvent<SignalTimerComponent, SignalTimerDelayChangedMessage>(OnDelayChangedMessage);
         SubscribeLocalEvent<SignalTimerComponent, SignalTimerStartMessage>(OnTimerStartMessage);
         SubscribeLocalEvent<SignalTimerComponent, SignalReceivedEvent>(OnSignalReceived);
@@ -72,6 +54,7 @@ public sealed class SignalTimerSystem : EntitySystem
             _ui.SetUiState(uid, SignalTimerUiKey.Key, new SignalTimerBoundUserInterfaceState(component.Label,
                 TimeSpan.FromSeconds(component.Delay).Minutes.ToString("D2"),
                 TimeSpan.FromSeconds(component.Delay).Seconds.ToString("D2"),
+                component.Repeat, // Frontier: Repeat value
                 component.CanEditLabel,
                 time,
                 active != null,
@@ -94,11 +77,19 @@ public sealed class SignalTimerSystem : EntitySystem
             _ui.SetUiState(uid, SignalTimerUiKey.Key, new SignalTimerBoundUserInterfaceState(signalTimer.Label,
                 TimeSpan.FromSeconds(signalTimer.Delay).Minutes.ToString("D2"),
                 TimeSpan.FromSeconds(signalTimer.Delay).Seconds.ToString("D2"),
+                signalTimer.Repeat, // Frontier: Repeat value
                 signalTimer.CanEditLabel,
                 TimeSpan.Zero,
                 false,
                 true));
         }
+
+        // Frontier: Start new timer if repeat is on and not set to 0 seconds
+        if (signalTimer.Repeat && signalTimer.Delay > 0)
+        {
+            OnStartTimer(uid, signalTimer);
+        }
+        // End Frontier
     }
 
     public override void Update(float frameTime)
@@ -174,6 +165,19 @@ public sealed class SignalTimerSystem : EntitySystem
         component.Delay = Math.Min(args.Delay.TotalSeconds, component.MaxDuration);
         _appearanceSystem.SetData(uid, TextScreenVisuals.TargetTime, component.Delay);
     }
+
+    // Frontier: Repeat changed message
+    /// <summary>
+    ///     Called by <see cref="SignalTimerRepeatChangedMessage"/>.
+    /// </summary>
+    private void OnRepeatChangedMessage(EntityUid uid, SignalTimerComponent component, SignalTimerRepeatToggled args)
+    {
+        if (!IsMessageValid(uid, args))
+            return;
+
+        component.Repeat = args.Repeat;
+    }
+    // End Frontier
 
     /// <summary>
     ///     Called by <see cref="SignalTimerStartMessage"/> to instantiate an <see cref="ActiveSignalTimerComponent"/>,

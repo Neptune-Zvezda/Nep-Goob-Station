@@ -1,29 +1,8 @@
-# SPDX-FileCopyrightText: 2021 Elijahrane <60792108+Elijahrane@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2021 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2021 xRiriq <94037592+xRiriq@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2021 xRiriq <xRiriq.git@gmail.com>
-# SPDX-FileCopyrightText: 2022 Easypoller <117361103+Easypoller@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2022 Rinkashikachi <15rinkashikachi15@gmail.com>
-# SPDX-FileCopyrightText: 2022 Visne <39844191+Visne@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 EmoGarbage404 <retron404@gmail.com>
-# SPDX-FileCopyrightText: 2023 Link <131011403+LinkUyx@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 Ubaser <134914314+UbaserB@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 coolmankid12345 <55817627+coolmankid12345@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 coolmankid12345 <coolmankid12345@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 eclips_e <67359748+Just-a-Unity-Dev@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 lapatison <100279397+lapatison@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 MODERN <87994977+modern-nm@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 John Willis <143434770+CerberusWolfie@users.noreply.github.com>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
 - type: cargoProduct
   id: MedicalSupplies
+  abstract: true # Frontier
   icon:
-    sprite: Objects/Specific/Medical/firstaidkits.rsi
+    sprite: _NF/Objects/Specific/Medical/firstaidkits.rsi # Frontier: _NF prefix
     state: firstaid
   product: CrateMedicalSupplies
   cost: 2400
@@ -52,8 +31,9 @@
 
 - type: cargoProduct
   id: EmergencyBurnKit
+  abstract: true # Frontier
   icon:
-    sprite: Objects/Specific/Medical/firstaidkits.rsi
+    sprite: _NF/Objects/Specific/Medical/firstaidkits.rsi # Frontier: _NF prefix
     state: burnkit
   product: CrateEmergencyBurnKit
   cost: 700
@@ -62,8 +42,9 @@
 
 - type: cargoProduct
   id: EmergencyToxinKit
+  abstract: true # Frontier
   icon:
-    sprite: Objects/Specific/Medical/firstaidkits.rsi
+    sprite: _NF/Objects/Specific/Medical/firstaidkits.rsi # Frontier: _NF prefix
     state: toxinkit
   product: CrateEmergencyToxinKit
   cost: 600
@@ -72,8 +53,9 @@
 
 - type: cargoProduct
   id: EmergencyO2Kit
+  abstract: true # Frontier
   icon:
-    sprite: Objects/Specific/Medical/firstaidkits.rsi
+    sprite: _NF/Objects/Specific/Medical/firstaidkits.rsi # Frontier: _NF prefix
     state: o2kit
   product: CrateEmergencyO2Kit
   cost: 600
@@ -82,8 +64,9 @@
 
 - type: cargoProduct
   id: EmergencyBruteKit
+  abstract: true # Frontier
   icon:
-    sprite: Objects/Specific/Medical/firstaidkits.rsi
+    sprite: _NF/Objects/Specific/Medical/firstaidkits.rsi # Frontier: _NF prefix
     state: brutekit
   product: CrateEmergencyBruteKit
   cost: 600
@@ -92,8 +75,9 @@
 
 - type: cargoProduct
   id: EmergencyAdvancedKit
+  abstract: true # Frontier
   icon:
-    sprite: Objects/Specific/Medical/firstaidkits.rsi
+    sprite: _NF/Objects/Specific/Medical/firstaidkits.rsi # Frontier: _NF prefix
     state: advkit
   product: CrateEmergencyAdvancedKit
   cost: 1200
@@ -102,8 +86,9 @@
 
 - type: cargoProduct
   id: EmergencyRadiationKit
+  abstract: true # Frontier
   icon:
-    sprite: Objects/Specific/Medical/firstaidkits.rsi
+    sprite: _NF/Objects/Specific/Medical/firstaidkits.rsi # Frontier: _NF prefix
     state: radkit
   product: CrateEmergencyRadiationKit
   cost: 600
@@ -112,6 +97,7 @@
 
 - type: cargoProduct
   id: MedicalBodybags
+  abstract: true # Frontier
   icon:
     sprite: Objects/Specific/Medical/Morgue/bodybags.rsi
     state: bag_folded
@@ -122,6 +108,7 @@
 
 - type: cargoProduct
   id: MedicalBiosuit
+  abstract: true # Frontier
   icon:
     sprite: Clothing/Head/Hoods/Bio/bio.rsi
     state: icon
@@ -132,6 +119,7 @@
 
 - type: cargoProduct
   id: MedicalMindShieldImplants
+  abstract: true # Frontier
   icon:
     sprite: Objects/Specific/Medical/implanter.rsi
     state: implanter0
@@ -142,6 +130,7 @@
 
 - type: cargoProduct
   id: ChemistryP
+  abstract: true # Frontier
   icon:
     sprite: Structures/Storage/Crates/chemcrate_secure.rsi
     state: icon
@@ -152,6 +141,7 @@
 
 - type: cargoProduct
   id: ChemistryS
+  abstract: true # Frontier
   icon:
     sprite: Structures/Storage/Crates/chemcrate_secure.rsi
     state: icon
@@ -162,20 +152,11 @@
 
 - type: cargoProduct
   id: CrateChemistryD
+  abstract: true # Frontier
   icon:
     sprite: Structures/Storage/Crates/chemcrate_secure.rsi
     state: icon
   product: CrateChemistryD
   cost: 750
-  category: cargoproduct-category-name-medical
-  group: market
-
-- type: cargoProduct  # GoobStation Addition - Bounty
-  id: SurgicalSupplies
-  icon:
-    sprite: Structures/Storage/Crates/surgery.rsi
-    state: icon
-  product: CrateMedicalSurgery
-  cost: 1600
   category: cargoproduct-category-name-medical
   group: market

@@ -1,17 +1,3 @@
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Slava0135 <40753025+Slava0135@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 TemporalOroboros <TemporalOroboros@gmail.com>
-// SPDX-FileCopyrightText: 2023 Visne <39844191+Visne@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Vordenburg <114301317+Vordenburg@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 LordCarve <27449516+LordCarve@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Tayrtahn <tayrtahn@gmail.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 #nullable enable
 using System.Collections.Generic;
 using Content.Server.VendingMachines;
@@ -118,6 +104,7 @@ namespace Content.IntegrationTests.Tests
 ";
 
         [Test]
+        [Ignore("Frontier: restocks for vendors are intentionally unpurchaseable.")] // Frontier
         public async Task TestAllRestocksAreAvailableToBuy()
         {
             await using var pair = await PoolManager.GetServerClient();
@@ -259,16 +246,17 @@ namespace Content.IntegrationTests.Tests
                         "Machine inventory is empty before emptying.");
                 });
 
+                /* Frontier TODO: Restore this ones we add bank to the dummy
                 // Empty the inventory.
                 systemMachine.EjectRandom(machine, false, true, machineComponent);
                 Assert.That(systemMachine.GetAvailableInventory(machine, machineComponent), Has.Count.EqualTo(0),
                     "Machine inventory is not empty after ejecting.");
-
+                
                 // Test that the inventory is actually restocked.
                 systemMachine.TryRestockInventory(machine, machineComponent);
                 Assert.That(systemMachine.GetAvailableInventory(machine, machineComponent), Has.Count.GreaterThan(0),
                     "Machine available inventory count is not greater than zero after restock.");
-
+                */
                 mapManager.DeleteMap(testMap.MapId);
             });
 

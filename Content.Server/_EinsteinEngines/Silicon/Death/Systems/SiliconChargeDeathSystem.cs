@@ -1,15 +1,12 @@
-// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2024 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using Content.Server.Power.Components;
 using Content.Shared._EinsteinEngines.Silicon.Systems;
 using Content.Shared.Bed.Sleep;
 using Content.Server._EinsteinEngines.Silicon.Charge;
+using Content.Server._EinsteinEngines.Power.Components;
 using Content.Server.Humanoid;
 using Content.Shared.Humanoid;
+using Content.Shared.Hands.Components;
+using Content.Shared.Hands.EntitySystems; //Monolith IPC rework
 
 namespace Content.Server._EinsteinEngines.Silicon.Death;
 
@@ -18,6 +15,7 @@ public sealed class SiliconDeathSystem : EntitySystem
     [Dependency] private readonly SleepingSystem _sleep = default!;
     [Dependency] private readonly SiliconChargeSystem _silicon = default!;
     [Dependency] private readonly HumanoidAppearanceSystem _humanoidAppearanceSystem = default!;
+    [Dependency] private readonly SharedHandsSystem _hands = default!; //Monolith IPC rework
 
     public override void Initialize()
     {
@@ -51,8 +49,13 @@ public sealed class SiliconDeathSystem : EntitySystem
         if (deadEvent.Cancelled)
             return;
 
-        EntityManager.EnsureComponent<SleepingComponent>(uid);
-        EntityManager.EnsureComponent<ForcedSleepingComponent>(uid);
+        /*EntityManager.EnsureComponent<SleepingComponent>(uid); Monolith IPC rework edit start
+        EntityManager.EnsureComponent<ForcedSleepingComponent>(uid);*/
+
+        if(!TryComp<HandsComponent>(uid, out var handsComp))
+            return;
+        _hands.RemoveHands(uid, handsComp); // edit end
+
 
         if (TryComp(uid, out HumanoidAppearanceComponent? humanoidAppearanceComponent))
         {
@@ -67,8 +70,11 @@ public sealed class SiliconDeathSystem : EntitySystem
 
     private void SiliconUnDead(EntityUid uid, SiliconDownOnDeadComponent siliconDeadComp, BatteryComponent? batteryComp, EntityUid batteryUid)
     {
-        RemComp<ForcedSleepingComponent>(uid);
-        _sleep.TryWaking(uid, true, null);
+        /*RemComp<ForcedSleepingComponent>(uid); Monolith IPC rework edit start
+        _sleep.TryWaking(uid, true, null);*/
+
+        _hands.AddHand(uid, "right hand", HandLocation.Right);
+        _hands.AddHand(uid, "left hand", HandLocation.Left); // edit end
 
         siliconDeadComp.Dead = false;
 

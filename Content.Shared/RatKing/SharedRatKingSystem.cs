@@ -1,23 +1,10 @@
-// SPDX-FileCopyrightText: 2023 Kara <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2023 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Pieter-Jan Briers <pieterjan.briers@gmail.com>
-// SPDX-FileCopyrightText: 2023 Whisper <121047731+QuietlyWhisper@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 BombasterDS <115770678+BombasterDS@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 DEATHB4DEFEAT <77995199+DEATHB4DEFEAT@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2024 nikthechampiongr <32041239+nikthechampiongr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 portfiend <109661617+portfiend@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using Content.Shared.Abilities;
 using Content.Shared.Actions;
 using Content.Shared.DoAfter;
 using Content.Shared.Random;
 using Content.Shared.Random.Helpers;
 using Content.Shared.Verbs;
+using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
@@ -46,9 +33,11 @@ public abstract class SharedRatKingSystem : EntitySystem
 
         SubscribeLocalEvent<RatKingServantComponent, ComponentShutdown>(OnServantShutdown);
 
-        SubscribeLocalEvent<RatKingRummageableComponent, ComponentInit>(OnComponentInit); // Goobstation
         SubscribeLocalEvent<RatKingRummageableComponent, GetVerbsEvent<AlternativeVerb>>(OnGetVerb);
         SubscribeLocalEvent<RatKingRummageableComponent, RatKingRummageDoAfterEvent>(OnDoAfterComplete);
+
+        SubscribeLocalEvent<RatKingRummageableComponent, ComponentInit>(OnComponentInit); // Goobstation - #660
+        SubscribeLocalEvent<RummagerComponent, ComponentInit>(OnRummgerComponentInit); // Frontier
     }
 
     private void OnStartup(EntityUid uid, RatKingComponent component, ComponentStartup args)
@@ -120,18 +109,24 @@ public abstract class SharedRatKingSystem : EntitySystem
         _action.StartUseDelay(component.ActionOrderLooseEntity);
     }
 
-    // Goobstation
-    public void OnComponentInit(EntityUid uid, RatKingRummageableComponent component, ComponentInit args)
+    public void OnComponentInit(EntityUid uid, RatKingRummageableComponent component, ComponentInit args) // Goobstation - #660 Disposal unit rummage cooldown now start on spawn to prevent rummage abuse.
     {
         component.LastLooted = _gameTiming.CurTime;
         Dirty(uid, component);
     }
 
+    public void OnRummgerComponentInit(EntityUid uid, RummagerComponent component, ComponentInit args) // Frontier - per-rummager cooldown
+    {
+        component.LastRummaged = _gameTiming.CurTime;
+        Dirty(uid, component);
+    }
+
     private void OnGetVerb(EntityUid uid, RatKingRummageableComponent component, GetVerbsEvent<AlternativeVerb> args)
     {
-        if (!HasComp<RummagerComponent>(args.User)
+        if (!TryComp<RummagerComponent>(args.User, out var rummager)
             || component.Looted
-            || _gameTiming.CurTime < component.LastLooted + component.RummageCooldown)
+            || _gameTiming.CurTime < component.LastLooted + component.RummageCooldown
+            || _gameTiming.CurTime < rummager.LastRummaged + rummager.Cooldown) // Frontier: cooldown per rummager
             // DeltaV - Use RummagerComponent instead of RatKingComponent
             // (This is so we can give Rodentia rummage abilities)
             // Additionally, adds a cooldown check
@@ -158,17 +153,21 @@ public abstract class SharedRatKingSystem : EntitySystem
     private void OnDoAfterComplete(EntityUid uid, RatKingRummageableComponent component, RatKingRummageDoAfterEvent args)
     {
         // DeltaV - Rummaging an object updates the looting cooldown rather than a "previously looted" check.
-        // Note that the "Looted" boolean can still be checked (by mappers/admins)
+        // Note that the "Looted" boolean can still be checked (by mappers/admins) 
         // to disable rummaging on the object indefinitely, but rummaging will no
         // longer permanently prevent future rummaging.
         var time = _gameTiming.CurTime;
         if (args.Cancelled
             || component.Looted
-            || time < component.LastLooted + component.RummageCooldown)
+            || time < component.LastLooted + component.RummageCooldown
+            || !TryComp<RummagerComponent>(args.User, out var rummager) // Frontier: must be a rummager (also, verify cooldowns)
+            || time < rummager.LastRummaged + rummager.Cooldown) // Frontier: check cooldown
             return;
 
         component.LastLooted = time;
         // End DeltaV change
+        rummager.LastRummaged = time; // Frontier: set rummager cooldown
+
         Dirty(uid, component);
         _audio.PlayPredicted(component.Sound, uid, args.User);
 

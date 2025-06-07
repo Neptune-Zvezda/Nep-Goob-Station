@@ -1,15 +1,7 @@
-# SPDX-FileCopyrightText: 2023 Ed <96445749+TheShuEd@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 MilenVolf <63782763+MilenVolf@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Killerqu00 <47712032+Killerqu00@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 slarticodefast <161409025+slarticodefast@users.noreply.github.com>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
 - type: entity
   id: PetCarrier
   name: big pet carrier
-  description: Allows large animals to be carried comfortably. It smells vaguely of toilet water and explosives.
+  description: Allows large animals to be carried comfortably.
   parent: BaseStructureDynamic
   components:
   - type: Sprite
@@ -44,10 +36,15 @@
   - type: EntityStorage
     capacity: 1
     airtight: false
-    whitelist:
+    itemCanStoreMobs: true
+    whitelist: # Frontier - whitelist
       tags:
-        - VimPilot # If it can fit in a Vim it can fit in a pet carrier.
-        - CanPilot # Goobstation: being able to put anyone inside is a feature, not a bug
+      - VimPilot
+      - Cow
+      - Goat
+      - Mouse
+      - Pig
+    forceWhitelist: true # Frontier - force whitelist
   - type: Weldable
   - type: ResistLocker
   - type: PlaceableSurface

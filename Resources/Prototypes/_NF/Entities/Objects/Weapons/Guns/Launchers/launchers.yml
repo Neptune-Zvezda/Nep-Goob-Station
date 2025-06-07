@@ -1,22 +1,29 @@
-# SPDX-FileCopyrightText: 2024 BombasterDS <115770678+BombasterDS@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
+- type: entity
+  parent: WeaponLauncherChinaLake
+  suffix: EMP
+  id: WeaponLauncherChinaLakeEmp
+  components:
+  - type: BallisticAmmoProvider
+    proto: GrenadeEMP
+
+- type: entity
+  suffix: EMP
+  parent: [BaseC2ContrabandUnredeemable, WeaponLauncherRocket]
+  id: WeaponLauncherRocketEmp
+  components:
+  - type: BallisticAmmoProvider
+    proto: CartridgeRocketEmp
 
 - type: entity
   name: mail RPDS
-  parent: [BaseCargoContraband, WeaponLauncherChinaLake]
+  parent: [BaseC1Contraband, WeaponLauncherChinaLake]
   id: WeaponMailLake
   description: Rap(b?)id Parcel Delivery System
   components:
   - type: Sprite
     sprite: _NF/Objects/Weapons/Guns/Launchers/mail.rsi
-    layers:
-      - state: icon
-        map: ["enum.GunVisualLayers.Base"]
   - type: Clothing
     sprite: _NF/Objects/Weapons/Guns/Launchers/mail.rsi
-    quickEquip: false
     slots:
     - Back
     - Belt
@@ -26,4 +33,24 @@
     whitelist:
       tags:
         - MailCapsule
-    capacity: 4
+  - type: StaticPrice
+    price: 50
+
+- type: entity
+  name: TSFMC grenade launcher
+  parent: [BaseC2ContrabandUnredeemable, WeaponLauncherChinaLake]
+  id: WeaponLauncherNfsdLake
+  description: Able to lob both grenades and darts!
+  components:
+  - type: Sprite
+    sprite: _NF/Objects/Weapons/Guns/Launchers/nfsd_lake.rsi
+  - type: Clothing
+    sprite: _NF/Objects/Weapons/Guns/Launchers/nfsd_lake.rsi
+  - type: BallisticAmmoProvider
+    proto: null
+    whitelist:
+      tags:
+        - NFTrackingDart
+        - Grenade
+  - type: StaticPrice
+    price: 50

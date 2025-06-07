@@ -1,17 +1,6 @@
-// SPDX-FileCopyrightText: 2023 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 deltanedas <@deltanedas:kde.org>
-// SPDX-FileCopyrightText: 2024 August Eymann <august.eymann@gmail.com>
-// SPDX-FileCopyrightText: 2024 Steve <marlumpy@gmail.com>
-// SPDX-FileCopyrightText: 2024 Tayrtahn <tayrtahn@gmail.com>
-// SPDX-FileCopyrightText: 2024 marc-pelletier <113944176+marc-pelletier@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using Content.Shared.Charges.Components;
 using Content.Shared.Charges.Systems;
 using Content.Shared.Examine;
-using Content.Shared.FixedPoint;
 using Content.Shared.Interaction;
 using Content.Shared.Popups;
 using Content.Shared.RCD.Components;
@@ -53,8 +42,18 @@ public sealed class RCDAmmoSystem : EntitySystem
             return;
 
         var user = args.User;
+
+        // ## Frontier - Shipyard RCD ammo only fits in shipyard RCD.
+        // At this point RCDComponent is guaranteed
+        EnsureComp<RCDComponent>(target, out var rcdComponent);
+        if (rcdComponent.IsShipyardRCD && !comp.IsShipyardRCDAmmo || !rcdComponent.IsShipyardRCD && comp.IsShipyardRCDAmmo)
+        {
+            _popup.PopupClient(Loc.GetString("rcd-component-wrong-ammo-type"), target, user);
+            return;
+        }
+
         args.Handled = true;
-        var count = FixedPoint2.Min(charges.MaxCharges - charges.Charges,comp.Charges);
+        var count = Math.Min(charges.MaxCharges - charges.Charges, comp.Charges);
         if (count <= 0)
         {
             _popup.PopupClient(Loc.GetString("rcd-ammo-component-after-interact-full"), target, user);

@@ -1,19 +1,12 @@
-# SPDX-FileCopyrightText: 2023 deltanedas <39013340+deltanedas@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 deltanedas <@deltanedas:kde.org>
-# SPDX-FileCopyrightText: 2024 chavonadelal <156101927+chavonadelal@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aiden <aiden@djkraz.com>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
 salvage-expedition-structure-examine = This is a [color=#B02E26]destruction[/color] objective
 salvage-expedition-structure-remaining = {$count ->
     [one] {$count} structure remaining.
     *[other] {$count} structures remaining.
 }
 
-salvage-expedition-type = Mission
+# Frontier: megafauna<targets (syndies and robots are not megafauna)
+salvage-expedition-megafauna-remaining = {$count} targets remaining.
+
 salvage-expedition-window-title = Salvage expeditions
 salvage-expedition-window-difficulty = Difficulty:
 salvage-expedition-window-details = Details:
@@ -21,17 +14,31 @@ salvage-expedition-window-hostiles = Hostiles:
 salvage-expedition-window-duration = Duration:
 salvage-expedition-window-biome = Biome:
 salvage-expedition-window-modifiers = Modifiers:
-
-offering-window-claimed = Claimed
-offering-window-claim = Claim
+salvage-expedition-window-rewards = Rewards:
+salvage-expedition-window-claimed = Claimed
+salvage-expedition-window-claim = Claim
 
 salvage-expedition-window-next = Next offer
 
+# Frontier: Expedition descriptions
+salvage-expedition-desc-mining = Collect resources inside the area.
+#  You will be taxed {$tax}% of the resources collected.
+salvage-expedition-desc-structure = {$count ->
+    [one] Destroy {$count} {$structure}.
+    *[other] Destroy {$count} {MAKEPLURAL($structure)}.
+}
+salvage-expedition-desc-elimination = Kill a large and dangerous creature.
+# End Frontier
+
+salvage-expedition-type-Mining = Mining
+salvage-expedition-type-Destruction = Destruction
+salvage-expedition-type-Elimination = Elimination
+
+salvage-expedition-difficulty-Minimal = Minimal
+salvage-expedition-difficulty-Minor = Minor
 salvage-expedition-difficulty-Moderate = Moderate
 salvage-expedition-difficulty-Hazardous = Hazardous
 salvage-expedition-difficulty-Extreme = Extreme
-
-salvage-expedition-difficulty-players = Recommended salvagers:
 
 # Runner
 salvage-expedition-not-all-present = Not all salvagers are aboard the shuttle!
@@ -68,7 +75,10 @@ salvage-air-mod-toxic-atmosphere = Toxic atmosphere
 salvage-air-mod-volatile-atmosphere = Volatile atmosphere
 
 salvage-dungeon-mod-lava-brig = Lava Brig
-salvage-dungeon-mod-snowy-labs = Snowy labs
-salvage-dungeon-mod-experiment = Experiment
-salvage-dungeon-mod-haunted = Haunted
+# Frontier: labs<Labs
+salvage-dungeon-mod-snowy-labs = Snowy Labs
+# Frontier: Experiment<Experiment Site
+salvage-dungeon-mod-experiment = Experiment Site
+# Frontier: Haunted<Haunted Cave
+salvage-dungeon-mod-haunted = Haunted Cave
 salvage-dungeon-mod-mineshaft = Mineshaft

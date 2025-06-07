@@ -1,9 +1,4 @@
-// SPDX-FileCopyrightText: 2024 Simon <63975668+Simyon264@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
-using Robust.Shared.Configuration;
+﻿using Robust.Shared.Configuration;
 
 namespace Content.Shared.CCVar;
 
@@ -19,7 +14,7 @@ public sealed partial class CCVars
     ///     The dataset prototype to use when selecting a random tip.
     /// </summary>
     public static readonly CVarDef<string> TipsDataset =
-        CVarDef.Create("tips.dataset", "Tips");
+        CVarDef.Create("tips.dataset", "NFTips"); // Frontier: Tips<NFTips
 
     /// <summary>
     ///     The number of seconds between each tip being displayed when the round is not actively going

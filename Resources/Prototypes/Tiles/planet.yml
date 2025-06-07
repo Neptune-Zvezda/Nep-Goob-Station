@@ -1,16 +1,3 @@
-# SPDX-FileCopyrightText: 2023 20kdc <asdd2808@gmail.com>
-# SPDX-FileCopyrightText: 2023 Kara <lunarautomaton6@gmail.com>
-# SPDX-FileCopyrightText: 2023 Vordenburg <114301317+Vordenburg@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 deltanedas <39013340+deltanedas@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 deltanedas <@deltanedas:kde.org>
-# SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Flareguy <78941145+Flareguy@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 ShadowCommander <10494922+ShadowCommander@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
 - type: tile
   id: FloorPlanetDirt
   name: tiles-dirt-floor
@@ -135,6 +122,10 @@
     East: /Textures/Tiles/Planet/Snow/snow_double_edge_east.png
     North: /Textures/Tiles/Planet/Snow/snow_double_edge_north.png
     West: /Textures/Tiles/Planet/Snow/snow_double_edge_west.png
+  baseTurf: FloorDirt
+  itemDrop: FloorTileItemSnow # Delta V
+  deconstructTools: [ Digging ] # Frontier
+  # canShovel: true # Delta V # Frontier
   isSubfloor: true
   footstepSounds:
     collection: FootstepSnow

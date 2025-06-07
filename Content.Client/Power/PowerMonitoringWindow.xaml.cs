@@ -1,13 +1,3 @@
-// SPDX-FileCopyrightText: 2022 20kdc <asdd2808@gmail.com>
-// SPDX-FileCopyrightText: 2022 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 TemporalOroboros <TemporalOroboros@gmail.com>
-// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 chromiumboy <50505512+chromiumboy@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using Content.Client.Pinpointer.UI;
 using Content.Client.UserInterface.Controls;
 using Content.Shared.Power;
@@ -28,6 +18,7 @@ public sealed partial class PowerMonitoringWindow : FancyWindow
     [Dependency] private IEntityManager _entManager = default!;
     private readonly SpriteSystem _spriteSystem;
     [Dependency] private IGameTiming _gameTiming = default!;
+    private SharedTransformSystem _transformSystem; // Frontier modification
 
     private const float BlinkFrequency = 1f;
 
@@ -51,6 +42,7 @@ public sealed partial class PowerMonitoringWindow : FancyWindow
         IoCManager.InjectDependencies(this);
 
         _spriteSystem = _entManager.System<SpriteSystem>();
+        _transformSystem = _entManager.System<SharedTransformSystem>(); // Frontier
 
         // Set trackable entity selected action
         NavMap.TrackedEntitySelectedAction += SetTrackedEntityFromNavMap;
@@ -174,6 +166,7 @@ public sealed partial class PowerMonitoringWindow : FancyWindow
         if (monitorCoords != null && mon.IsValid())
         {
             var texture = _spriteSystem.Frame0(new SpriteSpecifier.Texture(new ResPath("/Textures/Interface/NavMap/beveled_circle.png")));
+
             var blip = new NavMapBlip(monitorCoords.Value, texture, Color.Cyan, true, false);
             NavMap.TrackedEntities[mon] = blip;
         }

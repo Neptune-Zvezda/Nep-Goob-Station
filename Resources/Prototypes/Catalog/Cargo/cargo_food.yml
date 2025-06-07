@@ -1,20 +1,6 @@
-# SPDX-FileCopyrightText: 2022 EmoGarbage404 <98561806+EmoGarbage404@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2022 KIBORG04 <bossmira4@gmail.com>
-# SPDX-FileCopyrightText: 2022 Rinkashikachi <15rinkashikachi15@gmail.com>
-# SPDX-FileCopyrightText: 2022 lapatison <100279397+lapatison@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 Checkraze <71046427+Cheackraze@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 EnDecc <33369477+Endecc@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 Tom Leys <tom@crump-leys.com>
-# SPDX-FileCopyrightText: 2023 Visne <39844191+Visne@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 MODERN <87994977+modern-nm@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-#
-# SPDX-License-Identifier: MIT
-
 - type: cargoProduct
   id: FoodPizza
+  abstract: true # Frontier
   icon:
     sprite: Objects/Consumable/Food/Baked/pizza.rsi
     state: margherita-slice
@@ -25,6 +11,7 @@
 
 - type: cargoProduct
   id: FoodPizzaLarge
+  abstract: true # Frontier
   icon:
     sprite: Objects/Consumable/Food/Baked/pizza.rsi
     state: margherita
@@ -35,6 +22,7 @@
 
 - type: cargoProduct
   id: FoodMRE
+  abstract: true # Frontier
   icon:
     sprite: Objects/Consumable/Food/snacks.rsi
     state: nutribrick
@@ -45,6 +33,7 @@
 
 - type: cargoProduct
   id: FoodCook
+  abstract: true # Frontier
   icon:
     sprite: Objects/Consumable/Food/ingredients.rsi
     state: flour-big
@@ -55,6 +44,7 @@
 
 - type: cargoProduct
   id: FoodDinnerware
+  abstract: true # Frontier
   icon:
     sprite: Objects/Consumable/Food/plates.rsi
     state: tin
@@ -65,6 +55,7 @@
 
 - type: cargoProduct
   id: FoodBarSupply
+  abstract: true # Frontier
   icon:
     sprite: Objects/Consumable/Drinks/beerglass.rsi
     state: icon
@@ -75,6 +66,7 @@
 
 - type: cargoProduct
   id: FoodSoftdrinks
+  abstract: true # Frontier
   icon:
     sprite: Objects/Consumable/Drinks/cola.rsi
     state: icon
@@ -85,6 +77,7 @@
 
 - type: cargoProduct
   id: FoodSoftdrinksLarge
+  abstract: true # Frontier
   icon:
     sprite: Objects/Consumable/Drinks/colabottle.rsi
     state: icon

@@ -1,25 +1,3 @@
-// SPDX-FileCopyrightText: 2022 Alex Evgrashin <aevgrashin@yandex.ru>
-// SPDX-FileCopyrightText: 2022 Bright0 <55061890+Bright0@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Chief-Engineer <119664036+Chief-Engineer@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Jezithyr <Jezithyr@gmail.com>
-// SPDX-FileCopyrightText: 2022 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Lucas <luc4s.rib3iro@gmail.com>
-// SPDX-FileCopyrightText: 2022 Moony <moony@hellomouse.net>
-// SPDX-FileCopyrightText: 2022 wrexbe <81056464+wrexbe@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 zero <ribeirolucasdev@gmail.com>
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Kara <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2023 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 TemporalOroboros <TemporalOroboros@gmail.com>
-// SPDX-FileCopyrightText: 2023 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 deltanedas <@deltanedas:kde.org>
-// SPDX-FileCopyrightText: 2024 BombasterDS <115770678+BombasterDS@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Errant <35878406+Errant-4@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using System.Diagnostics.CodeAnalysis;
 using Content.Server.Atmos.EntitySystems;
 using Content.Server.Body.Systems;
@@ -31,7 +9,6 @@ using Content.Shared.Explosion;
 using Content.Shared.Foldable;
 using Content.Shared.Interaction;
 using Content.Shared.Lock;
-using Content.Shared.Materials;
 using Content.Shared.Movement.Events;
 using Content.Shared.Storage.Components;
 using Content.Shared.Storage.EntitySystems;
@@ -65,7 +42,7 @@ public sealed class EntityStorageSystem : SharedEntityStorageSystem
         SubscribeLocalEvent<EntityStorageComponent, GetVerbsEvent<InteractionVerb>>(AddToggleOpenVerb);
         SubscribeLocalEvent<EntityStorageComponent, ContainerRelayMovementEntityEvent>(OnRelayMovement);
         SubscribeLocalEvent<EntityStorageComponent, FoldAttemptEvent>(OnFoldAttempt);
-        SubscribeLocalEvent<EntityStorageComponent, GotReclaimedEvent>(OnReclaimed); // Goobstation - Recycle update
+        SubscribeLocalEvent<EntityStorageComponent, EntityTerminatingEvent>(OnEntityTerminating);
 
         SubscribeLocalEvent<EntityStorageComponent, ComponentGetState>(OnGetState);
         SubscribeLocalEvent<EntityStorageComponent, ComponentHandleState>(OnHandleState);
@@ -80,6 +57,21 @@ public sealed class EntityStorageSystem : SharedEntityStorageSystem
         SubscribeLocalEvent<InsideEntityStorageComponent, AtmosExposedGetAirEvent>(OnInsideExposed);
 
         SubscribeLocalEvent<InsideEntityStorageComponent, EntGotRemovedFromContainerMessage>(OnRemoved);
+    }
+
+    /// <summary>
+    /// Handles emptying the storage container when the entity is being terminated.
+    /// This prevents the contents from being deleted along with the container.
+    /// </summary>
+    private void OnEntityTerminating(EntityUid uid, EntityStorageComponent component, ref EntityTerminatingEvent args)
+    {
+        // Skip if this component is being deleted via DestructionEventArgs,
+        // since that event handler may have specific deletion behavior
+        if (component.DeleteContentsOnDestruction)
+            return;
+
+        // Empty the container to prevent the contained entities from being deleted
+        OpenStorage(uid, component);
     }
 
     private void OnMapInit(EntityUid uid, EntityStorageComponent component, MapInitEvent args)

@@ -1,38 +1,8 @@
-// SPDX-FileCopyrightText: 2023 ElectroJr <leonsfriedrich@gmail.com>
-// SPDX-FileCopyrightText: 2023 Emisse <99158783+Emisse@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Fahasor <70820551+Fahasor@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 I.K <45953835+notquitehadouken@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Ilya Babunov <McFck@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 LordCarve <27449516+LordCarve@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Pieter-Jan Briers <pieterjan.briers@gmail.com>
-// SPDX-FileCopyrightText: 2023 Psychpsyo <60073468+Psychpsyo@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Repo <47093363+Titian3@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 TemporalOroboros <TemporalOroboros@gmail.com>
-// SPDX-FileCopyrightText: 2023 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 deltanedas <@deltanedas:kde.org>
-// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 notquitehadouken <1isthisameme>
-// SPDX-FileCopyrightText: 2024 AJCM-git <60196617+AJCM-git@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Cojoke <83733158+Cojoke-dot@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2024 eoineoineoin <github@eoinrul.es>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 BombasterDS <deniskaporoshok@gmail.com>
-// SPDX-FileCopyrightText: 2025 Eagle <lincoln.mcqueen@gmail.com>
-// SPDX-FileCopyrightText: 2025 VMSolidus <evilexecutive@gmail.com>
-// SPDX-FileCopyrightText: 2025 gus <august.eymann@gmail.com>
-// SPDX-FileCopyrightText: 2025 vanx <61917534+Vaaankas@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using System.Numerics;
-using Content.Goobstation.Common.Footprints;
 using Content.Server.Popups;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.EntitySystems;
+using Content.Shared.Chemistry.Reagent; // Frontier
 using Content.Shared.FixedPoint;
 using Content.Shared.Fluids;
 using Content.Shared.Fluids.Components;
@@ -59,6 +29,11 @@ public sealed class AbsorbentSystem : SharedAbsorbentSystem
     [Dependency] private readonly SharedSolutionContainerSystem _solutionContainerSystem = default!;
     [Dependency] private readonly UseDelaySystem _useDelay = default!;
     [Dependency] private readonly MapSystem _mapSystem = default!;
+
+    private static readonly ProtoId<ReagentPrototype> Water = "Water"; // Frontier
+    private static readonly ProtoId<ReagentPrototype> Holywater = "Holywater"; // Frontier
+    public static readonly string[] MopFriendlyReagents = [Water, Holywater]; // Frontier: separate list of reagents we consider practical for use in a mop
+    // Frontier: if updating this list, consider updating PuddleSystem.EvaporationReagents
 
     public override void Initialize()
     {
@@ -88,13 +63,13 @@ public sealed class AbsorbentSystem : SharedAbsorbentSystem
         var oldProgress = component.Progress.ShallowClone();
         component.Progress.Clear();
 
-        var water = solution.GetTotalPrototypeQuantity(PuddleSystem.EvaporationReagents);
+        var water = solution.GetTotalPrototypeQuantity(MopFriendlyReagents); // Frontier: PuddleSystem.EvaporationReagents<MopFriendlyReagents
         if (water > FixedPoint2.Zero)
         {
-            component.Progress[solution.GetColorWithOnly(_prototype, PuddleSystem.EvaporationReagents)] = water.Float();
+            component.Progress[solution.GetColorWithOnly(_prototype, MopFriendlyReagents)] = water.Float(); // Frontier: PuddleSystem.EvaporationReagents<MopFriendlyReagents
         }
 
-        var otherColor = solution.GetColorWithout(_prototype, PuddleSystem.EvaporationReagents);
+        var otherColor = solution.GetColorWithout(_prototype, MopFriendlyReagents); // Frontier: PuddleSystem.EvaporationReagents<MopFriendlyReagents
         var other = (solution.Volume - water).Float();
 
         if (other > 0f)
@@ -211,7 +186,7 @@ public sealed class AbsorbentSystem : SharedAbsorbentSystem
         }
 
         // Prioritize transferring non-evaporatives if absorbent has any
-        var contaminants = _solutionContainerSystem.SplitSolutionWithout(absorbentSoln, transferAmount, PuddleSystem.EvaporationReagents);
+        var contaminants = _solutionContainerSystem.SplitSolutionWithout(absorbentSoln, transferAmount, MopFriendlyReagents); // Frontier: PuddleSystem.EvaporationReagents<MopFriendlyReagents
         if (contaminants.Volume > 0)
         {
             _solutionContainerSystem.TryAddSolution(refillableSoln, contaminants);
@@ -236,7 +211,7 @@ public sealed class AbsorbentSystem : SharedAbsorbentSystem
         Entity<SolutionComponent> absorbentSoln,
         Entity<SolutionComponent> refillableSoln)
     {
-        var contaminantsFromAbsorbent = _solutionContainerSystem.SplitSolutionWithout(absorbentSoln, component.PickupAmount, PuddleSystem.EvaporationReagents);
+        var contaminantsFromAbsorbent = _solutionContainerSystem.SplitSolutionWithout(absorbentSoln, component.PickupAmount, MopFriendlyReagents); // Frontier: PuddleSystem.EvaporationReagents<MopFriendlyReagents
 
         var absorbentSolution = absorbentSoln.Comp.Solution;
         if (contaminantsFromAbsorbent.Volume == FixedPoint2.Zero && absorbentSolution.AvailableVolume == FixedPoint2.Zero)
@@ -253,7 +228,7 @@ public sealed class AbsorbentSystem : SharedAbsorbentSystem
             absorbentSolution.AvailableVolume;
 
         var refillableSolution = refillableSoln.Comp.Solution;
-        var waterFromRefillable = refillableSolution.SplitSolutionWithOnly(waterPulled, PuddleSystem.EvaporationReagents);
+        var waterFromRefillable = refillableSolution.SplitSolutionWithOnly(waterPulled, MopFriendlyReagents); // Frontier: PuddleSystem.EvaporationReagents<MopFriendlyReagents
         _solutionContainerSystem.UpdateChemicals(refillableSoln);
 
         if (waterFromRefillable.Volume == FixedPoint2.Zero && contaminantsFromAbsorbent.Volume == FixedPoint2.Zero)
@@ -280,6 +255,11 @@ public sealed class AbsorbentSystem : SharedAbsorbentSystem
             {
                 _popups.PopupEntity(Loc.GetString("mopping-system-full", ("used", target)), user, user);
             }
+            // Frontier: out-only refillable solutions
+            else if (TryComp<RefillableSolutionComponent>(refillableSoln.Owner, out var refillableSolnComp) && refillableSolnComp.PreventTransferOut)
+            {
+            }
+            // End Frontier
             else
             {
                 // transfer as much contaminants to refillable as will fit
@@ -307,7 +287,7 @@ public sealed class AbsorbentSystem : SharedAbsorbentSystem
             return false;
 
         // Check if the puddle has any non-evaporative reagents
-        if (_puddleSystem.CanFullyEvaporate(puddleSolution))
+        if (IsMoppable(puddleSolution)) // Frontier: _puddleSystem.CanFullyEvaporate<IsMoppable
         {
             _popups.PopupEntity(Loc.GetString("mopping-system-puddle-evaporate", ("target", target)), user, user);
             return true;
@@ -315,7 +295,7 @@ public sealed class AbsorbentSystem : SharedAbsorbentSystem
 
         // Check if we have any evaporative reagents on our absorber to transfer
         var absorberSolution = absorberSoln.Comp.Solution;
-        var available = absorberSolution.GetTotalPrototypeQuantity(PuddleSystem.EvaporationReagents);
+        var available = absorberSolution.GetTotalPrototypeQuantity(MopFriendlyReagents); // Frontier: PuddleSystem.EvaporationReagents<MopFriendlyReagents
 
         // No material
         if (available == FixedPoint2.Zero)
@@ -327,8 +307,8 @@ public sealed class AbsorbentSystem : SharedAbsorbentSystem
         var transferMax = absorber.PickupAmount;
         var transferAmount = available > transferMax ? transferMax : available;
 
-        var puddleSplit = puddleSolution.SplitSolutionWithout(transferAmount, PuddleSystem.EvaporationReagents);
-        var absorberSplit = absorberSolution.SplitSolutionWithOnly(puddleSplit.Volume, PuddleSystem.EvaporationReagents);
+        var puddleSplit = puddleSolution.SplitSolutionWithout(transferAmount, MopFriendlyReagents); // Frontier: PuddleSystem.EvaporationReagents<MopFriendlyReagents
+        var absorberSplit = absorberSolution.SplitSolutionWithOnly(puddleSplit.Volume, MopFriendlyReagents); // Frontier: PuddleSystem.EvaporationReagents<MopFriendlyReagents
 
         // Do tile reactions first
         var transform = Transform(target);
@@ -342,7 +322,7 @@ public sealed class AbsorbentSystem : SharedAbsorbentSystem
         _solutionContainerSystem.AddSolution(puddle.Solution.Value, absorberSplit);
         _solutionContainerSystem.AddSolution(absorberSoln, puddleSplit);
 
-        _audio.PlayPvs(absorber.PickupSound, Transform(target).Coordinates); // Goobstation - Footsteps Change - Play sound on footstep to puddle replacement
+        _audio.PlayPvs(absorber.PickupSound, target);
         if (useDelay != null)
             _useDelay.TryResetDelay((used, useDelay));
 
@@ -351,10 +331,15 @@ public sealed class AbsorbentSystem : SharedAbsorbentSystem
         var localPos = Vector2.Transform(targetPos, _transform.GetInvWorldMatrix(userXform));
         localPos = userXform.LocalRotation.RotateVec(localPos);
 
-        _melee.DoLunge(user, used, Angle.Zero, localPos, null, Angle.Zero, false);
-
-        RaiseLocalEvent(target, new FootprintCleanEvent()); // Corvax-Next-Footprints
+        _melee.DoLunge(user, used, Angle.Zero, localPos, null, false);
 
         return true;
     }
+
+    // Frontier: separate check from CanFullyEvaporate against mop-friendly reagents
+    public bool IsMoppable(Solution solution)
+    {
+        return solution.GetTotalPrototypeQuantity(MopFriendlyReagents) == solution.Volume;
+    }
+    // End Frontier
 }

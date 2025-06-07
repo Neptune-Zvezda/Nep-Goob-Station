@@ -1,13 +1,3 @@
-// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 DrSmugleaf <10968691+DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Ed <96445749+TheShuEd@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Kara <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2024 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers@gmail.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 #nullable enable
 using Content.Shared.CCVar;
 using Robust.Shared;
@@ -49,6 +39,9 @@ public static partial class PoolManager
         (CVars.NetBufferSize.Name, "0"),
         (CCVars.InteractionRateLimitCount.Name, "9999999"),
         (CCVars.InteractionRateLimitPeriod.Name, "0.1"),
+        (CCVars.GameLobbyDefaultPreset.Name, "secret"), // Frontier: Adventure takes ages, default to secret
+        (CCVars.StaticStorageUI.Name, "true"),// Frontier: causes storage test failures
+        (CCVars.StorageLimit.Name, "1")// Frontier: test failures with multiple storage enabled
     };
 
     public static async Task SetupCVars(RobustIntegrationTest.IntegrationInstance instance, PoolSettings settings)
@@ -73,6 +66,9 @@ public static partial class PoolManager
 
             if (cfg.IsCVarRegistered(CVars.NetInterp.Name))
                 cfg.SetCVar(CVars.NetInterp, !settings.DisableInterpolate);
+
+            if (cfg.IsCVarRegistered(CCVars.GameLobbyDefaultPreset.Name) && !string.IsNullOrEmpty(settings.GameLobbyDefaultPreset)) // Frontier
+                cfg.SetCVar(CCVars.GameLobbyDefaultPreset, settings.GameLobbyDefaultPreset); // Frontier
         });
     }
 

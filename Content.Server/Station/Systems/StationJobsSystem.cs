@@ -1,91 +1,6 @@
-// SPDX-FileCopyrightText: 2022 Kara <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2022 Moony <moonheart08@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Veritius <veritiusgaming@gmail.com>
-// SPDX-FileCopyrightText: 2022 wrexbe <81056464+wrexbe@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Moony <moony@hellomouse.net>
-// SPDX-FileCopyrightText: 2023 Skye <22365940+Skyedra@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 moonheart08 <moonheart08@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 0x6273 <0x40@keemail.me>
-// SPDX-FileCopyrightText: 2024 Aiden <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2024 Alzore <140123969+Blackern5000@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Brandon Hu <103440971+Brandon-Huu@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 CaasGit <87243814+CaasGit@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Chief-Engineer <119664036+Chief-Engineer@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Cojoke <83733158+Cojoke-dot@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 DrSmugleaf <10968691+DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Ed <96445749+TheShuEd@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Emisse <99158783+Emisse@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 EmoGarbage404 <retron404@gmail.com>
-// SPDX-FileCopyrightText: 2024 Eoin Mcloughlin <helloworld@eoinrul.es>
-// SPDX-FileCopyrightText: 2024 Errant <35878406+Errant-4@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Flareguy <78941145+Flareguy@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Hrosts <35345601+Hrosts@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 IProduceWidgets <107586145+IProduceWidgets@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Ian <ignaz.k@live.de>
-// SPDX-FileCopyrightText: 2024 Ilya246 <57039557+Ilya246@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Jake Huxell <JakeHuxell@pm.me>
-// SPDX-FileCopyrightText: 2024 Joel Zimmerman <JoelZimmerman@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 JustCone <141039037+JustCone14@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Killerqu00 <47712032+Killerqu00@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Ko4ergaPunk <62609550+Ko4ergaPunk@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Kukutis96513 <146854220+Kukutis96513@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 LordCarve <27449516+LordCarve@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Lye <128915833+Lyroth001@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 MerrytheManokit <167581110+MerrytheManokit@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Mervill <mervills.email@gmail.com>
-// SPDX-FileCopyrightText: 2024 Mr. 27 <45323883+Dutch-VanDerLinde@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 MureixloI <132683811+MureixloI@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 NakataRin <45946146+NakataRin@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 OrangeMoronage9622 <whyteterry0092@gmail.com>
-// SPDX-FileCopyrightText: 2024 PJBot <pieterjan.briers+bot@gmail.com>
-// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers@gmail.com>
-// SPDX-FileCopyrightText: 2024 Plykiya <58439124+Plykiya@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Preston Smith <92108534+thetolbean@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Psychpsyo <60073468+Psychpsyo@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Repo <47093363+Titian3@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 RiceMar1244 <138547931+RiceMar1244@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 ShadowCommander <10494922+ShadowCommander@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Simon <63975668+Simyon264@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 SlamBamActionman <83650252+SlamBamActionman@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Stalen <33173619+stalengd@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 TakoDragon <69509841+BackeTako@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Thomas <87614336+Aeshus@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 TsjipTsjip <19798667+TsjipTsjip@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Ubaser <134914314+UbaserB@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Unkn0wn_Gh0st <shadowstalkermll@gmail.com>
-// SPDX-FileCopyrightText: 2024 Vasilis <vasilis@pikachu.systems>
-// SPDX-FileCopyrightText: 2024 Vigers Ray <60344369+VigersRay@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 beck-thompson <107373427+beck-thompson@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 deathride58 <deathride58@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 deltanedas <@deltanedas:kde.org>
-// SPDX-FileCopyrightText: 2024 dffdff2423 <dffdff2423@gmail.com>
-// SPDX-FileCopyrightText: 2024 eoineoineoin <github@eoinrul.es>
-// SPDX-FileCopyrightText: 2024 foboscheshir <156405958+foboscheshir@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 lzk <124214523+lzk228@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 metalgearsloth <comedian_vs_clown@hotmail.com>
-// SPDX-FileCopyrightText: 2024 nikthechampiongr <32041239+nikthechampiongr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 plykiya <plykiya@protonmail.com>
-// SPDX-FileCopyrightText: 2024 saintmuntzer <47153094+saintmuntzer@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 shamp <140359015+shampunj@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 slarticodefast <161409025+slarticodefast@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 strO0pwafel <153459934+strO0pwafel@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 stroopwafel <j.o.luijkx@student.tudelft.nl>
-// SPDX-FileCopyrightText: 2024 themias <89101928+themias@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 to4no_fix <156101927+chavonadelal@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 voidnull000 <18663194+voidnull000@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using Content.Server._NF.Station.Components;
 using Content.Server.GameTicking;
 using Content.Server.Station.Components;
 using Content.Shared.CCVar;
@@ -100,6 +15,7 @@ using Robust.Shared.Network;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
+using Robust.Shared.Utility;
 
 namespace Content.Server.Station.Systems;
 
@@ -113,6 +29,12 @@ public sealed partial class StationJobsSystem : EntitySystem
     [Dependency] private readonly IPlayerManager _player = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly GameTicker _gameTicker = default!;
+    [Dependency] private readonly IEntityManager _entityManager = default!;
+
+    /// <summary>
+    /// The maximum number of slots allowed for any job.
+    /// </summary>
+    private const int MaxJobSlots = 10;
 
     /// <inheritdoc/>
     public override void Initialize()
@@ -254,8 +176,10 @@ public sealed partial class StationJobsSystem : EntitySystem
             case false:
                 if (!createSlot)
                     return false;
-                stationJobs.TotalJobs += amount;
-                jobList[jobPrototypeId] = amount;
+                // Limit to MaxJobSlots
+                var newAmount = Math.Min(amount, MaxJobSlots);
+                stationJobs.TotalJobs += newAmount;
+                jobList[jobPrototypeId] = newAmount;
                 UpdateJobsAvailable();
                 return true;
             case true:
@@ -267,7 +191,8 @@ public sealed partial class StationJobsSystem : EntitySystem
                 if (available + amount < 0 && !clamp)
                     return false;
 
-                jobList[jobPrototypeId] = Math.Max(avail + amount, 0);
+                // Clamp to both minimum 0 and maximum MaxJobSlots
+                jobList[jobPrototypeId] = Math.Min(Math.Max(avail + amount, 0), MaxJobSlots);
                 stationJobs.TotalJobs = jobList.Values.Select(x => x ?? 0).Sum();
                 UpdateJobsAvailable();
                 return true;
@@ -330,6 +255,9 @@ public sealed partial class StationJobsSystem : EntitySystem
         if (amount < 0)
             throw new ArgumentException("Tried to set a job to have a negative number of slots!", nameof(amount));
 
+        // Enforce the MaxJobSlots limit
+        var clampedAmount = Math.Min(amount, MaxJobSlots);
+        
         var jobList = stationJobs.JobList;
 
         switch (jobList.ContainsKey(jobPrototypeId))
@@ -337,14 +265,14 @@ public sealed partial class StationJobsSystem : EntitySystem
             case false:
                 if (!createSlot)
                     return false;
-                stationJobs.TotalJobs += amount;
-                jobList[jobPrototypeId] = amount;
+                stationJobs.TotalJobs += clampedAmount;
+                jobList[jobPrototypeId] = clampedAmount;
                 UpdateJobsAvailable();
                 return true;
             case true:
-                stationJobs.TotalJobs += amount - (jobList[jobPrototypeId] ?? 0);
+                stationJobs.TotalJobs += clampedAmount - (jobList[jobPrototypeId] ?? 0);
 
-                jobList[jobPrototypeId] = amount;
+                jobList[jobPrototypeId] = clampedAmount;
                 UpdateJobsAvailable();
                 return true;
         }
@@ -563,7 +491,7 @@ public sealed partial class StationJobsSystem : EntitySystem
 
     private bool _availableJobsDirty;
 
-    private TickerJobsAvailableEvent _cachedAvailableJobs = new(new(), new());
+    private TickerJobsAvailableEvent _cachedAvailableJobs = new(new()); // Frontier: use one dictionary of composite objects instead of two
 
     /// <summary>
     /// Assembles an event from the current available-to-play jobs.
@@ -574,27 +502,63 @@ public sealed partial class StationJobsSystem : EntitySystem
     {
         // If late join is disallowed, return no available jobs.
         if (_gameTicker.DisallowLateJoin)
-            return new TickerJobsAvailableEvent(new(), new());
-
-        var jobs = new Dictionary<NetEntity, Dictionary<ProtoId<JobPrototype>, int?>>();
-        var stationNames = new Dictionary<NetEntity, string>();
+            return new TickerJobsAvailableEvent(new()); // Frontier: changed param type
 
         var query = EntityQueryEnumerator<StationJobsComponent>();
 
+        // Frontier: the dictionary inside a dictionary replaced with <NetEntity, StationJobInformation> which is much cleaner.
+        var stationJobInformationList = new Dictionary<NetEntity, StationJobInformation>();
+
         while (query.MoveNext(out var station, out var comp))
         {
-            var netStation = GetNetEntity(station);
+            var stationNetEntity = GetNetEntity(station);
             var list = comp.JobList.ToDictionary(x => x.Key, x => x.Value);
-            jobs.Add(netStation, list);
-            stationNames.Add(netStation, Name(station));
+
+            // Frontier: overwrite station/vessel information generation
+            var isLateJoinStation = false;
+            VesselDisplayInformation? vesselDisplay = null;
+            StationDisplayInformation? stationDisplay = null;
+            if (TryComp<ExtraShuttleInformationComponent>(station, out var extraVesselInfo))
+            {
+                if (extraVesselInfo.HiddenWithoutOpenJobs && !list.Any(x => x.Value != 0))
+                    continue;
+
+                vesselDisplay = new VesselDisplayInformation(
+                    vesselAdvertisement: extraVesselInfo.Advertisement,
+                    vessel: extraVesselInfo.Vessel,
+                    hiddenIfNoJobs: extraVesselInfo.HiddenWithoutOpenJobs
+                );
+            }
+            else
+            {
+                isLateJoinStation = true;
+                if (TryComp<ExtraStationInformationComponent>(station, out var extraStationInformation))
+                {
+                    stationDisplay = new StationDisplayInformation(
+                        stationSubtext: extraStationInformation.StationSubtext,
+                        stationDescription: extraStationInformation.StationDescription,
+                        stationIcon: extraStationInformation.IconPath,
+                        lobbySortOrder: extraStationInformation.LobbySortOrder
+                    );
+                }
+            }
+            var stationJobInformation = new StationJobInformation(
+                stationName: Name(station),
+                jobsAvailable: list,
+                isLateJoinStation: isLateJoinStation,
+                stationDisplayInfo: stationDisplay,
+                vesselDisplayInfo: vesselDisplay
+            );
+            stationJobInformationList.Add(stationNetEntity, stationJobInformation);
+            // End Frontier: overwrite station/vessel information generation
         }
-        return new TickerJobsAvailableEvent(stationNames, jobs);
+        return new TickerJobsAvailableEvent(stationJobInformationList); // Frontier: changed param type
     }
 
     /// <summary>
     /// Updates the cached available jobs. Moderately expensive.
     /// </summary>
-    private void UpdateJobsAvailable()
+    public void UpdateJobsAvailable() // Frontier: private<public
     {
         _availableJobsDirty = true;
     }

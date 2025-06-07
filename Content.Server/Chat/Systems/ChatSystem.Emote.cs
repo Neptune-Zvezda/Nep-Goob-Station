@@ -1,27 +1,5 @@
-// SPDX-FileCopyrightText: 2023 20kdc <asdd2808@gmail.com>
-// SPDX-FileCopyrightText: 2023 Alex Evgrashin <aevgrashin@yandex.ru>
-// SPDX-FileCopyrightText: 2023 HerCoyote23 <131214189+HerCoyote23@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Visne <39844191+Visne@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Kara <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2024 Morb <14136326+Morb0@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Plykiya <58439124+Plykiya@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Verm <32827189+Vermidia@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 geraeumig <171753363+geraeumig@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 geraeumig <alfenos@proton.me>
-// SPDX-FileCopyrightText: 2024 plykiya <plykiya@protonmail.com>
-// SPDX-FileCopyrightText: 2024 username <113782077+whateverusername0@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 whateverusername0 <whateveremail>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Misandry <mary@thughunt.ing>
-// SPDX-FileCopyrightText: 2025 gus <august.eymann@gmail.com>
-// SPDX-FileCopyrightText: 2025 lzk <124214523+lzk228@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using System.Collections.Frozen;
-using Content.Shared.Chat;
+using System.Collections.Immutable;
 using Content.Shared.Chat.Prototypes;
 using Content.Shared.Speech;
 using Robust.Shared.Prototypes;
@@ -32,7 +10,7 @@ namespace Content.Server.Chat.Systems;
 // emotes using emote prototype
 public partial class ChatSystem
 {
-    private FrozenDictionary<string, EmotePrototype> _wordEmoteDict = FrozenDictionary<string, EmotePrototype>.Empty;
+    private FrozenDictionary<string, ImmutableList<EmotePrototype>> _wordEmoteDict = FrozenDictionary<string, ImmutableList<EmotePrototype>>.Empty; // DeltaV - Multiple emotes
 
     protected override void OnPrototypeReload(PrototypesReloadedEventArgs obj)
     {
@@ -43,7 +21,7 @@ public partial class ChatSystem
 
     private void CacheEmotes()
     {
-        var dict = new Dictionary<string, EmotePrototype>();
+        var dict = new Dictionary<string, ImmutableList<EmotePrototype>>(); // DeltaV - Multiple triggers for the same emote
         var emotes = _prototypeManager.EnumeratePrototypes<EmotePrototype>();
         foreach (var emote in emotes)
         {
@@ -52,12 +30,16 @@ public partial class ChatSystem
                 var lowerWord = word.ToLower();
                 if (dict.TryGetValue(lowerWord, out var value))
                 {
-                    var errMsg = $"Duplicate of emote word {lowerWord} in emotes {emote.ID} and {value.ID}";
-                    Log.Error(errMsg);
+                    // Begin DeltaV modification - Multiple emotes for the same words
+                    dict[lowerWord] = value.Add(emote);
+
+                    var errMsg = $"Duplicate of emote word {lowerWord}";
+                    Log.Warning(errMsg);
+
                     continue;
                 }
 
-                dict.Add(lowerWord, emote);
+                dict.Add(lowerWord, ImmutableList.Create(emote)); // End DeltaV modification
             }
         }
 
@@ -185,14 +167,21 @@ public partial class ChatSystem
     private void TryEmoteChatInput(EntityUid uid, string textInput)
     {
         var actionTrimmedLower = TrimPunctuation(textInput.ToLower());
-        if (!_wordEmoteDict.TryGetValue(actionTrimmedLower, out var emote))
+        if (!_wordEmoteDict.TryGetValue(actionTrimmedLower, out var emotes)) // DeltaV, renames to emotes
             return;
 
-        if (!AllowedToUseEmote(uid, emote))
-            return;
+        bool validEmote = false; // DeltaV - Multiple emotes for the same trigger
+        foreach (var emote in emotes)
+        {
+            if (!AllowedToUseEmote(uid, emote))
+                continue;
 
-        InvokeEmoteEvent(uid, emote);
-        return;
+            InvokeEmoteEvent(uid, emote);
+            validEmote = true; // DeltaV
+        }
+
+        if (!validEmote) // DeltaV
+            return;
 
         static string TrimPunctuation(string textInput)
         {
@@ -246,7 +235,7 @@ public partial class ChatSystem
     private void InvokeEmoteEvent(EntityUid uid, EmotePrototype proto)
     {
         var ev = new EmoteEvent(proto);
-        RaiseLocalEvent(uid, ref ev, true); // goob edit
+        RaiseLocalEvent(uid, ref ev);
     }
 }
 

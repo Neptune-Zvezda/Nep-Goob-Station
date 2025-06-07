@@ -1,10 +1,4 @@
-// SPDX-FileCopyrightText: 2022 AJCM-git <60196617+AJCM-git@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Kara <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: MIT
-
-using Content.Shared.Xenoarchaeology.XenoArtifacts;
+﻿using Content.Shared.Xenoarchaeology.XenoArtifacts;
 using Robust.Client.GameObjects;
 
 namespace Content.Client.Xenoarchaeology.XenoArtifacts;

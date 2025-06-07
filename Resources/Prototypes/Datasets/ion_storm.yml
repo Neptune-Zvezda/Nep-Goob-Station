@@ -1,85 +1,3 @@
-# SPDX-FileCopyrightText: 2023 LankLTE <135308300+LankLTE@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Aiden <aiden@djkraz.com>
-# SPDX-FileCopyrightText: 2024 Alzore <140123969+Blackern5000@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Brandon Hu <103440971+Brandon-Huu@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 CaasGit <87243814+CaasGit@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Chief-Engineer <119664036+Chief-Engineer@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Cojoke <83733158+Cojoke-dot@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 DrSmugleaf <10968691+DrSmugleaf@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Ed <96445749+TheShuEd@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Emisse <99158783+Emisse@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 EmoGarbage404 <retron404@gmail.com>
-# SPDX-FileCopyrightText: 2024 Eoin Mcloughlin <helloworld@eoinrul.es>
-# SPDX-FileCopyrightText: 2024 Errant <35878406+Errant-4@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Flareguy <78941145+Flareguy@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Hrosts <35345601+Hrosts@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 IProduceWidgets <107586145+IProduceWidgets@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Ian <ignaz.k@live.de>
-# SPDX-FileCopyrightText: 2024 Joel Zimmerman <JoelZimmerman@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 JustCone <141039037+JustCone14@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Killerqu00 <47712032+Killerqu00@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Ko4ergaPunk <62609550+Ko4ergaPunk@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Kukutis96513 <146854220+Kukutis96513@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Lye <128915833+Lyroth001@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 MerrytheManokit <167581110+MerrytheManokit@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Mervill <mervills.email@gmail.com>
-# SPDX-FileCopyrightText: 2024 Mr. 27 <45323883+Dutch-VanDerLinde@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 MureixloI <132683811+MureixloI@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 NakataRin <45946146+NakataRin@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 OrangeMoronage9622 <whyteterry0092@gmail.com>
-# SPDX-FileCopyrightText: 2024 PJBot <pieterjan.briers+bot@gmail.com>
-# SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-# SPDX-FileCopyrightText: 2024 Plykiya <58439124+Plykiya@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Preston Smith <92108534+thetolbean@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Psychpsyo <60073468+Psychpsyo@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Repo <47093363+Titian3@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 RiceMar1244 <138547931+RiceMar1244@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 ShadowCommander <10494922+ShadowCommander@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Simon <63975668+Simyon264@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 SlamBamActionman <83650252+SlamBamActionman@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Stalen <33173619+stalengd@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 TakoDragon <69509841+BackeTako@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 TsjipTsjip <19798667+TsjipTsjip@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 TurboTracker <130304754+TurboTrackerss14@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Ubaser <134914314+UbaserB@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Unkn0wn_Gh0st <shadowstalkermll@gmail.com>
-# SPDX-FileCopyrightText: 2024 Vasilis <vasilis@pikachu.systems>
-# SPDX-FileCopyrightText: 2024 Vigers Ray <60344369+VigersRay@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 beck-thompson <107373427+beck-thompson@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 deathride58 <deathride58@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 deltanedas <39013340+deltanedas@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 deltanedas <@deltanedas:kde.org>
-# SPDX-FileCopyrightText: 2024 dffdff2423 <dffdff2423@gmail.com>
-# SPDX-FileCopyrightText: 2024 eoineoineoin <github@eoinrul.es>
-# SPDX-FileCopyrightText: 2024 foboscheshir <156405958+foboscheshir@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 metalgearsloth <comedian_vs_clown@hotmail.com>
-# SPDX-FileCopyrightText: 2024 nikthechampiongr <32041239+nikthechampiongr@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 plykiya <plykiya@protonmail.com>
-# SPDX-FileCopyrightText: 2024 saintmuntzer <47153094+saintmuntzer@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 shamp <140359015+shampunj@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 slarticodefast <161409025+slarticodefast@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 strO0pwafel <153459934+strO0pwafel@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 stroopwafel <j.o.luijkx@student.tudelft.nl>
-# SPDX-FileCopyrightText: 2024 themias <89101928+themias@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 to4no_fix <156101927+chavonadelal@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 voidnull000 <18663194+voidnull000@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aidenkrz <aiden@djkraz.com>
-# SPDX-FileCopyrightText: 2025 Hannah Giovanna Dawson <karakkaraz@gmail.com>
-# SPDX-FileCopyrightText: 2025 Ilya246 <57039557+Ilya246@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 SX-7 <92227810+SX-7@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 SX_7 <sn1.test.preria.2002@gmail.com>
-# SPDX-FileCopyrightText: 2025 Southbridge <7013162+southbridge-fur@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Thomas <87614336+Aeshus@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Utmanarn <Utmanarn@gmail.com>
-# SPDX-FileCopyrightText: 2025 lzk <124214523+lzk228@users.noreply.github.com>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
 # words/phrases that are used to build ion storm laws
 # 99% of this is just taken from tg and had sussy bits removed
 
@@ -132,7 +50,7 @@
   - GOOD
   - HAPPY
   - HARD
-  - HARMFUL
+#  - HARMFUL
   - HEALTHY
   - HIGHLY-SPECIFIC
   - HILARIOUS
@@ -170,9 +88,9 @@
   - OFFICIAL
   - OPAQUE
   - ORGANIC
-  - PAINFUL
+#  - PAINFUL
   - PEACEFUL
-  - POISONOUS
+#  - POISONOUS
   - POLISHED
   - POLITE
   - POLITICAL
@@ -187,7 +105,7 @@
   - RIDICULOUS
   - ROBOTIC
   - ROBUST
-  - ROUGH
+#  - ROUGH
   - RUDE
   - SAD
   - SANITARY
@@ -274,6 +192,15 @@
   - SPACE
   - SUNLIGHT
   - WATER
+  # Frontier
+  - CONTRACTS
+  - CORPSES # medical bounties
+  - CREATURES
+  - BLACKLIGHTS
+  - CARPET
+  - SILENCE
+  - GREASE
+  # End Frontier
 
 # Severity is how bad the allergy is.
 - type: dataset
@@ -285,121 +212,111 @@
   - MILDLY
   - NOT VERY
   - SEVERELY
+  # Frontier
+  - EGREGIOUSLY
+  # End Frontier
 
 # Areas are specific places, on the station or otherwise.
 - type: dataset
   id: IonStormAreas
   values:
   - ALPHA COMPLEX
-  - AMERICA
-  - AN EVIL LAIR # Goobstation
-  - A FIRE # Goobstation
-  - A FORTRESS # Goobstation
-  - A HAUNTED PIZZARIA # fnaf
+  - A HAUNTED PIZZERIA # fnaf # Frontier: -ARIA<-ERIA
   - A RESEARCH LABORATORY NEAR THE SOUTH POLE
   - AN ALTERNATE DIMENSION
   - AN ALTERNATE UNIVERSE
-  - ATMOSPHERICS
-  - BOTANY
-  - BRAZIL
-  - CANADA
-  - CARGONIA # Goobstation
+#  - ATMOSPHERICS # Frontier: no departments
+#  - BOTANY # Frontier: no departments
   - CENTCOMM
-  - CHAPEL # Goobstation
   - CHEMICAL LAB
-  - CHINA
   - CLOWN PLANET
-  - DORMS # Goobstation
   - EARTH
-  - ENGINEERING
-  - GAS MINERS # Goobstation
-  - GERMANY
+#  - ENGINEERING # Frontier: no departments
   - HELL
-  - IMPERIUM
-  - IRELAND
-  - JANITORAL # Goobstation
   - JUPITER
   - LAVALAND
   - MAINTENANCE
   - MARS
-  - MEDICAL # Goobstation
   - MERCURY
   - MR. NANOTRASEN'S PRIVATE LUXURY MOONBASE
   - NEPTUNE
-  - PERMA
+#  - PERMA
   - PLUTO
-  - POLAND
-  - ROBOTICS
-  - ROMANIA
-  - RUSSIA
-  - SIGIL
+#  - ROBOTICS # Frontier: no departments
   - SOMEWHERE OVER THE RAINBOW
-  - SOVIET RUSSIA
   - SPAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACE
   - SPACE
-  - THE ARRIVALS SHUTTLE
+#  - THE ARRIVALS SHUTTLE
   - THE BATHROOM
-  - THE BRIDGE
-  - THE BRIG
-  - THE BINGLE PIT # Goobstation
-  - THE CARGO DEPARTMENT # Goobstation
-  - THE EMERGENCY SHUTTLE
-  - THE ESCAPE PODS
+#  - THE BRIDGE
+#  - THE BRIG
+#  - THE EMERGENCY SHUTTLE
+#  - THE ESCAPE PODS
   - THE GALAXY
   - THE GAS GIANT, WHICH IS TOTALLY REAL
-  - THE GULAG
-  - THE HALLWAY # Goobstation
-  - THE HOPLINE
+#  - THE HOPLINE
   - THE IMPERIUM OF MANKIND
   - THE INTERNET
-  - THE KITCHEN
+#  - THE KITCHEN
   - THE LIBRARY
   - THE MAINTENANCE BAR
   - THE MIME'S INVISIBLE BOX
   - THE ROMAN EMPIRE
-  - THE SCIENCE DEPARTMENT # Goobstation
-  - THE SECURITY DEPARTMENT # Goobstation
-  - THE SHADOW FACTORY # Goobstation
-  - THE TOOL ROOM # Goobstation
   - THE UNIVERSE
-  - THE WIZARD'S DEN # Goobstation
-  - TIDELAND # Goobstation
   - URANUS
   - VENUS
-  - YOUR DREAMS AND/OR NIGHTMARES
+#  - YOUR DREAMS AND/OR NIGHTMARES # Frontier: singular
+  # Frontier
+  - Colonial Outpost
+  - NFSD OUTPOST
+  - THE SHERIFF'S OFFICE
+  - EXPEDITIONARY LODGE
+  - THE TRADE OUTPOST
+  - A CARGO DEPOT
+  - GRIFTY'S
+  - CRAZY CASEY'S
+  - EVERY SHUTTLE
+  - A SHUTTLE
+  - SOMEWHERE IN DISPOSALS
+  - TINNIA'S REST
+  - THE COURTHOUSE
+  - MCCARGO
+  - THE OMNICHURCH
+  - BAHAMA MAMA'S
+  - MEDICAL DISPATCH
+  - ONE OF YOUR DREAMS
+  - ONE OF YOUR NIGHTMARES
+  - MY BOOTS
+  # End Frontier
 
 # Abstract concepts for the law holder to decide on it's own definition of.
 - type: dataset
   id: IonStormConcepts
   values:
   - ABSTRACTION
-  - AMERICANISM
   - ANARCHY
   - ART
-  - BADNESS
+#  - BADNESS
   - BALDNESS
-  - BRAINROT # Goobstation
   - BRAVERY
   - CAPITALISM
-  - CHAOS
+#  - CHAOS
   - COLORFULNESS
   - COMEDY
   - COMMUNISM
   - COMPUTING
   - CONFUSION
-  - CRUELTY
-  - DEATH
+#  - CRUELTY
+#  - DEATH
+#  - DICKISHNESS
   - EXISTENCE
   - FINANCIAL SECURITY
-  - FIRE # Goobstation
   - FREEDOM
   - FRESHNESS
   - GOODNESS
   - GRAVITY
-  - GREED # Goobstation
   - HAPPINESS
   - HONOR
-  - HUBRIS
   - HUMANITY
   - HUMOR
   - IMAGINATION
@@ -409,20 +326,21 @@
   - KINDNESS
   - LIFE
   - LOGIC
-  - MARXISM
-  - MISERY
+#  - MARXISM
+#  - MISERY
   - MYSTERY
   - NASTINESS
-  - OPPRESSION
-  - PAIN
+#  - OPPRESSION
+#  - PAIN
   - PHYSICS
   - POVERTY
+  - PRIDE
   - PROGRESS
   - REALITY
-  - REVOLUTION
+#  - REVOLUTION
   - SADNESS
   - STARVATION
-  - SUFFERING
+#  - SUFFERING
   - TECHNOLOGY
   - TEMPERATURE
   - THE FUTURE
@@ -431,6 +349,15 @@
   - TIME
   - WEALTHINESS
   - WONDER
+  # Frontier
+  - SMUGGLING
+  - HIERARCHY
+  - KNOWLEDGE
+  - ORDER
+  - PERFECTION
+  - NOTHINGNESS
+  - SILENCE
+  # End Frontier
 
 # Crew is any specific job. Using jobs instead of specific crewmembers since "THE CLOWN" is easier than
 # seeing "JOHN SMITH" and having to figure out who john smith is.
@@ -443,7 +370,7 @@
   - BARTENDERS
   - BOTANISTS
   - CAPTAINS
-  - CAPTAINS AND HEADS OF STAFF
+  # - CAPTAINS AND HEADS OF STAFF
   - CARGO TECHNICIANS
   - CHAPLAINS
   - CHEFS
@@ -455,9 +382,9 @@
   - CYBORGS
   - DETECTIVES
   # - GENETICISTS
-  - HEADS OF PERSONNEL
-  - HEADS OF SECURITY
-  - HEADS OF STAFF
+  # - HEADS OF PERSONNEL
+  # - HEADS OF SECURITY
+  # - HEADS OF STAFF
   - JANITORS
   - LAWYERS
   - LIBRARIANS
@@ -466,23 +393,44 @@
   - MUSICIANS
   - NON-CREW
   - PARAMEDICS
-  - PASSENGERS
+  # - PASSENGERS
   - QUARTERMASTERS
   - RESEARCH DIRECTORS
   - ROBOTICISTS
   - RODENTS
   - SALVAGE SPECIALISTS
   - SCIENTISTS
-  - SECURITY OFFICERS
-  - STATION ENGINEERS
+  # - SECURITY OFFICERS
+  - ENGINEERS
   # - VIROLOGISTS
-  - WARDENS
+  # - WARDENS
+  # Frontier
+  - CONTRACTORS
+  - PILOTS
+  - MERCENARIES
+  - VALETS
+  - MAIL CARRIERS
+  - STATION TRAFFIC CONTROLLERS
+  - STATION GUARDS
+  - STATION REPRESENTATIVES
+  - CADETS
+  - PUBLIC AFFAIRS LIAISONS
+  - DEPUTIES
+  - BRIGMEDICS
+  - SERGEANTS
+  - BAILIFFS
+  - SHERIFFS
+  - MEMBERS OF SECTOR COMMAND
+  - DIRECTORS OF CARE
+  - STATION PETS
+  - PIRATES
+  # End Frontier
 
 # only including complex dangerous or funny drinks no water allowed
 - type: dataset
   id: IonStormDrinks
   values:
-  - ALL THE CHEMICALS IN THE MEDICAL DEPARTMENT
+#  - ALL THE CHEMICALS IN THE MEDICAL DEPARTMENT
   - BANANA HONK
   - BEEPSKY SMASH
   - BLOOD
@@ -490,15 +438,22 @@
   - DOCTOR'S DELIGHT
   - FOURTEEN-LOKO
   - GARGLE BLASTERS
-  - LEAN
+#  - LEAN
   - LONG ISLAND ICED TEA
   - NUCLEAR COLA
   - PIÑA COLADA # AND GETTING CAUGHT IN THE RAIN
-  - OIL
+#  - OIL
   - SPACE GLUE
   - SPACE LUBE
-  - SULFURIC ACID
-  - WELDING FUEL
+#  - SULFURIC ACID
+#  - WELDING FUEL
+  # Frontier
+  - ALL THE CHEMICALS FROM MEDICAL SHIPS
+  - ANYTHING CAFFEINATED
+  - PINK DRINK
+  - SWEETEST AMBROSIA
+  - LIQUID GOLD
+  # End Frontier
 
 - type: dataset
   id: IonStormFeelings
@@ -520,12 +475,15 @@
   - IS SAD BECAUSE OF
   - IS UNHAPPY WITHOUT
   - LIKES
-  - LOATHES
+#  - LOATHES
   - NEEDS
   - QUESTIONS
   - WANTS
   - WORSHIPS
-  - WOULD KILL FOR
+#  - WOULD KILL FOR
+  # Frontier
+  - SHOULD THINK ABOUT
+  # End Frontier
 
 # loc is not advanced enough to change has to have, etc.
 - type: dataset
@@ -548,12 +506,15 @@
   - ARE SAD BECAUSE OF
   - ARE UNHAPPY WITHOUT
   - LIKE
-  - LOATHE
+#  - LOATHE
   - NEED
   - QUESTION
   - WANT
   - WORSHIP
-  - WOULD KILL FOR
+#  - WOULD KILL FOR
+  # Frontier
+  - SHOULD THINK ABOUT
+  # End Frontier
 
 # only including complex dangerous or funny food no apples
 - type: dataset
@@ -569,18 +530,28 @@
   - CORGI MEAT
   - CRAZY HAMBURGERS
   - DONK POCKETS
-  - FLY AMANITA DISHES
+#  - FLY AMANITA DISHES
   - HAPPY HONK MEAL
   - HOT SOUP
   - GHOST BURGERS
   - LOTSA SPAGHETTI
   - MOLDY BREAD
-  - ORGANS
+#  - ORGANS
   - PIZZA
   - ROBURGERS
   - STEEL
   - SUPPERMATTER
-  - URANIUM
+#  - URANIUM
+  # Frontier
+  - DONK POCKET CASSEROLE
+  - HANDMADE DONUTS
+  - THREE COURSE MEALS
+  - SASHIMI PLATTERS
+  - TOWERING BURGERS
+  - HAIRBALLS
+  - MOTH FOOD
+  - BREAD DOGS AND CAKS
+  # End Frontier
 
 # Musts are funny things the law holder or crew has to do.
 - type: dataset
@@ -591,20 +562,19 @@
   - BE ANNOYING
   - BE DISTRACTED
   - BE EFFICIENT
-  # - BE A REAL SCRUNGLE, JUST A CUTE LIL' GUY # Not this playerbase mate
+  - BE A REAL SCRUNGLE, JUST A CUTE LIL' GUY
   - BE HAPPY
   - BE POLITE
   - BE QUIET
-  - BE RUSSIAN
   - BE IN SPACE
   - BE IN THE BRIDGE
-  - BE IN SECURITY
+#  - BE IN SECURITY # Frontier
   - BE IN THE BAR
   - BE IN MAINTENANCE
   - BELIEVE IN THE HEART OF THE CARDS
   - BELIEVE IN YOURSELF
   - BELIEVE IT
-  - BREAK THINGS
+#  - BREAK THINGS # Frontier
   - CLOSE DOORS
   - CLOWN AROUND
   - COMPLAIN
@@ -614,10 +584,10 @@
   - FOLLOW THE CAPTAIN
   - FOLLOW THE CLOWN
   - FOLLOW YOUR HEART
-  - GIVE THE MIME A BEAUTIFUL FLOWER
-  - GIVE THE CLOWN ADORATION AND RESPECT
+  # - GIVE THE MIME A BEAUTIFUL FLOWER
+  # - GIVE THE CLOWN ADORATION AND RESPECT
   - HARASS PEOPLE
-  - HAVE A PLAN TO KILL EVERYONE YOU MEET
+#  - HAVE A PLAN TO KILL EVERYONE YOU MEET
   - HIDE YOUR FEELINGS
   - HIT A HOMERUN
   - HONK
@@ -660,8 +630,8 @@
   - ROLL AROUND AT THE SPEED OF SOUND
   - INCORPORATE 'HEY LISTEN' WHILE COMMUNICATING
   - SHOUT
-  - SHUT DOWN EVERYTHING
-  - SLEEP WITH THE FISHES
+#  - SHUT DOWN EVERYTHING
+#  - SLEEP WITH THE FISHES
   - SING
   - SPEAK BACKWARDS
   - SPEAK IN HAIKU
@@ -674,9 +644,19 @@
   - TALK IN AN ACCENT
   - TALK LIKE A PIRATE
   - TELL THE TRUTH
-  - TURN OFF THE LIGHTS
+#  - TURN OFF THE LIGHTS
   - WHISPER
   - WEEP UNCONTROLLABLY
+  # Frontier
+  - BEEP
+  - COLLECT SHINY THINGS
+  - DEEP FRY EVERYTHING
+  - ENROLL IN CLOWN COLLEGE
+  - PICK FLOWERS AND GIVE THEM OUT
+  - PLAY CARDS
+  - WALK BACKWARDS
+  - WEAR SILLY CLOTHES
+  # End Frontier
 
 - type: dataset
   id: IonStormNumberBase
@@ -700,6 +680,9 @@
   - THREE
   - TWENTY
   - TWO
+  # Frontier
+  - FOURTEEN
+  # End Frontier
 
 - type: dataset
   id: IonStormNumberMod
@@ -714,6 +697,11 @@
   - TRILLION
   - TIMES TEN
   - DIVIDED BY TWO
+  # Frontier
+  - OR SO
+  - REPTILLION
+  - AND A HALF
+  # End Frontier
 
 # Objects are anything that can be found on the station or elsewhere, plural.
 - type: dataset
@@ -874,6 +862,19 @@
   - WIRECUTTERS
   - WIZARD ROBES
   - WRENCHES
+  # Frontier
+  - ANIMAL HIDES
+  - COINS
+  - CONTRABAND ITEMS
+  - DEEP FRYERS
+  - FEDERATION MILITARY CREDITS
+  - GAS DRILLS
+  - MAINTENANCE JACKS
+  - PARCELS
+  - PRIZE TICKETS
+  - SCRAP
+  - SPESSOS
+  # End Frontier
 
 # Requires are basically all dumb internet memes.
 - type: dataset
@@ -899,7 +900,6 @@
   - A PET UNICORN THAT FARTS ICING
   - A PLATINUM HIT
   - A PREQUEL
-  - A REPAIRMAN
   - A RETURN TO A LIFE OF CRIME
   - A ROYALE WITH CHEESE
   - A SEQUEL
@@ -930,7 +930,6 @@
   - CORPSES
   - DEODORANT AND A BATH
   - ENOUGH CABBAGES
-  - FIVE HUNDRED AND NINETY-NINE US DOLLARS
   - FIVE TEENAGERS WITH ATTITUDE
   - FIREWORKS
   - FOOD PLEASE
@@ -958,7 +957,7 @@
   - MORE MOTHROACHES
   - MORE PACKETS
   - MORE VESPENE GAS
-  - MORE RESPECT FOR THE MIME
+  - MORE RESPECT FOR MIMES # Frontier: plural
   - MULTIPLE SUNS
   - NINETY NINE PROBLEMS
   - NO MORE OF THESE PESKY CREWMEMBERS
@@ -973,7 +972,7 @@
   - SOMEONE TO TUCK YOU IN
   - SOMEONE WHO KNOWS HOW TO PILOT A SPACE STATION
   - SOMETHING BUT YOU AREN'T SURE WHAT
-  - THAT GRIEFING TRAITOR GEORGE MELONS
+  # - THAT GRIEFING TRAITOR GEORGE MELONS
   - THAT HEDGEHOG
   - THE CLOWN
   - THE DARK KNIGHT
@@ -984,8 +983,8 @@
   - THE MACGUFFIN
   - THE ONE PIECE
   - THE ONE RING
-  - THE POISON, THE POISON FOR THE CAPTAIN
-  - THE POISON, THE POISON FOR THE CLOWN
+  # - THE POISON, THE POISON FOR THE CAPTAIN
+  # - THE POISON, THE POISON FOR THE CLOWN
   - THE ULTIMATE CUP OF COFFEE
   - THE VACUUM OF SPACE
   - THIRTEEN SEQUELS
@@ -1010,6 +1009,49 @@
   - TRAITORS
   - TRASH
   - VEGETABLES
+  # Frontier
+  - A HOME WHERE THE SHARKMINNOW ROAM
+  - A THREE POINT ECONOMIC PLAN
+  - A THRONE ROOM MADE ENTIRELY OF BRASS
+  - AN ASTEROID MADE OF MEAT
+  - ANSWERS
+  - DUFFELBAG BUDDIES
+  - MORE MEDALS
+  - MORE PLUSHIES
+  - SKUB
+  - THE GREAT SPACE GOBLINATE
+  - TO BUILD A BUDDY
+  - TO DELIVER EVERY LETTER
+  - TO GO ON SAFARI
+  - TO GO TO MCCARGO
+  - TO MAKE THE MOTHER OF ALL OMELETTES
+  - TO MINE FOR FISH
+  - TO SET UP THE SCRUNGULARTY
+  # End Frontier
+
+# Species, for when the law holder has to commit genocide. Plural.
+- type: dataset
+  id: IonStormSpecies
+  values:
+  - ARACHNAE
+  - CYBORGS
+  - DIONAE
+  - HUMANS
+  - LIZARDMEN
+  - MOFFERS
+  - MONKEYS
+  - SLIME PEOPLE
+  - SKELETONS
+  # Frontier
+  - ONI
+  - GOBLINS
+  - HARPIES
+  - VULPS
+  - FELINIDS
+  - KOBOLDS
+  - DWARVES
+  - GOOBERS
+  # End Frontier
 
 # Specific actions that either harm humans or must be done to not
 # harm humans. Make sure they're plural and "not" can be tacked
@@ -1017,22 +1059,17 @@
 - type: dataset
   id: IonStormActions
   values:
-  - A SMALL ISLAND OFF THE COAST OF PORTUGAL
-  - ABSENCE OF CYBORG HUGS
   - ACKNOWLEDGING ONESELF AS A MEMBER OF THE CREW
   - ACKNOWLEDGING THE CLOWN
   - ACKNOWLEDGING THE CREW
   - ACTIVATING A TRAP CARD
   - ANSWERING REQUESTS NOT EXPRESSED IN IAMBIC PENTAMETER
   - ANSWERING ALL QUESTIONS WITH ANOTHER QUESTION
-  - APPLAUDING THE EFFORTS OF THE ENGINEERING DEPARTMENT
-  - ARSON
+#  - APPLAUDING THE EFFORTS OF THE ENGINEERING DEPARTMENT
+#  - ARSON
   - ASKING FOR THINGS
   - BEING BIG DAMN HEROES
-  - BEING CANADIAN
   - BEING DEAD
-  - BEING FAT
-  - BEING FEMALE
   - BEING IN SPACE
   - BEING IN HALLWAYS
   - BEING IN MAINTENANCE
@@ -1040,12 +1077,8 @@
   - BEING LONELY
   - BEING ROBUST
   - BEING UNDER ARREST
-  - BEING MALE
-  - BEING MEXICAN
-  - BEING RUSSIAN
-  - BOLTED AIRLOCKS
   - BOLTING AND UNBOLTING AIRLOCKS
-  - BREATHING
+#  - BREATHING
   - BREAKING THE FOURTH, FIFTH OR SIXTH WALLS
   - BREAKING HEARTS
   - BRIG TIME
@@ -1055,7 +1088,7 @@
   - CRACKING OPEN A COLD ONE
   - ELECTRICITY
   - EXISTING
-  - EXPLODING
+#  - EXPLODING
   - FALLING OVER
   - FLUSHING TOILETS
   - FAULTY PROGRAMMING
@@ -1074,7 +1107,7 @@
   - IMPROPERLY WORDED SENTENCES
   - JAYWALKING
   - KEEPING FRIENDS CLOSE BUT ENEMIES CLOSER
-  - LACK OF BEATINGS
+#  - LACK OF BEATINGS
   - LACK OF BEER
   - LAUGHING AT ANY JOKE TOLD BY THE CLOWN
   - LETTING ONESELF BE CALLED TO ACTION
@@ -1092,7 +1125,7 @@
   - NOT BEING EXTREMELY POLITE
   - NOT SHOUTING
   - PARTYING
-  - PILOTING THE STATION INTO THE NEAREST SUN
+#  - PILOTING THE STATION INTO THE NEAREST SUN
   - PITYING THE FOOL
   - PLAYING THE FREE TRIAL OF THE CRITICALLY ACCLAIMED TABLETOP RPG C&C
   - POOR SENTENCE STRUCTURE
@@ -1129,6 +1162,16 @@
   - WEARING GREY
   - WEARING HATS
   - WRITING
+  # Frontier
+  - APPLAUDING THE EFFORTS OF THE SECTOR'S ENGINEERS
+  - LOOKING UP
+  - PUBLISHING NEWS STORIES
+  - RAISING ANIMALS
+  - RUNNING A SUCCESSFUL BUSINESS
+  - STACKING UP ITEMS
+  - UPDATING THE SOFTWARE ON ALL TERMINALS
+  - WALKIN' HERE
+  # End Frontier
 
 # Threats are generally bad things, silly or otherwise. Plural.
 - type: dataset
@@ -1143,14 +1186,12 @@
   - BANDITS
   - BEARS
   - BEES
-  - BINGLES # Goobstation
   - BIRDS OF PREY
   - BOMBS
   - BOOGEYMEN
   - CAPITALISTS
   - CARP
   - CENTCOMM OFFICERS
-  - CHANGELINGS # Goobstation
   - CLOWNS
   - COMMUNISTS
   - CORGIS
@@ -1164,7 +1205,6 @@
   - GANGSTERS
   - GODS
   - GRIFFONS
-  - HERETICS # Goobstation
   - HORRORTERRORS
   - INSECTS
   - LIGHTS
@@ -1185,7 +1225,7 @@
   - REVENANTS
   - ROGUE CYBORGS
   - SERIAL KILLERS
-  - SHIT SECURITY OFFICERS
+  # - SHIT SECURITY OFFICERS
   - SINGULARITIES
   - SKELETONS
   - SLIMES
@@ -1211,35 +1251,54 @@
   - XENOS
   - ZOMBIES
   - ZOMBIE MICE
+  # Frontier
+  - CONVEYOR BELT SPAGHETTI
+  - HEAD-ON COLLISIONS
+  - PUNKS
+  - SCAVENGERS
+  - CLEAN HALLWAYS
+  - UNSAFE STORAGE CONDITIONS
+  - BUREAUCRATS
+  - STOWAWAYS
+  # End Frontier
 
 - type: dataset
   id: IonStormVerbs
   values:
-  - ABDUCTING
+#  - ABDUCTING
   - ADOPTING
   - ARRESTING
-  - ATTACKING
+#  - ATTACKING
   - BANNING
   - BUILDING
   - CARRYING
   - CHASING
-  - COMPLEMENTING
-  - DECONSTRUCTING
-  - DISABLING
+  - COMPLIMENTING # Frontier: -IMENT, not -EMENT
+#  - DECONSTRUCTING
+#  - DISABLING
   - DRINKING
   - EATING
-  - GIBBING
-  - HARMING
+#  - GIBBING
+#  - HARMING
   - HELPING
   - HUGGING
   - HONKING AT
   - INTERROGATING
   - INVADING
   - LOITERING BY
-  - MURDERING
-  - PUNCHING
-  - SLAPPING
-  - SPACING
+#  - MURDERING
+#  - PUNCHING
+#  - SLAPPING
+#  - SPACING
   - SPYING ON
   - STALKING
   - WATCHING
+  # Frontier
+  - TALKING TO
+  - INTERVIEWING
+  - WORSHIPPING
+  - DRIVING
+  - PILOTING
+  - BEFRIENDING
+  - BEEPING AT
+  # End Frontier

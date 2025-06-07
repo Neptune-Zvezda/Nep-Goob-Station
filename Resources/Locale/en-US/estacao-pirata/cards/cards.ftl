@@ -1,10 +1,3 @@
-# SPDX-FileCopyrightText: 2024 coderabbitai[bot] <136622811+coderabbitai[bot]@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aiden <aiden@djkraz.com>
-# SPDX-FileCopyrightText: 2025 RadsammyT <32146976+RadsammyT@users.noreply.github.com>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
 card-examined = This is the {$target}.
 cards-verb-shuffle = Shuffle
 card-verb-shuffle-success = Cards shuffled
@@ -93,4 +86,3 @@ card-sc-joker = joker
 
 container-sealed = A holographic security seal is on it. Opening it will have the seal dissipate.
 container-unsealed = The seal attached to it dissipates.
-

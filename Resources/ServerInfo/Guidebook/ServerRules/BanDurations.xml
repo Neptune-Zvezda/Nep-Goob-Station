@@ -1,14 +1,7 @@
-<!--
-SPDX-FileCopyrightText: 2024 Chief-Engineer <119664036+Chief-Engineer@users.noreply.github.com>
-SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-
-SPDX-License-Identifier: AGPL-3.0-or-later
--->
-
-<Document>
+﻿<Document>
   # Ban Durations
 
-  Bans can be appealed on the discord in the ban appeals section.
+  Bans can be appealed at forum.ss14.io in the ban appeals section.
 
   ## Temporary
   Temporary bans will be lifted automatically after a certain amount of time. If they are a game ban, they will tell you how much time is remaining when you try to connect.

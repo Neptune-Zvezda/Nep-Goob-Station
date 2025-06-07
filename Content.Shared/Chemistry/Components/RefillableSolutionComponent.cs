@@ -1,12 +1,3 @@
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 ElectroJr <leonsfriedrich@gmail.com>
-// SPDX-FileCopyrightText: 2023 Emisse <99158783+Emisse@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 TemporalOroboros <TemporalOroboros@gmail.com>
-// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: MIT
-
 using Content.Shared.FixedPoint;
 using Robust.Shared.GameStates;
 
@@ -31,4 +22,10 @@ public sealed partial class RefillableSolutionComponent : Component
     /// </summary>
     [DataField, ViewVariables(VVAccess.ReadWrite)]
     public FixedPoint2? MaxRefill = null;
+
+    /// <summary>
+    /// Frontier: prevent transferring solution out into others
+    /// </summary>
+    [DataField, ViewVariables(VVAccess.ReadWrite)]
+    public bool PreventTransferOut = false;
 }

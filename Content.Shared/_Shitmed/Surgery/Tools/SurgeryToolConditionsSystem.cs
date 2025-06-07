@@ -1,14 +1,6 @@
-// SPDX-FileCopyrightText: 2024 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 deltanedas <@deltanedas:kde.org>
-// SPDX-FileCopyrightText: 2024 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using Content.Shared.Item.ItemToggle.Components;
 using Content.Shared.Popups;
 using Content.Shared.Smoking;
-using Content.Shared.Smoking.Components;
 using Content.Shared.Weapons.Ranged;
 using Content.Shared.Weapons.Ranged.Components;
 using Content.Shared.Weapons.Ranged.Events;
@@ -28,7 +20,6 @@ public sealed class SurgeryToolConditionsSystem : EntitySystem
 
         SubscribeLocalEvent<ItemToggleComponent, SurgeryToolUsedEvent>(OnToggleUsed);
         SubscribeLocalEvent<GunComponent, SurgeryToolUsedEvent>(OnGunUsed);
-        SubscribeLocalEvent<MatchstickComponent, SurgeryToolUsedEvent>(OnMatchUsed);
     }
 
     private void OnToggleUsed(Entity<ItemToggleComponent> ent, ref SurgeryToolUsedEvent args)
@@ -48,17 +39,6 @@ public sealed class SurgeryToolConditionsSystem : EntitySystem
             return;
 
         _popup.PopupEntity(Loc.GetString("surgery-tool-reload"), ent, args.User);
-        args.Cancelled = true;
-    }
-
-    private void OnMatchUsed(Entity<MatchstickComponent> ent, ref SurgeryToolUsedEvent args)
-    {
-        var state = ent.Comp.CurrentState;
-        if (state == SmokableState.Lit)
-            return;
-
-        var key = "surgery-tool-match-" + (state == SmokableState.Burnt ? "replace" : "light");
-        _popup.PopupEntity(Loc.GetString(key), ent, args.User);
         args.Cancelled = true;
     }
 }

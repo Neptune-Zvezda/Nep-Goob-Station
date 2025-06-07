@@ -1,20 +1,4 @@
-// SPDX-FileCopyrightText: 2022 Jezithyr <Jezithyr@gmail.com>
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Jezithyr <jezithyr@gmail.com>
-// SPDX-FileCopyrightText: 2023 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 metalgearsloth <comedian_vs_clown@hotmail.com>
-// SPDX-FileCopyrightText: 2024 Aviu00 <93730715+Aviu00@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2024 username <113782077+whateverusername0@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 whateverusername0 <whateveremail>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 deltanedas <@deltanedas:kde.org>
-// SPDX-FileCopyrightText: 2025 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
-using Content.Shared.Body.Components;
+﻿using Content.Shared.Body.Components;
 using Content.Shared.Body.Systems;
 using Robust.Shared.Containers;
 using Robust.Shared.GameStates;
@@ -23,6 +7,7 @@ using Robust.Shared.Serialization;
 // Shitmed Change
 
 using Content.Shared.Containers.ItemSlots;
+using Content.Shared.Damage;
 using Content.Shared.FixedPoint;
 using Content.Shared._Shitmed.Medical.Surgery.Tools;
 using Content.Shared._Shitmed.Targeting;
@@ -31,7 +16,7 @@ using Robust.Shared.Prototypes;
 namespace Content.Shared.Body.Part;
 
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
-//[Access(typeof(SharedBodySystem))] // goob edit - all access :godo:
+[Access(typeof(SharedBodySystem))]
 public sealed partial class BodyPartComponent : Component, ISurgeryToolComponent // Shitmed Change
 {
     // Need to set this on container changes as it may be several transform parents up the hierarchy.
@@ -47,22 +32,22 @@ public sealed partial class BodyPartComponent : Component, ISurgeryToolComponent
     public BodyPartSlot? ParentSlot;
 
     /// <summary>
-    /// Shitmed Change: Bleeding stacks to give when this body part is severed.
-    /// Doubled for <see cref="IsVital"/>. parts.
+    ///     Shitmed Change: Amount of damage to deal when the part gets removed.
+    ///     Only works if IsVital is true.
     /// </summary>
-    [DataField]
-    public float SeverBleeding = 4f;
+    [DataField, AutoNetworkedField]
+    public FixedPoint2 VitalDamage = 100;
 
-    [DataField]
+    [DataField, AlwaysPushInheritance]
     public string ToolName { get; set; } = "A body part";
 
-    [DataField]
-    public string SlotId = string.Empty;
+    [DataField, AlwaysPushInheritance]
+    public string SlotId = "";
 
     [DataField, AutoNetworkedField]
     public bool? Used { get; set; } = null;
 
-    [DataField]
+    [DataField, AlwaysPushInheritance]
     public float Speed { get; set; } = 1f;
 
     /// <summary>
@@ -86,7 +71,7 @@ public sealed partial class BodyPartComponent : Component, ISurgeryToolComponent
     /// <summary>
     ///     Shitmed Change: Whether this body part can be enabled or not. Used for non-functional prosthetics.
     /// </summary>
-    [DataField, AutoNetworkedField]
+    [DataField]
     public bool CanEnable = true;
 
     /// <summary>
@@ -141,7 +126,7 @@ public sealed partial class BodyPartComponent : Component, ISurgeryToolComponent
     /// <summary>
     ///     Shitmed Change: The ID of the base layer for this body part.
     /// </summary>
-    [DataField, AutoNetworkedField]
+    [DataField, AutoNetworkedField, AlwaysPushInheritance]
     public string? BaseLayerId;
 
     /// <summary>
@@ -161,10 +146,8 @@ public sealed partial class BodyPartComponent : Component, ISurgeryToolComponent
         { TargetIntegrity.Healthy, 10 },
     };
 
-
-    [DataField, AutoNetworkedField]
+    [DataField, AutoNetworkedField, AlwaysPushInheritance]
     public BodyPartType PartType = BodyPartType.Other;
-
 
     // TODO BODY Replace with a simulation of organs
     /// <summary>
@@ -174,7 +157,7 @@ public sealed partial class BodyPartComponent : Component, ISurgeryToolComponent
     [DataField("vital"), AutoNetworkedField]
     public bool IsVital;
 
-    [DataField, AutoNetworkedField]
+    [DataField, AutoNetworkedField, AlwaysPushInheritance]
     public BodyPartSymmetry Symmetry = BodyPartSymmetry.None;
 
     /// <summary>

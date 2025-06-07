@@ -1,45 +1,3 @@
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 12rabbits <53499656+12rabbits@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Alzore <140123969+Blackern5000@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 ArtisticRoomba <145879011+ArtisticRoomba@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Brandon Hu <103440971+Brandon-Huu@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Dimastra <65184747+Dimastra@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Dimastra <dimastra@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Ed <96445749+TheShuEd@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Emisse <99158783+Emisse@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Eoin Mcloughlin <helloworld@eoinrul.es>
-// SPDX-FileCopyrightText: 2024 IProduceWidgets <107586145+IProduceWidgets@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 JIPDawg <51352440+JIPDawg@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 JIPDawg <JIPDawg93@gmail.com>
-// SPDX-FileCopyrightText: 2024 Mervill <mervills.email@gmail.com>
-// SPDX-FileCopyrightText: 2024 Moomoobeef <62638182+Moomoobeef@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 PJBot <pieterjan.briers+bot@gmail.com>
-// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers@gmail.com>
-// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2024 PopGamer46 <yt1popgamer@gmail.com>
-// SPDX-FileCopyrightText: 2024 PursuitInAshes <pursuitinashes@gmail.com>
-// SPDX-FileCopyrightText: 2024 QueerNB <176353696+QueerNB@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Saphire Lattice <lattice@saphi.re>
-// SPDX-FileCopyrightText: 2024 ShadowCommander <10494922+ShadowCommander@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Simon <63975668+Simyon264@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Spessmann <156740760+Spessmann@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Thomas <87614336+Aeshus@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Winkarst <74284083+Winkarst-cpu@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 deltanedas <@deltanedas:kde.org>
-// SPDX-FileCopyrightText: 2024 eoineoineoin <github@eoinrul.es>
-// SPDX-FileCopyrightText: 2024 github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 lzk <124214523+lzk228@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 slarticodefast <161409025+slarticodefast@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 stellar-novas <stellar_novas@riseup.net>
-// SPDX-FileCopyrightText: 2024 themias <89101928+themias@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using System.Linq;
 using System.Numerics;
 using Content.Server.Shuttles.Components;
@@ -47,6 +5,8 @@ using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Collision.Shapes;
+using Robust.Shared.Physics.Components;
+using Content.Shared.Shuttles.Components; // Frontier
 
 namespace Content.Server.Shuttles.Systems;
 
@@ -103,6 +63,11 @@ public sealed partial class DockingSystem
             return false;
         }
 
+        // Frontier: check dock types
+        if ((shuttleDock.DockType & gridDock.DockType) == DockType.None)
+            return false;
+        // End Frontier
+
         // First, get the station dock's position relative to the shuttle, this is where we rotate it around
         var stationDockPos = shuttleDockXform.LocalPosition +
                              shuttleDockXform.LocalRotation.RotateVec(new Vector2(0f, -1f));
@@ -152,12 +117,12 @@ public sealed partial class DockingSystem
     /// Tries to get a valid docking configuration for the shuttle to the target grid.
     /// </summary>
     /// <param name="priorityTag">Priority docking tag to prefer, e.g. for emergency shuttle</param>
-    public DockingConfig? GetDockingConfig(EntityUid shuttleUid, EntityUid targetGrid, string? priorityTag = null)
+    public DockingConfig? GetDockingConfig(EntityUid shuttleUid, EntityUid targetGrid, string? priorityTag = null, DockType dockType = DockType.Airlock) // Frontier: add dockType
     {
         var gridDocks = GetDocks(targetGrid);
         var shuttleDocks = GetDocks(shuttleUid);
 
-        return GetDockingConfigPrivate(shuttleUid, targetGrid, shuttleDocks, gridDocks, priorityTag);
+        return GetDockingConfigPrivate(shuttleUid, targetGrid, shuttleDocks, gridDocks, priorityTag, dockType); // Frontier: add dockType
     }
 
     /// <summary>
@@ -166,12 +131,13 @@ public sealed partial class DockingSystem
     public DockingConfig? GetDockingConfigAt(EntityUid shuttleUid,
         EntityUid targetGrid,
         EntityCoordinates coordinates,
-        Angle angle)
+        Angle angle,
+        DockType dockType = DockType.Airlock) // Frontier
     {
         var gridDocks = GetDocks(targetGrid);
         var shuttleDocks = GetDocks(shuttleUid);
 
-        var configs = GetDockingConfigs(shuttleUid, targetGrid, shuttleDocks, gridDocks);
+        var configs = GetDockingConfigs(shuttleUid, targetGrid, shuttleDocks, gridDocks, dockType); // Frontier: add dockType
 
         foreach (var config in configs)
         {
@@ -191,7 +157,8 @@ public sealed partial class DockingSystem
         EntityUid shuttleUid,
         EntityUid targetGrid,
         List<Entity<DockingComponent>> shuttleDocks,
-        List<Entity<DockingComponent>> gridDocks)
+        List<Entity<DockingComponent>> gridDocks,
+        DockType dockType) // Frontier: add dockType
     {
         var validDockConfigs = new List<DockingConfig>();
 
@@ -214,9 +181,19 @@ public sealed partial class DockingSystem
             {
                 var shuttleDockXform = _xformQuery.GetComponent(dockUid);
 
+                // Frontier: skip docks that don't match type
+                if ((shuttleDock.DockType & dockType) == DockType.None)
+                    continue;
+                // End Frontier
+
                 foreach (var (gridDockUid, gridDock) in gridDocks)
                 {
                     var gridXform = _xformQuery.GetComponent(gridDockUid);
+
+                    // Frontier: skip docks that don't match type
+                    if ((gridDock.DockType & dockType) == DockType.None)
+                        continue;
+                    // End Frontier
 
                     if (!CanDock(
                             shuttleDock, shuttleDockXform,
@@ -264,10 +241,20 @@ public sealed partial class DockingSystem
                         if (other == shuttleDock)
                             continue;
 
+                        // Frontier: skip docks that don't match type
+                        if ((other.DockType & dockType) == DockType.None)
+                            continue;
+                        // End Frontier
+
                         foreach (var (otherGridUid, otherGrid) in gridDocks)
                         {
                             if (otherGrid == gridDock)
                                 continue;
+
+                            // Frontier: skip docks that don't match type
+                            if ((otherGrid.DockType & dockType) == DockType.None)
+                                continue;
+                            // End Frontier
 
                             if (!CanDock(
                                     other,
@@ -318,9 +305,10 @@ public sealed partial class DockingSystem
         EntityUid targetGrid,
         List<Entity<DockingComponent>> shuttleDocks,
         List<Entity<DockingComponent>> gridDocks,
-        string? priorityTag = null)
+        string? priorityTag = null,
+        DockType dockType = DockType.Airlock) // Frontier
     {
-        var validDockConfigs = GetDockingConfigs(shuttleUid, targetGrid, shuttleDocks, gridDocks);
+        var validDockConfigs = GetDockingConfigs(shuttleUid, targetGrid, shuttleDocks, gridDocks, dockType); // Frontier: add dockType
 
         if (validDockConfigs.Count <= 0)
             return null;

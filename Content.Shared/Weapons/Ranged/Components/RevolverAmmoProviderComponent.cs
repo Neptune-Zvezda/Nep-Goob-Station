@@ -1,15 +1,3 @@
-// SPDX-FileCopyrightText: 2022 ElectroJr <leonsfriedrich@gmail.com>
-// SPDX-FileCopyrightText: 2022 Kara <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2022 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 T-Stalker <43253663+DogZeroX@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 T-Stalker <le0nel_1van@hotmail.com>
-// SPDX-FileCopyrightText: 2022 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 metalgearsloth <metalgearsloth@gmail.com>
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: MIT
-
 using Content.Shared.Whitelist;
 using Robust.Shared.Audio;
 using Robust.Shared.Containers;
@@ -60,4 +48,18 @@ public sealed partial class RevolverAmmoProviderComponent : AmmoProviderComponen
 
     [DataField("soundSpin")]
     public SoundSpecifier? SoundSpin = new SoundPathSpecifier("/Audio/Weapons/Guns/Misc/revolver_spin.ogg");
+
+    // Frontier: better revolver reloading
+    /// <summary>
+    /// Is it okay for this entity to directly transfer its valid ammunition into another provider?
+    /// </summary>
+    [ViewVariables(VVAccess.ReadWrite), DataField("mayTransfer")]
+    public bool MayTransfer;
+
+    /// <summary>
+    /// DoAfter delay for filling a bullet into another ballistic ammo provider.
+    /// </summary>
+    [DataField("fillDelay")]
+    public TimeSpan FillDelay = TimeSpan.FromSeconds(0.7); // Assume revolvers are harder to reload, and so should take more time.
+    // End Frontier
 }

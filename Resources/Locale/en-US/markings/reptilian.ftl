@@ -1,17 +1,4 @@
-# SPDX-FileCopyrightText: 2022 Flipp Syder <76629141+vulppine@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2022 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2022 metalgearsloth <comedian_vs_clown@hotmail.com>
-# SPDX-FileCopyrightText: 2024 Flareguy <78941145+Flareguy@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 KittenColony <149278380+KittenColony@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Nairod <110078045+Nairodian@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 T-Stalker <43253663+DogZeroX@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Ubaser <134914314+UbaserB@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 pigeonpeas <147350443+pigeonpeas@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aiden <aiden@djkraz.com>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
+# Frontier: all entries capitalized
 marking-LizardFrillsShort-frills_short = Lizard Frills (Short)
 marking-LizardFrillsShort = Lizard Frills (Short)
 
@@ -119,8 +106,8 @@ marking-LizardHornsFloppyKoboldEars = Lizard Ears (Floppy Kobold)
 marking-LizardChestUnderbelly-body_underbelly = Lizard Chest (Underbelly)
 marking-LizardChestUnderbelly = Lizard Chest (Underbelly)
 
-marking-LizardChestBackspikes-body_backspikes = Lizard Back spikes (Four)
-marking-LizardChestBackspikes = Lizard Back spikes (Four)
+marking-LizardChestBackspikes-body_backspikes = Lizard Back Spikes (Four)
+marking-LizardChestBackspikes = Lizard Back Spikes (Four)
 
 marking-LizardSnoutSplotch = Lizard Snout (Splotch)
 marking-LizardSnoutSplotch-snout_splotch_primary = Muzzle

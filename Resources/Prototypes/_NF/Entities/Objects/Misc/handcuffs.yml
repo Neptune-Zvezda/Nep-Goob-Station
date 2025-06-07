@@ -1,22 +1,11 @@
-# SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-# SPDX-FileCopyrightText: 2025 pheenty <fedorlukin2006@gmail.com>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
 - type: entity
   name: web cocoon
-  description: Strong web cocoon used to restrain preys or just criminals.
+  description: A strong web cocoon used to restrain criminals or prey. Prevents rotting.
   id: WebCocoon
-  parent: Handcuffs
+  parent: ClothingOuterStraightjacket
   components:
-  - type: Item
-    size: Huge
   - type: Handcuff
-    cuffTime: 5
-    breakoutTime: 30
-    uncuffTime: 10
-    cuffedRSI: _NF/Objects/Misc/webcocoon.rsi
-    bodyIconState: body-overlay
+    cuffedRSI: Clothing/OuterClothing/Misc/webcocoon.rsi
     breakOnRemove: true
     brokenPrototype: MaterialWebSilk1
     startCuffSound:
@@ -30,8 +19,9 @@
     startBreakoutSound:
       path: /Audio/Items/Handcuffs/rope_takeoff.ogg
   - type: Construction
-    graph: WebCocoon
-    node: end
+    graph: WebObjects
+    node: cocoon
   - type: Sprite
-    sprite: _NF/Objects/Misc/webcocoon.rsi
+    sprite: Clothing/OuterClothing/Misc/webcocoon.rsi
     state: cocoon
+  - type: AntiRottingContainer

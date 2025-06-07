@@ -1,11 +1,3 @@
-# SPDX-FileCopyrightText: 2024 IProduceWidgets <107586145+IProduceWidgets@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 yglop <95057024+yglop@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Ilya246 <57039557+Ilya246@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Piras314 <p1r4s@proton.me>
-# SPDX-FileCopyrightText: 2025 deltanedas <39013340+deltanedas@users.noreply.github.com>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
 # tables
 
 - type: entityTable
@@ -19,9 +11,9 @@
 - type: entityTable
   id: SpicyPestEventsTable
   table: !type:AllSelector # we need to pass a list of rules, since rules have further restrictions to consider via StationEventComp
-    children:
-    - id: KingRatMigration
-    - id: SnailMigration
+    children: [] # Frontier
+    # - id: KingRatMigration # Frontier
+    # - id: SnailMigration # Frontier
 
 # events
 
@@ -30,14 +22,12 @@
   parent: BaseStationEventShortDelay
   components:
   - type: StationEvent
-    startAnnouncement: station-event-vent-creatures-start-announcement
+    startAnnouncement: station-event-vent-creatures-nf-start-announcement # Frontier: add nf-
     startAudio:
       path: /Audio/Announcements/attention.ogg
     earliestStart: 15
     weight: 6
-    duration: 30 # DeltaV: was 50, used as a delay now
-    chaos: # Goobstation
-      Mess: 10 # there's 15 morbillion mice usually and they're easy to kill
+    duration: 50
   - type: VentCrittersRule
     entries:
     - id: MobMouse
@@ -55,16 +45,13 @@
   parent: BaseStationEventShortDelay
   components:
   - type: StationEvent
-    startAnnouncement: station-event-vent-creatures-start-announcement
+    startAnnouncement: station-event-vent-creatures-nf-start-announcement # Frontier: add nf-
     startAudio:
       path: /Audio/Announcements/attention.ogg
     earliestStart: 15
     weight: 6
-    duration: 30 # DeltaV: was 50, used as a delay now
+    duration: 50
     minimumPlayers: 30 # Hopefully this is enough for the Rat King's potential Army (it was not, raised from 15 -> 30)
-    chaos: # Goobstation
-      Mess: 10
-      Hostile: 1 # low chance to spawn rat king
   - type: VentCrittersRule
     entries:
     - id: MobMouse
@@ -75,8 +62,6 @@
       prob: 0.02
     - id: MobMouseCancer
       prob: 0.001
-    - id: MobLootbug # Goobstation
-      prob: 0.005
     specialEntries:
     - id: SpawnPointGhostRatKing
       prob: 0.001
@@ -86,36 +71,30 @@
   parent: BaseStationEventShortDelay
   components:
   - type: StationEvent
-    startAnnouncement: station-event-vent-creatures-start-announcement
+    startAnnouncement: station-event-vent-creatures-nf-start-announcement # Frontier: add nf-
     startAudio:
       path: /Audio/Announcements/attention.ogg
     weight: 6
-    duration: 30 # DeltaV: was 50, used as a delay now
-    chaos: # Goobstation
-      Mess: 15
-      Hostile: 2
+    duration: 50
   - type: VentCrittersRule
     entries:
     - id: MobCockroach
       prob: 0.03
     - id: MobMothroach
-      prob: 0.008
-    - id: MobLootbug # Goobstation
-      prob: 0.01
+      prob: 0.006 # Frontier: 0.008<0.006
+    - id: MobRosyMothroach # Frontier
+      prob: 0.002 # Frontier
 
 - type: entity
   id: SnailMigrationLowPop
   parent: BaseStationEventShortDelay
   components:
   - type: StationEvent
-    startAnnouncement: station-event-vent-creatures-start-announcement
+    startAnnouncement: station-event-vent-creatures-nf-start-announcement # Frontier: add nf-
     startAudio:
       path: /Audio/Announcements/attention.ogg
     weight: 6
-    duration: 30 # DeltaV: was 50, used as a delay now
-    chaos: # Goobstation
-      Friend: -5
-      Mess: 5
+    duration: 50
   - type: VentCrittersRule
     entries:
     - id: MobSnail
@@ -130,16 +109,13 @@
   parent: BaseStationEventShortDelay
   components:
   - type: StationEvent
-    startAnnouncement: station-event-vent-creatures-start-announcement
+    startAnnouncement: station-event-vent-creatures-nf-start-announcement # Frontier: add nf-
     startAudio:
       path: /Audio/Announcements/attention.ogg
     earliestStart: 15
     weight: 6
-    duration: 30 # DeltaV: was 50, used as a delay now
+    duration: 50
     minimumPlayers: 30
-    chaos: # Goobstation
-      Mess: 5
-      Hostile: 1 # the very low gib snail prob
   - type: VentCrittersRule
     entries:
     - id: MobSnail

@@ -1,11 +1,3 @@
-// SPDX-FileCopyrightText: 2024 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 deltanedas <@deltanedas:kde.org>
-// SPDX-FileCopyrightText: 2024 ilya.mikheev.coder <imc-ext+github@ilyamikcoder.com>
-// SPDX-FileCopyrightText: 2024 Эдуард <36124833+Ertanic@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using System.Linq;
 using Content.Server.CartridgeLoader;
 using Content.Server.CartridgeLoader.Cartridges;
@@ -18,6 +10,7 @@ using Content.Server.GameTicking;
 using Content.Server.Station.Systems;
 using Content.Shared.CartridgeLoader;
 using Content.Shared.CartridgeLoader.Cartridges;
+using Content.Server._NF.SectorServices; // Frontier
 
 namespace Content.Server.CriminalRecords.Systems;
 
@@ -33,8 +26,9 @@ public sealed class CriminalRecordsSystem : SharedCriminalRecordsSystem
 {
     [Dependency] private readonly GameTicker _ticker = default!;
     [Dependency] private readonly StationRecordsSystem _records = default!;
-    [Dependency] private readonly StationSystem _station = default!;
+    // [Dependency] private readonly StationSystem _station = default!; // Frontier
     [Dependency] private readonly CartridgeLoaderSystem _cartridge = default!;
+    [Dependency] private readonly SectorServiceSystem _sectorService = default!; // Frontier
 
     public override void Initialize()
     {
@@ -172,8 +166,13 @@ public sealed class CriminalRecordsSystem : SharedCriminalRecordsSystem
 
     private void UpdateReaderUi(Entity<WantedListCartridgeComponent> ent, EntityUid loaderUid)
     {
-        if (_station.GetOwningStation(ent) is not { } station)
+        // Frontier: sector-wide records
+        // if (_station.GetOwningStation(ent) is not { } station)
+        //     return;
+        var station = _sectorService.GetServiceEntity();
+        if (!station.IsValid())
             return;
+        // End Frontier
 
         var records = _records.GetRecordsOfType<CriminalRecord>(station)
             .Where(cr => cr.Item2.Status is not SecurityStatus.None || cr.Item2.History.Count > 0)

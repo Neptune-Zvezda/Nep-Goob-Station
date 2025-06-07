@@ -1,10 +1,3 @@
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Jake Huxell <JakeHuxell@pm.me>
-// SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: MIT
-
 using Content.Shared.Shuttles.Systems;
 using Robust.Shared.GameStates;
 
@@ -32,6 +25,14 @@ public sealed partial class IFFComponent : Component
     /// </summary>
     [ViewVariables(VVAccess.ReadWrite), DataField, AutoNetworkedField]
     public Color Color = IFFColor;
+
+    // Frontier: POI IFF protection
+    /// <summary>
+    /// Whether or not this entity's IFF can be changed.
+    /// </summary>
+    [ViewVariables(VVAccess.ReadWrite), DataField(serverOnly: true)]
+    public bool ReadOnly;
+    // End Frontier
 }
 
 [Flags]
@@ -42,13 +43,18 @@ public enum IFFFlags : byte
     /// <summary>
     /// Should the label for this grid be hidden at all ranges.
     /// </summary>
-    HideLabel,
+    HideLabel = 1,
 
     /// <summary>
     /// Should the grid hide entirely (AKA full stealth).
     /// Will also hide the label if that is not set.
     /// </summary>
-    Hide,
+    Hide = 2,
+
+    /// <summary>
+    /// Frontier - Is this a player shuttle
+    /// </summary>
+    IsPlayerShuttle = 4,
 
     // TODO: Need one that hides its outline, just replace it with a bunch of triangles or lines or something.
 }

@@ -1,19 +1,3 @@
-// SPDX-FileCopyrightText: 2024 AJCM-git <60196617+AJCM-git@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Arendian <137322659+Arendian@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Fildrance <fildrance@gmail.com>
-// SPDX-FileCopyrightText: 2024 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 deltanedas <@deltanedas:kde.org>
-// SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 pa.pecherskij <pa.pecherskij@interfax.ru>
-// SPDX-FileCopyrightText: 2024 Эдуард <36124833+Ertanic@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 James Simonson <jamessimo89@gmail.com>
-// SPDX-FileCopyrightText: 2025 Soup-Byte07 <135303377+Soup-Byte07@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 chromiumboy <50505512+chromiumboy@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using Content.Server.Popups;
 using Content.Server.Radio.EntitySystems;
 using Content.Server.Station.Systems;
@@ -30,6 +14,8 @@ using System.Diagnostics.CodeAnalysis;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Security.Components;
 using System.Linq;
+using Content.Shared.Roles.Jobs;
+using Content.Server._NF.SectorServices; // Frontier
 
 namespace Content.Server.CriminalRecords.Systems;
 
@@ -43,8 +29,9 @@ public sealed class CriminalRecordsConsoleSystem : SharedCriminalRecordsConsoleS
     [Dependency] private readonly PopupSystem _popup = default!;
     [Dependency] private readonly RadioSystem _radio = default!;
     [Dependency] private readonly StationRecordsSystem _records = default!;
-    [Dependency] private readonly StationSystem _station = default!;
+    // [Dependency] private readonly StationSystem _station = default!; // Frontier
     [Dependency] private readonly UserInterfaceSystem _ui = default!;
+    [Dependency] private readonly SectorServiceSystem _sectorService = default!; // Frontier
 
     public override void Initialize()
     {
@@ -101,12 +88,8 @@ public sealed class CriminalRecordsConsoleSystem : SharedCriminalRecordsConsoleS
     private void OnChangeStatus(Entity<CriminalRecordsConsoleComponent> ent, ref CriminalRecordChangeStatus msg)
     {
         // prevent malf client violating wanted/reason nullability
-        var requireReason = msg.Status is SecurityStatus.Wanted
-            or SecurityStatus.Suspected
-            or SecurityStatus.Search
-            or SecurityStatus.Dangerous;
-
-        if (requireReason != (msg.Reason != null))
+        if (msg.Status == SecurityStatus.Wanted != (msg.Reason != null) &&
+            msg.Status == SecurityStatus.Suspected != (msg.Reason != null))
             return;
 
         if (!CheckSelected(ent, msg.Actor, out var mob, out var key))
@@ -173,12 +156,6 @@ public sealed class CriminalRecordsConsoleSystem : SharedCriminalRecordsConsoleS
             (_, SecurityStatus.Discharged) => "released",
             // going from any other state to wanted, AOS or prisonbreak / lazy secoff never set them to released and they reoffended
             (_, SecurityStatus.Wanted) => "wanted",
-            // person has been sentenced to perma
-            (_, SecurityStatus.Perma) => "perma",
-            // person needs to be searched
-            (_, SecurityStatus.Search) => "search",
-            // person is very dangerous
-            (_, SecurityStatus.Dangerous) => "dangerous",
             // person is no longer sus
             (SecurityStatus.Suspected, SecurityStatus.None) => "not-suspected",
             // going from wanted to none, must have been a mistake
@@ -187,12 +164,6 @@ public sealed class CriminalRecordsConsoleSystem : SharedCriminalRecordsConsoleS
             (SecurityStatus.Detained, SecurityStatus.None) => "released",
             // criminal is no longer on parole
             (SecurityStatus.Paroled, SecurityStatus.None) => "not-parole",
-            // criminal is no longer in perma
-            (SecurityStatus.Perma, SecurityStatus.None) => "not-perma",
-            // person no longer needs to be searched
-            (SecurityStatus.Search, SecurityStatus.None) => "not-search",
-            // person is no longer dangerous
-            (SecurityStatus.Dangerous, SecurityStatus.None) => "not-dangerous",
             // this is impossible
             _ => "not-wanted"
         };
@@ -237,7 +208,7 @@ public sealed class CriminalRecordsConsoleSystem : SharedCriminalRecordsConsoleS
     private void UpdateUserInterface(Entity<CriminalRecordsConsoleComponent> ent)
     {
         var (uid, console) = ent;
-        var owningStation = _station.GetOwningStation(uid);
+        var owningStation = _sectorService.GetServiceEntity(); // Frontier: _station.GetOwningStation < _sectorService.GetServiceEntity
 
         if (!TryComp<StationRecordsComponent>(owningStation, out var stationRecords))
         {
@@ -246,14 +217,14 @@ public sealed class CriminalRecordsConsoleSystem : SharedCriminalRecordsConsoleS
         }
 
         // get the listing of records to display
-        var listing = _records.BuildListing((owningStation.Value, stationRecords), console.Filter);
+        var listing = _records.BuildListing((owningStation, stationRecords), console.Filter); // Frontier: owningStation.Value<owningStation
 
         // filter the listing by the selected criminal record status
         //if NONE, dont filter by status, just show all crew
         if (console.FilterStatus != SecurityStatus.None)
         {
             listing = listing
-                .Where(x => _records.TryGetRecord<CriminalRecord>(new StationRecordKey(x.Key, owningStation.Value), out var record) && record.Status == console.FilterStatus)
+                .Where(x => _records.TryGetRecord<CriminalRecord>(new StationRecordKey(x.Key, owningStation), out var record) && record.Status == console.FilterStatus) // Frontier: owningStation.Value<owningStation
                 .ToDictionary(x => x.Key, x => x.Value);
         }
 
@@ -261,7 +232,7 @@ public sealed class CriminalRecordsConsoleSystem : SharedCriminalRecordsConsoleS
         if (console.ActiveKey is { } id)
         {
             // get records to display when a crewmember is selected
-            var key = new StationRecordKey(id, owningStation.Value);
+            var key = new StationRecordKey(id, owningStation); // Frontier: owningStation.Value<owningStation
             _records.TryGetRecord(key, out state.StationRecord, stationRecords);
             _records.TryGetRecord(key, out state.CriminalRecord, stationRecords);
             state.SelectedKey = id;
@@ -282,6 +253,7 @@ public sealed class CriminalRecordsConsoleSystem : SharedCriminalRecordsConsoleS
     {
         key = null;
         mob = null;
+
         if (!_access.IsAllowed(user, ent))
         {
             _popup.PopupEntity(Loc.GetString("criminal-records-permission-denied"), ent, user);
@@ -291,9 +263,15 @@ public sealed class CriminalRecordsConsoleSystem : SharedCriminalRecordsConsoleS
         if (ent.Comp.ActiveKey is not { } id)
             return false;
 
+        // Frontier: sector-wide records
         // checking the console's station since the user might be off-grid using on-grid console
-        if (_station.GetOwningStation(ent) is not { } station)
+        // if (_station.GetOwningStation(ent) is not { } station)
+        //     return false;
+        var station = _sectorService.GetServiceEntity();
+
+        if (!TryComp<StationRecordsComponent>(station, out var stationRecords))
             return false;
+        // End Frontier
 
         key = new StationRecordKey(id, station);
         mob = user;
@@ -309,12 +287,17 @@ public sealed class CriminalRecordsConsoleSystem : SharedCriminalRecordsConsoleS
         var name = Identity.Name(uid, EntityManager);
         var xform = Transform(uid);
 
+        // Frontier: sector-wide records
         // TODO use the entity's station? Not the station of the map that it happens to currently be on?
-        var station = _station.GetStationInMap(xform.MapID);
+        // var station = _station.GetStationInMap(xform.MapID);
+        // // var owningStation = _station.GetOwningStation(uid);
 
-        if (station != null && _records.GetRecordByName(station.Value, name) is { } id)
+        var station = _sectorService.GetServiceEntity();
+        // End Frontier
+
+        if (station.IsValid() && _records.GetRecordByName(station, name) is { } id) // Frontier: "station != null" < station.IsValid(), station.Value < station
         {
-            if (_records.TryGetRecord<CriminalRecord>(new StationRecordKey(id, station.Value),
+            if (_records.TryGetRecord<CriminalRecord>(new StationRecordKey(id, station), // Frontier: station.Value<station
                     out var record))
             {
                 if (record.Status != SecurityStatus.None)

@@ -1,22 +1,3 @@
-# SPDX-FileCopyrightText: 2021 20kdc <asdd2808@gmail.com>
-# SPDX-FileCopyrightText: 2021 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-# SPDX-FileCopyrightText: 2021 Swept <sweptwastaken@protonmail.com>
-# SPDX-FileCopyrightText: 2021 Vera Aguilera Puerto <6766154+Zumorica@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2021 Ygg01 <y.laughing.man.y@gmail.com>
-# SPDX-FileCopyrightText: 2022 Flipp Syder <76629141+vulppine@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2022 Rane <60792108+Elijahrane@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2022 Veritius <veritiusgaming@gmail.com>
-# SPDX-FileCopyrightText: 2022 mirrorcult <lunarautomaton6@gmail.com>
-# SPDX-FileCopyrightText: 2023 Jeff <velcroboy333@hotmail.com>
-# SPDX-FileCopyrightText: 2023 LankLTE <135308300+LankLTE@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 TemporalOroboros <TemporalOroboros@gmail.com>
-# SPDX-FileCopyrightText: 2023 Velcroboy <107660393+IamVelcroboy@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 deltanedas <39013340+deltanedas@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 deltanedas <@deltanedas:kde.org>
-# SPDX-FileCopyrightText: 2024 lzk <124214523+lzk228@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-#
-# SPDX-License-Identifier: MIT
 # When adding new food also add to random spawner located in Resources\Prototypes\Entities\Markers\Spawners\Random\Food_Drinks\food_meal.yml
 # Base
 
@@ -33,11 +14,12 @@
   - type: SolutionContainerManager
     solutions:
       food:
-        maxVol: 25
+        maxVol: 30
         reagents:
         - ReagentId: Nutriment
-          Quantity: 20
-
+          Quantity: 15
+        - ReagentId: Flavorol
+          Quantity: 10
 # Noodles
 
 - type: entity
@@ -84,12 +66,14 @@
   - type: SolutionContainerManager
     solutions:
       food:
-        maxVol: 25
+        maxVol: 30
         reagents:
         - ReagentId: Nutriment
-          Quantity: 12
+          Quantity: 7
         - ReagentId: Vitamin
           Quantity: 8
+        - ReagentId: Flavorol
+          Quantity: 10
 # Tastes like pasta, bad humor.
 
 - type: entity
@@ -107,12 +91,14 @@
   - type: SolutionContainerManager
     solutions:
       food:
-        maxVol: 15
+        maxVol: 20
         reagents:
         - ReagentId: Nutriment
           Quantity: 8
         - ReagentId: Vitamin
           Quantity: 4
+        - ReagentId: Flavorol
+          Quantity: 5
   - type: Tag
     tags:
     - Meat
@@ -133,12 +119,14 @@
   - type: SolutionContainerManager
     solutions:
       food:
-        maxVol: 15
+        maxVol: 20
         reagents:
         - ReagentId: Nutriment
           Quantity: 8
         - ReagentId: Vitamin
           Quantity: 6
+        - ReagentId: Flavorol
+          Quantity: 5
 # Tastes like pasta, meat.
 
 - type: entity
@@ -158,12 +146,14 @@
   - type: SolutionContainerManager
     solutions:
       food:
-        maxVol: 15
+        maxVol: 26
         reagents:
         - ReagentId: Nutriment
           Quantity: 7
         - ReagentId: Vitamin
           Quantity: 6
+        - ReagentId: Flavorol
+          Quantity: 11
 # Tastes like pasta, tomato.
 
 - type: entity

@@ -1,59 +1,26 @@
-// SPDX-FileCopyrightText: 2024 0x6273 <0x40@keemail.me>
-// SPDX-FileCopyrightText: 2024 12rabbits <53499656+12rabbits@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Alzore <140123969+Blackern5000@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 ArtisticRoomba <145879011+ArtisticRoomba@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Brandon Hu <103440971+Brandon-Huu@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Dimastra <65184747+Dimastra@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Dimastra <dimastra@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Ed <96445749+TheShuEd@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Emisse <99158783+Emisse@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Eoin Mcloughlin <helloworld@eoinrul.es>
-// SPDX-FileCopyrightText: 2024 IProduceWidgets <107586145+IProduceWidgets@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 JIPDawg <51352440+JIPDawg@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 JIPDawg <JIPDawg93@gmail.com>
-// SPDX-FileCopyrightText: 2024 Mervill <mervills.email@gmail.com>
-// SPDX-FileCopyrightText: 2024 Moomoobeef <62638182+Moomoobeef@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 PJBot <pieterjan.briers+bot@gmail.com>
-// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers@gmail.com>
-// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2024 Plykiya <58439124+Plykiya@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 PopGamer46 <yt1popgamer@gmail.com>
-// SPDX-FileCopyrightText: 2024 PursuitInAshes <pursuitinashes@gmail.com>
-// SPDX-FileCopyrightText: 2024 QueerNB <176353696+QueerNB@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Saphire Lattice <lattice@saphi.re>
-// SPDX-FileCopyrightText: 2024 ShadowCommander <10494922+ShadowCommander@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Simon <63975668+Simyon264@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 SlamBamActionman <83650252+SlamBamActionman@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Spessmann <156740760+Spessmann@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Thomas <87614336+Aeshus@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Winkarst <74284083+Winkarst-cpu@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 deltanedas <@deltanedas:kde.org>
-// SPDX-FileCopyrightText: 2024 eoineoineoin <github@eoinrul.es>
-// SPDX-FileCopyrightText: 2024 github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 lzk <124214523+lzk228@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 metalgearsloth <comedian_vs_clown@hotmail.com>
-// SPDX-FileCopyrightText: 2024 slarticodefast <161409025+slarticodefast@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 stellar-novas <stellar_novas@riseup.net>
-// SPDX-FileCopyrightText: 2024 themias <89101928+themias@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using Content.Server.Shuttles.Components;
 using Content.Server.Shuttles.Events;
+using Content.Shared.Popups;
+using Content.Shared.Shuttles.BUIStates;
 using Content.Shared.Shuttles.Events;
+using Content.Shared.Shuttles.Systems;
 using Content.Shared.Shuttles.UI.MapObjects;
+using Content.Shared.Station.Components;
 using Robust.Shared.Map;
+using Robust.Shared.Map.Components;
 using Robust.Shared.Physics.Components;
 
 namespace Content.Server.Shuttles.Systems;
 
 public sealed partial class ShuttleConsoleSystem
 {
+    [Dependency] private readonly IMapManager _mapManager = default!;
+    [Dependency] private readonly SharedPopupSystem _popupSystem = default!;
+    [Dependency] private readonly SharedShuttleSystem _sharedShuttle = default!;
+
+    private const float ShuttleFTLRange = 100f;
+    private const float ShuttleFTLMassThreshold = 50f;
+
     private void InitializeFTL()
     {
         SubscribeLocalEvent<FTLBeaconComponent, ComponentStartup>(OnBeaconStartup);
@@ -163,7 +130,7 @@ public sealed partial class ShuttleConsoleSystem
 
         var shuttleUid = _xformQuery.GetComponent(consoleUid.Value).GridUid;
 
-        if (!TryComp(shuttleUid, out ShuttleComponent? shuttleComp))
+        if (shuttleUid == null || !TryComp(shuttleUid.Value, out ShuttleComponent? shuttleComp))
             return;
 
         if (shuttleComp.Enabled == false)
@@ -182,6 +149,8 @@ public sealed partial class ShuttleConsoleSystem
             return;
         }
 
+        targetCoordinates = _shuttle.ClampCoordinatesToFTLRange(shuttleUid.Value, targetCoordinates);
+
         List<ShuttleExclusionObject>? exclusions = null;
         GetExclusions(ref exclusions);
 
@@ -195,6 +164,66 @@ public sealed partial class ShuttleConsoleSystem
             return;
         }
 
+        // Check for nearby grids that are above the mass threshold
+        var xform = Transform(shuttleUid.Value);
+        var bounds = xform.WorldMatrix.TransformBox(Comp<MapGridComponent>(shuttleUid.Value).LocalAABB).Enlarged(ShuttleFTLRange);
+        var bodyQuery = GetEntityQuery<PhysicsComponent>();
+        // Keep track of docked grids to exclude them from the proximity check
+        var dockedGrids = new HashSet<EntityUid>();
+
+        // Find all docked grids by looking for DockingComponents on the shuttle
+        var dockQuery = EntityQueryEnumerator<DockingComponent, TransformComponent>();
+        while (dockQuery.MoveNext(out var dockUid, out var dock, out var dockXform))
+        {
+            // Only consider docks on our shuttle
+            if (dockXform.GridUid != shuttleUid.Value || !dock.Docked || dock.DockedWith == null)
+                continue;
+
+            // If we have a docked entity, get its grid
+            if (TryComp<TransformComponent>(dock.DockedWith.Value, out var dockedXform) && dockedXform.GridUid != null)
+            {
+                dockedGrids.Add(dockedXform.GridUid.Value);
+
+                // Check if we're docked to another grid
+                var parentGridUid = dockedXform.GridUid.Value;
+
+                // Find all other grids docked to this parent grid
+                // These should also be excluded from the proximity check so we can
+                // still FTL even when other ships are docked to the same station/grid
+                var parentDockQuery = EntityQueryEnumerator<DockingComponent, TransformComponent>();
+                while (parentDockQuery.MoveNext(out var parentDockUid, out var parentDock, out var parentDockXform))
+                {
+                    // Only consider docks on the parent grid
+                    if (parentDockXform.GridUid != parentGridUid || !parentDock.Docked || parentDock.DockedWith == null)
+                        continue;
+
+                    // If we have a docked entity and it's not our ship, add its grid to the exclusion list
+                    if (TryComp<TransformComponent>(parentDock.DockedWith.Value, out var siblingDockedXform) &&
+                        siblingDockedXform.GridUid != null &&
+                        siblingDockedXform.GridUid != shuttleUid.Value)
+                    {
+                        dockedGrids.Add(siblingDockedXform.GridUid.Value);
+                    }
+                }
+            }
+        }
+
+        foreach (var other in _mapManager.FindGridsIntersecting(xform.MapID, bounds))
+        {
+            if (other.Owner == shuttleUid.Value ||
+                dockedGrids.Contains(other.Owner) || // Skip grids that are docked to us or to the same parent grid
+                !bodyQuery.TryGetComponent(other.Owner, out var body) ||
+                body.Mass < ShuttleFTLMassThreshold ||
+                !HasComp<StationMemberComponent>(other.Owner)) // Skip entities without a StationMember component
+            {
+                continue;
+            }
+
+            _popupSystem.PopupEntity(Loc.GetString("shuttle-ftl-proximity"), ent.Owner, PopupType.Medium);
+            UpdateConsoles(shuttleUid.Value);
+            return;
+        }
+
         // Client sends the "adjusted" coordinates and we adjust it back to get the actual transform coordinates.
         var adjustedCoordinates = targetCoordinates.Offset(targetAngle.RotateVec(-shuttlePhysics.LocalCenter));
 
@@ -203,7 +232,30 @@ public sealed partial class ShuttleConsoleSystem
 
         var ev = new ShuttleConsoleFTLTravelStartEvent(ent.Owner);
         RaiseLocalEvent(ref ev);
+        if(_sharedShuttle.TryGetFTLDrive(shuttleUid.Value, out _, out var drive))
+            _shuttle.FTLToCoordinates(shuttleUid.Value, shuttleComp, adjustedCoordinates, targetAngle, drive.StartupTime, drive.HyperSpaceTime);
+    }
 
-        _shuttle.FTLToCoordinates(shuttleUid.Value, shuttleComp, adjustedCoordinates, targetAngle);
+    private void UpdateConsoles(EntityUid uid, ShuttleComponent? component = null)
+    {
+        if (!Resolve(uid, ref component))
+            return;
+
+        // Update pilot consoles
+        var query = EntityQueryEnumerator<ShuttleConsoleComponent, TransformComponent>();
+
+        while (query.MoveNext(out var consoleUid, out var console, out var xform))
+        {
+            if (xform.GridUid != uid)
+                continue;
+
+            UpdateConsoleState(consoleUid, console);
+        }
+    }
+
+    private void UpdateConsoleState(EntityUid uid, ShuttleConsoleComponent component)
+    {
+        DockingInterfaceState? dockState = null;
+        UpdateState(uid, ref dockState);
     }
 }

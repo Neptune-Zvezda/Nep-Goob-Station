@@ -1,9 +1,3 @@
-// SPDX-FileCopyrightText: 2024 Saphire <lattice@saphi.re>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 ScarKy0 <106310278+ScarKy0@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using Content.Shared.Emag.Systems;
 using Content.Shared.Popups;
 using Content.Shared.Singularity.Components;
@@ -25,6 +19,7 @@ public abstract class SharedSingularityGeneratorSystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<SingularityGeneratorComponent, GotEmaggedEvent>(OnEmagged);
+        SubscribeLocalEvent<SingularityGeneratorComponent, GotUnEmaggedEvent>(OnUnemagged); // Frontier
     }
 
     private void OnEmagged(EntityUid uid, SingularityGeneratorComponent component, ref GotEmaggedEvent args)
@@ -41,4 +36,20 @@ public abstract class SharedSingularityGeneratorSystem : EntitySystem
         component.FailsafeDisabled = true;
         args.Handled = true;
     }
+
+    // Frontier: demag
+    private void OnUnemagged(EntityUid uid, SingularityGeneratorComponent component, ref GotUnEmaggedEvent args)
+    {
+        if (!_emag.CompareFlag(args.Type, EmagType.Interaction))
+            return;
+
+        if (!_emag.CheckFlag(uid, EmagType.Interaction))
+            return;
+
+        if (component.FailsafeDisabled)
+            component.FailsafeDisabled = false;
+
+        args.Handled = true;
+    }
+    // End Frontier: demag
 }

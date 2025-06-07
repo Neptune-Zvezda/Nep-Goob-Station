@@ -1,19 +1,3 @@
-// SPDX-FileCopyrightText: 2022 Kara <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2022 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Rane <60792108+Elijahrane@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 keronshb <54602815+keronshb@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Nim <128169402+Nimfar11@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Visne <39844191+Visne@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2025 Fishbait <Fishbait@git.ml>
-// SPDX-FileCopyrightText: 2025 Ilya246 <57039557+Ilya246@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 fishbait <gnesse@gmail.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using Robust.Shared.GameStates;
 using Robust.Shared.Serialization;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
@@ -101,23 +85,21 @@ public sealed partial class StealthComponent : Component
     /// </summary>
     [DataField("examinedDesc")]
     public string ExaminedDesc = "stealth-visual-effect";
+}
 
-    /// <summary>
-    /// Remove stealth if an attack is made
-    /// </summary>
-    [DataField]
-    public bool RevealOnAttack = true; // Goobstation - Stealth change
+[Serializable, NetSerializable]
+public sealed class StealthComponentState : ComponentState
+{
+    public readonly float Visibility;
+    public readonly TimeSpan? LastUpdated;
+    public readonly float MaxVisibility; // Shitmed Change
+    public readonly bool Enabled;
 
-    /// <summary>
-    /// Remove stealth if an attack is made
-    /// </summary>
-    [DataField]
-    public bool RevealOnDamage = true; // Goobstation - Stealth change
-    /// <summary>
-    ///
-    ///  adds a threshold for whn taking damage so you dont get reveled from taking airloss or bleed
-    /// </summary>
-    [DataField]
-    public float Threshold = 5;// Goobstation - Stealth change
-
+    public StealthComponentState(float stealthLevel, TimeSpan? lastUpdated, float maxVisibility, bool enabled)
+    {
+        Visibility = stealthLevel;
+        LastUpdated = lastUpdated;
+        MaxVisibility = maxVisibility; // Shitmed Change
+        Enabled = enabled;
+    }
 }

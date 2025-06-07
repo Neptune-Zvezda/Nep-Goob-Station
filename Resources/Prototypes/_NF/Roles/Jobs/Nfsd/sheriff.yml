@@ -1,0 +1,65 @@
+- type: job
+  id: Sheriff
+  name: job-name-sheriff
+  description: job-description-sheriff
+  playTimeTracker: JobHeadOfSecurity
+  requirements:
+    - !type:OverallPlaytimeRequirement
+      time: 180000 # 50 hours # mono
+    - !type:DepartmentTimeRequirement
+      department: Security
+      time: 108000 # 30 hours # mono
+    - !type:RoleTimeRequirement
+      role: JobWarden
+      time: 36000 # 10 hours # mono
+    - !type:RoleTimeRequirement
+      role: JobSeniorOfficer
+      time: 10800 # 3 hours # mono
+  alternateRequirementSets:
+    longerPlaytimeLessSec:
+    - !type:OverallPlaytimeRequirement
+      time: 270000 # 75 hours # mono
+    - !type:DepartmentTimeRequirement
+      department: Security
+      time: 72000 # 20 hours # mono
+    - !type:RoleTimeRequirement
+      role: JobWarden
+      time: 21600 # 6 hours # mono
+  whitelisted: true
+  startingGear: SheriffGear
+  alwaysUseSpawner: true
+  icon: JobIconSheriff
+  requireAdminNotify: true
+  supervisors: job-supervisors-centcom
+  weight: 180
+  displayWeight: 70
+  canBeAntag: false
+  accessGroups:
+  - AllAccess
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: NpcFactionMember
+      factions:
+      - TSFMC
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant, TrackingImplant ]
+  - !type:AddComponentSpecial
+    components:
+      - type: CommandStaff
+  - !type:GiveItemOnHolidaySpecial
+    holiday: FrontierBirthday
+    prototype: FrontierBirthdayGift
+
+- type: startingGear
+  id: SheriffGear
+  equipment:
+    pocket1: WeaponPistolMk58 #WeaponPistolMk58Nonlethal
+    pocket2: WeaponEnergyGunMultiphase # DeltaV gun
+  storage:
+    back:
+    - NfsdTechFabFlatpack
+    - Multitool
+    - DoorRemoteNfsd
+    - BaseSecurityUplinkRadioSheriff
+    - RubberStampSheriff

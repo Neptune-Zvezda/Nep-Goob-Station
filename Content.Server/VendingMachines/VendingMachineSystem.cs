@@ -1,82 +1,21 @@
-// SPDX-FileCopyrightText: 2022 Alex Evgrashin <aevgrashin@yandex.ru>
-// SPDX-FileCopyrightText: 2022 Andreas Kämper <andreas@kaemper.tech>
-// SPDX-FileCopyrightText: 2022 EmoGarbage404 <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Fishfish458 <47410468+Fishfish458@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Flipp Syder <76629141+vulppine@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Rane <60792108+Elijahrane@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Visne <39844191+Visne@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 fishfish458 <fishfish458>
-// SPDX-FileCopyrightText: 2022 wrexbe <wrexbe@protonmail.com>
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <drsmugleaf@gmail.com>
-// SPDX-FileCopyrightText: 2023 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Slava0135 <40753025+Slava0135@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Vordenburg <114301317+Vordenburg@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 deltanedas <deltanedas@laptop>
-// SPDX-FileCopyrightText: 2023 deltanedas <user@zenith>
-// SPDX-FileCopyrightText: 2023 keronshb <54602815+keronshb@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 keronshb <keronshb@live.com>
-// SPDX-FileCopyrightText: 2024 12rabbits <53499656+12rabbits@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Aidenkrz <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2024 Alzore <140123969+Blackern5000@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 ArtisticRoomba <145879011+ArtisticRoomba@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Brandon Hu <103440971+Brandon-Huu@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Dimastra <65184747+Dimastra@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Dimastra <dimastra@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Ed <96445749+TheShuEd@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Emisse <99158783+Emisse@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Eoin Mcloughlin <helloworld@eoinrul.es>
-// SPDX-FileCopyrightText: 2024 IProduceWidgets <107586145+IProduceWidgets@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 JIPDawg <51352440+JIPDawg@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 JIPDawg <JIPDawg93@gmail.com>
-// SPDX-FileCopyrightText: 2024 LordCarve <27449516+LordCarve@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Mervill <mervills.email@gmail.com>
-// SPDX-FileCopyrightText: 2024 Moomoobeef <62638182+Moomoobeef@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Niels Huylebroeck <red15@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 PJBot <pieterjan.briers+bot@gmail.com>
-// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers@gmail.com>
-// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2024 PopGamer46 <yt1popgamer@gmail.com>
-// SPDX-FileCopyrightText: 2024 PursuitInAshes <pursuitinashes@gmail.com>
-// SPDX-FileCopyrightText: 2024 QueerNB <176353696+QueerNB@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Repo <47093363+Titian3@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Robert V <keywogger@gmail.com>
-// SPDX-FileCopyrightText: 2024 Saphire Lattice <lattice@saphi.re>
-// SPDX-FileCopyrightText: 2024 ShadowCommander <10494922+ShadowCommander@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Simon <63975668+Simyon264@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Spessmann <156740760+Spessmann@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Tayrtahn <tayrtahn@gmail.com>
-// SPDX-FileCopyrightText: 2024 Thomas <87614336+Aeshus@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Winkarst <74284083+Winkarst-cpu@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 deltanedas <@deltanedas:kde.org>
-// SPDX-FileCopyrightText: 2024 eoineoineoin <github@eoinrul.es>
-// SPDX-FileCopyrightText: 2024 github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 goet <6637097+goet@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 lzk <124214523+lzk228@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 metalgearsloth <comedian_vs_clown@hotmail.com>
-// SPDX-FileCopyrightText: 2024 slarticodefast <161409025+slarticodefast@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 stellar-novas <stellar_novas@riseup.net>
-// SPDX-FileCopyrightText: 2024 themias <89101928+themias@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 ScarKy0 <106310278+ScarKy0@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using System.Linq;
+using Content.Server._NF.Bank;
 using System.Numerics;
+using Content.Server.Advertise;
+using Content.Server.Advertise.Components;
 using Content.Server.Cargo.Systems;
-using Content.Server.Emp;
+//using Content.Server.Emp; // Frontier: Upstream - #28984
+using Content.Server.Cargo.Components;
+using Content.Server.Popups;
 using Content.Server.Power.Components;
 using Content.Server.Power.EntitySystems;
 using Content.Shared.Access.Components;
 using Content.Shared.Access.Systems;
+using Content.Shared._NF.Bank.Components; // Frontier
 using Content.Shared.Damage;
 using Content.Shared.Destructible;
 using Content.Shared.DoAfter;
+using Content.Shared.Emag.Systems;
 using Content.Shared.Emp;
 using Content.Shared.Popups;
 using Content.Shared.Power;
@@ -84,19 +23,43 @@ using Content.Shared.Throwing;
 using Content.Shared.UserInterface;
 using Content.Shared.VendingMachines;
 using Content.Shared.Wall;
+using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
+using Robust.Shared.Audio.Systems;
+using Content.Server.Administration.Logs; // Frontier
+using Content.Shared.Database; // Frontier
+using Content.Shared._NF.Bank.BUI; // Frontier
+using Content.Server._NF.Contraband.Systems; // Frontier
+using Content.Shared.Stacks; // Frontier
+using Content.Server.Stack;
+using Content.Server._Mono.VendingMachine;
+using Robust.Shared.Containers; // Frontier
 
 namespace Content.Server.VendingMachines
 {
     public sealed class VendingMachineSystem : SharedVendingMachineSystem
     {
         [Dependency] private readonly IRobustRandom _random = default!;
+        [Dependency] private readonly AccessReaderSystem _accessReader = default!;
+        [Dependency] private readonly AppearanceSystem _appearanceSystem = default!;
         [Dependency] private readonly PricingSystem _pricing = default!;
         [Dependency] private readonly ThrowingSystem _throwingSystem = default!;
         [Dependency] private readonly IGameTiming _timing = default!;
+        [Dependency] private readonly SpeakOnUIClosedSystem _speakOnUIClosed = default!;
+        [Dependency] private readonly SharedPointLightSystem _light = default!;
+        [Dependency] private readonly EmagSystem _emag = default!;
+
+        [Dependency] private readonly IPrototypeManager _prototypeManager = default!; // Frontier
+        [Dependency] private readonly SharedAudioSystem _audioSystem = default!; // Frontier
+        [Dependency] private readonly BankSystem _bankSystem = default!; // Frontier
+        [Dependency] private readonly PopupSystem _popupSystem = default!; // Frontier
+        [Dependency] private readonly IAdminLogManager _adminLogger = default!; // Frontier
+        [Dependency] private readonly ContrabandTurnInSystem _contraband = default!; // Frontier
+        [Dependency] private readonly StackSystem _stack = default!; // Frontier
+        [Dependency] private readonly VendingMachinePurchaseSystem _vendingPurchase = default!; // Mono
 
         private const float WallVendEjectDistanceFromWall = 1f;
 
@@ -108,9 +71,16 @@ namespace Content.Server.VendingMachines
             SubscribeLocalEvent<VendingMachineComponent, BreakageEventArgs>(OnBreak);
             SubscribeLocalEvent<VendingMachineComponent, DamageChangedEvent>(OnDamageChanged);
             SubscribeLocalEvent<VendingMachineComponent, PriceCalculationEvent>(OnVendingPrice);
-            SubscribeLocalEvent<VendingMachineComponent, EmpPulseEvent>(OnEmpPulse);
+            //SubscribeLocalEvent<VendingMachineComponent, EmpPulseEvent>(OnEmpPulse); // Frontier: Upstream - #28984
+            SubscribeLocalEvent<VendingMachineComponent, EntInsertedIntoContainerMessage>(OnEntityInserted); // Frontier
+            SubscribeLocalEvent<VendingMachineComponent, EntRemovedFromContainerMessage>(OnEntityRemoved); // Frontier
 
             SubscribeLocalEvent<VendingMachineComponent, ActivatableUIOpenAttemptEvent>(OnActivatableUIOpenAttempt);
+
+            Subs.BuiEvents<VendingMachineComponent>(VendingMachineUiKey.Key, subs =>
+            {
+                subs.Event<VendingMachineEjectMessage>(OnInventoryEjectMessage);
+            });
 
             SubscribeLocalEvent<VendingMachineComponent, VendingMachineSelfDispenseEvent>(OnSelfDispense);
 
@@ -131,10 +101,10 @@ namespace Content.Server.VendingMachines
                     continue;
                 }
 
-                price += entry.Amount * _pricing.GetEstimatedPrice(proto);
+                price += entry.Amount; //* _pricing.GetEstimatedPrice(proto); Frontier - This is used to price the worth of a vending machine with the inventory it has.
             }
 
-            args.Price += price;
+            //args.Price += price; Frontier - This is used to price the worth of a vending machine with the inventory it has.
         }
 
         protected override void OnMapInit(EntityUid uid, VendingMachineComponent component, MapInitEvent args)
@@ -143,7 +113,7 @@ namespace Content.Server.VendingMachines
 
             if (HasComp<ApcPowerReceiverComponent>(uid))
             {
-                TryUpdateVisualState((uid, component));
+                TryUpdateVisualState(uid, component);
             }
         }
 
@@ -153,15 +123,29 @@ namespace Content.Server.VendingMachines
                 args.Cancel();
         }
 
+        private void OnInventoryEjectMessage(EntityUid uid, VendingMachineComponent component, VendingMachineEjectMessage args)
+        {
+            if (!this.IsPowered(uid, EntityManager))
+                return;
+
+            if (args.Actor is not { Valid: true } entity || Deleted(entity))
+                return;
+
+            if (component.Ejecting)
+                return;
+
+            AuthorizedVend(uid, entity, args.Type, args.ID, component);
+        }
+
         private void OnPowerChanged(EntityUid uid, VendingMachineComponent component, ref PowerChangedEvent args)
         {
-            TryUpdateVisualState((uid, component));
+            TryUpdateVisualState(uid, component);
         }
 
         private void OnBreak(EntityUid uid, VendingMachineComponent vendComponent, BreakageEventArgs eventArgs)
         {
             vendComponent.Broken = true;
-            TryUpdateVisualState((uid, vendComponent));
+            TryUpdateVisualState(uid, vendComponent);
         }
 
         private void OnDamageChanged(EntityUid uid, VendingMachineComponent component, DamageChangedEvent args)
@@ -169,7 +153,7 @@ namespace Content.Server.VendingMachines
             if (!args.DamageIncreased && component.Broken)
             {
                 component.Broken = false;
-                TryUpdateVisualState((uid, component));
+                TryUpdateVisualState(uid, component);
                 return;
             }
 
@@ -180,11 +164,8 @@ namespace Content.Server.VendingMachines
             if (args.DamageIncreased && args.DamageDelta.GetTotal() >= component.DispenseOnHitThreshold &&
                 _random.Prob(component.DispenseOnHitChance.Value))
             {
-                if (component.DispenseOnHitCooldown != null)
-                {
-                    component.DispenseOnHitEnd = Timing.CurTime + component.DispenseOnHitCooldown.Value;
-                }
-
+                if (component.DispenseOnHitCooldown > 0f)
+                    component.DispenseOnHitCoolingDown = true;
                 EjectRandom(uid, throwItem: true, forceEject: true, component);
             }
         }
@@ -243,6 +224,235 @@ namespace Content.Server.VendingMachines
             Dirty(uid, component);
         }
 
+        public void Deny(EntityUid uid, VendingMachineComponent? vendComponent = null)
+        {
+            if (!Resolve(uid, ref vendComponent))
+                return;
+
+            if (vendComponent.Denying)
+                return;
+
+            vendComponent.Denying = true;
+            Audio.PlayPvs(vendComponent.SoundDeny, uid, AudioParams.Default.WithVolume(-2f));
+            TryUpdateVisualState(uid, vendComponent);
+        }
+
+        /// <summary>
+        /// Checks if the user is authorized to use this vending machine
+        /// </summary>
+        /// <param name="uid"></param>
+        /// <param name="sender">Entity trying to use the vending machine</param>
+        /// <param name="vendComponent"></param>
+        public bool IsAuthorized(EntityUid uid, EntityUid sender, VendingMachineComponent? vendComponent = null)
+        {
+            if (!Resolve(uid, ref vendComponent))
+                return false;
+
+            if (!TryComp<AccessReaderComponent>(uid, out var accessReader))
+                return true;
+
+            if (_accessReader.IsAllowed(sender, uid, accessReader))
+                return true;
+
+            Popup.PopupEntity(Loc.GetString("vending-machine-component-try-eject-access-denied"), uid);
+            Deny(uid, vendComponent);
+            return false;
+        }
+
+        /// <summary>
+        /// Tries to eject the provided item. Will do nothing if the vending machine is incapable of ejecting, already ejecting
+        /// or the item doesn't exist in its inventory.
+        /// </summary>
+        /// <param name="uid"></param>
+        /// <param name="type">The type of inventory the item is from</param>
+        /// <param name="itemId">The prototype ID of the item</param>
+        /// <param name="throwItem">Whether the item should be thrown in a random direction after ejection</param>
+        /// <param name="vendComponent"></param>
+        public bool TryEjectVendorItem(EntityUid uid, InventoryType type, string itemId, bool throwItem, VendingMachineComponent? vendComponent = null)
+        {
+            if (!Resolve(uid, ref vendComponent))
+                return false;
+
+            if (vendComponent.Ejecting || vendComponent.Broken || !this.IsPowered(uid, EntityManager))
+            {
+                return false;
+            }
+
+            var entry = GetEntry(uid, itemId, type, vendComponent);
+
+            if (entry == null)
+            {
+                Popup.PopupEntity(Loc.GetString("vending-machine-component-try-eject-invalid-item"), uid);
+                Deny(uid, vendComponent);
+                return false;
+            }
+
+            if (entry.Amount <= 0)
+            {
+                Popup.PopupEntity(Loc.GetString("vending-machine-component-try-eject-out-of-stock"), uid);
+                Deny(uid, vendComponent);
+                return false;
+            }
+
+            if (string.IsNullOrEmpty(entry.ID))
+                return false;
+
+            if (!TryComp<TransformComponent>(vendComponent.Owner, out var transformComp))
+                return false;
+
+            // Start Ejecting, and prevent users from ordering while anim playing
+            vendComponent.Ejecting = true;
+            vendComponent.NextItemToEject = entry.ID;
+            vendComponent.ThrowNextItem = throwItem;
+
+            if (TryComp(uid, out SpeakOnUIClosedComponent? speakComponent))
+                _speakOnUIClosed.TrySetFlag((uid, speakComponent));
+
+            // Frontier: unlimited vending
+            // Infinite supplies must stay infinite.
+            if (entry.Amount != uint.MaxValue)
+                entry.Amount--;
+            // End Frontier
+
+            Dirty(uid, vendComponent);
+            TryUpdateVisualState(uid, vendComponent);
+            Audio.PlayPvs(vendComponent.SoundVend, uid);
+            return true;
+        }
+
+        // Frontier: custom vending check
+        /// <summary>
+        /// Checks whether the user is authorized to use the vending machine, then ejects the provided item if true
+        /// </summary>
+        /// <param name="uid"></param>
+        /// <param name="sender">Entity that is trying to use the vending machine</param>
+        /// <param name="type">The type of inventory the item is from</param>
+        /// <param name="itemId">The prototype ID of the item</param>
+        /// <param name="component"></param>
+        public void AuthorizedVend(EntityUid uid, EntityUid sender, InventoryType type, string itemId, VendingMachineComponent component)
+        {
+            if (!_prototypeManager.TryIndex<EntityPrototype>(itemId, out var proto))
+                return;
+
+            var price = _pricing.GetEstimatedPrice(proto);
+            // Somewhere deep in the code of pricing, a hardcoded 20 dollar value exists for anything without
+            // a staticprice component for some god forsaken reason, and I cant find it or think of another way to
+            // get an accurate price from a prototype with no staticprice comp.
+            // this will undoubtably lead to vending machine exploits if I cant find wtf pricing system is doing.
+            // also stacks, food, solutions, are handled poorly too f
+            if (price == 0)
+                price = 20;
+
+            if (TryComp<MarketModifierComponent>(component.Owner, out var modifier))
+                price *= modifier.Mod;
+
+            var totalPrice = (int) price;
+
+            // If any price has a vendor price, explicitly use its value - higher OR lower, over others.
+            var priceVend = _pricing.GetEstimatedVendPrice(proto);
+            if (priceVend > 0.0) // if vending price exists, overwrite it.
+                totalPrice = (int) priceVend;
+
+            if (IsAuthorized(uid, sender, component))
+            {
+                int bankBalance = 0;
+                if (TryComp<BankAccountComponent>(sender, out var bank))
+                    bankBalance = bank.Balance;
+
+                int cashSlotBalance = 0;
+                Entity<StackComponent>? cashEntity = null;
+                if (component.CashSlotName != null
+                    && component.CurrencyStackType != null
+                    && ItemSlots.TryGetSlot(uid, component.CashSlotName, out var cashSlot)
+                    && TryComp<StackComponent>(cashSlot?.ContainerSlot?.ContainedEntity, out var stackComp)
+                    && stackComp!.StackTypeId == component.CurrencyStackType)
+                {
+                    cashSlotBalance = stackComp!.Count;
+                    cashEntity = (cashSlot!.ContainerSlot!.ContainedEntity.Value, stackComp!);
+                }
+
+                if (totalPrice > bankBalance + cashSlotBalance)
+                {
+                    _popupSystem.PopupEntity(Loc.GetString("bank-insufficient-funds"), uid);
+                    Deny(uid, component);
+                    return;
+                }
+
+                bool paidFully = false;
+                // Mono: Store the purchase price for tracking
+                component.LastPurchasePrice = totalPrice;
+
+                if (TryEjectVendorItem(uid, type, itemId, component.CanShoot, component))
+                {
+                    if (cashEntity != null)
+                    {
+                        var newCashSlotBalance = Math.Max(cashSlotBalance - totalPrice, 0);
+                        _stack.SetCount(cashEntity.Value.Owner, newCashSlotBalance, cashEntity.Value.Comp);
+                        component.CashSlotBalance = newCashSlotBalance;
+                        paidFully = true; // Either we paid fully with cash, or we need to withdraw the remainder
+                    }
+                    if (totalPrice > cashSlotBalance)
+                    {
+                        paidFully = _bankSystem.TryBankWithdraw(sender, totalPrice - cashSlotBalance);
+                    }
+
+                    // If we paid completely, pay our station taxes
+                    if (paidFully)
+                    {
+                        foreach (var (account, taxCoeff) in component.TaxAccounts)
+                        {
+                            if (!float.IsFinite(taxCoeff) || taxCoeff <= 0.0f)
+                                continue;
+                            var tax = (int)Math.Floor(totalPrice * taxCoeff);
+                            _bankSystem.TrySectorDeposit(account, tax, LedgerEntryType.VendorTax);
+                        }
+                    }
+
+                    // Something was ejected, update the vending component's state
+                    Dirty(uid, component);
+
+                    _adminLogger.Add(LogType.Action, LogImpact.Low,
+                        $"{ToPrettyString(sender):user} bought from [vendingMachine:{ToPrettyString(uid!)}, product:{proto.Name}, cost:{totalPrice},  with ${cashSlotBalance} in the cash slot and ${bankBalance} in the bank.");
+                }
+            }
+            // End Frontier
+        }
+
+        /// <summary>
+        /// Tries to update the visuals of the component based on its current state.
+        /// </summary>
+        public void TryUpdateVisualState(EntityUid uid, VendingMachineComponent? vendComponent = null)
+        {
+            if (!Resolve(uid, ref vendComponent))
+                return;
+
+            var finalState = VendingMachineVisualState.Normal;
+            if (vendComponent.Broken)
+            {
+                finalState = VendingMachineVisualState.Broken;
+            }
+            else if (vendComponent.Ejecting)
+            {
+                finalState = VendingMachineVisualState.Eject;
+            }
+            else if (vendComponent.Denying)
+            {
+                finalState = VendingMachineVisualState.Deny;
+            }
+            else if (!this.IsPowered(uid, EntityManager))
+            {
+                finalState = VendingMachineVisualState.Off;
+            }
+
+            if (_light.TryGetLight(uid, out var pointlight))
+            {
+                var lightState = finalState != VendingMachineVisualState.Broken && finalState != VendingMachineVisualState.Off;
+                _light.SetEnabled(uid, lightState, pointlight);
+            }
+
+            _appearanceSystem.SetData(uid, VendingMachineVisuals.VisualState, finalState);
+        }
+
         /// <summary>
         /// Ejects a random item from the available stock. Will do nothing if the vending machine is empty.
         /// </summary>
@@ -255,10 +465,22 @@ namespace Content.Server.VendingMachines
             if (!Resolve(uid, ref vendComponent))
                 return;
 
+            if (!this.IsPowered(uid, EntityManager))
+                return;
+
+            if (vendComponent.Ejecting)
+                return;
+
+            if (vendComponent.EjectRandomCounter <= 0)
+            {
+                _audioSystem.PlayPvs(_audioSystem.GetSound(vendComponent.SoundDeny), uid);
+                _popupSystem.PopupEntity(Loc.GetString("vending-machine-component-try-eject-access-abused"), uid, PopupType.MediumCaution);
+                return;
+            }
+
             var availableItems = GetAvailableInventory(uid, vendComponent);
             if (availableItems.Count <= 0)
                 return;
-
             var item = _random.Pick(availableItems);
 
             if (forceEject)
@@ -271,19 +493,29 @@ namespace Content.Server.VendingMachines
                 EjectItem(uid, vendComponent, forceEject);
             }
             else
-            {
-                TryEjectVendorItem(uid, item.Type, item.ID, throwItem, user: null, vendComponent: vendComponent);
-            }
+                TryEjectVendorItem(uid, item.Type, item.ID, throwItem, vendComponent);
+            vendComponent.EjectRandomCounter -= 1;
         }
 
-        protected override void EjectItem(EntityUid uid, VendingMachineComponent? vendComponent = null, bool forceEject = false)
+        public void AddCharges(EntityUid uid, int change, VendingMachineComponent? comp = null)
+        {
+            if (!Resolve(uid, ref comp, false))
+                return;
+
+            var old = comp.EjectRandomCounter;
+            comp.EjectRandomCounter = Math.Clamp(comp.EjectRandomCounter + change, 0, comp.EjectRandomMax);
+            if (comp.EjectRandomCounter != old)
+                Dirty(uid, comp);
+        }
+
+        private void EjectItem(EntityUid uid, VendingMachineComponent? vendComponent = null, bool forceEject = false)
         {
             if (!Resolve(uid, ref vendComponent))
                 return;
 
             // No need to update the visual state because we never changed it during a forced eject
             if (!forceEject)
-                TryUpdateVisualState((uid, vendComponent));
+                TryUpdateVisualState(uid, vendComponent);
 
             if (string.IsNullOrEmpty(vendComponent.NextItemToEject))
             {
@@ -305,6 +537,16 @@ namespace Content.Server.VendingMachines
 
             var ent = Spawn(vendComponent.NextItemToEject, spawnCoordinates);
 
+            _contraband.ClearContrabandValue(ent); // Frontier
+
+            // Mono: Track vending machine purchases for pricing modifications
+            // Only track if this was a paid purchase (not a random eject or force eject)
+            if (!forceEject && vendComponent.LastPurchasePrice.HasValue)
+            {
+                _vendingPurchase.MarkAsPurchased(ent, uid, vendComponent.LastPurchasePrice.Value);
+                vendComponent.LastPurchasePrice = null; // Clear after use
+            }
+
             if (vendComponent.ThrowNextItem)
             {
                 var range = vendComponent.NonLimitedEjectRange;
@@ -316,17 +558,76 @@ namespace Content.Server.VendingMachines
             vendComponent.ThrowNextItem = false;
         }
 
+        private VendingMachineInventoryEntry? GetEntry(EntityUid uid, string entryId, InventoryType type, VendingMachineComponent? component = null)
+        {
+            if (!Resolve(uid, ref component))
+                return null;
+
+            if (type == InventoryType.Emagged && _emag.CheckFlag(uid, EmagType.Interaction))
+                return component.EmaggedInventory.GetValueOrDefault(entryId);
+
+            if (type == InventoryType.Contraband && component.Contraband)
+                return component.ContrabandInventory.GetValueOrDefault(entryId);
+
+            return component.Inventory.GetValueOrDefault(entryId);
+        }
+
         public override void Update(float frameTime)
         {
             base.Update(frameTime);
 
+            var query = EntityQueryEnumerator<VendingMachineComponent>();
+            while (query.MoveNext(out var uid, out var comp))
+            {
+                if (comp.Ejecting)
+                {
+                    comp.EjectAccumulator += frameTime;
+                    if (comp.EjectAccumulator >= comp.EjectDelay)
+                    {
+                        comp.EjectAccumulator = 0f;
+                        comp.Ejecting = false;
+
+                        EjectItem(uid, comp);
+                    }
+                }
+
+                if (comp.Denying)
+                {
+                    comp.DenyAccumulator += frameTime;
+                    if (comp.DenyAccumulator >= comp.DenyDelay)
+                    {
+                        comp.DenyAccumulator = 0f;
+                        comp.Denying = false;
+
+                        TryUpdateVisualState(uid, comp);
+                    }
+                }
+
+                if (comp.DispenseOnHitCoolingDown)
+                {
+                    comp.DispenseOnHitAccumulator += frameTime;
+                    if (comp.DispenseOnHitAccumulator >= comp.DispenseOnHitCooldown)
+                    {
+                        comp.DispenseOnHitAccumulator = 0f;
+                        comp.DispenseOnHitCoolingDown = false;
+                    }
+                }
+
+                // Added block for charges
+                if (comp.EjectRandomCounter == comp.EjectRandomMax || _timing.CurTime < comp.EjectNextChargeTime)
+                    continue;
+
+                AddCharges(uid, 1, comp);
+                comp.EjectNextChargeTime = _timing.CurTime + comp.EjectRechargeDuration;
+                // Added block for charges
+            }
             var disabled = EntityQueryEnumerator<EmpDisabledComponent, VendingMachineComponent>();
             while (disabled.MoveNext(out var uid, out _, out var comp))
             {
                 if (comp.NextEmpEject < _timing.CurTime)
                 {
                     EjectRandom(uid, true, false, comp);
-                    comp.NextEmpEject += (5 * comp.EjectDelay);
+                    comp.NextEmpEject += TimeSpan.FromSeconds(5 * comp.EjectDelay);
                 }
             }
         }
@@ -339,18 +640,19 @@ namespace Content.Server.VendingMachines
             RestockInventoryFromPrototype(uid, vendComponent);
 
             Dirty(uid, vendComponent);
-            TryUpdateVisualState((uid, vendComponent));
+            TryUpdateVisualState(uid, vendComponent);
         }
 
         private void OnPriceCalculation(EntityUid uid, VendingMachineRestockComponent component, ref PriceCalculationEvent args)
         {
-            List<double> priceSets = new();
+            args.Price = 0; // This area of the code make it so the cargoblacklist gets ignored, this change was to resolve it.
+            return;
 
+            List<double> priceSets = new();
             // Find the most expensive inventory and use that as the highest price.
             foreach (var vendingInventory in component.CanRestock)
             {
                 double total = 0;
-
                 if (PrototypeManager.TryIndex(vendingInventory, out VendingMachineInventoryPrototype? inventoryPrototype))
                 {
                     foreach (var (item, amount) in inventoryPrototype.StartingInventory)
@@ -359,21 +661,45 @@ namespace Content.Server.VendingMachines
                             total += _pricing.GetEstimatedPrice(entity) * amount;
                     }
                 }
-
                 priceSets.Add(total);
             }
 
             args.Price += priceSets.Max();
         }
 
-        private void OnEmpPulse(EntityUid uid, VendingMachineComponent component, ref EmpPulseEvent args)
+        //private void OnEmpPulse(EntityUid uid, VendingMachineComponent component, ref EmpPulseEvent args) // Frontier: Upstream - #28984
+        //{
+        //    if (!component.Broken && this.IsPowered(uid, EntityManager))
+        //    {
+        //        args.Affected = true;
+        //        args.Disabled = true;
+        //        component.NextEmpEject = _timing.CurTime;
+        //    }
+        //}
+
+        // Frontier: cash slot logic
+        private void OnEntityInserted(Entity<VendingMachineComponent> ent, ref EntInsertedIntoContainerMessage args)
         {
-            if (!component.Broken && this.IsPowered(uid, EntityManager))
+            if (ent.Comp.CashSlotName != null
+            && ent.Comp.CurrencyStackType != null
+            && ItemSlots.TryGetSlot(ent, ent.Comp.CashSlotName, out var slot)
+            && TryComp<StackComponent>(slot?.ContainerSlot?.ContainedEntity, out var stack)
+            && stack.StackTypeId == ent.Comp.CurrencyStackType)
             {
-                args.Affected = true;
-                args.Disabled = true;
-                component.NextEmpEject = _timing.CurTime;
+                ent.Comp.CashSlotBalance = stack.Count;
             }
+            else
+            {
+                ent.Comp.CashSlotBalance = 0;
+            }
+            Dirty(ent, ent.Comp);
         }
+
+        private void OnEntityRemoved(Entity<VendingMachineComponent> ent, ref EntRemovedFromContainerMessage args)
+        {
+            ent.Comp.CashSlotBalance = 0;
+            Dirty(ent, ent.Comp);
+        }
+        // End Frontier: cash slot logic
     }
 }

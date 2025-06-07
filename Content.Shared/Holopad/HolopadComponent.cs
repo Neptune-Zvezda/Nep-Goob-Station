@@ -1,8 +1,3 @@
-// SPDX-FileCopyrightText: 2024 chromiumboy <50505512+chromiumboy@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using Content.Shared.Telephone;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
@@ -61,6 +56,27 @@ public sealed partial class HolopadComponent : Component
     /// </summary>
     [DataField]
     public float ControlLockoutCoolDown { get; private set; } = 180f;
+
+    /// <summary>
+    /// Frontier - If true, will sync pad name with a station name.
+    /// </summary>
+    [ViewVariables]
+    [DataField]
+    public bool UseStationName { get; set; }
+
+    /// <summary>
+    /// Frontier - If added with UseStationName will add a Prefix to the name
+    /// </summary>
+    [ViewVariables]
+    [DataField]
+    public string? StationNamePrefix { get; set; } = null;
+
+    /// <summary>
+    /// Frontier - If added with UseStationName will add a suffix to the name
+    /// </summary>
+    [ViewVariables]
+    [DataField]
+    public string? StationNameSuffix { get; set; } = null;
 }
 
 #region: Event messages

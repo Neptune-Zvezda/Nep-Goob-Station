@@ -1,9 +1,3 @@
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 AstroDogeDX <48888500+AstroDogeDX@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aviu00 <93730715+Aviu00@users.noreply.github.com>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
 - type: entity
   id: TorsoResomi
   name: "resomi torso"
@@ -44,7 +38,7 @@
 - type: entity
   id: LeftHandResomi
   name: "left resomi hand"
-  parent: [PartHuman, BaseLeftHand] # Goob edit
+  parent: LeftHandHuman
   components:
   - type: Sprite
     sprite: _Floofstation/Mobs/Species/Resomi/parts.rsi
@@ -53,7 +47,7 @@
 - type: entity
   id: RightHandResomi
   name: "right resomi hand"
-  parent: [PartHuman, BaseRightHand] # Goob edit
+  parent: RightHandHuman
   components:
   - type: Sprite
     sprite: _Floofstation/Mobs/Species/Resomi/parts.rsi

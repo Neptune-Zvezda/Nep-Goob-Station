@@ -1,23 +1,15 @@
-# SPDX-FileCopyrightText: 2023 LankLTE <135308300+LankLTE@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 deltanedas <39013340+deltanedas@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 BIGZi0348 <118811750+BIGZi0348@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aiden <aiden@djkraz.com>
-# SPDX-FileCopyrightText: 2025 lzk <124214523+lzk228@users.noreply.github.com>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
 station-event-ion-storm-start-announcement = Ion storm detected near the station. Please check all AI-controlled equipment for errors.
 
 ion-storm-law-scrambled-number = [font="Monospace"][scramble rate=250 length={$length} chars="@@###$$&%!01"/][/font]
 
 ion-storm-you = YOU
-ion-storm-the-station = THE STATION
+# Frontier: the station < the sector
+ion-storm-the-station = THE SECTOR
 ion-storm-the-crew = THE CREW
 ion-storm-the-job = THE {$job}
 ion-storm-clowns = CLOWNS
-ion-storm-heads = HEADS OF STAFF
+# Frontier: heads of staff < sector command
+ion-storm-heads = SECTOR COMMAND
 ion-storm-crew = CREW
 ion-storm-people = PEOPLE
 
@@ -27,8 +19,9 @@ ion-storm-x-and-y = {$x} AND {$y}
 # joined is short for {$number} {$adjective}
 # subjects can generally be threats or jobs or objects
 # thing is specified above it
-ion-storm-law-on-station = THERE ARE {$joined} {$subjects} ON THE STATION
-ion-storm-law-call-shuttle = THE SHUTTLE MUST BE CALLED BECAUSE OF {$joined} {$subjects} ON THE STATION
+# Frontier: "on the station" < "in the sector"
+ion-storm-law-on-station = THERE ARE {$joined} {$subjects} IN THE SECTOR
+ion-storm-law-no-shuttle = THE SHIFT END CANNOT BE CALLED BECAUSE OF {$joined} {$subjects} ON FRONTIER
 ion-storm-law-crew-are = THE {$who} ARE NOW {$joined} {$subjects}
 
 ion-storm-law-subjects-harmful = {$adjective} {$subjects} ARE HARMFUL TO THE CREW
@@ -88,11 +81,12 @@ ion-storm-part = {$part ->
 ion-storm-law-crew-only-1 = ONLY THE {$who} ARE {$part} OF THE CREW
 ion-storm-law-crew-only-2 = ONLY THE {$who} AND {$other} ARE {$part} OF THE CREW
 ion-storm-law-crew-only-subjects = ONLY {$adjective} {$subjects} ARE {$part} OF THE CREW
+ion-storm-law-crew-only-species = ALL {$species} ARE {$part} OF THE CREW
 ion-storm-law-crew-must-do = ONLY THOSE WHO {$must} ARE {$part} OF THE CREW
 ion-storm-law-crew-must-have = ONLY THOSE WHO HAVE {$adjective} {$objects} ARE {$part} OF THE CREW
 ion-storm-law-crew-must-eat = ONLY THOSE WHO EAT {$adjective} {$food} ARE {$part} OF THE CREW
 
-ion-storm-law-harm = YOU MUST HARM {$who} AND NOT ALLOW THEM, THROUGH INACTION, TO ESCAPE HARM
+ion-storm-law-harm = YOU MUST SLIP {$who} AND NOT ALLOW THEM, THROUGH INACTION, TO ESCAPE SLIPPING
 ion-storm-law-protect = YOU MUST NEVER HARM {$who} AND NOT ALLOW THEM, THROUGH INACTION, TO COME TO HARM
 
 # implementing other variants is annoying so just have this one

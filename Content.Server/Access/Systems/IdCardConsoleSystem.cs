@@ -1,25 +1,3 @@
-// SPDX-FileCopyrightText: 2022 wrexbe <81056464+wrexbe@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Moony <moony@hellomouse.net>
-// SPDX-FileCopyrightText: 2023 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 PrPleGoo <PrPleGoo@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Visne <39844191+Visne@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 moonheart08 <moonheart08@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 AJCM-git <60196617+AJCM-git@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Aidenkrz <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2024 c4llv07e <38111072+c4llv07e@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 chavonadelal <156101927+chavonadelal@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 deltanedas <@deltanedas:kde.org>
-// SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 metalgearsloth <comedian_vs_clown@hotmail.com>
-// SPDX-FileCopyrightText: 2024 themias <89101928+themias@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using Content.Server.StationRecords.Systems;
 using Content.Shared.Access.Components;
 using Content.Shared.Access.Systems;
@@ -27,12 +5,16 @@ using Content.Shared.Administration.Logs;
 using Content.Shared.Database;
 using Content.Shared.Roles;
 using Content.Shared.StationRecords;
+using Content.Shared.StatusIcon;
 using JetBrains.Annotations;
 using Robust.Server.GameObjects;
 using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
 using System.Linq;
+using Content.Server._NF.Shipyard.Systems; // Frontier
+using Content.Shared._NF.Shipyard.Components; // Frontier
 using static Content.Shared.Access.Components.IdCardConsoleComponent;
+using static Content.Shared._NF.Shipyard.Components.ShuttleDeedComponent; // Frontier
 using Content.Shared.Access;
 
 namespace Content.Server.Access.Systems;
@@ -47,12 +29,14 @@ public sealed class IdCardConsoleSystem : SharedIdCardConsoleSystem
     [Dependency] private readonly AccessSystem _access = default!;
     [Dependency] private readonly IdCardSystem _idCard = default!;
     [Dependency] private readonly ISharedAdminLogManager _adminLogger = default!;
+    [Dependency] private readonly ShipyardSystem _shipyard = default!;
 
     public override void Initialize()
     {
         base.Initialize();
 
-        SubscribeLocalEvent<IdCardConsoleComponent, WriteToTargetIdMessage>(OnWriteToTargetIdMessage);
+        SubscribeLocalEvent<IdCardConsoleComponent, SharedIdCardSystem.WriteToTargetIdMessage>(OnWriteToTargetIdMessage);
+        SubscribeLocalEvent<IdCardConsoleComponent, SharedIdCardSystem.WriteToShuttleDeedMessage>(OnWriteToShuttleDeedMessage);
 
         // one day, maybe bound user interfaces can be shared too.
         SubscribeLocalEvent<IdCardConsoleComponent, ComponentStartup>(UpdateUserInterface);
@@ -60,12 +44,23 @@ public sealed class IdCardConsoleSystem : SharedIdCardConsoleSystem
         SubscribeLocalEvent<IdCardConsoleComponent, EntRemovedFromContainerMessage>(UpdateUserInterface);
     }
 
-    private void OnWriteToTargetIdMessage(EntityUid uid, IdCardConsoleComponent component, WriteToTargetIdMessage args)
+    private void OnWriteToTargetIdMessage(EntityUid uid, IdCardConsoleComponent component, SharedIdCardSystem.WriteToTargetIdMessage args)
     {
         if (args.Actor is not { Valid: true } player)
             return;
 
         TryWriteToTargetId(uid, args.FullName, args.JobTitle, args.AccessList, args.JobPrototype, player, component);
+
+        UpdateUserInterface(uid, component, args);
+    }
+
+    private void OnWriteToShuttleDeedMessage(EntityUid uid, IdCardConsoleComponent component,
+        SharedIdCardSystem.WriteToShuttleDeedMessage args)
+    {
+        if (args.Actor is not { Valid: true } player)
+            return;
+
+        TryWriteToShuttleDeed(uid, args.ShuttleName, args.ShuttleSuffix, player, component);
 
         UpdateUserInterface(uid, component, args);
     }
@@ -93,6 +88,8 @@ public sealed class IdCardConsoleSystem : SharedIdCardConsoleSystem
                 false,
                 null,
                 null,
+                false,
+                null,
                 null,
                 possibleAccess,
                 string.Empty,
@@ -104,12 +101,20 @@ public sealed class IdCardConsoleSystem : SharedIdCardConsoleSystem
             var targetIdComponent = EntityManager.GetComponent<IdCardComponent>(targetId);
             var targetAccessComponent = EntityManager.GetComponent<AccessComponent>(targetId);
 
-            var jobProto = new ProtoId<AccessLevelPrototype>(string.Empty);
+            var jobProto = new ProtoId<JobPrototype>(string.Empty); // Frontier: AccessLevelPrototype<JobPrototype
             if (TryComp<StationRecordKeyStorageComponent>(targetId, out var keyStorage)
                 && keyStorage.Key is {} key
                 && _record.TryGetRecord<GeneralStationRecord>(key, out var record))
             {
                 jobProto = record.JobPrototype;
+            }
+
+            string?[]? shuttleNameParts = null;
+            var hasShuttle = false;
+            if (EntityManager.TryGetComponent<ShuttleDeedComponent>(targetId, out var comp))
+            {
+                shuttleNameParts = new[] { comp.ShuttleName, comp.ShuttleNameSuffix };
+                hasShuttle = true;
             }
 
             newState = new IdCardConsoleBoundUserInterfaceState(
@@ -118,6 +123,8 @@ public sealed class IdCardConsoleSystem : SharedIdCardConsoleSystem
                 true,
                 targetIdComponent.FullName,
                 targetIdComponent.LocalizedJobTitle,
+                hasShuttle, // Frontier
+                shuttleNameParts, // Frontier
                 targetAccessComponent.Tags.ToList(),
                 possibleAccess,
                 jobProto,
@@ -136,7 +143,7 @@ public sealed class IdCardConsoleSystem : SharedIdCardConsoleSystem
         string newFullName,
         string newJobTitle,
         List<ProtoId<AccessLevelPrototype>> newAccessList,
-        ProtoId<AccessLevelPrototype> newJobProto,
+        ProtoId<JobPrototype> newJobProto, // Frontier: AccessLevelPrototype<JobPrototype
         EntityUid player,
         IdCardConsoleComponent? component = null)
     {
@@ -191,6 +198,50 @@ public sealed class IdCardConsoleSystem : SharedIdCardConsoleSystem
         This current implementation is pretty shit as it logs 27 entries (27 lines) if someone decides to give themselves AA*/
         _adminLogger.Add(LogType.Action, LogImpact.Medium,
             $"{ToPrettyString(player):player} has modified {ToPrettyString(targetId):entity} with the following accesses: [{string.Join(", ", addedTags.Union(removedTags))}] [{string.Join(", ", newAccessList)}]");
+    }
+
+    /// <summary>
+    /// Called whenever an attempt to change the shuttle deed of the target id is made.
+    /// Writes data passed from the ui to the shuttle deed and the grid of shuttle.
+    /// </summary>
+    private void TryWriteToShuttleDeed(EntityUid uid,
+        string newShuttleName,
+        string newShuttleSuffix,
+        EntityUid player,
+        IdCardConsoleComponent? component = null)
+    {
+        if (!Resolve(uid, ref component))
+            return;
+
+        if (component.TargetIdSlot.Item is not { Valid: true } targetId || !PrivilegedIdIsAuthorized(uid, component))
+            return;
+
+        if (!EntityManager.TryGetComponent<ShuttleDeedComponent>(targetId, out var shuttleDeed))
+            return;
+        else
+        {
+            if (Deleted(shuttleDeed!.ShuttleUid))
+            {
+                RemComp<ShuttleDeedComponent>(targetId);
+                return;
+            }
+        }
+
+        // Ensure the name is valid and follows the convention
+        var name = newShuttleName.Trim();
+        // The suffix is ignored as per request
+        // var suffix = newShuttleSuffix;
+        var suffix = shuttleDeed.ShuttleNameSuffix;
+
+        if (name.Length > MaxNameLength)
+            name = name[..MaxNameLength];
+        // if (suffix.Length > MaxSuffixLength)
+        //     suffix = suffix[..MaxSuffixLength];
+
+        _shipyard.TryRenameShuttle(targetId, shuttleDeed, name, suffix);
+
+        _adminLogger.Add(LogType.Action, LogImpact.Medium,
+            $"{ToPrettyString(player):player} has changed the shuttle name of {ToPrettyString(shuttleDeed.ShuttleUid):entity} to {ShipyardSystem.GetFullName(shuttleDeed)}");
     }
 
     /// <summary>

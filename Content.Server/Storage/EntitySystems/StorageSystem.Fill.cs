@@ -1,16 +1,5 @@
-// SPDX-FileCopyrightText: 2022 Fishfish458 <47410468+Fishfish458@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 fishfish458 <fishfish458>
-// SPDX-FileCopyrightText: 2022 metalgearsloth <comedian_vs_clown@hotmail.com>
-// SPDX-FileCopyrightText: 2022 mirrorcult <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2023 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 DrSmugleaf <10968691+DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: MIT
-
 using System.Linq;
+using Content.Server.Humanoid.Components;
 using Content.Server.Spawners.Components;
 using Content.Server.Storage.Components;
 using Content.Shared.Item;
@@ -114,6 +103,13 @@ public sealed partial class StorageSystem
             DebugTools.Assert(!_prototype.Index<EntityPrototype>(item)
                 .HasComponent(typeof(RandomSpawnerComponent)));
             var ent = Spawn(item, coordinates);
+
+            // Frontier: handle humanoid spawner cases
+            if (TryComp<RandomHumanoidSpawnerComponent>(ent, out var spawner))
+            {
+                ent = spawner.SpawnedId;
+            }
+            // End Frontier
 
             // handle depending on storage component, again this should be unified after ECS
             if (entityStorageComp != null && EntityStorage.Insert(ent, uid, entityStorageComp))

@@ -1,11 +1,3 @@
-// SPDX-FileCopyrightText: 2024 Firewatch <54725557+musicmanvr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Mr. 27 <45323883+Dutch-VanDerLinde@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Mr. 27 <koolthunder019@gmail.com>
-// SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using System.Linq;
 using Content.Shared.Clothing;
 using Content.Shared.Preferences;
@@ -80,13 +72,18 @@ public sealed partial class LoadoutGroupContainer : BoxContainer
             if (!protoMan.TryIndex(loadoutProto, out var loadProto))
                 continue;
 
+            // Frontier: hide loadout effects
+            if (loadout.IsHidden(profile, session, loadoutProto, collection))
+                continue;
+            // End Frontier: hide loadout effects
+
             var matchingLoadout = selected.FirstOrDefault(e => e.Prototype == loadoutProto);
             var pressed = matchingLoadout != null;
 
             var enabled = loadout.IsValid(profile, session, loadoutProto, collection, out var reason);
             var loadoutContainer = new LoadoutContainer(loadoutProto, !enabled, reason);
             loadoutContainer.Select.Pressed = pressed;
-            loadoutContainer.Text = loadoutSystem.GetName(loadProto);
+            loadoutContainer.Text = string.IsNullOrEmpty(loadProto.Name) ? loadoutSystem.GetName(loadProto) : loadProto.Name; // Frontier: allow overriding loadout names
 
             loadoutContainer.Select.OnPressed += args =>
             {
@@ -98,5 +95,40 @@ public sealed partial class LoadoutGroupContainer : BoxContainer
 
             LoadoutsContainer.AddChild(loadoutContainer);
         }
+
+        // Frontier: loadoutGroup subgroups
+        foreach (var subgroupProto in _groupProto.Subgroups)
+        {
+            if (!protoMan.TryIndex(subgroupProto, out var loadoutGroupProto))
+                continue;
+
+            foreach (var loadoutProto in loadoutGroupProto.Loadouts)
+            {
+                if (!protoMan.TryIndex(loadoutProto, out var loadProto))
+                    continue;
+
+                if (loadout.IsHidden(profile, session, loadoutProto, collection))
+                    continue;
+
+                var matchingLoadout = selected.FirstOrDefault(e => e.Prototype == loadoutProto);
+                var pressed = matchingLoadout != null;
+
+                var enabled = loadout.IsValid(profile, session, loadoutProto, collection, out var reason);
+                var loadoutContainer = new LoadoutContainer(loadoutProto, !enabled, reason);
+                loadoutContainer.Select.Pressed = pressed;
+                loadoutContainer.Text = string.IsNullOrEmpty(loadProto.Name) ? loadoutSystem.GetName(loadProto) : loadProto.Name; // Frontier: allow overriding loadout names
+
+                loadoutContainer.Select.OnPressed += args =>
+                {
+                    if (args.Button.Pressed)
+                        OnLoadoutPressed?.Invoke(loadoutProto);
+                    else
+                        OnLoadoutUnpressed?.Invoke(loadoutProto);
+                };
+
+                LoadoutsContainer.AddChild(loadoutContainer);
+            }
+        }
+        // End Frontier
     }
 }

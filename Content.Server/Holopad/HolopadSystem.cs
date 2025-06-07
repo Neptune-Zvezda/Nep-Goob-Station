@@ -1,9 +1,3 @@
-// SPDX-FileCopyrightText: 2024 slarticodefast <161409025+slarticodefast@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 chromiumboy <50505512+chromiumboy@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using Content.Server.Chat.Systems;
 using Content.Server.Popups;
 using Content.Server.Power.EntitySystems;
@@ -26,6 +20,7 @@ using Robust.Shared.Containers;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
 using System.Linq;
+using Content.Server._NF.Station.Systems; // Frontier
 
 namespace Content.Server.Holopad;
 
@@ -43,6 +38,7 @@ public sealed class HolopadSystem : SharedHolopadSystem
     [Dependency] private readonly PopupSystem _popupSystem = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly PvsOverrideSystem _pvs = default!;
+    [Dependency] private readonly StationRenameHolopadsSystem _renameHolopads = default!; // Frontier
 
     private float _updateTimer = 1.0f;
     private const float UpdateTime = 1.0f;
@@ -80,6 +76,8 @@ public sealed class HolopadSystem : SharedHolopadSystem
         SubscribeLocalEvent<HolopadUserComponent, JumpToCoreEvent>(OnJumpToCore);
         SubscribeLocalEvent<HolopadComponent, GetVerbsEvent<AlternativeVerb>>(AddToggleProjectorVerb);
         SubscribeLocalEvent<HolopadComponent, EntRemovedFromContainerMessage>(OnAiRemove);
+
+        SubscribeLocalEvent<HolopadComponent, MapInitEvent>(OnHolopadMapInit); // Frontier
     }
 
     #region: Holopad UI bound user interface messages
@@ -759,4 +757,14 @@ public sealed class HolopadSystem : SharedHolopadSystem
         if (TryComp<AmbientSoundComponent>(entity, out var ambientSound))
             _ambientSoundSystem.SetAmbience(entity, isEnabled, ambientSound);
     }
+
+    // Frontier
+    # region Frontier Extensions
+    private void OnHolopadMapInit(Entity<HolopadComponent> entity, ref MapInitEvent args)
+    {
+        if (entity.Comp.UseStationName)
+            _renameHolopads.SyncHolopad(entity);
+    }
+    # endregion
+    // End Frontier
 }

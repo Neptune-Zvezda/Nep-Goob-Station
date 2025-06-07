@@ -1,32 +1,57 @@
-// SPDX-FileCopyrightText: 2021 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2021 Javier Guardia Fernández <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 mirrorcult <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
-using Robust.Client.Graphics;
+﻿using Robust.Client.Graphics;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
+using Robust.Shared.Maths;
 
 namespace Content.Client.Administration.UI.CustomControls;
 
+/**
+ * FRONTIER CHANGE: Added SeparatorColor so it can be set in the UI.
+ */
 public sealed class HSeparator : Control
 {
-    private static readonly Color SeparatorColor = Color.FromHex("#3D4059");
+    private static readonly Color DefaultSeparatorColor = Color.FromHex("#444444");
+
+    private Color _separatorColor = DefaultSeparatorColor;
+    public Color SeparatorColor
+    {
+        get => _separatorColor;
+        set
+        {
+            _separatorColor = Color.FromHex(value.ToHex());
+            UpdateSeparatorColor();
+        }
+    }
+
+    private PanelContainer? _panelContainer = null;
 
     public HSeparator(Color color)
     {
-        AddChild(new PanelContainer
+        SeparatorColor = color;
+        Initialize();
+    }
+
+    public HSeparator() : this(DefaultSeparatorColor) { }
+
+    private void Initialize()
+    {
+        _panelContainer = new PanelContainer
         {
             PanelOverride = new StyleBoxFlat
             {
-                BackgroundColor = color,
-                ContentMarginBottomOverride = 2, ContentMarginLeftOverride = 2
+                BackgroundColor = SeparatorColor,
+                ContentMarginBottomOverride = 2,
+                ContentMarginLeftOverride = 2
             }
-        });
+        };
+        AddChild(_panelContainer);
     }
 
-    public HSeparator() : this(SeparatorColor) { }
+    private void UpdateSeparatorColor()
+    {
+        if (_panelContainer?.PanelOverride is StyleBoxFlat styleBox)
+        {
+            styleBox.BackgroundColor = SeparatorColor;
+        }
+    }
 }

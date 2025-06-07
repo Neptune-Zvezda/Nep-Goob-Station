@@ -1,51 +1,5 @@
-# SPDX-FileCopyrightText: 2020 DmitriyRubetskoy <75271456+DmitriyRubetskoy@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2020 DmitriyRubetskoy <rubetskoy234@mail.ru>
-# SPDX-FileCopyrightText: 2020 GlassEclipse <32942106+GlassEclipse@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2020 GlassEclipse <tsymall5@gmail.com>
-# SPDX-FileCopyrightText: 2020 Hugo Laloge <hugo.laloge@gmail.com>
-# SPDX-FileCopyrightText: 2020 Paul Ritter <ritter.paul1@googlemail.com>
-# SPDX-FileCopyrightText: 2020 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-# SPDX-FileCopyrightText: 2020 Remie Richards <remierichards@gmail.com>
-# SPDX-FileCopyrightText: 2020 Vera Aguilera Puerto <6766154+Zumorica@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2020 Víctor Aguilera Puerto <6766154+Zumorica@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2020 Ygg01 <daniel.fath7@gmail.com>
-# SPDX-FileCopyrightText: 2021 Galactic Chimp <GalacticChimpanzee@gmail.com>
-# SPDX-FileCopyrightText: 2021 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2021 Metal Gear Sloth <metalgearsloth@gmail.com>
-# SPDX-FileCopyrightText: 2021 Peptide90 <78795277+Peptide90@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2021 Swept <sweptwastaken@protonmail.com>
-# SPDX-FileCopyrightText: 2021 Tarlan2 <76408146+Tarlan2@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2021 and_a <and_a@DESKTOP-RJENGIR>
-# SPDX-FileCopyrightText: 2022 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2022 Kara <lunarautomaton6@gmail.com>
-# SPDX-FileCopyrightText: 2022 Visne <39844191+Visne@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2022 ZeroDayDaemon <60460608+ZeroDayDaemon@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2022 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2022 metalgearsloth <metalgearsloth@gmail.com>
-# SPDX-FileCopyrightText: 2022 mirrorcult <lunarautomaton6@gmail.com>
-# SPDX-FileCopyrightText: 2023 Moony <moony@hellomouse.net>
-# SPDX-FileCopyrightText: 2023 Whisper <121047731+QuietlyWhisper@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 moonheart08 <moonheart08@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 AJCM-git <60196617+AJCM-git@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 BombasterDS <115770678+BombasterDS@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 I.K <45953835+notquitehadouken@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Nairod <110078045+Nairodian@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Skye <57879983+Rainbeon@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Verm <32827189+Vermidia@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Winkarst <74284083+Winkarst-cpu@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 beck-thompson <107373427+beck-thompson@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 deltanedas <39013340+deltanedas@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 deltanedas <@deltanedas:kde.org>
-# SPDX-FileCopyrightText: 2024 lzk <124214523+lzk228@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 slarticodefast <161409025+slarticodefast@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aviu00 <93730715+Aviu00@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 ColonicAcid <claudiomota1990@googlemail.com>
-# SPDX-FileCopyrightText: 2025 Piras314 <p1r4s@proton.me>
-# SPDX-FileCopyrightText: 2025 Ted Lukin <66275205+pheenty@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
+# Im not even gonna bother marking this file with Shitmed Change(s), I'm fucking with almost everything.
+
 # Base
 
 - type: entity
@@ -55,7 +9,7 @@
   components:
   - type: Sprite
   - type: StaticPrice
-    price: 60
+    price: 20
   - type: Tag
     tags:
     - SurgeryTool
@@ -77,7 +31,7 @@
     storedRotation: 90
   - type: MeleeWeapon
     damage:
-       types:
+      types:
         Heat: 5
     soundHit:
       path: /Audio/Effects/lightburn.ogg
@@ -135,7 +89,7 @@
     speedModifier: 0.66 # pretend the sixes go on forever :)
   - type: Utensil
     types:
-      - Knife
+    - Knife
   - type: Sprite
     sprite: _Shitmed/Objects/Specific/Medical/Surgery/scalpel.rsi
     state: scalpel
@@ -158,10 +112,6 @@
     endSound:
       path: /Audio/_Shitmed/Medical/Surgery/scalpel2.ogg
   - type: Scalpel
-  - type: Tag # Goobstation
-    tags:
-    - SurgeryTool
-    - Knife
 
 - type: entity
   name: shiv
@@ -274,9 +224,6 @@
   - type: Item
     sprite: _Shitmed/Objects/Specific/Medical/Surgery/bonesetter.rsi
   - type: BoneSetter
-  - type: SurgeryTool
-    startSound:
-      path: /Audio/_Shitmed/Medical/Surgery/bone_setter.ogg
 
 # Bone Gel - Shitmed Change
 - type: entity
@@ -301,7 +248,7 @@
   - type: Sharp
   - type: Utensil
     types:
-      - Knife
+    - Knife
   - type: Sprite
     sprite: Objects/Specific/Medical/Surgery/saw.rsi
     state: saw
@@ -311,12 +258,12 @@
     storedRotation: 90
   - type: Tool
     qualities:
-      - Sawing
+    - Sawing
   # Shitmed Change
   - type: BoneSaw
   - type: SurgeryTool
     startSound:
-      path: /Audio/_Shitmed/Medical/Surgery/bone_saw.ogg
+      path: /Audio/_Shitmed/Medical/Surgery/saw.ogg
 # No melee for regular saw because have you ever seen someone use a band saw as a weapon? It's dumb.
 
 - type: entity
@@ -363,14 +310,11 @@
     speedModifier: 1.5
   - type: BoneSaw # Shitmed
     speed: 1.5
-  - type: SurgeryTool
-    startSound:
-      path: /Audio/_Shitmed/Medical/Surgery/saw.ogg
 
 - type: entity
   name: advanced circular saw
   id: SawAdvanced
-  parent: [ SawElectric ]
+  parent: [ SawElectric, BaseC3SyndicateContraband ] # Frontier: BaseSyndicateContraband<BaseC3SyndicateContraband
   description: You think you can cut anything with it.
   components:
   - type: Sprite
@@ -393,7 +337,7 @@
 - type: entity
   name: searing tool
   id: EnergyCautery
-  parent: [ Cautery, BaseMedicalScienceContraband ]
+  parent: Cautery
   description: A cautery with an energy tip, also serves as a drill in its powered state.
   components:
   - type: Sprite
@@ -401,6 +345,11 @@
     state: e-cautery-on
   - type: Item
     sprite: _Shitmed/Objects/Specific/Medical/Surgery/e-cautery.rsi
+    inhandVisuals:
+      left:
+      - state: inhand-left-on
+      right:
+      - state: inhand-right-on
   - type: SurgeryTool
     startSound:
       path: /Audio/_Shitmed/Medical/Surgery/cautery1.ogg
@@ -411,47 +360,15 @@
       types:
         Piercing: 10
         Heat: 1
-  - type: PhysicalComposition #Goobstation - Recycle update
-    materialComposition:
-      Steel: 150
-      Glass: 37
-      Plasma: 37
-  - type: ItemSwitch
-    showLabel: true
-    state: cautery
-    states:
-      cautery: !type:ItemSwitchState
-        verb: cautery
-        sprite:
-          sprite: _Shitmed/Objects/Specific/Medical/Surgery/e-cautery.rsi
-          state: e-cautery
-        components:
-          - type: Cautery
-            speed: 1.5
-        soundStateActivate:
-          collection: WelderOn
-          params:
-            variation: 0.125
-            volume: -5
-
-      drill: !type:ItemSwitchState
-        verb: drill
-        sprite:
-          sprite: _Shitmed/Objects/Specific/Medical/Surgery/e-cautery.rsi
-          state: e-cautery-on
-        components:
-          - type: Drill
-            speed: 1.5
-        soundStateActivate:
-          collection: sparks
-          params:
-            variation: 0.125
-            volume: -5
+  - type: Cautery
+    speed: 1.5
+  - type: Drill
+    speed: 1.5
 
 - type: entity
   name: energy scalpel
   id: EnergyScalpel
-  parent: [ Scalpel, BaseMedicalScienceContraband ]
+  parent: Scalpel
   description: A scalpel which uses an energy blade, also serves as a saw in its powered state.
   components:
   - type: Sprite
@@ -459,6 +376,11 @@
     state: e-scalpel-on
   - type: Item
     sprite: _Shitmed/Objects/Specific/Medical/Surgery/e-scalpel.rsi
+    inhandVisuals:
+      left:
+      - state: inhand-left-on
+      right:
+      - state: inhand-right-on
   - type: SurgeryTool
     startSound:
       path: /Audio/_Shitmed/Medical/Surgery/scalpel1.ogg
@@ -469,48 +391,15 @@
       types:
         Slash: 10
         Heat: 1
-  - type: PhysicalComposition #Goobstation - Recycle update
-    materialComposition:
-      Steel: 150
-      Glass: 37
-      Gold: 37
-  - type: ItemSwitch
-    showLabel: true
-    state: scalpel
-    defaultState: scalpel
-    states:
-      scalpel: !type:ItemSwitchState
-        verb: scalpel
-        sprite:
-          sprite: _Shitmed/Objects/Specific/Medical/Surgery/e-scalpel.rsi
-          state: e-scalpel
-        components:
-          - type: Scalpel
-            speed: 1.5
-        soundStateActivate:
-          collection: sparks
-          params:
-            variation: 0.125
-            volume: -5
-
-      saw: !type:ItemSwitchState
-        verb: saw
-        sprite:
-          sprite: _Shitmed/Objects/Specific/Medical/Surgery/e-scalpel.rsi
-          state: e-scalpel-on
-        components:
-          - type: BoneSaw
-            speed: 1.5
-        soundStateActivate:
-          collection: sparks
-          params:
-            variation: 0.125
-            volume: -5
+  - type: Scalpel
+    speed: 1.5
+  - type: BoneSaw
+    speed: 1.5
 
 - type: entity
   name: mechanical pinches
   id: AdvancedRetractor
-  parent: [ Retractor, BaseMedicalScienceContraband ]
+  parent: Retractor
   description: A retractor with mechanical pinches, also serves as a hemostat in its powered state.
   components:
   - type: Sprite
@@ -518,6 +407,11 @@
     state: adv-retractor-on
   - type: Item
     sprite: _Shitmed/Objects/Specific/Medical/Surgery/adv-retractor.rsi
+    inhandVisuals:
+      left:
+      - state: inhand-left-on
+      right:
+      - state: inhand-right-on
   - type: SurgeryTool
     startSound:
       path: /Audio/_Shitmed/Medical/Surgery/retractor1.ogg
@@ -528,51 +422,19 @@
       types:
         Slash: 6.5
         Heat: 1
-  - type: PhysicalComposition #Goobstation - Recycle update
-    materialComposition:
-      Steel: 150
-      Glass: 37
-      Silver: 37
-  - type: ItemSwitch
-    showLabel: true
-    state: retractor
-    states:
-      retractor: !type:ItemSwitchState
-        verb: retractor
-        sprite:
-          sprite: _Shitmed/Objects/Specific/Medical/Surgery/adv-retractor.rsi
-          state: adv-retractor
-        components:
-          - type: Retractor
-            speed: 1.5
-        soundStateActivate:
-          collection: sparks
-          params:
-            variation: 0.125
-            volume: -5
-
-      hemostat: !type:ItemSwitchState
-        verb: hemostat
-        sprite:
-          sprite: _Shitmed/Objects/Specific/Medical/Surgery/adv-retractor.rsi
-          state: adv-retractor-on
-        components:
-          - type: Hemostat
-            speed: 1.5
-          - type: Tweezers
-            speed: 1.5
-          - type: Tending
-            speed: 1.5
-        soundStateActivate:
-          collection: sparks
-          params:
-            variation: 0.125
-            volume: -5
+  - type: Hemostat
+    speed: 1.5
+  - type: Retractor
+    speed: 1.5
+  - type: Tweezers
+    speed: 1.5
+  - type: Tending
+    speed: 1.5
 
 - type: entity
   name: medical multitool
   id: OmnimedTool
-  parent: [ BaseToolSurgery, BaseMedicalContraband ]
+  parent: BaseToolSurgery
   components:
   - type: Sprite
     sprite: _Shitmed/Objects/Specific/Medical/Surgery/omnimed.rsi
@@ -604,7 +466,7 @@
     speed: 2
 
 - type: entity
-  parent: [ BaseSyndicateContraband, OmnimedTool ]
+  parent: [ OmnimedTool, BaseSyndicateContraband ]
   id: OmnimedToolSyndie
   components:
   - type: Sprite

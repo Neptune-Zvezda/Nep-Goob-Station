@@ -1,9 +1,4 @@
-# SPDX-FileCopyrightText: 2024 MACMAN2003 <macman2003c@gmail.com>
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-#
-# SPDX-License-Identifier: MIT
-
-- type: constructionGraph
+﻿- type: constructionGraph
   id: ClockworkGirder
   start: start
   graph:
@@ -11,8 +6,8 @@
       edges:
         - to: clockGirder
           completed:
-            - !type:SnapToGrid
-              southRotation: true
+            - !type:SnapToGrid {} # Frontier: use default ctor
+              # southRotation: true # Frontier
           steps:
             - material: Brass
               amount: 2

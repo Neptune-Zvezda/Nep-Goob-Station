@@ -1,12 +1,3 @@
-// SPDX-FileCopyrightText: 2023 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Visne <39844191+Visne@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Plykiya <58439124+Plykiya@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 plykiya <plykiya@protonmail.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using Content.Shared.Materials;
 using Robust.Client.GameObjects;
 
@@ -61,6 +52,23 @@ public sealed class MaterialStorageSystem : SharedMaterialStorageSystem
         _transform.DetachEntity(toInsert, Transform(toInsert));
         return true;
     }
+
+    // Frontier: partial stack insertion
+    public override bool TryInsertMaxPossibleMaterialEntity(EntityUid user,
+        EntityUid toInsert,
+        EntityUid receiver,
+        out bool empty,
+        MaterialStorageComponent? storage = null,
+        MaterialComponent? material = null,
+        PhysicalCompositionComponent? composition = null)
+    {
+        if (!base.TryInsertMaxPossibleMaterialEntity(user, toInsert, receiver, out empty, storage, material, composition))
+            return false;
+        if (empty)
+            _transform.DetachEntity(toInsert, Transform(toInsert));
+        return true;
+    }
+    // End Frontier: partial stack insertion
 }
 
 public enum MaterialStorageVisualLayers : byte

@@ -1,9 +1,3 @@
-# SPDX-FileCopyrightText: 2024 BombasterDS <115770678+BombasterDS@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Sphiral <145869023+SphiraI@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
 - type: constructionGraph
   id: Shelf
   start: start
@@ -16,7 +10,7 @@
         - to: ShelfWood
           completed:
             - !type:SnapToGrid
-              southRotation: true
+              # southRotation: true Frontier
           steps:
             - material: WoodPlank
               amount: 4
@@ -24,7 +18,7 @@
         - to: ShelfMetal
           completed:
             - !type:SnapToGrid
-              southRotation: true
+              # southRotation: true Frontier
           steps:
             - material: Steel
               amount: 5
@@ -32,7 +26,7 @@
         - to: ShelfGlass
           completed:
             - !type:SnapToGrid
-              southRotation: true
+             # southRotation: true Frontier
           steps:
             - material: Glass
               amount: 4
@@ -41,7 +35,7 @@
         - to: ShelfRWood
           completed:
             - !type:SnapToGrid
-              southRotation: true
+              # southRotation: true Frontier
           steps:
             - material: WoodPlank
               amount: 8
@@ -52,7 +46,7 @@
         - to: ShelfRMetal
           completed:
             - !type:SnapToGrid
-              southRotation: true
+              # southRotation: true Frontier
           steps:
             - material: Plasteel
               amount: 5
@@ -66,7 +60,7 @@
         - to: ShelfRGlass
           completed:
             - !type:SnapToGrid
-              southRotation: true
+              # southRotation: true Frontier
           steps:
             - material: Plastic
               amount: 5
@@ -81,7 +75,7 @@
         - to: ShelfBar
           completed:
             - !type:SnapToGrid
-              southRotation: true
+             # southRotation: true Frontier
           steps:
             - material: WoodPlank
               amount: 6
@@ -89,7 +83,7 @@
         - to: ShelfKitchen
           completed:
             - !type:SnapToGrid
-              southRotation: true
+             # southRotation: true Frontier
           steps:
             - material: MetalRod
               amount: 2
@@ -102,7 +96,7 @@
         - to: ShelfChemistry
           completed:
             - !type:SnapToGrid
-              southRotation: true
+              # southRotation: true Frontier
           steps:
             - material: Plasteel
               amount: 2

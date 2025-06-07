@@ -1,13 +1,3 @@
-// SPDX-FileCopyrightText: 2022 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 wrexbe <81056464+wrexbe@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Visne <39844191+Visne@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 TemporalOroboros <TemporalOroboros@gmail.com>
-// SPDX-FileCopyrightText: 2024 eoineoineoin <github@eoinrul.es>
-// SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using System.Numerics;
 using Content.Client.Computer;
 using Content.Client.UserInterface.Controls;
@@ -32,6 +22,8 @@ public sealed partial class ShuttleConsoleWindow : FancyWindow,
 
     public event Action<NetEntity, NetEntity>? DockRequest;
     public event Action<NetEntity>? UndockRequest;
+    public event Action<List<NetEntity>>? UndockAllRequest;
+    public event Action<List<NetEntity>, bool>? ToggleFTLLockRequest;
 
     public ShuttleConsoleWindow()
     {
@@ -72,6 +64,18 @@ public sealed partial class ShuttleConsoleWindow : FancyWindow,
         {
             UndockRequest?.Invoke(entity);
         };
+        
+        DockContainer.UndockAllRequest += dockEntities =>
+        {
+            UndockAllRequest?.Invoke(dockEntities);
+        };
+        
+        DockContainer.ToggleFTLLockRequest += (dockEntities, enabled) =>
+        {
+            ToggleFTLLockRequest?.Invoke(dockEntities, enabled);
+        };
+
+        NfInitialize(); // Frontier Initialization for the ShuttleConsoleWindow
     }
 
     private void ClearModes(ShuttleConsoleMode mode)

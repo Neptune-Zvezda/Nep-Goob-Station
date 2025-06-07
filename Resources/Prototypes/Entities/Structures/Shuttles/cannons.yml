@@ -1,17 +1,3 @@
-# SPDX-FileCopyrightText: 2024 Aidenkrz <aiden@djkraz.com>
-# SPDX-FileCopyrightText: 2024 Ed <96445749+TheShuEd@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Flareguy <78941145+Flareguy@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Ilya246 <57039557+Ilya246@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 metalgearsloth <comedian_vs_clown@hotmail.com>
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-# SPDX-FileCopyrightText: 2025 Killerqu00 <killerqueen1777@gmail.com>
-# SPDX-FileCopyrightText: 2025 Ted Lukin <66275205+pheenty@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Winkarst <74284083+Winkarst-cpu@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 pheenty <fedorlukin2006@gmail.com>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
 # Most of these have DO NOT MAP, since stations are completely unequipped to deal with ship combat + these are basically placeholder.
 
 - type: entity
@@ -47,7 +33,8 @@
   - type: GunSignalControl
   - type: StaticPrice
     price: 1500
-  - type: UnmannedWeaponry
+  - type: Repairable # Frontier
+    doAfterDelay: 3 # Frontier
 
 # ---- Laser weapon branch ----
 # naming: LSE (Laser) + conventional power + suffix (c for PowerCage, e for wired energy) + Name
@@ -83,7 +70,7 @@
         - !type:DoActsBehavior
           acts: ["Destruction"]
   - type: Gun
-    fireRate: 5
+    fireRate: 3
     useKey: false
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/ship_svalinn.ogg
@@ -165,7 +152,7 @@
 
 - type: entity
   id: ShuttleGunFriendship
-  parent: [ShuttleGunBase, ConstructibleMachine]
+  parent: [ShuttleGunBase] # Frontier: Removed ConstructibleMachine
   name: EXP-320g "Friendship"
   description: A small stationary grenade launcher that holds 2 grenades.
   categories: [ DoNotMap ]
@@ -280,7 +267,7 @@
 
 - type: entity
   id: ShuttleGunPirateCannon
-  parent: ShuttleGunBase
+  parent: [BaseStructureDisableToolUse, ShuttleGunBase] # Frontier: Added BaseStructureDisableToolUse
   name: pirate ship cannon
   description: Kaboom!
   components:
@@ -314,12 +301,17 @@
     proto: CannonBall
     soundInsert:
       path: /Audio/Weapons/Guns/Gunshots/grenade_launcher.ogg
+  - type: NpcFactionMember # Frontier
+    factions: # Frontier
+    - PirateNF # Frontier
+  - type: Rotatable # Frontier
+    rotateWhileAnchored: true # Frontier
 
 - type: entity
   id: ShuttleGunKinetic
   parent: [ ShuttleGunBase, ConstructibleMachine]
-  name: PTK-800 "Matter Dematerializer"
-  description: Salvage stationary mining turret. Gradually accumulates charges on its own, extremely effective for asteroid excavation.
+  name: PTK-1500e "Matter Dematerializer" # Frontier: "800"<"1500e" (consistent with naming scheme)
+  description: Mining turret, effective for blasting hardened targets. Gradually accumulates charges on its own. # Mono: description changed
   categories: [ DoNotMap ]
   components:
   - type: Sprite
@@ -342,8 +334,8 @@
         - !type:DoActsBehavior
           acts: ["Destruction"]
   - type: Gun
-    projectileSpeed: 25 # Goobstation edit
-    fireRate: 1 # Goobstation edit
+    projectileSpeed: 20
+    fireRate: 2
     selectedMode: SemiAuto
     angleDecay: 45
     minAngle: 5
@@ -355,7 +347,7 @@
       params:
         variation: 0.12
   - type: RechargeBasicEntityAmmo
-    rechargeCooldown: 2
+    rechargeCooldown: 3
     rechargeSound:
       path: /Audio/Weapons/Guns/Bolt/lmg_bolt_closed.ogg
       params:
@@ -363,13 +355,10 @@
         variation: 0.08
   - type: BasicEntityAmmoProvider
     proto: BulletKineticShuttle
-    capacity: 5
-    count: 5
+    capacity: 10
+    count: 10
   - type: Machine
     board: ShuttleGunKineticCircuitboard
-  - type: PressureDamageChange # Goobstation
-  - type: UpgradeableGun # Goobstation
-    maxUpgradeCapacity: 40
-    whitelist:
-      tags:
-      - PKAUpgrade
+  - type: ExtensionCableReceiver # Frontier
+  - type: ApcPowerReceiver # Frontier
+    powerLoad: 1500 # Frontier

@@ -1,35 +1,10 @@
-// SPDX-FileCopyrightText: 2021 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-// SPDX-FileCopyrightText: 2021 Vera Aguilera Puerto <6766154+Zumorica@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2021 Vera Aguilera Puerto <gradientvera@outlook.com>
-// SPDX-FileCopyrightText: 2021 pointer-to-null <91910481+pointer-to-null@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Acruid <shatter66@gmail.com>
-// SPDX-FileCopyrightText: 2022 Visne <39844191+Visne@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 metalgearsloth <comedian_vs_clown@hotmail.com>
-// SPDX-FileCopyrightText: 2022 mirrorcult <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2022 wrexbe <81056464+wrexbe@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <drsmugleaf@gmail.com>
-// SPDX-FileCopyrightText: 2023 Jezithyr <jezithyr@gmail.com>
-// SPDX-FileCopyrightText: 2023 Kara <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Aidenkrz <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2024 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2024 Remuchi <72476615+Remuchi@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Tayrtahn <tayrtahn@gmail.com>
-// SPDX-FileCopyrightText: 2024 VMSolidus <evilexecutive@gmail.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aviu00 <93730715+Aviu00@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using System.Diagnostics.CodeAnalysis;
 using Content.Shared.Alert;
 using Content.Shared.Rejuvenate;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
+using Robust.Shared.Utility;
 
 namespace Content.Shared.StatusEffect
 {
@@ -147,30 +122,6 @@ namespace Content.Shared.StatusEffect
             status.ActiveEffects[key].RelevantComponent = _componentFactory.GetComponentName<T>();
             return true;
 
-        }
-
-        /// <summary>
-        ///     Tries to add a status effect to an entity, with a given component added as well.
-        /// </summary>
-        /// <param name="uid">The entity to add the effect to.</param>
-        /// <param name="key">The status effect ID to add.</param>
-        /// <param name="time">How long the effect should last for.</param>
-        /// <param name="refresh">The status effect cooldown should be refreshed (true) or accumulated (false).</param>
-        /// <param name="component">The component of status effect itself.</param>
-        /// <param name="status">The status effects component to change, if you already have it.</param>
-        /// <returns>False if the effect could not be added or the component already exists, true otherwise.</returns>
-        public bool TryAddStatusEffect(EntityUid uid, string key, TimeSpan time, bool refresh, Component component,
-            StatusEffectsComponent? status = null)
-        {
-            if (!Resolve(uid, ref status, false)
-                || !TryAddStatusEffect(uid, key, time, refresh, status))
-                return false;
-
-            // If we already have this component, overwrite it, since new component could have diffrent data
-            EntityManager.AddComponent(uid, component, true);
-            status.ActiveEffects[key].RelevantComponent = _componentFactory.GetComponentName(component.GetType());
-
-            return true;
         }
 
         public bool TryAddStatusEffect(EntityUid uid, string key, TimeSpan time, bool refresh, string component,
@@ -388,22 +339,16 @@ namespace Content.Shared.StatusEffect
         /// <param name="uid">The entity to check on.</param>
         /// <param name="key">The status effect ID to check for</param>
         /// <param name="status">The status effect component, should you already have it.</param>
-        /// <param name="raiseEvent">Goobstation. Whether to raise BeforeStatusEffectAddedEvent</param>
-        public bool CanApplyEffect(EntityUid uid, string key, StatusEffectsComponent? status = null, bool raiseEvent = true) // Goob edit
+        public bool CanApplyEffect(EntityUid uid, string key, StatusEffectsComponent? status = null)
         {
             // don't log since stuff calling this prolly doesn't care if we don't actually have it
             if (!Resolve(uid, ref status, false))
                 return false;
 
-            // Goob edit start
-            if (raiseEvent)
-            {
-                var ev = new BeforeStatusEffectAddedEvent(key);
-                RaiseLocalEvent(uid, ref ev);
-                if (ev.Cancelled)
-                    return false;
-            }
-            // Goob edit end
+            var ev = new BeforeStatusEffectAddedEvent(key);
+            RaiseLocalEvent(uid, ref ev);
+            if (ev.Cancelled)
+                return false;
 
             if (!_prototypeManager.TryIndex<StatusEffectPrototype>(key, out var proto))
                 return false;

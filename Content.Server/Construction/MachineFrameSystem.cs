@@ -1,18 +1,3 @@
-// SPDX-FileCopyrightText: 2022 CommieFlowers <rasmus.cedergren@hotmail.com>
-// SPDX-FileCopyrightText: 2022 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Kara <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2022 rolfero <45628623+rolfero@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 TemporalOroboros <TemporalOroboros@gmail.com>
-// SPDX-FileCopyrightText: 2023 Vera Aguilera Puerto <6766154+Zumorica@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 c4llv07e <38111072+c4llv07e@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 AJCM-git <60196617+AJCM-git@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using Content.Server.Construction.Components;
 using Content.Server.Stack;
 using Content.Shared.Construction.Components;
@@ -23,6 +8,7 @@ using Content.Shared.Tag;
 using Content.Shared.Popups;
 using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
+using Content.Shared.Construction.Prototypes;
 
 namespace Content.Server.Construction;
 
@@ -77,6 +63,17 @@ public sealed class MachineFrameSystem : EntitySystem
         // If this changes in the future, then RegenerateProgress() also needs to be updated.
         // Note that one entity is ALLOWED to satisfy more than one kind of component or tag requirements. This is
         // necessary in order to avoid weird entity-ordering shenanigans in RegenerateProgress().
+
+        // Frontier: restore upgradeable parts
+        // Handle parts
+        if (TryComp<MachinePartComponent>(args.Used, out var machinePart))
+        {
+            if (TryInsertPart(uid, args.Used, component, machinePart))
+                args.Handled = true;
+            return;
+        }
+        // End Frontier
+
         if (TryComp<StackComponent>(args.Used, out var stack))
         {
             if (TryInsertStack(uid, args.Used, component, stack))
@@ -170,6 +167,62 @@ public sealed class MachineFrameSystem : EntitySystem
         return true;
     }
 
+    // Frontier: restore upgradeable parts
+    /// <returns>Whether or not the function had any effect. Does not indicate success.</returns>
+    private bool TryInsertPart(EntityUid uid, EntityUid used, MachineFrameComponent component, MachinePartComponent machinePart)
+    {
+        if (!component.Requirements.ContainsKey(machinePart.PartType))
+            return false;
+
+        if (component.Progress[machinePart.PartType] >= component.Requirements[machinePart.PartType])
+            return false;
+
+        // Check for stack
+        if (TryComp<StackComponent>(used, out var stack))
+        {
+            int needed = component.Requirements[machinePart.PartType] - component.Progress[machinePart.PartType];
+            var count = stack.Count;
+            if (count < needed)
+            {
+                if (!_container.TryRemoveFromContainer(used))
+                    return false;
+
+                if (!_container.Insert(used, component.PartContainer))
+                    return true;
+
+                component.Progress[machinePart.PartType] += count;
+                return true;
+            }
+
+            var splitStack = _stack.Split(used, needed, Transform(uid).Coordinates, stack);
+
+            if (splitStack == null)
+                return false;
+
+            if (!_container.Insert(splitStack.Value, component.PartContainer))
+                return true;
+
+            component.Progress[machinePart.PartType] += needed;
+        }
+        // No stack
+        else
+        {
+            if (!_container.TryRemoveFromContainer(used))
+                return false;
+
+            if (!_container.Insert(used, component.PartContainer))
+                return true;
+
+            component.Progress[machinePart.PartType]++;
+        }
+
+        if (IsComplete(component))
+            _popupSystem.PopupEntity(Loc.GetString("machine-frame-component-on-complete"), uid);
+
+        return true;
+    }
+    // Frontier
+
     /// <returns>Whether or not the function had any effect. Does not indicate success.</returns>
     private bool TryInsertStack(EntityUid uid, EntityUid used, MachineFrameComponent component, StackComponent stack)
     {
@@ -218,6 +271,14 @@ public sealed class MachineFrameSystem : EntitySystem
         if (!component.HasBoard)
             return false;
 
+        // Frontier: restore upgradeable parts
+        foreach (var (type, amount) in component.Requirements)
+        {
+            if (component.Progress[type] < amount)
+                return false;
+        }
+        // End Frontier
+
         foreach (var (type, amount) in component.MaterialRequirements)
         {
             if (component.MaterialProgress[type] < amount)
@@ -241,13 +302,22 @@ public sealed class MachineFrameSystem : EntitySystem
 
     public void ResetProgressAndRequirements(MachineFrameComponent component, MachineBoardComponent machineBoard)
     {
+        component.Requirements = new Dictionary<ProtoId<MachinePartPrototype>, int>(machineBoard.Requirements); // Frontier: upgradeable machine parts
         component.MaterialRequirements = new Dictionary<ProtoId<StackPrototype>, int>(machineBoard.StackRequirements);
         component.ComponentRequirements = new Dictionary<string, GenericPartInfo>(machineBoard.ComponentRequirements);
         component.TagRequirements = new Dictionary<ProtoId<TagPrototype>, GenericPartInfo>(machineBoard.TagRequirements);
 
+        component.Progress.Clear(); // Frontier: upgradeable machine parts
         component.MaterialProgress.Clear();
         component.ComponentProgress.Clear();
         component.TagProgress.Clear();
+
+        // Frontier: upgradeable machine parts
+        foreach (var (partType, _) in component.Requirements)
+        {
+            component.Progress[partType] = 0;
+        }
+        // End Frontier
 
         foreach (var (stackType, _) in component.MaterialRequirements)
         {
@@ -269,10 +339,12 @@ public sealed class MachineFrameSystem : EntitySystem
     {
         if (!component.HasBoard)
         {
+            component.Requirements.Clear(); // Frontier
             component.TagRequirements.Clear();
             component.MaterialRequirements.Clear();
             component.ComponentRequirements.Clear();
             component.TagRequirements.Clear();
+            component.Progress.Clear(); // Frontier
             component.MaterialProgress.Clear();
             component.ComponentProgress.Clear();
             component.TagProgress.Clear();
@@ -291,6 +363,26 @@ public sealed class MachineFrameSystem : EntitySystem
 
         foreach (var part in component.PartContainer.ContainedEntities)
         {
+            // Frontier: upgradeable machine parts
+            if (TryComp<MachinePartComponent>(part, out var machinePart))
+            {
+                var type = machinePart.PartType;
+                if (!component.Requirements.ContainsKey(type))
+                    continue;
+
+                int quantity = 1;
+                if (TryComp<StackComponent>(part, out var partStack))
+                    quantity = partStack.Count;
+
+                if (!component.Progress.ContainsKey(type))
+                    component.Progress[type] = quantity;
+                else
+                    component.Progress[type] += quantity;
+
+                continue;
+            }
+            // End Frontier
+
             if (TryComp<StackComponent>(part, out var stack))
             {
                 var type = stack.StackTypeId;

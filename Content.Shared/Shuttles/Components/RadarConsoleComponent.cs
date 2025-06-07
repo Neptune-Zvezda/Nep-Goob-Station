@@ -1,11 +1,3 @@
-// SPDX-FileCopyrightText: 2022 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 TemporalOroboros <TemporalOroboros@gmail.com>
-// SPDX-FileCopyrightText: 2024 Ed <96445749+TheShuEd@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: MIT
-
 using Content.Shared.Shuttles.Systems;
 using Robust.Shared.GameStates;
 
@@ -33,4 +25,18 @@ public sealed partial class RadarConsoleComponent : Component
     /// </summary>
     [DataField]
     public bool FollowEntity = false;
+
+    // Frontier: ghost radar restrictions
+    /// <summary>
+    /// If true, the radar will be centered on the entity. If not - on the grid on which it is located.
+    /// </summary>
+    [DataField]
+    public float? MaxIffRange = null;
+
+    /// <summary>
+    /// If true, the radar will not show the coordinates of objects on hover
+    /// </summary>
+    [DataField]
+    public bool HideCoords = false;
+    // End Frontier
 }

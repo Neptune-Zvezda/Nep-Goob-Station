@@ -1,13 +1,4 @@
-// SPDX-FileCopyrightText: 2024 Simon <63975668+Simyon264@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Errant <35878406+Errant-4@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2025 Thomas <87614336+Aeshus@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 slarticodefast <161409025+slarticodefast@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
-using Robust.Shared.Configuration;
+﻿using Robust.Shared.Configuration;
 
 namespace Content.Shared.CCVar;
 
@@ -21,13 +12,13 @@ public sealed partial class CCVars
     ///     Change this to have the changelog and rules "last seen" date stored separately.
     /// </summary>
     public static readonly CVarDef<string> ServerId =
-        CVarDef.Create("server.id", "Nepustation", CVar.REPLICATED | CVar.SERVER); // if ur a fork of goob pls change this thanks :)
+        CVarDef.Create("server.id", "new_frontier", CVar.REPLICATED | CVar.SERVER); // Frontier: new_frontier
 
     /// <summary>
     ///     Guide Entry Prototype ID to be displayed as the server rules.
     /// </summary>
     public static readonly CVarDef<string> RulesFile =
-        CVarDef.Create("server.rules_file", "DefaultRuleset", CVar.REPLICATED | CVar.SERVER);
+        CVarDef.Create("server.rules_file", "MonolithRuleset", CVar.REPLICATED | CVar.SERVER); // Monolith
 
     /// <summary>
     ///     Guide entry that is displayed by default when a guide is opened.
@@ -61,7 +52,7 @@ public sealed partial class CCVars
     ///     The width of the right side (chat) panel in the lobby
     /// </summary>
     public static readonly CVarDef<int> ServerLobbyRightPanelWidth =
-        CVarDef.Create("server.lobby_right_panel_width", 500, CVar.REPLICATED | CVar.SERVER);
+        CVarDef.Create("server.lobby_right_panel_width", 650, CVar.REPLICATED | CVar.SERVER);
 
     /// <summary>
     ///     Forces clients to display version watermark, as if HudVersionWatermark was true

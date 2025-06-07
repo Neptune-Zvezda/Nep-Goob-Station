@@ -1,12 +1,3 @@
-// SPDX-FileCopyrightText: 2023 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Pieter-Jan Briers <pieterjan.briers@gmail.com>
-// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Fildrance <fildrance@gmail.com>
-// SPDX-FileCopyrightText: 2024 pa.pecherskij <pa.pecherskij@interfax.ru>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: MIT
-
 using System.Linq;
 using Content.Server.GameTicking;
 using Content.Server.GameTicking.Events;
@@ -23,7 +14,7 @@ namespace Content.Server.Audio;
 public sealed class ContentAudioSystem : SharedContentAudioSystem
 {
     [ValidatePrototypeId<SoundCollectionPrototype>]
-    private const string LobbyMusicCollection = "LobbyMusic";
+    private const string LobbyMusicCollection = "MonoLobbyMusic"; // Mono
 
     [Dependency] private readonly AudioSystem _serverAudio = default!;
     [Dependency] private readonly IRobustRandom _robustRandom = default!;

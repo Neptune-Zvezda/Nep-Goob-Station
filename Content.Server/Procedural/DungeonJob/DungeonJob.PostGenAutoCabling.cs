@@ -1,8 +1,3 @@
-// SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using System.Linq;
 using System.Threading.Tasks;
 using Content.Server.NodeContainer;
@@ -57,6 +52,9 @@ public sealed partial class DungeonJob
 
         if (!ValidateResume())
             return;
+
+        if (cableTiles.Count <= 0) // Frontier: empty check
+            return; // Frontier: empty check
 
         var startNodes = new List<Vector2i>(cableTiles);
         random.Shuffle(startNodes);

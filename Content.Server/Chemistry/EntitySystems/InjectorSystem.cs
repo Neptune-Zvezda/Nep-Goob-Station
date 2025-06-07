@@ -1,29 +1,11 @@
-// SPDX-FileCopyrightText: 2021 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2021 Ygg01 <y.laughing.man.y@gmail.com>
-// SPDX-FileCopyrightText: 2022 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Aidenkrz <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2024 Ed <96445749+TheShuEd@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2024 Plykiya <58439124+Plykiya@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Plykiya <plykiya@protonmail.com>
-// SPDX-FileCopyrightText: 2024 Preston Smith <92108534+thetolbean@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 ShadowCommander <10494922+ShadowCommander@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 blueDev2 <89804215+blueDev2@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 nikthechampiongr <32041239+nikthechampiongr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 osjarw <62134478+osjarw@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aviu00 <aviu00@protonmail.com>
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
+using Content.Server.Abilities.Chitinid;
 using Content.Server.Body.Components;
 using Content.Server.Body.Systems;
 using Content.Shared.Chemistry;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.Components.SolutionManager;
 using Content.Shared.Chemistry.EntitySystems;
+using Content.Shared.Chemistry.Reagent;
 using Content.Shared.Database;
 using Content.Shared.DoAfter;
 using Content.Shared.FixedPoint;
@@ -33,6 +15,7 @@ using Content.Shared.Interaction;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Stacks;
 using Content.Shared.Nutrition.EntitySystems;
+using System.Linq; // Frontier
 
 namespace Content.Server.Chemistry.EntitySystems;
 
@@ -127,6 +110,12 @@ public sealed class InjectorSystem : SharedInjectorSystem
     /// </summary>
     private void InjectDoAfter(Entity<InjectorComponent> injector, EntityUid target, EntityUid user)
     {
+        if (HasComp<BlockInjectionComponent>(target)) // DeltaV
+        {
+            Popup.PopupEntity(Loc.GetString("injector-component-deny-user"), target, user);
+            return;
+        }
+
         // Create a pop-up for the user
         if (injector.Comp.ToggleState == InjectorToggleMode.Draw)
         {
@@ -272,6 +261,9 @@ public sealed class InjectorSystem : SharedInjectorSystem
     private bool TryInject(Entity<InjectorComponent> injector, EntityUid targetEntity,
         Entity<SolutionComponent> targetSolution, EntityUid user, bool asRefill)
     {
+        if (HasComp<BlockInjectionComponent>(targetEntity))  // DeltaV
+            return false;
+
         if (!SolutionContainers.TryGetSolution(injector.Owner, injector.Comp.SolutionName, out var soln,
                 out var solution) || solution.Volume == 0)
             return false;
@@ -350,19 +342,21 @@ public sealed class InjectorSystem : SharedInjectorSystem
         }
 
         var applicableTargetSolution = targetSolution.Comp.Solution;
-        // If a whitelist exists, remove all non-whitelisted reagents from the target solution temporarily
-        var temporarilyRemovedSolution = new Solution();
-        if (injector.Comp.ReagentWhitelist is { } reagentWhitelist)
-        {
-            string[] reagentPrototypeWhitelistArray = new string[reagentWhitelist.Count];
-            var i = 0;
-            foreach (var reagent in reagentWhitelist)
-            {
-                reagentPrototypeWhitelistArray[i] = reagent;
-                ++i;
-            }
-            temporarilyRemovedSolution = applicableTargetSolution.SplitSolutionWithout(applicableTargetSolution.Volume, reagentPrototypeWhitelistArray);
-        }
+        // Frontier: reagent whitelist fixes
+        // // If a whitelist exists, remove all non-whitelisted reagents from the target solution temporarily
+        // var temporarilyRemovedSolution = new Solution();
+        // if (injector.Comp.ReagentWhitelist is { } reagentWhitelist)
+        // {
+        //     string[] reagentPrototypeWhitelistArray = new string[reagentWhitelist.Count];
+        //     var i = 0;
+        //     foreach (var reagent in reagentWhitelist)
+        //     {
+        //         reagentPrototypeWhitelistArray[i] = reagent;
+        //         ++i;
+        //     }
+        //     temporarilyRemovedSolution = applicableTargetSolution.SplitSolutionWithout(applicableTargetSolution.Volume, reagentPrototypeWhitelistArray);
+        // }
+        // End Frontier: reagent whitelist fixes
 
         // Get transfer amount. May be smaller than _transferAmount if not enough room, also make sure there's room in the injector
         var realTransferAmount = FixedPoint2.Min(injector.Comp.TransferAmount, applicableTargetSolution.Volume,
@@ -384,11 +378,25 @@ public sealed class InjectorSystem : SharedInjectorSystem
             return true;
         }
 
-        // Move units from attackSolution to targetSolution
-        var removedSolution = SolutionContainers.Draw(target.Owner, targetSolution, realTransferAmount);
+        // Frontier: reagent whitelist fixes
+        // // Move units from attackSolution to targetSolution
+        // var removedSolution = SolutionContainers.Draw(target.Owner, targetSolution, realTransferAmount);
 
-        // Add back non-whitelisted reagents to the target solution
-        applicableTargetSolution.AddSolution(temporarilyRemovedSolution, null);
+        // // Add back non-whitelisted reagents to the target solution
+        // applicableTargetSolution.AddSolution(temporarilyRemovedSolution, null);
+
+        Solution removedSolution;
+        if (injector.Comp.ReagentWhitelist is { } reagentWhitelist)
+        {
+            var reagentWhitelistArray = reagentWhitelist.Select(x => x.Id).ToArray();
+            removedSolution = applicableTargetSolution.SplitSolutionWithOnly(realTransferAmount, reagentWhitelistArray);
+            SolutionContainers.UpdateChemicals(targetSolution);
+        }
+        else
+        {
+            removedSolution = SolutionContainers.Draw(target.Owner, targetSolution, realTransferAmount);
+        }
+        // End Frontier: reagent whitelist fixes
 
         if (!SolutionContainers.TryAddSolution(soln.Value, removedSolution))
         {

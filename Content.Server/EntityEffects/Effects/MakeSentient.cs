@@ -1,21 +1,9 @@
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Interrobang01 <113810873+Interrobang01@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 ShadowCommander <10494922+ShadowCommander@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 deltanedas <@deltanedas:kde.org>
-// SPDX-FileCopyrightText: 2023 moonheart08 <moonheart08@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 SlamBamActionman <83650252+SlamBamActionman@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using Content.Server.Ghost.Roles.Components;
 using Content.Server.Speech.Components;
 using Content.Shared.EntityEffects;
 using Content.Shared.Mind.Components;
 using Robust.Shared.Prototypes;
+using Content.Shared.Humanoid; //Delta-V - Banning humanoids from becoming ghost roles.
 
 namespace Content.Server.EntityEffects.Effects;
 
@@ -47,11 +35,26 @@ public sealed partial class MakeSentient : EntityEffect
             return;
         }
 
+        // Delta-V: Do not allow humanoids to become sentient. Intended to stop people from
+        // repeatedly cloning themselves and using cognizine on their bodies.
+        // HumanoidAppearanceComponent is common to all player species, and is also used for the
+        // Ripley pilot whitelist, so there's a precedent for using it for this kind of check.
+        if (entityManager.HasComponent<HumanoidAppearanceComponent>(uid))
+        {
+            return;
+        }
+
         ghostRole = entityManager.AddComponent<GhostRoleComponent>(uid);
         entityManager.EnsureComponent<GhostTakeoverAvailableComponent>(uid);
 
         var entityData = entityManager.GetComponent<MetaDataComponent>(uid);
         ghostRole.RoleName = entityData.EntityName;
         ghostRole.RoleDescription = Loc.GetString("ghost-role-information-cognizine-description");
+        ghostRole.RoleRules = Loc.GetString("ghost-role-information-freeagent-rules"); // Frontier: nonantag<freeagent
+        // Frontier: add MindRoles
+        List<EntProtoId> mindRoles = new();
+        mindRoles.Add("MindRoleGhostRoleFreeAgent");
+        ghostRole.MindRoles = mindRoles;
+        // End Frontier
     }
 }

@@ -1,18 +1,9 @@
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Eoin Mcloughlin <helloworld@eoinrul.es>
-// SPDX-FileCopyrightText: 2023 eoineoineoin <github@eoinrul.es>
-// SPDX-FileCopyrightText: 2024 Andrew <blackledgecreates@gmail.com>
-// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using Content.Server.Station.Components;
 using Content.Shared.Cargo;
 using Content.Shared.Cargo.Components;
+using Content.Shared.Cargo.Prototypes;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 
 namespace Content.Server.Cargo.Components;
 
@@ -35,12 +26,6 @@ public sealed partial class StationCargoOrderDatabaseComponent : Component
     /// Used to determine unique order IDs
     /// </summary>
     public int NumOrdersCreated;
-
-    /// <summary>
-    ///     GoobStation - Tracks next time that a product on cooldown can be ordered.
-    /// </summary>
-    [ViewVariables(VVAccess.ReadOnly), DataField]
-    public Dictionary<string, TimeSpan> ProductCooldownTime = new Dictionary<string, TimeSpan>();
 
     // TODO: Can probably dump this
     /// <summary>
@@ -69,3 +54,4 @@ public record struct FulfillCargoOrderEvent(Entity<StationDataComponent> Station
     public EntityUid? FulfillmentEntity;
     public bool Handled = false;
 }
+

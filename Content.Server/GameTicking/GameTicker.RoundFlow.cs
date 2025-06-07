@@ -1,90 +1,16 @@
-// SPDX-FileCopyrightText: 2021 20kdc <asdd2808@gmail.com>
-// SPDX-FileCopyrightText: 2021 Galactic Chimp <63882831+GalacticChimp@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2021 Javier Guardia Fernández <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Acruid <shatter66@gmail.com>
-// SPDX-FileCopyrightText: 2022 Jacob Tong <10494922+ShadowCommander@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Jessica M <jessica@jessicamaybe.com>
-// SPDX-FileCopyrightText: 2022 Julian Giebel <j.giebel@netrocks.info>
-// SPDX-FileCopyrightText: 2022 Julian Giebel <juliangiebel@live.de>
-// SPDX-FileCopyrightText: 2022 KIBORG04 <bossmira4@gmail.com>
-// SPDX-FileCopyrightText: 2022 Mervill <mervills.email@gmail.com>
-// SPDX-FileCopyrightText: 2022 Moony <moonheart08@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Morber <14136326+Morb0@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Paul Ritter <ritter.paul1@googlemail.com>
-// SPDX-FileCopyrightText: 2022 Rane <60792108+Elijahrane@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Vera Aguilera Puerto <6766154+Zumorica@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Vera Aguilera Puerto <gradientvera@outlook.com>
-// SPDX-FileCopyrightText: 2022 Veritius <veritiusgaming@gmail.com>
-// SPDX-FileCopyrightText: 2022 keronshb <54602815+keronshb@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 metalgearsloth <metalgearsloth@gmail.com>
-// SPDX-FileCopyrightText: 2022 mirrorcult <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2022 moonheart08 <moonheart08@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 theashtronaut <112137107+theashtronaut@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 wrexbe <81056464+wrexbe@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Kara <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2023 Kevin Zheng <kevinz5000@gmail.com>
-// SPDX-FileCopyrightText: 2023 Moony <moony@hellomouse.net>
-// SPDX-FileCopyrightText: 2023 Morb <14136326+Morb0@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Pieter-Jan Briers <pieterjan.briers@gmail.com>
-// SPDX-FileCopyrightText: 2023 Riggle <27156122+RigglePrime@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 ShadowCommander <10494922+ShadowCommander@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Tom Leys <tom@crump-leys.com>
-// SPDX-FileCopyrightText: 2023 Visne <39844191+Visne@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Vordenburg <114301317+Vordenburg@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Aiden <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2024 Aidenkrz <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2024 Alice "Arimah" Heurlin <30327355+arimah@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Chief-Engineer <119664036+Chief-Engineer@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 DrSmugleaf <10968691+DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Ed <96445749+TheShuEd@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 ElectroJr <leonsfriedrich@gmail.com>
-// SPDX-FileCopyrightText: 2024 Errant <35878406+Errant-4@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Fildrance <fildrance@gmail.com>
-// SPDX-FileCopyrightText: 2024 Flareguy <78941145+Flareguy@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 HS <81934438+HolySSSS@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Hannah Giovanna Dawson <karakkaraz@gmail.com>
-// SPDX-FileCopyrightText: 2024 IProduceWidgets <107586145+IProduceWidgets@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Mr. 27 <45323883+Dutch-VanDerLinde@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 PJBot <pieterjan.briers+bot@gmail.com>
-// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-// SPDX-FileCopyrightText: 2024 Plykiya <58439124+Plykiya@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Rouge2t7 <81053047+Sarahon@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Tayrtahn <tayrtahn@gmail.com>
-// SPDX-FileCopyrightText: 2024 Truoizys <153248924+Truoizys@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 TsjipTsjip <19798667+TsjipTsjip@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Ubaser <134914314+UbaserB@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Vasilis <vasilis@pikachu.systems>
-// SPDX-FileCopyrightText: 2024 Wrexbe (Josh) <81056464+wrexbe@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 beck-thompson <107373427+beck-thompson@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 deltanedas <@deltanedas:kde.org>
-// SPDX-FileCopyrightText: 2024 lzk <124214523+lzk228@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 metalgearsloth <comedian_vs_clown@hotmail.com>
-// SPDX-FileCopyrightText: 2024 nikthechampiongr <32041239+nikthechampiongr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 osjarw <62134478+osjarw@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 pa.pecherskij <pa.pecherskij@interfax.ru>
-// SPDX-FileCopyrightText: 2024 plykiya <plykiya@protonmail.com>
-// SPDX-FileCopyrightText: 2024 username <113782077+whateverusername0@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 whateverusername0 <whateveremail>
-// SPDX-FileCopyrightText: 2024 wrexbe <wrexbe@protonmail.com>
-// SPDX-FileCopyrightText: 2024 Арт <123451459+JustArt1m@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 pathetic meowmeow <uhhadd@gmail.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using System.Linq;
 using System.Numerics;
+using System.Threading.Tasks;
 using Content.Server.Announcements;
+using Content.Server.CrewManifest;
 using Content.Server.Discord;
 using Content.Server.GameTicking.Events;
 using Content.Server.Ghost;
 using Content.Server.Maps;
 using Content.Server.Roles;
+using Content.Server.Station.Systems;
+using Content.Server._NF.Bank;
+using Content.Server._NF.GameRule;
 using Content.Shared.CCVar;
 using Content.Shared.Database;
 using Content.Shared.GameTicking;
@@ -98,7 +24,6 @@ using Robust.Shared.Audio;
 using Robust.Shared.EntitySerialization;
 using Robust.Shared.EntitySerialization.Systems;
 using Robust.Shared.Map;
-using Robust.Shared.Map.Components;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
 using Robust.Shared.Random;
@@ -111,6 +36,9 @@ namespace Content.Server.GameTicking
         [Dependency] private readonly DiscordWebhook _discord = default!;
         [Dependency] private readonly RoleSystem _role = default!;
         [Dependency] private readonly ITaskManager _taskManager = default!;
+        [Dependency] private readonly CrewManifestSystem _crewManifest = default!;
+        [Dependency] private readonly StationSystem _stationSystem = default!;
+        [Dependency] private readonly BankSystem _bank = default!;
 
         private static readonly Counter RoundNumberMetric = Metrics.CreateCounter(
             "ss14_round_number",
@@ -516,6 +444,7 @@ namespace Content.Server.GameTicking
             UpdateLateJoinStatus();
             AnnounceRound();
             UpdateInfoText();
+            RaiseLocalEvent(new RoundStartedEvent(RoundId));
             SendRoundStartedDiscordMessage();
 
 #if EXCEPTION_TOLERANCE
@@ -579,6 +508,15 @@ namespace Content.Server.GameTicking
             catch (Exception e)
             {
                 Log.Error($"Error while sending round end Discord message: {e}");
+            }
+
+            try
+            {
+                SendCrewManifestDiscordMessage(_replayRoundPlayerInfo);
+            }
+            catch (Exception e)
+            {
+                Log.Error($"Error while sending crew manifest Discord message: {e}");
             }
         }
 
@@ -680,6 +618,7 @@ namespace Content.Server.GameTicking
 
             _replayRoundPlayerInfo = listOfPlayerInfoFinal;
             _replayRoundText = roundEndText;
+            RaiseLocalEvent(new RoundEndedEvent(RoundId, roundDuration));
         }
 
         private async void SendRoundEndDiscordMessage()
@@ -711,6 +650,246 @@ namespace Content.Server.GameTicking
             catch (Exception e)
             {
                 Log.Error($"Error while sending discord round end message:\n{e}");
+            }
+        }
+
+        private async void SendCrewManifestDiscordMessage(RoundEndMessageEvent.RoundEndPlayerInfo[]? playerInfo)
+        {
+            try
+            {
+                // Discord limits
+                const int MaxEmbedCharacters = 6000;
+                const int MaxFieldsPerEmbed = 25;
+                const int MaxFieldValueLength = 1024;
+                const int MaxFieldNameLength = 256;
+
+                var webhookUrl = _cfg.GetCVar(CCVars.DiscordCrewManifestWebhook);
+                if (string.IsNullOrEmpty(webhookUrl))
+                    return;
+
+                var webhookData = await _discord.GetWebhook(webhookUrl);
+                if (webhookData == null)
+                    return;
+
+                var webhookIdentifier = webhookData.Value.ToIdentifier();
+
+                if (playerInfo == null || playerInfo.Length == 0)
+                    return;
+
+                var serverName = _baseServer.ServerName;
+
+                // Filter out observers and sort by antag status (antags first), then by player name
+                var sortedPlayers = playerInfo
+                    .Where(p => !p.Observer && !string.IsNullOrEmpty(p.PlayerICName))
+                    .OrderBy(p => !p.Antag)
+                    .ThenBy(p => p.PlayerOOCName)
+                    .ToList();
+
+                if (sortedPlayers.Count == 0)
+                    return;
+
+                // Create the manifest text in the same format as the round end summary
+                var manifestLines = new List<string>();
+                var profitLines = new List<string>();
+
+                // Get the NFAdventureRuleSystem to access profit data
+                var adventureSystem = EntityManager.System<NFAdventureRuleSystem>();
+
+                foreach (var player in sortedPlayers)
+                {
+                    // Use localization to get the proper job name instead of the key
+                    var roleName = Loc.GetString(player.Role);
+                    var playerLine = "- " + player.PlayerOOCName + " was " + player.PlayerICName + " playing role of " + roleName + ".";
+                    manifestLines.Add(playerLine);
+
+                    // Try to get profit information for this player
+                    if (player.PlayerGuid != null && !string.IsNullOrEmpty(player.PlayerICName))
+                    {
+                        var profitInfo = adventureSystem.GetPlayerProfitInfo(player.PlayerGuid.Value, player.PlayerICName);
+                        if (profitInfo != null)
+                        {
+                            profitLines.Add(profitInfo);
+                        }
+                    }
+                }
+
+                // Prepare base embed content
+                var title = "Round End Summary";
+                var description = "Round **" + RoundId + "** has ended with **" + sortedPlayers.Count + "** total characters involved.";
+                var footerText = serverName + " - Round " + RoundId;
+
+                // Calculate base embed character count (title + description + footer)
+                var baseCharacterCount = title.Length + description.Length + footerText.Length;
+
+                // Create embeds with proper limit handling
+                var embeds = new List<WebhookEmbed>();
+                var currentFields = new List<WebhookEmbedField>();
+                var currentEmbedCharacterCount = baseCharacterCount;
+                var embedCount = 0;
+
+                // Helper function to create and add an embed
+                void AddCurrentEmbed()
+                {
+                    if (currentFields.Count > 0)
+                    {
+                        embeds.Add(new WebhookEmbed
+                        {
+                            Title = embedCount == 0 ? title : title + " (continued)",
+                            Description = embedCount == 0 ? description : "",
+                            Color = 0x9999FF,
+                            Fields = new List<WebhookEmbedField>(currentFields),
+                            Footer = new WebhookEmbedFooter { Text = footerText }
+                        });
+                        embedCount++;
+                        currentFields.Clear();
+                        currentEmbedCharacterCount = baseCharacterCount;
+                    }
+                }
+
+                // Process manifest lines
+                var currentFieldLines = new List<string>();
+                var currentFieldLength = 0;
+                var manifestFieldCount = 0;
+
+                foreach (var line in manifestLines)
+                {
+                    // Check if adding this line would exceed field value limit
+                    if (currentFieldLength + line.Length + 1 > MaxFieldValueLength - 20 && currentFieldLines.Count > 0)
+                    {
+                        var fieldName = manifestFieldCount == 0 ? "Player Manifest" : "Player Manifest (continued)";
+                        var fieldValue = string.Join("\n", currentFieldLines);
+                        var fieldCharacterCount = fieldName.Length + fieldValue.Length;
+
+                        // Check if adding this field would exceed embed limits
+                        if (currentFields.Count >= MaxFieldsPerEmbed - 1 ||
+                            currentEmbedCharacterCount + fieldCharacterCount > MaxEmbedCharacters - 500)
+                        {
+                            AddCurrentEmbed();
+                        }
+
+                        currentFields.Add(new WebhookEmbedField
+                        {
+                            Name = fieldName,
+                            Value = fieldValue,
+                            Inline = false
+                        });
+                        currentEmbedCharacterCount += fieldCharacterCount;
+                        manifestFieldCount++;
+                        currentFieldLines.Clear();
+                        currentFieldLength = 0;
+                    }
+
+                    currentFieldLines.Add(line);
+                    currentFieldLength += line.Length + 1; // +1 for newline
+                }
+
+                // Add remaining manifest lines
+                if (currentFieldLines.Count > 0)
+                {
+                    var fieldName = manifestFieldCount == 0 ? "Player Manifest" : "Player Manifest (continued)";
+                    var fieldValue = string.Join("\n", currentFieldLines);
+                    var fieldCharacterCount = fieldName.Length + fieldValue.Length;
+
+                    // Check if adding this field would exceed embed limits
+                    if (currentFields.Count >= MaxFieldsPerEmbed - 1 ||
+                        currentEmbedCharacterCount + fieldCharacterCount > MaxEmbedCharacters - 500)
+                    {
+                        AddCurrentEmbed();
+                    }
+
+                    currentFields.Add(new WebhookEmbedField
+                    {
+                        Name = fieldName,
+                        Value = fieldValue,
+                        Inline = false
+                    });
+                    currentEmbedCharacterCount += fieldCharacterCount;
+                }
+
+                // Process profit lines if available
+                if (profitLines.Count > 0)
+                {
+                    var currentProfitLines = new List<string>();
+                    var currentProfitLength = 0;
+                    var profitFieldCount = 0;
+
+                    foreach (var line in profitLines)
+                    {
+                        // Check if adding this line would exceed field value limit
+                        if (currentProfitLength + line.Length + 1 > MaxFieldValueLength - 20 && currentProfitLines.Count > 0)
+                        {
+                            var fieldName = profitFieldCount == 0 ? "TSF Central Bank" : "TSF Central Bank (continued)";
+                            var fieldValue = string.Join("\n", currentProfitLines);
+                            var fieldCharacterCount = fieldName.Length + fieldValue.Length;
+
+                            // Check if adding this field would exceed embed limits
+                            if (currentFields.Count >= MaxFieldsPerEmbed - 1 ||
+                                currentEmbedCharacterCount + fieldCharacterCount > MaxEmbedCharacters - 500)
+                            {
+                                AddCurrentEmbed();
+                            }
+
+                            currentFields.Add(new WebhookEmbedField
+                            {
+                                Name = fieldName,
+                                Value = fieldValue,
+                                Inline = false
+                            });
+                            currentEmbedCharacterCount += fieldCharacterCount;
+                            profitFieldCount++;
+                            currentProfitLines.Clear();
+                            currentProfitLength = 0;
+                        }
+
+                        currentProfitLines.Add(line);
+                        currentProfitLength += line.Length + 1; // +1 for newline
+                    }
+
+                    // Add remaining profit lines
+                    if (currentProfitLines.Count > 0)
+                    {
+                        var fieldName = profitFieldCount == 0 ? "TSF Central Bank" : "TSF Central Bank (continued)";
+                        var fieldValue = string.Join("\n", currentProfitLines);
+                        var fieldCharacterCount = fieldName.Length + fieldValue.Length;
+
+                        // Check if adding this field would exceed embed limits
+                        if (currentFields.Count >= MaxFieldsPerEmbed - 1 ||
+                            currentEmbedCharacterCount + fieldCharacterCount > MaxEmbedCharacters - 500)
+                        {
+                            AddCurrentEmbed();
+                        }
+
+                        currentFields.Add(new WebhookEmbedField
+                        {
+                            Name = fieldName,
+                            Value = fieldValue,
+                            Inline = false
+                        });
+                        currentEmbedCharacterCount += fieldCharacterCount;
+                    }
+                }
+
+                // Add any remaining fields to the final embed
+                AddCurrentEmbed();
+
+                // Send embeds (split into multiple messages if needed)
+                foreach (var embed in embeds)
+                {
+                    var payload = new WebhookPayload
+                    {
+                        Embeds = new List<WebhookEmbed> { embed }
+                    };
+
+                    await _discord.CreateMessage(webhookIdentifier, payload);
+
+                    // Small delay between messages to avoid rate limiting
+                    if (embeds.Count > 1)
+                        await Task.Delay(100);
+                }
+            }
+            catch (Exception e)
+            {
+                Log.Error($"Error while sending crew manifest discord message:\n{e}");
             }
         }
 
@@ -1069,12 +1248,6 @@ namespace Content.Server.GameTicking
 
             Text += text;
             _doNewLine = true;
-        }
-
-        // goob edit
-        public void AppendAtStart(string text)
-        {
-            Text = text + Text;
         }
     }
 }

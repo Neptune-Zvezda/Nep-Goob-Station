@@ -1,30 +1,29 @@
-// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2024 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 deltanedas <@deltanedas:kde.org>
-// SPDX-FileCopyrightText: 2024 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Misandry <mary@thughunt.ing>
-// SPDX-FileCopyrightText: 2025 gus <august.eymann@gmail.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
-using Content.Goobstation.Common.CCVar;
 using Content.Server.Atmos.Rotting;
 using Content.Server.Body.Systems;
 using Content.Server.Chat.Systems;
+using Content.Shared.Body.Organ;
 using Content.Shared.Body.Part;
 using Content.Server.Popups;
 using Content.Shared.Bed.Sleep;
+using Content.Shared.CCVar;
 using Content.Shared.Damage;
+using Content.Shared.Eye.Blinding.Components;
 using Content.Shared.Eye.Blinding.Systems;
+using Content.Shared.Interaction;
+using Content.Shared.Inventory;
 using Content.Shared._Shitmed.Medical.Surgery;
 using Content.Shared._Shitmed.Medical.Surgery.Conditions;
 using Content.Shared._Shitmed.Medical.Surgery.Effects.Step;
+using Content.Shared._Shitmed.Medical.Surgery.Steps;
+using Content.Shared._Shitmed.Medical.Surgery.Steps.Parts;
 using Content.Shared._Shitmed.Medical.Surgery.Tools;
+using Content.Shared.Prototypes;
 using Robust.Server.GameObjects;
 using Robust.Shared.Configuration;
+using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
+using System.Linq;
 using Content.Shared.Verbs;
 
 namespace Content.Server._Shitmed.Medical.Surgery;
@@ -41,6 +40,8 @@ public sealed class SurgerySystem : SharedSurgerySystem
     [Dependency] private readonly RottingSystem _rot = default!;
     [Dependency] private readonly BlindableSystem _blindableSystem = default!;
 
+    private readonly List<EntProtoId> _surgeries = new();
+
     public override void Initialize()
     {
         base.Initialize();
@@ -53,12 +54,14 @@ public sealed class SurgerySystem : SharedSurgerySystem
         SubscribeLocalEvent<SurgeryDamageChangeEffectComponent, SurgeryStepDamageChangeEvent>(OnSurgeryDamageChange);
         SubscribeLocalEvent<SurgeryStepEmoteEffectComponent, SurgeryStepEvent>(OnStepScreamComplete);
         SubscribeLocalEvent<SurgeryStepSpawnEffectComponent, SurgeryStepEvent>(OnStepSpawnComplete);
+        SubscribeLocalEvent<PrototypesReloadedEventArgs>(OnPrototypesReloaded);
+        LoadPrototypes();
     }
 
     protected override void RefreshUI(EntityUid body)
     {
         var surgeries = new Dictionary<NetEntity, List<EntProtoId>>();
-        foreach (var surgery in AllSurgeries)
+        foreach (var surgery in _surgeries)
         {
             if (GetSingleton(surgery) is not { } surgeryEnt)
                 continue;
@@ -106,7 +109,7 @@ public sealed class SurgerySystem : SharedSurgerySystem
         if (!IsLyingDown(target, user))
             return;
 
-        if (user == target && !_config.GetCVar(GoobCVars.CanOperateOnSelf))
+        if (user == target && !_config.GetCVar(CCVars.CanOperateOnSelf))
         {
             _popup.PopupEntity(Loc.GetString("surgery-error-self-surgery"), user, user);
             return;
@@ -170,4 +173,20 @@ public sealed class SurgerySystem : SharedSurgerySystem
     }
     private void OnStepSpawnComplete(Entity<SurgeryStepSpawnEffectComponent> ent, ref SurgeryStepEvent args) =>
         SpawnAtPosition(ent.Comp.Entity, Transform(args.Body).Coordinates);
+
+    private void OnPrototypesReloaded(PrototypesReloadedEventArgs args)
+    {
+        if (!args.WasModified<EntityPrototype>())
+            return;
+
+        LoadPrototypes();
+    }
+
+    private void LoadPrototypes()
+    {
+        _surgeries.Clear();
+        foreach (var entity in _prototypes.EnumeratePrototypes<EntityPrototype>())
+            if (entity.HasComponent<SurgeryComponent>())
+                _surgeries.Add(new EntProtoId(entity.ID));
+    }
 }

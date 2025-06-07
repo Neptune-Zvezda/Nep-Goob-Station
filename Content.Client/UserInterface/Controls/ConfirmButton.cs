@@ -1,9 +1,4 @@
-// SPDX-FileCopyrightText: 2024 Julian Giebel <juliangiebel@live.de>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: MIT
-
-using Robust.Client.UserInterface.Controls;
+﻿using Robust.Client.UserInterface.Controls;
 using Robust.Shared.Timing;
 
 namespace Content.Client.UserInterface.Controls;
@@ -91,7 +86,7 @@ public sealed class ConfirmButton : Button
             DrawModeChanged();
         }
 
-        if (Disabled && _gameTiming.CurTime > _nextCooldown)
+        if (IsConfirming && Disabled && _gameTiming.CurTime > _nextCooldown)
             Disabled = false;
     }
 

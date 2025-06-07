@@ -1,0 +1,47 @@
+- type: job
+  id: Brigmedic
+  name: job-name-brigmedic
+  description: job-description-brigmedic-nf
+  playTimeTracker: JobBrigmedic
+  requirements:
+    - !type:OverallPlaytimeRequirement
+      time: 43200 # 12 hours # mono
+    - !type:DepartmentTimeRequirement
+      department: Security
+      time: 7200 # 2 hours # mono
+  alternateRequirementSets:
+    longerPlaytimeLessSec:
+    - !type:OverallPlaytimeRequirement
+      time: 64800 # 18 hours # mono
+  startingGear: BrigmedicGear
+  icon: JobIconBrigmedicNF
+  supervisors: job-supervisors-bailiff
+  weight: 125
+  displayWeight: 35
+  canBeAntag: false
+  accessGroups:
+  - GeneralNfsdBrigmedicAccess
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: NpcFactionMember
+      factions:
+      - TSFMC
+    - type: SurgerySpeedModifier
+      SpeedModifier: 1.50
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant, TrackingImplant ]
+  - !type:GiveItemOnHolidaySpecial
+    holiday: FrontierBirthday
+    prototype: FrontierBirthdayGift
+
+- type: startingGear
+  id: BrigmedicGear
+  equipment:
+    pocket1: WeaponPistolMk58 #WeaponPistolMk58Nonlethal
+  storage:
+    back:
+    - EncryptionKeyMedical
+    - MagazinePistol
+    - FederationMilitaryCredit10
+    - BaseSecurityUplinkRadioDeputy #Mono: Added Deputy uplink

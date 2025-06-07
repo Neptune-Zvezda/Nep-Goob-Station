@@ -1,9 +1,3 @@
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2025 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 // We keep this clone of the other system since I don't know yet if I'll need organ specific functions in the future.
 // will delete or refactor as time goes on.
 using Content.Shared._Shitmed.Body.Organ;
@@ -16,7 +10,7 @@ using Robust.Shared.Network;
 
 
 namespace Content.Shared._Shitmed.BodyEffects;
-public sealed partial class OrganEffectSystem : EntitySystem
+public partial class OrganEffectSystem : EntitySystem
 {
     [Dependency] private readonly IComponentFactory _compFactory = default!;
     [Dependency] private readonly ISerializationManager _serManager = default!;
@@ -34,24 +28,28 @@ public sealed partial class OrganEffectSystem : EntitySystem
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
+
+        if (!_net.IsServer) // TODO: Kill this once I figure out whats breaking the Diagnostic Cybernetics.
+            return;
+
         var query = EntityQueryEnumerator<OrganEffectComponent, OrganComponent>();
         var now = _gameTiming.CurTime;
         while (query.MoveNext(out var uid, out var comp, out var part))
         {
-            if (now < comp.NextUpdate
-                || !comp.Active.Any()
-                || part.Body is not { } body
-                || !part.Enabled)
+            if (now < comp.NextUpdate || !comp.Active.Any() || part.Body is not { } body)
                 continue;
 
             comp.NextUpdate = now + comp.Delay;
-            AddComponents(body, uid, comp.Active, comp, false);
+            AddComponents(body, uid, comp.Active);
         }
     }
 
     private void OnOrganComponentsModify(Entity<OrganComponent> organEnt,
         ref OrganComponentsModifyEvent ev)
     {
+        if (!_net.IsServer) // TODO: Kill this once I figure out whats breaking the Diagnostic Cybernetics.
+            return;
+
         if (organEnt.Comp.OnAdd != null)
         {
             if (ev.Add)
@@ -72,16 +70,26 @@ public sealed partial class OrganEffectSystem : EntitySystem
     private void AddComponents(EntityUid body,
         EntityUid part,
         ComponentRegistry reg,
-        OrganEffectComponent? effectComp = null,
-        bool? removeExisting = true)
+        OrganEffectComponent? effectComp = null)
     {
         if (!Resolve(part, ref effectComp, logMissing: false))
             return;
 
-        EntityManager.AddComponents(body, reg, removeExisting ?? true);
         foreach (var (key, comp) in reg)
         {
+            var compType = comp.Component.GetType();
+            if (HasComp(body, compType))
+                continue;
+
+            var newComp = (Component) _serManager.CreateCopy(comp.Component, notNullableOverride: true);
+            newComp.Owner = body;
+            EntityManager.AddComponent(body, newComp, true);
             effectComp.Active[key] = comp;
+            if (newComp.NetSyncEnabled)
+            {
+                Dirty(body, newComp);
+                Dirty(part, effectComp);
+            }
         }
     }
 
@@ -93,9 +101,9 @@ public sealed partial class OrganEffectSystem : EntitySystem
         if (!Resolve(part, ref effectComp, logMissing: false))
             return;
 
-        EntityManager.RemoveComponents(body, reg);
-        foreach (var key in reg.Keys)
+        foreach (var (key, comp) in reg)
         {
+            RemComp(body, comp.Component.GetType());
             effectComp.Active.Remove(key);
         }
     }

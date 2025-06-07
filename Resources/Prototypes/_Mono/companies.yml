@@ -1,0 +1,106 @@
+# "None" - DO NOT REMOVE!
+- type: company
+  id: None
+  form: Neutral # Do NOT apply "Neutral" to anywhere outside "None"
+  name: None
+  color: "#FFFFFF"
+
+# ====DO NOT TOUCH - ADMIN COMPANIES====
+- type: company
+  id: TSF
+  form: Protagonist
+  name: TSF
+  color: "#047ABD"
+  disabled: true
+
+- type: company
+  id: Rogue
+  form: Antagonist
+  name: Rogue
+  color: "#8B0000"
+  disabled: true
+
+- type: company
+  id: USSP
+  form: Antagonist
+  name: USSP
+  color: "#B01340"
+  disabled: true
+
+- type: company
+  id: TSFHighComm
+  form: Protagonist
+  name: Winter Solstice
+  description: winter-solstice-description
+  color: "#008CE3"
+  disabled: true
+  logins: # admins only here !!! or your PR will be CLOSED!!!! also serves as a example for ur whitelisted factions
+  - starch
+  - localhost@starch
+  - localhost@Ark
+  - Ark
+  - Tikibomb
+  - DisguisedBear
+  - JuneCat
+  - Erol509
+  - SuperJoelDood
+# DO NOT TOUCH
+
+# ====TSF / Protag. Companies====
+- type: company
+  id: DarkMatterEnterprises
+  form: Protagonist
+  name: Dark Matter Enterprises
+  description: dark-matter-enterprises-description
+  color: "#BF00B9"
+  image: /Textures/_Mono/Companies/dme.png #DME Logo
+
+- type: company
+  id: AetherionDynamics
+  form: Protagonist
+  name: Aetherion Dynamics
+  description: aetherion-dynamics-description
+  color: "#7E72B2"
+
+- type: company
+  id: SouthernPeakMercenaries
+  form: Protagonist
+  name: The Southern Peaks
+  description: southern-peak-mercenaries-description
+  color: "#020624"
+
+- type: company
+  id: ZealotsOfBalaam
+  form: Protagonist
+  name: Zealots Of Balaam
+  description: zealots-of-balaam-description
+  color: "#BC7F58"
+
+# ====Rogue / Antag. Companies====
+- type: company
+  id: TheViperGroup
+  form: Antagonist
+  name: The Viper Group
+  description: viper-group-description
+  color: "#D82918"
+  image: /Textures/_Mono/Companies/thevipergroup.png # Example
+  disabled: true
+  logins:
+  - Schizm1253
+  - Androidonator
+  - Archylle
+  - Battieralarm3
+  - bubz_bs
+  - capslfern
+  - DrOktober
+  - Ermac10108
+  - Ghost581
+  - hellcat76
+  - HungryCuban
+  - Kiterny
+  - plazmasniper_2005
+  - Redrover1760
+  - Scyron
+  - SwadianSupremacy
+  - Traildog
+

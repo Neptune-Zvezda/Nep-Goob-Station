@@ -1,0 +1,37 @@
+# Wearables
+- type: listing
+  id: UplinkHardsuitSyndieMedic
+  name: uplink-hardsuit-syndie-medic-name
+  description: uplink-hardsuit-syndie-medic-desc
+  icon: { sprite: /Textures/Clothing/OuterClothing/Hardsuits/syndiemedic.rsi, state: icon }
+  productEntity: ClothingBackpackDuffelSyndicateMedicHardsuitBundle
+  discountCategory: veryRareDiscounts
+  discountDownTo:
+    Telecrystal: 4
+  cost:
+    Telecrystal: 8
+  categories:
+  - UplinkWearables
+
+- type: listing
+  id: UplinkUplinkImplanterNukeops # uplink uplink real # Nukie version - Mono
+  name: uplink-uplink-implanter-name
+  description: uplink-uplink-implanter-desc
+  icon: { sprite: /Textures/Objects/Devices/communication.rsi, state: old-radio }
+  productEntity: UplinkImplanter
+  discountCategory: usualDiscounts
+  discountDownTo:
+    Telecrystal: 1
+  cost:
+    Telecrystal: 2
+  categories:
+  - UplinkImplants
+  conditions:
+    - !type:StoreWhitelistCondition
+      whitelist:
+        tags:
+          - NukeOpsUplink
+    - !type:BuyerWhitelistCondition
+      blacklist:
+        components:
+          - SurplusBundle

@@ -1,27 +1,3 @@
-// SPDX-FileCopyrightText: 2023 Chief-Engineer <119664036+Chief-Engineer@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 MishaUnity <81403616+MishaUnity@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Pieter-Jan Briers <pieterjan.briers@gmail.com>
-// SPDX-FileCopyrightText: 2023 PrPleGoo <PrPleGoo@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Simon <63975668+Simyon264@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 0x6273 <0x40@keemail.me>
-// SPDX-FileCopyrightText: 2024 AsnDen <75905158+AsnDen@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Fildrance <fildrance@gmail.com>
-// SPDX-FileCopyrightText: 2024 Julian Giebel <juliangiebel@live.de>
-// SPDX-FileCopyrightText: 2024 Mervill <mervills.email@gmail.com>
-// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2024 Red Mushie <82113471+redmushie@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Tayrtahn <tayrtahn@gmail.com>
-// SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 nikthechampiongr <32041239+nikthechampiongr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 pa.pecherskij <pa.pecherskij@interfax.ru>
-// SPDX-FileCopyrightText: 2024 themias <89101928+themias@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using System.Diagnostics.CodeAnalysis;
 using Content.Server.Administration.Logs;
 using Content.Server.CartridgeLoader;
@@ -43,6 +19,7 @@ using Robust.Server.GameObjects;
 using Robust.Shared.Audio.Systems;
 using Content.Shared.IdentityManagement;
 using Robust.Shared.Timing;
+using Content.Shared.GameTicking; // Frontier
 
 namespace Content.Server.MassMedia.Systems;
 
@@ -64,7 +41,11 @@ public sealed class NewsSystem : SharedNewsSystem
         base.Initialize();
 
         // News writer
-        SubscribeLocalEvent<NewsWriterComponent, MapInitEvent>(OnMapInit);
+        // Frontier: News is shared across the sector.  No need to create shuttle-local news caches.
+        // SubscribeLocalEvent<NewsWriterComponent, MapInitEvent>(OnMapInit);
+
+        SubscribeLocalEvent<RoundRestartCleanupEvent>(OnRoundRestart);
+        // End Frontier
 
         // New writer bui messages
         Subs.BuiEvents<NewsWriterComponent>(NewsWriterUiKey.Key, subs =>
@@ -82,6 +63,14 @@ public sealed class NewsSystem : SharedNewsSystem
         SubscribeLocalEvent<NewsReaderCartridgeComponent, CartridgeMessageEvent>(OnReaderUiMessage);
         SubscribeLocalEvent<NewsReaderCartridgeComponent, CartridgeUiReadyEvent>(OnReaderUiReady);
     }
+ 
+    // Frontier: article lifecycle management
+    private void OnRoundRestart(RoundRestartCleanupEvent ev)
+    {
+        // A new round is starting, clear any articles from the previous round.
+        SectorNewsComponent.Articles.Clear();
+    }
+    // End Frontier
 
     public override void Update(float frameTime)
     {
@@ -100,14 +89,17 @@ public sealed class NewsSystem : SharedNewsSystem
 
     #region Writer Event Handlers
 
-    private void OnMapInit(Entity<NewsWriterComponent> ent, ref MapInitEvent args)
-    {
-        var station = _station.GetOwningStation(ent);
-        if (!station.HasValue)
-            return;
+    // Frontier: News is shared across the sector.  No need to create shuttle-local news caches.
+    // private void OnMapInit(Entity<NewsWriterComponent> ent, ref MapInitEvent args)
+    // {
+    //     var station = _station.GetOwningStation(ent);
+    //     if (!station.HasValue) {
+    //         return;
+    //     }
 
-        EnsureComp<StationNewsComponent>(station.Value);
-    }
+    //     EnsureComp<StationNewsComponent>(station.Value);
+    // }
+    // End Frontier
 
     private void OnWriteUiDeleteMessage(Entity<NewsWriterComponent> ent, ref NewsWriterDeleteMessage msg)
     {
@@ -155,7 +147,10 @@ public sealed class NewsSystem : SharedNewsSystem
             return;
 
         if (!TryGetArticles(ent, out var articles))
+        {
+            Log.Error("OnWriteUiPublishMessage: no articles!");
             return;
+        }
 
         if (!CanUse(msg.Actor, ent.Owner))
             return;
@@ -260,15 +255,25 @@ public sealed class NewsSystem : SharedNewsSystem
 
     private bool TryGetArticles(EntityUid uid, [NotNullWhen(true)] out List<NewsArticle>? articles)
     {
-        if (_station.GetOwningStation(uid) is not { } station ||
-            !TryComp<StationNewsComponent>(station, out var stationNews))
-        {
-            articles = null;
-            return false;
-        }
+        // Frontier: Get sector-wide article set instead of set for this station.
+        // if (_station.GetOwningStation(uid) is not { } station ||
+        //     !TryComp<StationNewsComponent>(station, out var stationNews))
+        // {
+        //     articles = null;
+        //     return false;
+        // }
+        // articles = stationNews.Articles;
+        // return true;
 
-        articles = stationNews.Articles;
-        return true;
+        // Any SectorNewsComponent will have a complete article set, we ensure one exists before returning the complete set.
+        var query = EntityQueryEnumerator<SectorNewsComponent>();
+        if (query.MoveNext(out var _)) {
+            articles = SectorNewsComponent.Articles;
+            return true;
+        }
+        articles = null;
+        return false;
+        // End Frontier
     }
 
     private void UpdateWriterUi(Entity<NewsWriterComponent> ent)
@@ -330,7 +335,6 @@ public sealed class NewsSystem : SharedNewsSystem
 
     private bool CanUse(EntityUid user, EntityUid console)
     {
-
         if (TryComp<AccessReaderComponent>(console, out var accessReaderComponent))
         {
             return _accessReaderSystem.IsAllowed(user, console, accessReaderComponent);

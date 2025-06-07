@@ -1,19 +1,5 @@
-// SPDX-FileCopyrightText: 2024 0x6273 <0x40@keemail.me>
-// SPDX-FileCopyrightText: 2024 August Eymann <august.eymann@gmail.com>
-// SPDX-FileCopyrightText: 2024 Kara <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-// SPDX-FileCopyrightText: 2024 Steve <marlumpy@gmail.com>
-// SPDX-FileCopyrightText: 2024 chromiumboy <50505512+chromiumboy@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 deltanedas <@deltanedas:kde.org>
-// SPDX-FileCopyrightText: 2024 marc-pelletier <113944176+marc-pelletier@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using Content.Shared.Charges.Components;
 using Content.Shared.Examine;
-using Content.Shared.FixedPoint;
 
 namespace Content.Shared.Charges.Systems;
 
@@ -48,13 +34,13 @@ public abstract class SharedChargesSystem : EntitySystem
     /// <summary>
     /// Tries to add a number of charges. If it over or underflows it will be clamped, wasting the extra charges.
     /// </summary>
-    public virtual void AddCharges(EntityUid uid, FixedPoint2 change, LimitedChargesComponent? comp = null)
+    public virtual void AddCharges(EntityUid uid, int change, LimitedChargesComponent? comp = null)
     {
         if (!Query.Resolve(uid, ref comp, false))
             return;
 
         var old = comp.Charges;
-        comp.Charges = FixedPoint2.Clamp(comp.Charges + change, 0, comp.MaxCharges);
+        comp.Charges = Math.Clamp(comp.Charges + change, 0, comp.MaxCharges);
         if (comp.Charges != old)
             Dirty(uid, comp);
     }
@@ -98,7 +84,7 @@ public abstract class SharedChargesSystem : EntitySystem
     /// Gets the limited charges component and returns true if the number of charges remaining is less than the specified value.
     /// Will return false if there is no limited charges component.
     /// </summary>
-    public bool HasInsufficientCharges(EntityUid uid, FixedPoint2 requiredCharges, LimitedChargesComponent? comp = null)
+    public bool HasInsufficientCharges(EntityUid uid, int requiredCharges, LimitedChargesComponent? comp = null)
     {
         // can't be empty if there are no limited charges
         if (!Resolve(uid, ref comp, false))
@@ -110,7 +96,7 @@ public abstract class SharedChargesSystem : EntitySystem
     /// <summary>
     /// Uses up a specified number of charges. Must check HasInsufficentCharges beforehand to prevent using with insufficient remaining charges.
     /// </summary>
-    public virtual void UseCharges(EntityUid uid, FixedPoint2 chargesUsed, LimitedChargesComponent? comp = null)
+    public virtual void UseCharges(EntityUid uid, int chargesUsed, LimitedChargesComponent? comp = null)
     {
         AddCharges(uid, -chargesUsed, comp);
     }

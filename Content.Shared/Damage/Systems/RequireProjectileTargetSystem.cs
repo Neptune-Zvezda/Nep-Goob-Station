@@ -1,25 +1,18 @@
-// SPDX-FileCopyrightText: 2024 Aviu00 <93730715+Aviu00@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 BombasterDS <115770678+BombasterDS@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Cojoke <83733158+Cojoke-dot@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2024 Plykiya <58439124+Plykiya@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
-using Content.Goobstation.Common.Projectiles;
 using Content.Shared.Projectiles;
 using Content.Shared.Weapons.Ranged.Components;
 using Content.Shared.Standing;
+using Content.Shared.Mobs.Systems;
+using Content.Shared._Mono.Company;
+using Content.Shared.Damage.Components;
 using Robust.Shared.Physics.Events;
 using Robust.Shared.Containers;
-using Robust.Shared.Physics.Components;
 
-namespace Content.Shared.Damage.Components;
+namespace Content.Shared.Damage.Systems;
 
 public sealed class RequireProjectileTargetSystem : EntitySystem
 {
     [Dependency] private readonly SharedContainerSystem _container = default!;
+    [Dependency] private readonly MobStateSystem _mobState = default!;
 
     public override void Initialize()
     {
@@ -28,41 +21,105 @@ public sealed class RequireProjectileTargetSystem : EntitySystem
         SubscribeLocalEvent<RequireProjectileTargetComponent, DownedEvent>(LayingBulletPass);
     }
 
+    /// <summary>
+    /// Shared logic to determine if a collision should be prevented based on mob state, targeting, and company affiliation.
+    /// </summary>
+    /// <param name="target">The entity being hit</param>
+    /// <param name="shooter">The entity doing the shooting</param>
+    /// <param name="isTargeted">Whether this is a targeted shot (cursor over target when firing)</param>
+    /// <returns>True if the collision should be prevented, false if it should be allowed</returns>
+    public bool ShouldPreventCollision(EntityUid target, EntityUid? shooter, bool isTargeted)
+    {
+        // Only apply logic if the target has RequireProjectileTargetComponent and it's active
+        if (!TryComp<RequireProjectileTargetComponent>(target, out var targetComp) || !targetComp.Active)
+            return false;
+
+        // // Check if shooter and target are in the same company
+        // var sameCompany = false;
+        // if (shooter != null &&
+        //     TryComp<CompanyComponent>(shooter.Value, out var shooterCompany) &&
+        //     TryComp<CompanyComponent>(target, out var targetCompany) &&
+        //     !string.IsNullOrEmpty(shooterCompany.CompanyName) &&
+        //     !string.IsNullOrEmpty(targetCompany.CompanyName) &&
+        //     shooterCompany.CompanyName != "None" &&
+        //     targetCompany.CompanyName != "None")
+        // {
+        //     sameCompany = shooterCompany.CompanyName == targetCompany.CompanyName;
+        // }
+
+        // Prevent hitting downed mobs ONLY if they are critical or dead
+        // unless the shot is specifically targeted at them (cursor over them when firing)
+        if (_mobState.IsIncapacitated(target))
+        {
+            // If the shot is specifically targeted at this critical/dead mob, allow the hit
+            if (isTargeted)
+                return false;
+
+            // Otherwise, mob is critical or dead - prevent collision (shots pass through)
+            return true;
+        }
+
+        // // If we reach here, the mob is downed but alive
+        // // If shooter and target are in the same company, prevent friendly fire
+        // // unless the shot is specifically targeted at them (cursor over them when firing)
+        // if (sameCompany)
+        // {
+        //     // If the shot is specifically targeted at this same-company mob, allow the hit
+        //     if (isTargeted)
+        //         return false;
+        //
+        //     // Otherwise, prevent friendly fire
+        //     return true;
+        // }
+
+        // Otherwise, allow shots to hit
+        return false;
+    }
+
     private void PreventCollide(Entity<RequireProjectileTargetComponent> ent, ref PreventCollideEvent args)
     {
         if (args.Cancelled)
-            return;
+          return;
 
         if (!ent.Comp.Active)
             return;
 
-        var other = args.OtherEntity;
-        // Goob edit start
-        if (TryComp(other, out TargetedProjectileComponent? targeted))
-        {
-            if (targeted.Target == null || targeted.Target == ent)
-                return;
+        // Check if this is a targeted projectile aimed at this specific entity
+        var isTargetedAtThis = TryComp(args.OtherEntity, out ProjectileComponent? projectile) &&
+                               CompOrNull<TargetedProjectileComponent>(args.OtherEntity)?.Target == ent;
 
-            var ev = new ShouldTargetedProjectileCollideEvent(targeted.Target.Value);
-            RaiseLocalEvent(ent, ev);
-            if (ev.Handled)
-                return;
+        // Use shared logic to determine if collision should be prevented
+        if (ShouldPreventCollision(ent, projectile?.Shooter, isTargetedAtThis))
+        {
+            args.Cancelled = true;
+            return;
         }
 
-        if (TryComp(other, out ProjectileComponent? projectile))
-        {
-            // Goob edit end
+        // Otherwise, allow projectiles to hit
+        if (projectile != null)
+            return;
 
+        var other = args.OtherEntity;
+
+        // Check if target and projectile are on different maps/z-levels
+        var targetXform = Transform(ent);
+        var projectileXform = Transform(other);
+        if (targetXform.MapID != projectileXform.MapID)
+        {
+            args.Cancelled = true;
+            return;
+        }
+
+        if (TryComp(other, out ProjectileComponent? otherProjectile) &&
+            CompOrNull<TargetedProjectileComponent>(other)?.Target != ent)
+        {
             // Prevents shooting out of while inside of crates
-            var shooter = projectile.Shooter;
+            var shooter = otherProjectile.Shooter;
             if (!shooter.HasValue)
                 return;
 
             // Goobstation - Crawling
             if (TryComp<StandingStateComponent>(shooter, out var standingState) && standingState.CurrentState != StandingState.Standing)
-                return;
-
-            if (TryComp(ent, out PhysicsComponent? physics) && physics.LinearVelocity.Length() > 2.5f) // Goobstation
                 return;
 
             // ProjectileGrenades delete the entity that's shooting the projectile,

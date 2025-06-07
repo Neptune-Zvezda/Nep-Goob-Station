@@ -1,15 +1,3 @@
-// SPDX-FileCopyrightText: 2022 Kevin Zheng <kevinz5000@gmail.com>
-// SPDX-FileCopyrightText: 2022 Morber <14136326+Morb0@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Slava0135 <40753025+Slava0135@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Visne <39844191+Visne@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 chavonadelal <156101927+chavonadelal@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Tayrtahn <tayrtahn@gmail.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using Robust.Shared.Prototypes;
 
 namespace Content.Shared.Radio;
@@ -47,4 +35,18 @@ public sealed partial class RadioChannelPrototype : IPrototype
     /// </summary>
     [DataField("longRange"), ViewVariables]
     public bool LongRange = false;
+
+    // Frontier: radio channel frequencies
+    /// <summary>
+    /// If true, the frequency of the message being sent will be appended to the chat message
+    /// </summary>
+    [DataField, ViewVariables]
+    public bool ShowFrequency = false;
+    // End Frontier
+    
+    /// <summary>
+    /// Maximum distance in meters this channel can transmit. If 0 or null, range is unlimited except by map boundaries.
+    /// </summary>
+    [DataField("maxRange"), ViewVariables]
+    public float? MaxRange = null;
 }

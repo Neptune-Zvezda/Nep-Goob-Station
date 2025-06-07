@@ -1,15 +1,5 @@
-# SPDX-FileCopyrightText: 2023 Emisse <99158783+Emisse@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 Kara <lunarautomaton6@gmail.com>
-# SPDX-FileCopyrightText: 2023 SaveliyM360 <142160914+SaveliyM360@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 metalgearsloth <comedian_vs_clown@hotmail.com>
-# SPDX-FileCopyrightText: 2024 Plykiya <58439124+Plykiya@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 degradka <69397649+degradka@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
 - type: entity
-  parent: BaseItem
+  parent: [BaseItem, RecyclableItemClothSmall] # Frontier: added RecyclableItemClothSmall
   id: BlankHandyFlag
   name: blank handheld flag
   description: "Some piece of white cloth wound on a stick."
@@ -21,10 +11,10 @@
     sprite: Objects/Misc/Handy_Flags/blank_handy_flag.rsi
 
 - type: entity
-  parent: BaseItem
+  parent: [BaseItem, RecyclableItemClothSmall] # Frontier: added RecyclableItemClothSmall
   id: NTHandyFlag
   name: Nanotrasen handheld flag
-  description: "Glory to NT! Wait, they really made a handheld flag for a corporation?"
+  description: "Glory to TSF-NT!"
   components:
   - type: Sprite
     sprite: Objects/Misc/Handy_Flags/NT_handy_flag.rsi
@@ -33,7 +23,7 @@
     sprite: Objects/Misc/Handy_Flags/NT_handy_flag.rsi
 
 - type: entity
-  parent: [BaseItem, BaseSyndicateContraband]
+  parent: [BaseItem, BaseC3SyndicateContraband, RecyclableItemClothSmall] # Frontier: BaseSyndicateContraband<BaseC3SyndicateContraband added RecyclableItemClothSmall
   id: SyndieHandyFlag
   name: syndicate handheld flag
   description: "For truly rebellious patriots. Death to NT!"
@@ -45,7 +35,7 @@
     sprite: Objects/Misc/Handy_Flags/syndie_handy_flag.rsi
 
 - type: entity
-  parent: BaseItem
+  parent: [BaseItem, RecyclableItemClothSmall] # Frontier: added RecyclableItemClothSmall
   id: LGBTQHandyFlag
   name: LGBTQ handheld flag
   description: "The be gay do crime handy flag."
@@ -57,7 +47,7 @@
     sprite: Objects/Misc/Handy_Flags/lgbtq_handy_flag.rsi
 
 - type: entity
-  parent: BaseItem
+  parent: [BaseItem, RecyclableItemClothSmall] # Frontier: added RecyclableItemClothSmall
   id: PirateHandyFlag
   name: pirate handheld flag
   description: "Holding it in your hands, show these carp that you're not kidding."

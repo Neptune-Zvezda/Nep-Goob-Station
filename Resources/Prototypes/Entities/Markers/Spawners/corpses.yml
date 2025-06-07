@@ -1,12 +1,8 @@
-# SPDX-FileCopyrightText: 2023 Kit0vras <123590995+Kit0vras@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-#
-# SPDX-License-Identifier: MIT
-
 - type: entity
   name: Human Corpse Spawner
   id: SalvageHumanCorpseSpawner
   parent: MarkerBase
+  categories: [ HideSpawnMenu ] # Frontier
   components:
   - type: Sprite
     sprite: Markers/jobs.rsi
@@ -20,6 +16,7 @@
   name: Random Service Corpse Spawner
   id: RandomServiceCorpseSpawner
   parent: SalvageHumanCorpseSpawner
+  categories: [ HideSpawnMenu ] # Frontier
   components:
   - type: Sprite
     layers:
@@ -33,6 +30,7 @@
   name: Random Engineer Corpse Spawner
   id: RandomEngineerCorpseSpawner
   parent: SalvageHumanCorpseSpawner
+  categories: [ HideSpawnMenu ] # Frontier
   components:
   - type: Sprite
     layers:
@@ -46,6 +44,7 @@
   name: Random Cargo Corpse Spawner
   id: RandomCargoCorpseSpawner
   parent: SalvageHumanCorpseSpawner
+  categories: [ HideSpawnMenu ] # Frontier
   components:
   - type: Sprite
     layers:
@@ -59,6 +58,7 @@
   name: Random Medic Corpse Spawner
   id: RandomMedicCorpseSpawner
   parent: SalvageHumanCorpseSpawner
+  categories: [ HideSpawnMenu ] # Frontier
   components:
   - type: Sprite
     layers:
@@ -72,6 +72,7 @@
   name: Random Science Corpse Spawner
   id: RandomScienceCorpseSpawner
   parent: SalvageHumanCorpseSpawner
+  categories: [ HideSpawnMenu ] # Frontier
   components:
   - type: Sprite
     layers:
@@ -85,6 +86,7 @@
   name: Random Security Corpse Spawner
   id: RandomSecurityCorpseSpawner
   parent: SalvageHumanCorpseSpawner
+  categories: [ HideSpawnMenu ] # Frontier
   components:
   - type: Sprite
     layers:
@@ -98,6 +100,7 @@
   name: Random Command Corpse Spawner
   id: RandomCommandCorpseSpawner
   parent: SalvageHumanCorpseSpawner
+  categories: [ HideSpawnMenu ] # Frontier
   components:
   - type: Sprite
     layers:

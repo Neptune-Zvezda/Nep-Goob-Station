@@ -1,28 +1,4 @@
-# SPDX-FileCopyrightText: 2022 Dylan Corrales <DeathCamel58@gmail.com>
-# SPDX-FileCopyrightText: 2022 Moony <moonheart08@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2022 Morb <14136326+Morb0@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2022 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2022 Visne <39844191+Visne@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2022 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2022 mirrorcult <lunarautomaton6@gmail.com>
-# SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 Kara <lunarautomaton6@gmail.com>
-# SPDX-FileCopyrightText: 2023 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-# SPDX-FileCopyrightText: 2024 Aidenkrz <aiden@djkraz.com>
-# SPDX-FileCopyrightText: 2024 Chief-Engineer <119664036+Chief-Engineer@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Hannah Giovanna Dawson <karakkaraz@gmail.com>
-# SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-# SPDX-FileCopyrightText: 2024 Simon <63975668+Simyon264@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Vasilis <vasilis@pikachu.systems>
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aiden <aiden@djkraz.com>
-# SPDX-FileCopyrightText: 2025 Myra <vasilis@pikachu.systems>
-# SPDX-FileCopyrightText: 2025 PJB3005 <pieterjan.briers+git@gmail.com>
-# SPDX-FileCopyrightText: 2025 nikthechampiongr <32041239+nikthechampiongr@users.noreply.github.com>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
-cmd-whitelistadd-desc = Adds the player with the given username to the server whitelist.
+﻿cmd-whitelistadd-desc = Adds the player with the given username to the server whitelist.
 cmd-whitelistadd-help = Usage: whitelistadd <username or User ID>
 cmd-whitelistadd-existing = {$username} is already on the whitelist!
 cmd-whitelistadd-added = {$username} added to the whitelist
@@ -43,15 +19,15 @@ ban-banned-permanent = This ban will only be removed via appeal.
 ban-banned-permanent-appeal = This ban will only be removed via appeal. You can appeal at {$link}
 ban-expires = This ban is for {$duration} minutes and will expire at {$time} UTC.
 ban-banned-1 = You, or another user of this computer or connection, are banned from playing here.
-ban-banned-2 = You were banned by: "{$adminName}"
-ban-banned-3 = The ban reason is: "{$reason}"
-ban-banned-4 = Attempts to circumvent this ban such as creating a new account will be logged.
+ban-banned-2 = The ban reason is: "{$reason}"
+ban-banned-3 = If this ban was a mistake or was made without a justification feel free to appeal on the discord following the guidelines.
+ban-banned-4 = Attempts to circumvent this ban such as creating a new account will result on escalation up to a community ban.
 
 soft-player-cap-full = The server is full!
 panic-bunker-account-denied = This server is in panic bunker mode, often enabled as a precaution against raids. New connections by accounts not meeting certain requirements are temporarily not accepted. Try again later
 panic-bunker-account-denied-reason = This server is in panic bunker mode, often enabled as a precaution against raids. New connections by accounts not meeting certain requirements are temporarily not accepted. Try again later. Reason: "{$reason}"
-panic-bunker-account-reason-account = Your Space Station 14 account is too new. It must be older than {$minutes} minutes
-panic-bunker-account-reason-overall = Your overall playtime on the server must be greater than {$minutes} $minutes
+panic-bunker-account-reason-account = Your account is new to this server. Your first connection was less than {$minutes} minutes ago
+panic-bunker-account-reason-overall = Your overall playtime on the server must be greater than {$hours} hours
 
 whitelist-playtime = You do not have enough playtime to join this server. You need at least {$minutes} minutes of playtime to join this server.
 whitelist-player-count = This server is currently not accepting players. Please try again later.

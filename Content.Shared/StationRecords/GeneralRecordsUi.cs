@@ -1,13 +1,5 @@
-// SPDX-FileCopyrightText: 2022 Flipp Syder <76629141+vulppine@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 metalgearsloth <comedian_vs_clown@hotmail.com>
-// SPDX-FileCopyrightText: 2023 Artjom <artjombebenin@gmail.com>
-// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 nikthechampiongr <32041239+nikthechampiongr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
+using Robust.Shared.Prototypes;
+using Content.Shared.Roles;
 using Robust.Shared.Serialization;
 
 namespace Content.Shared.StationRecords;
@@ -46,23 +38,24 @@ public sealed class GeneralStationRecordConsoleState : BoundUserInterfaceState
     public readonly uint? SelectedKey;
     public readonly GeneralStationRecord? Record;
     public readonly Dictionary<uint, string>? RecordListing;
+    public IReadOnlyDictionary<ProtoId<JobPrototype>, int?>? JobList { get; } // Frontier
     public readonly StationRecordsFilter? Filter;
     public readonly bool CanDeleteEntries;
+    public readonly string? Advertisement; // Frontier
 
-    public GeneralStationRecordConsoleState(uint? key,
-        GeneralStationRecord? record,
-        Dictionary<uint, string>? recordListing,
-        StationRecordsFilter? newFilter,
-        bool canDeleteEntries)
+    public GeneralStationRecordConsoleState(uint? key, GeneralStationRecord? record,
+        Dictionary<uint, string>? recordListing, IReadOnlyDictionary<ProtoId<JobPrototype>, int?>? jobList, StationRecordsFilter? newFilter, bool canDeleteEntries, string? advertisement) // Frontier: add jobList, advertisement
     {
         SelectedKey = key;
         Record = record;
         RecordListing = recordListing;
         Filter = newFilter;
+        JobList = jobList; // Frontier
         CanDeleteEntries = canDeleteEntries;
+        Advertisement = advertisement; // Frontier
     }
 
-    public GeneralStationRecordConsoleState() : this(null, null, null, null, false)
+    public GeneralStationRecordConsoleState() : this(null, null, null, null, null, false, string.Empty)
     {
     }
 

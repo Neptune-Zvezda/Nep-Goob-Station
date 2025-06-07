@@ -1,35 +1,13 @@
-// SPDX-FileCopyrightText: 2019 DamianX <DamianX@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2019 ZelteHonor <gabrieldionbouchard@gmail.com>
-// SPDX-FileCopyrightText: 2020 Exp <theexp111@gmail.com>
-// SPDX-FileCopyrightText: 2021 Acruid <shatter66@gmail.com>
-// SPDX-FileCopyrightText: 2021 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2021 Swept <sweptwastaken@protonmail.com>
-// SPDX-FileCopyrightText: 2021 Vera Aguilera Puerto <gradientvera@outlook.com>
-// SPDX-FileCopyrightText: 2022 Andreas Kämper <andreas@kaemper.tech>
-// SPDX-FileCopyrightText: 2022 Flipp Syder <76629141+vulppine@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 ShadowCommander <10494922+ShadowCommander@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 mirrorcult <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2022 wrexbe <81056464+wrexbe@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 TemporalOroboros <TemporalOroboros@gmail.com>
-// SPDX-FileCopyrightText: 2023 ike709 <ike709@github.com>
-// SPDX-FileCopyrightText: 2023 ike709 <ike709@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Kara <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-// SPDX-FileCopyrightText: 2024 Winkarst <74284083+Winkarst-cpu@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Kevin Zheng <kevinz5000@gmail.com>
-// SPDX-FileCopyrightText: 2025 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using Content.Client.UserInterface.Controls;
 using Content.Client.VendingMachines.UI;
 using Content.Shared.VendingMachines;
 using Robust.Client.UserInterface;
 using Robust.Shared.Input;
 using System.Linq;
+using Robust.Client.GameObjects;
+using Content.Shared._NF.Bank.Components; // Frontier
+using Content.Shared.Containers.ItemSlots; // Frontier
+using Content.Shared.Stacks; // Frontier
 
 namespace Content.Client.VendingMachines
 {
@@ -41,6 +19,18 @@ namespace Content.Client.VendingMachines
         [ViewVariables]
         private List<VendingMachineInventoryEntry> _cachedInventory = new();
 
+        // Frontier: market price modifier & balance
+        private UserInterfaceSystem _uiSystem = default!;
+        private ItemSlotsSystem _itemSlots = default!;
+
+        [ViewVariables]
+        private float _mod = 1f;
+        [ViewVariables]
+        private int _balance = 0;
+        [ViewVariables]
+        private int _cashSlotBalance = 0;
+        // End Frontier
+
         public VendingMachineBoundUserInterface(EntityUid owner, Enum uiKey) : base(owner, uiKey)
         {
         }
@@ -49,29 +39,51 @@ namespace Content.Client.VendingMachines
         {
             base.Open();
 
+            // Frontier: state, market modifier, balance status
+            _uiSystem = EntMan.System<UserInterfaceSystem>();
+            _itemSlots = EntMan.System<ItemSlotsSystem>();
+
+            if (EntMan.TryGetComponent<MarketModifierComponent>(Owner, out var market))
+                _mod = market.Mod;
+            // End Frontier
+
             _menu = this.CreateWindowCenteredLeft<VendingMachineMenu>();
-            _menu.Title = EntMan.GetComponent<MetaDataComponent>(Owner).EntityName;
+            // Frontier: no exceptions
+            if (EntMan.TryGetComponent(Owner, out MetaDataComponent? meta))
+                _menu.Title = meta.EntityName;
+            else
+                _menu.Title = Loc.GetString("vending-machine-nf-fallback-title");
+            // End Frontier: no exceptions
             _menu.OnItemSelected += OnItemSelected;
             Refresh();
         }
 
         public void Refresh()
         {
-            var enabled = EntMan.TryGetComponent(Owner, out VendingMachineComponent? bendy) && !bendy.Ejecting;
-
             var system = EntMan.System<VendingMachineSystem>();
             _cachedInventory = system.GetAllInventory(Owner);
 
-            _menu?.Populate(_cachedInventory, enabled);
-        }
+            // Frontier: state, market modifier, balance status
+            var uiUsers = _uiSystem.GetActors(Owner, UiKey);
+            foreach (var uiUser in uiUsers)
+            {
+                if (EntMan.TryGetComponent<BankAccountComponent>(uiUser, out var bank))
+                    _balance = bank.Balance;
+            }
+            int? cashSlotValue = null;
+            if (EntMan.TryGetComponent<VendingMachineComponent>(Owner, out var vendingMachine))
+            {
+                _cashSlotBalance = vendingMachine.CashSlotBalance;
+                if (vendingMachine.CashSlotName != null)
+                    cashSlotValue = _cashSlotBalance;
+            }
+            else
+            {
+                _cashSlotBalance = 0;
+            }
+            // End Frontier
 
-        public void UpdateAmounts()
-        {
-            var enabled = EntMan.TryGetComponent(Owner, out VendingMachineComponent? bendy) && !bendy.Ejecting;
-
-            var system = EntMan.System<VendingMachineSystem>();
-            _cachedInventory = system.GetAllInventory(Owner);
-            _menu?.UpdateAmounts(_cachedInventory, enabled);
+            _menu?.Populate(_cachedInventory, _mod, _balance, cashSlotValue); // Frontier: add _balance
         }
 
         private void OnItemSelected(GUIBoundKeyEventArgs args, ListData data)
@@ -90,7 +102,7 @@ namespace Content.Client.VendingMachines
             if (selectedItem == null)
                 return;
 
-            SendPredictedMessage(new VendingMachineEjectMessage(selectedItem.Type, selectedItem.ID));
+            SendMessage(new VendingMachineEjectMessage(selectedItem.Type, selectedItem.ID));
         }
 
         protected override void Dispose(bool disposing)

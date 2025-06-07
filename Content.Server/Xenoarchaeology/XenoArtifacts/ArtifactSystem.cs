@@ -1,35 +1,21 @@
-// SPDX-FileCopyrightText: 2022 Alex Evgrashin <aevgrashin@yandex.ru>
-// SPDX-FileCopyrightText: 2022 Alexander Evgrashin <evgrashin.adl@gmail.com>
-// SPDX-FileCopyrightText: 2022 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 mirrorcult <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2023 0x6273 <0x40@keemail.me>
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Kara <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2023 LankLTE <135308300+LankLTE@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Pieter-Jan Briers <pieterjan.briers@gmail.com>
-// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Hannah Giovanna Dawson <karakkaraz@gmail.com>
-// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2024 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 deltanedas <@deltanedas:kde.org>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using System.Numerics;
 using Content.Server.Cargo.Systems;
 using Content.Server.Power.EntitySystems;
 using Content.Server.Xenoarchaeology.Equipment.Components;
 using Content.Server.Xenoarchaeology.XenoArtifacts.Events;
+using Content.Shared.Tiles;
 using Content.Shared.Xenoarchaeology.XenoArtifacts;
 using JetBrains.Annotations;
+using Robust.Server.GameObjects;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Serialization.Manager;
 using Robust.Shared.Timing;
+using Content.Server.Station.Components; // Frontier
+using Content.Server.Station.Systems; // Frontier
 
 namespace Content.Server.Xenoarchaeology.XenoArtifacts;
 
@@ -41,6 +27,10 @@ public sealed partial class ArtifactSystem : EntitySystem
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly ISerializationManager _serialization = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] private readonly TransformSystem _transform = default!;
+    [Dependency] private readonly IEntityManager _entityManager = default!;
+    [Dependency] private readonly StationSystem _station = default!; // Frontier
+
 
     public override void Initialize()
     {
@@ -88,7 +78,7 @@ public sealed partial class ArtifactSystem : EntitySystem
         var sumValue = component.NodeTree.Sum(n => GetNodePointValue(n, component, getMaxPrice));
         var fullyExploredBonus = component.NodeTree.All(x => x.Triggered) || getMaxPrice ? 1.25f : 1;
 
-        return (int) (sumValue * fullyExploredBonus) - component.ConsumedPoints;
+        return (int) (sumValue * fullyExploredBonus) - component.ConsumedPoints - component.SkippedPoints; // Frontier: subtract SkippedPoints
     }
 
     /// <summary>
@@ -148,6 +138,51 @@ public sealed partial class ArtifactSystem : EntitySystem
         EnterNode(uid, ref firstNode, component);
     }
 
+    // Frontier: activate and randomly disintegrate an artifact.
+    public void NFActivateArtifact(EntityUid uid, float disintegrateProb, float disintegrateProbOffStationGrid, float range)
+    {
+        if (!TryComp<ArtifactComponent>(uid, out var artifactComp))
+            return;
+
+        // Frontier - prevent both artifact activation and disintegration on protected grids (no grimforged in the safezone).
+        var xform = Transform(uid);
+        if (xform.GridUid != null)
+        {
+            if (TryComp<ProtectedGridComponent>(xform.GridUid.Value, out var prot) && prot.PreventArtifactTriggers)
+                return;
+        }
+
+        // Science should happen on shuttles or stations.
+        if (_station.GetOwningStation(xform.GridUid) == null)
+        {
+            disintegrateProb += disintegrateProbOffStationGrid;
+        }
+
+        if (_random.Prob(disintegrateProb))
+        {
+            var artifactCoord = _transform.GetMapCoordinates(uid);
+            var flashEntity = Spawn("EffectFlashBluespace", artifactCoord);
+            _transform.AttachToGridOrMap(flashEntity);
+
+            var dx = _random.NextFloat(-range, range);
+            var dy = _random.NextFloat(-range, range);
+            var spawnCord = artifactCoord.Offset(new Vector2(dx, dy));
+            var mobEntity = Spawn("MobGrimForged", spawnCord);
+            _transform.AttachToGridOrMap(mobEntity);
+
+            _entityManager.DeleteEntity(uid);
+        }
+        else
+        {
+            // Activate the artifact, but consume any points from newly visited nodes.
+            bool oldRemove = artifactComp.RemoveGainedPoints;
+            artifactComp.RemoveGainedPoints = true;
+            TryActivateArtifact(uid, uid, artifactComp);
+            artifactComp.RemoveGainedPoints = oldRemove;
+        }
+    }
+    // End Frontier
+
     /// <summary>
     /// Tries to activate the artifact
     /// </summary>
@@ -164,6 +199,14 @@ public sealed partial class ArtifactSystem : EntitySystem
         // check if artifact is under suppression field
         if (component.IsSuppressed)
             return false;
+
+        // Frontier - check if artifact on a protected grid
+        var xform = Transform(uid);
+        if (xform.GridUid != null)
+        {
+            if (TryComp<ProtectedGridComponent>(xform.GridUid.Value, out var prot) && prot.PreventArtifactTriggers)
+                return false;
+        }
 
         // check if artifact isn't under cooldown
         var timeDif = _gameTiming.CurTime - component.LastActivationTime;
@@ -198,7 +241,13 @@ public sealed partial class ArtifactSystem : EntitySystem
 
         var currentNode = GetNodeFromId(component.CurrentNodeId.Value, component);
 
+        bool untriggered = !currentNode.Triggered; // Frontier: cache triggered value
+
         currentNode.Triggered = true;
+        // Frontier: remove points from spraying artifacts - must be done after Triggered is set
+        if (component.RemoveGainedPoints && untriggered)
+            component.SkippedPoints += (int)GetNodePointValue(currentNode, component);
+        // End Frontier
         if (currentNode.Edges.Count == 0)
             return;
 
@@ -222,6 +271,7 @@ public sealed partial class ArtifactSystem : EntitySystem
 
         if (TryComp<BiasedArtifactComponent>(uid, out var bias) &&
             TryComp<TraversalDistorterComponent>(bias.Provider, out var trav) &&
+            _random.Prob(trav.BiasChance) &&
             this.IsPowered(bias.Provider, EntityManager))
         {
             switch (trav.BiasDirection)

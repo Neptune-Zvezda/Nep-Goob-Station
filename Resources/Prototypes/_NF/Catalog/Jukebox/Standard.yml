@@ -1,0 +1,23 @@
+- type: jukebox
+  id: victory
+  name: Koruu Chan - Victory
+  path:
+    path: /Audio/_NF/Jukebox/victory.ogg
+
+- type: jukebox
+  id: shibamata
+  name: Shibamata
+  path:
+    path: /Audio/_NF/Jukebox/shibamata.ogg
+
+- type: jukebox
+  id: lateraligator
+  name: Silverman Sound Studios - Later Alligator
+  path:
+    path: /Audio/_NF/Jukebox/lateraligator.ogg
+
+- type: jukebox
+  id: frontierarrivals
+  name: Troglodyte71 - Frontier Arrivals
+  path:
+    path: /Audio/_NF/Jukebox/frontier-arrivals.ogg

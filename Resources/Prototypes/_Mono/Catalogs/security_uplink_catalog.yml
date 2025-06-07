@@ -1,0 +1,111 @@
+- type: listing
+  id: UplinkSecurityAnnie
+  name:  uplink-security-annie-name
+  description: uplink-security-annie-desc
+  productEntity: WeaponRifleAnnie
+  cost:
+    FederationMilitaryCredit: 15
+  categories:
+    - UplinkSecurityWeapons
+  conditions:
+    - !type:StoreWhitelistCondition
+      whitelist:
+        tags:
+          - SecurityUplink
+
+- type: listing
+  id: UplinkSecurityEg4
+  name:  uplink-security-eg4-name
+  description: uplink-security-eg4-desc
+  productEntity: WeaponEnergyRevolver
+  cost:
+    FederationMilitaryCredit: 7
+  categories:
+  - UplinkSecurityWeapons
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - SecurityUplink
+
+- type: listing
+  id: UplinkSecuritySurgeryDuffel
+  name:  uplink-security-surgery-duffel-name
+  description: uplink-security-surgery-duffel-desc
+  productEntity: ClothingBackpackDuffelSurgeryAdvancedFilled
+  icon: { sprite: Objects/Specific/Medical/Surgery/scalpel.rsi, state: laser }
+  cost:
+    FederationMilitaryCredit: 4
+  categories:
+    - UplinkSecurityUtility
+  conditions:
+    - !type:StoreWhitelistCondition
+      whitelist:
+        tags:
+          - SecurityUplink
+    - !type:BuyerJobCondition
+      whitelist:
+        - Brigmedic
+        - Bailiff
+        - Sheriff
+
+
+- type: listing
+  id: UplinkSecurityPortableRecharger
+  name:  uplink-security-portable-recharger-name
+  description: uplink-security-portable-recharger-desc
+  productEntity: PortableRecharger
+  cost:
+    FederationMilitaryCredit: 7
+  categories:
+  - UplinkSecurityUtility
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - SecurityUplink
+
+- type: listing
+  id: UplinkSecurityMagazineSubsonic
+  name:  uplink-subsonic-mag-name
+  description: uplink-subsonic-mag-desc
+  productEntity: MagazineLightRifleSubsonic
+  cost:
+    FederationMilitaryCredit: 1
+  categories:
+  - UplinkSecurityAmmo
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - SecurityUplink
+
+- type: listing
+  id: UplinkSecurityBoxSubsonic
+  name:  uplink-subsonic-box-name
+  description: uplink-subsonic-box-desc
+  productEntity: MagazineBoxLightRifleSubsonic
+  cost:
+    FederationMilitaryCredit: 3
+  categories:
+  - UplinkSecurityAmmo
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - SecurityUplink
+
+- type: listing
+  id: UplinkSecurityAuroraExosuit
+  name:  uplink-exosuit-aurora-name
+  description: uplink-exosuit-aurora-desc
+  productEntity: ClothingOuterExosuitAurora
+  cost:
+    FederationMilitaryCredit: 25
+  categories:
+  - UplinkSecurityHardsuits
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - SecurityUplink

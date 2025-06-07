@@ -1,20 +1,52 @@
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aidenkrz <aiden@djkraz.com>
-# SPDX-FileCopyrightText: 2025 RatherUncreative <RatherUncreativeName@proton.me>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
 - type: entity
-  id: MailTeleporterMachineCircuitboard
+  id: EngineeringTechFabCircuitboard
   parent: BaseMachineCircuitboard
-  name: mail teleporter machine board
+  name: engineering techfab machine board
+  description: A machine printed circuit board for a engineering techfab
   components:
     - type: Sprite
-      state: supply
+      state: engineering
     - type: MachineBoard
-      prototype: MailTeleporter
+      prototype: EngineeringTechFab
+      requirements: # Frontier
+        MatterBin: 2 # Frontier stackRequirements<requirements
+        Manipulator: 2 # Frontier stackRequirements<requirements
+      tagRequirements:
+        GlassBeaker:
+          amount: 2
+          defaultPrototype: Beaker
+
+- type: entity
+  id: ServiceTechFabCircuitboard
+  parent: BaseMachineCircuitboard
+  name: service techfab machine board
+  description: A machine printed circuit board for a service techfab
+  components:
+    - type: Sprite
+      state: service
+    - type: MachineBoard
+      prototype: ServiceTechFab
+      requirements: # Frontier
+        MatterBin: 2 # Frontier stackRequirements<requirements
+        Manipulator: 2 # Frontier stackRequirements<requirements
+      tagRequirements:
+        GlassBeaker:
+          amount: 2
+          defaultPrototype: Beaker
+
+- type: entity
+  id: DeepFryerMachineCircuitboard
+  parent: BaseMachineCircuitboard
+  name: deep fryer machine board
+  components:
+    - type: Sprite
+      state: service
+    - type: MachineBoard
+      prototype: KitchenDeepFryer
+      requirements: # Frontier
+        Capacitor: 1 # Frontier stackRequirements<requirements
+        MatterBin: 1 # Frontier stackRequirements<requirements
       stackRequirements:
-        Capacitor: 1
-        MatterBin: 1
         Steel: 4
-        Cable: 4
+        Glass: 2
+        Cable: 5

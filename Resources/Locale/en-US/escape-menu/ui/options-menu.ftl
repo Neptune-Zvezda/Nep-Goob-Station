@@ -1,63 +1,3 @@
-# SPDX-FileCopyrightText: 2021 Galactic Chimp <63882831+GalacticChimp@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2021 Paul Ritter <ritter.paul1@googlemail.com>
-# SPDX-FileCopyrightText: 2021 Swept <sweptwastaken@protonmail.com>
-# SPDX-FileCopyrightText: 2021 Visne <39844191+Visne@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2021 ZorenZal <51891458+lvvova1@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2021 pointer-to-null <91910481+pointer-to-null@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2022 20kdc <asdd2808@gmail.com>
-# SPDX-FileCopyrightText: 2022 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2022 Flipp Syder <76629141+vulppine@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2022 Jessica M <jessica@jessicamaybe.com>
-# SPDX-FileCopyrightText: 2022 Jezithyr <Jezithyr.@gmail.com>
-# SPDX-FileCopyrightText: 2022 Leeroy <97187620+elthundercloud@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2022 Michael Phillips <1194692+MeltedPixel@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2022 Moony <moonheart08@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2022 Mr0maks <mr.maks0443@gmail.com>
-# SPDX-FileCopyrightText: 2022 ike709 <ike709@github.com>
-# SPDX-FileCopyrightText: 2022 ike709 <ike709@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2022 metalgearsloth <metalgearsloth@gmail.com>
-# SPDX-FileCopyrightText: 2022 mirrorcult <lunarautomaton6@gmail.com>
-# SPDX-FileCopyrightText: 2022 theashtronaut <112137107+theashtronaut@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 08A <git@08a.re>
-# SPDX-FileCopyrightText: 2023 Artjom <artjombebenin@gmail.com>
-# SPDX-FileCopyrightText: 2023 Errant <35878406+Errant-4@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 Flareguy <78941145+Flareguy@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 Keiku <41867291+Keikiru@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 ShadowCommander <10494922+ShadowCommander@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 Skye <22365940+Skyedra@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 Vasilis <vasilis@pikachu.systems>
-# SPDX-FileCopyrightText: 2023 Vasilis The Pikachu <vascreeper@yahoo.com>
-# SPDX-FileCopyrightText: 2023 faint <46868845+ficcialfaint@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 metalgearsloth <comedian_vs_clown@hotmail.com>
-# SPDX-FileCopyrightText: 2023 onoira <onoira@psiko.zone>
-# SPDX-FileCopyrightText: 2024 Aexxie <codyfox.077@gmail.com>
-# SPDX-FileCopyrightText: 2024 Aidenkrz <aiden@djkraz.com>
-# SPDX-FileCopyrightText: 2024 AstroDogeDX <48888500+AstroDogeDX@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Ilya246 <57039557+Ilya246@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-# SPDX-FileCopyrightText: 2024 Psychpsyo <60073468+Psychpsyo@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Sk1tch <ben.peter.smith@gmail.com>
-# SPDX-FileCopyrightText: 2024 SlamBamActionman <83650252+SlamBamActionman@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Ubaser <134914314+UbaserB@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 YuNii <benjamin@bhenrich.de>
-# SPDX-FileCopyrightText: 2024 anotherbutton <MADpfeifer@outlook.com>
-# SPDX-FileCopyrightText: 2024 deathride58 <deathride58@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 deltanedas <39013340+deltanedas@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 slarticodefast <161409025+slarticodefast@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 to4no_fix <156101927+chavonadelal@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 wafehling <wafehling@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aiden <aiden@djkraz.com>
-# SPDX-FileCopyrightText: 2025 c4llv07e <igor@c4llv07e.xyz>
-# SPDX-FileCopyrightText: 2025 gus <august.eymann@gmail.com>
-# SPDX-FileCopyrightText: 2025 noirogen <raethertechnologies@gmail.com>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
 ## General stuff
 
 ui-options-title = Game Options
@@ -187,7 +127,6 @@ ui-options-function-move-left = Move Left
 ui-options-function-move-down = Move Down
 ui-options-function-move-right = Move Right
 ui-options-function-walk = Walk
-ui-options-function-toggle-standing = Crawl/Stand
 
 ui-options-function-camera-rotate-left = Rotate left
 ui-options-function-camera-rotate-right = Rotate right
@@ -206,7 +145,10 @@ ui-options-function-activate-item-in-world = Activate item in world
 ui-options-function-alt-activate-item-in-world = Alternative activate item in world
 ui-options-function-drop = Drop item
 ui-options-function-examine-entity = Examine
-ui-options-function-swap-hands = Swap hands
+# Frontier: add (next)
+ui-options-function-swap-hands = Swap hands (next)
+# Frontier
+ui-options-function-swap-hands-previous = Swap hands (previous)
 ui-options-function-move-stored-item = Move stored item
 ui-options-function-rotate-stored-item = Rotate stored item
 ui-options-function-save-item-location = Save item location
@@ -284,17 +226,6 @@ ui-options-function-hotbar7 = Hotbar slot 7
 ui-options-function-hotbar8 = Hotbar slot 8
 ui-options-function-hotbar9 = Hotbar slot 9
 ui-options-function-hotbar0 = Hotbar slot 0
-# Goobstation - Extra hotbar hotkeys
-ui-options-function-hotbarshift1 = Hotbar slot Shift+1
-ui-options-function-hotbarshift2 = Hotbar slot Shift+2
-ui-options-function-hotbarshift3 = Hotbar slot Shift+3
-ui-options-function-hotbarshift4 = Hotbar slot Shift+4
-ui-options-function-hotbarshift5 = Hotbar slot Shift+5
-ui-options-function-hotbarshift6 = Hotbar slot Shift+6
-ui-options-function-hotbarshift7 = Hotbar slot Shift+7
-ui-options-function-hotbarshift8 = Hotbar slot Shift+8
-ui-options-function-hotbarshift9 = Hotbar slot Shift+9
-ui-options-function-hotbarshift0 = Hotbar slot Shift+0
 ui-options-function-loadout1 = Hotbar Loadout 1
 ui-options-function-loadout2 = Hotbar Loadout 2
 ui-options-function-loadout3 = Hotbar Loadout 3
@@ -305,17 +236,6 @@ ui-options-function-loadout7 = Hotbar Loadout 7
 ui-options-function-loadout8 = Hotbar Loadout 8
 ui-options-function-loadout9 = Hotbar Loadout 9
 ui-options-function-loadout0 = Hotbar Loadout 0
-# Goobstation - Extra hotbar hotkeys
-ui-options-function-loadoutshift1 = Hotbar Loadout Shift+1
-ui-options-function-loadoutshift2 = Hotbar Loadout Shift+2
-ui-options-function-loadoutshift3 = Hotbar Loadout Shift+3
-ui-options-function-loadoutshift4 = Hotbar Loadout Shift+4
-ui-options-function-loadoutshift5 = Hotbar Loadout Shift+5
-ui-options-function-loadoutshift6 = Hotbar Loadout Shift+6
-ui-options-function-loadoutshift7 = Hotbar Loadout Shift+7
-ui-options-function-loadoutshift8 = Hotbar Loadout Shift+8
-ui-options-function-loadoutshift9 = Hotbar Loadout Shift+9
-ui-options-function-loadoutshift0 = Hotbar Loadout Shift+0
 
 ui-options-function-shuttle-strafe-up = Strafe up
 ui-options-function-shuttle-strafe-right = Strafe right

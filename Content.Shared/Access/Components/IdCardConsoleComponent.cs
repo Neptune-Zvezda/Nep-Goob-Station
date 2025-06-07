@@ -1,21 +1,9 @@
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Jeff <velcroboy333@hotmail.com>
-// SPDX-FileCopyrightText: 2023 Moony <moony@hellomouse.net>
-// SPDX-FileCopyrightText: 2023 Velcroboy <107660393+IamVelcroboy@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 moonheart08 <moonheart08@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Kara <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 c4llv07e <38111072+c4llv07e@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 metalgearsloth <comedian_vs_clown@hotmail.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using Content.Shared.Access.Systems;
 using Content.Shared.Containers.ItemSlots;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
+using Content.Shared.Roles; // Frontier
 
 namespace Content.Shared.Access.Components;
 
@@ -41,9 +29,9 @@ public sealed partial class IdCardConsoleComponent : Component
         public readonly string FullName;
         public readonly string JobTitle;
         public readonly List<ProtoId<AccessLevelPrototype>> AccessList;
-        public readonly ProtoId<AccessLevelPrototype> JobPrototype;
+        public readonly ProtoId<JobPrototype> JobPrototype; // Frontier: AccessPrototype<JobPrototype
 
-        public WriteToTargetIdMessage(string fullName, string jobTitle, List<ProtoId<AccessLevelPrototype>> accessList, ProtoId<AccessLevelPrototype> jobPrototype)
+        public WriteToTargetIdMessage(string fullName, string jobTitle, List<ProtoId<AccessLevelPrototype>> accessList, ProtoId<JobPrototype> jobPrototype) // Frontier: jobProtoype - AccessPrototype<JobPrototype
         {
             FullName = fullName;
             JobTitle = jobTitle;
@@ -58,36 +46,41 @@ public sealed partial class IdCardConsoleComponent : Component
     public List<ProtoId<AccessLevelPrototype>> AccessLevels = new()
     {
         "Armory",
-        "Atmospherics",
-        "Bar",
+        //"Atmospherics",
+        "Bailiff", // Frontier
+        //"Bar",
         "Brig",
-        "Brigmedic",
         "Detective",
         "Captain",
-        "Cargo",
-        "Chapel",
-        "Chemistry",
-        "ChiefEngineer",
-        "ChiefMedicalOfficer",
+        //"Cargo",
+        //"Chapel",
+        //"Chemistry",
+        //"ChiefEngineer",
+        //"ChiefMedicalOfficer",
         "Command",
-        "Cryogenics",
-        "Engineering",
+        //"Cryogenics",
+        //"Engineering",
         "External",
+        "Frontier", // Frontier
         "HeadOfPersonnel",
         "HeadOfSecurity",
-        "Hydroponics",
+        //"Hydroponics",
         "Janitor",
-        "Kitchen",
+        //"Kitchen",
         "Lawyer",
+        "Mail", // Frontier
         "Maintenance",
         "Medical",
-        "Quartermaster",
-        "Research",
-        "ResearchDirector",
-        "Salvage",
+        "Mercenary", // Frontier
+        //"Quartermaster",
+        //"Research",
+        //"ResearchDirector",
+        //"Salvage",
         "Security",
+        "Sergeant", // Frontier
         "Service",
-        "Theatre",
+        "StationTrafficController", // Frontier
+        //"Theatre",
     };
 
     [Serializable, NetSerializable]
@@ -100,18 +93,22 @@ public sealed partial class IdCardConsoleComponent : Component
         public readonly string TargetIdName;
         public readonly string? TargetIdFullName;
         public readonly string? TargetIdJobTitle;
+        public readonly bool HasOwnedShuttle; // Frontier
+        public readonly string?[]? TargetShuttleNameParts; // Frontier
         public readonly List<ProtoId<AccessLevelPrototype>>? TargetIdAccessList;
         public readonly List<ProtoId<AccessLevelPrototype>>? AllowedModifyAccessList;
-        public readonly ProtoId<AccessLevelPrototype> TargetIdJobPrototype;
+        public readonly ProtoId<JobPrototype> TargetIdJobPrototype; // Frontier: AccessLevelPrototype<JobPrototype
 
         public IdCardConsoleBoundUserInterfaceState(bool isPrivilegedIdPresent,
             bool isPrivilegedIdAuthorized,
             bool isTargetIdPresent,
             string? targetIdFullName,
             string? targetIdJobTitle,
+            bool hasOwnedShuttle,
+            string?[]? targetShuttleNameParts,
             List<ProtoId<AccessLevelPrototype>>? targetIdAccessList,
             List<ProtoId<AccessLevelPrototype>>? allowedModifyAccessList,
-            ProtoId<AccessLevelPrototype> targetIdJobPrototype,
+            ProtoId<JobPrototype> targetIdJobPrototype, // Frontier: AccessLevelPrototype<JobPrototype
             string privilegedIdName,
             string targetIdName)
         {
@@ -120,6 +117,8 @@ public sealed partial class IdCardConsoleComponent : Component
             IsTargetIdPresent = isTargetIdPresent;
             TargetIdFullName = targetIdFullName;
             TargetIdJobTitle = targetIdJobTitle;
+            HasOwnedShuttle = hasOwnedShuttle;
+            TargetShuttleNameParts = targetShuttleNameParts;
             TargetIdAccessList = targetIdAccessList;
             AllowedModifyAccessList = allowedModifyAccessList;
             TargetIdJobPrototype = targetIdJobPrototype;

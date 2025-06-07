@@ -1,10 +1,4 @@
-// SPDX-FileCopyrightText: 2024 Aidenkrz <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2024 Eris <eris@erisws.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
-using Content.Server.Botany.Components;
+﻿using Content.Server.Botany.Components;
 using Content.Server.Botany.Systems;
 using Content.Shared.EntityEffects;
 using Content.Shared.Popups;
@@ -31,7 +25,7 @@ public sealed partial class PlantDestroySeeds : EntityEffect
         var plantHolder = args.EntityManager.System<PlantHolderSystem>();
         var popupSystem = args.EntityManager.System<SharedPopupSystem>();
 
-        if (plantHolderComp.Seed.Seedless == false)
+        if (plantHolderComp.Seed.Seedless == false && plantHolderComp.Seed.PermanentlySeedless == false) // Frontier: add PermanentlySeedless check
         {
             plantHolder.EnsureUniqueSeed(args.TargetEntity, plantHolderComp);
             popupSystem.PopupEntity(

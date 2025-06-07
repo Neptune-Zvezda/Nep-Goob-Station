@@ -1,24 +1,19 @@
-// SPDX-FileCopyrightText: 2023 keronshb <54602815+keronshb@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 ScarKy0 <106310278+ScarKy0@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
+using Content.Shared.Construction.Prototypes;
 using Content.Shared.DeviceLinking;
 using Content.Shared.Materials;
 using Robust.Shared.Audio;
 using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
+using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 
 namespace Content.Shared.Cloning;
 
 [RegisterComponent]
 public sealed partial class CloningPodComponent : Component
 {
-    [DataField]
-    public ProtoId<SinkPortPrototype> PodPort = "CloningPodReceiver";
+    [ValidatePrototypeId<SinkPortPrototype>]
+    public const string PodPort = "CloningPodReceiver";
 
     [ViewVariables]
     public ContainerSlot BodyContainer = default!;
@@ -38,29 +33,73 @@ public sealed partial class CloningPodComponent : Component
     /// <summary>
     /// The material that is used to clone entities.
     /// </summary>
-    [DataField]
+    [DataField("requiredMaterial"), ViewVariables(VVAccess.ReadWrite)]
     public ProtoId<MaterialPrototype> RequiredMaterial = "Biomass";
 
     /// <summary>
-    /// The current amount of time it takes to clone a body.
+    /// The base amount of time it takes to clone a body
     /// </summary>
-    [DataField]
+    [DataField("baseCloningTime")]
+    public float BaseCloningTime = 30f;
+
+    /// <summary>
+    /// The multiplier for cloning duration
+    /// </summary>
+    [DataField("partRatingSpeedMultiplier")]
+    public float PartRatingSpeedMultiplier = 0.75f;
+
+    /// <summary>
+    /// The machine part that affects cloning speed
+    /// </summary>
+    [DataField("machinePartCloningSpeed"), ViewVariables(VVAccess.ReadWrite)]
+    public ProtoId<MachinePartPrototype> MachinePartCloningSpeed = "Manipulator";
+
+    /// <summary>
+    /// The current amount of time it takes to clone a body
+    /// </summary>
+    [ViewVariables(VVAccess.ReadWrite)]
     public float CloningTime = 30f;
 
     /// <summary>
-    /// The mob to spawn on emag.
+    /// The mob to spawn on emag
     /// </summary>
-    [DataField]
+    [DataField("mobSpawnId"), ViewVariables(VVAccess.ReadWrite)]
     public EntProtoId MobSpawnId = "MobAbomination";
 
-    /// <summary>
-    /// The sound played when a mob is spawned from an emagged cloning pod.
-    /// </summary>
-    [DataField]
+    // TODO: Remove this from here when cloning and/or zombies are refactored
+    [DataField("screamSound")]
     public SoundSpecifier ScreamSound = new SoundCollectionSpecifier("ZombieScreams")
     {
         Params = AudioParams.Default.WithVolume(4),
     };
+
+    /// <summary>
+    /// The machine part that affects how much biomass is needed to clone a body.
+    /// </summary>
+    [DataField("partRatingMaterialMultiplier")]
+    public float PartRatingMaterialMultiplier = 0.85f;
+
+    // Frontier: machine part upgrades
+    /// <summary>
+    /// The base multiplier on the body weight, which determines the
+    /// amount of biomass needed to clone, and is affected by part upgrades.
+    /// </summary>
+    [DataField, ViewVariables(VVAccess.ReadWrite)]
+    public float BaseBiomassRequirementMultiplier = 1;
+
+    // Frontier: machine part upgrades
+    /// <summary>
+    /// The current multiplier on the body weight, which determines the
+    /// amount of biomass needed to clone.
+    /// </summary>
+    [DataField, ViewVariables(VVAccess.ReadWrite)]
+    public float BiomassRequirementMultiplier = 1;
+
+    /// <summary>
+    /// The machine part that decreases the amount of material needed for cloning
+    /// </summary>
+    [DataField("machinePartMaterialUse"), ViewVariables(VVAccess.ReadWrite)]
+    public ProtoId<MachinePartPrototype> MachinePartMaterialUse = "MatterBin";
 
     [ViewVariables(VVAccess.ReadWrite)]
     public CloningPodStatus Status;
@@ -82,4 +121,22 @@ public enum CloningPodStatus : byte
     Cloning,
     Gore,
     NoMind
+}
+
+/// <summary>
+/// Raised after a new mob got spawned when cloning a humanoid
+/// </summary>
+[ByRefEvent]
+public struct CloningEvent
+{
+    public bool NameHandled = false;
+
+    public readonly EntityUid Source;
+    public readonly EntityUid Target;
+
+    public CloningEvent(EntityUid source, EntityUid target)
+    {
+        Source = source;
+        Target = target;
+    }
 }

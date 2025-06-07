@@ -1,56 +1,12 @@
-// SPDX-FileCopyrightText: 2019 Pieter-Jan Briers <pieterjan.briers@gmail.com>
-// SPDX-FileCopyrightText: 2020 20kdc <asdd2808@gmail.com>
-// SPDX-FileCopyrightText: 2020 DamianX <DamianX@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2020 Víctor Aguilera Puerto <6766154+Zumorica@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2021 Acruid <shatter66@gmail.com>
-// SPDX-FileCopyrightText: 2021 Metal Gear Sloth <metalgearsloth@gmail.com>
-// SPDX-FileCopyrightText: 2021 Remie Richards <remierichards@gmail.com>
-// SPDX-FileCopyrightText: 2021 ShadowCommander <10494922+ShadowCommander@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2021 Swept <sweptwastaken@protonmail.com>
-// SPDX-FileCopyrightText: 2021 ike709 <ike709@github.com>
-// SPDX-FileCopyrightText: 2021 ike709 <ike709@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 AJCM-git <60196617+AJCM-git@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Javier Guardia Fernández <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Moony <moonheart08@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Rane <60792108+Elijahrane@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 T-Stalker <43253663+DogZeroX@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Veritius <veritiusgaming@gmail.com>
-// SPDX-FileCopyrightText: 2022 Visne <39844191+Visne@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 mirrorcult <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2022 wrexbe <81056464+wrexbe@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Flipp Syder <76629141+vulppine@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Morb <14136326+Morb0@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Ciac32 <aknoxlor@gmail.com>
-// SPDX-FileCopyrightText: 2024 Debug <49997488+DebugOk@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Ed <96445749+TheShuEd@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Firewatch <54725557+musicmanvr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Krunklehorn <42424291+Krunklehorn@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Mr. 27 <45323883+Dutch-VanDerLinde@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Mr. 27 <koolthunder019@gmail.com>
-// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2024 PoTeletubby <151896601+PoTeletubby@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Whisper <121047731+QuietlyWhisper@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Winkarst <74284083+Winkarst-cpu@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 dffdff2423 <dffdff2423@gmail.com>
-// SPDX-FileCopyrightText: 2024 metalgearsloth <comedian_vs_clown@hotmail.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Hyper B <137433177+HyperB1@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-// SPDX-FileCopyrightText: 2025 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using System.Linq;
 using System.Text.RegularExpressions;
+using Content.Shared._Mono.Company;
+using Content.Shared._NF.Bank;
 using Content.Shared.CCVar;
-using Content.Shared.Dataset;
 using Content.Shared.GameTicking;
 using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Prototypes;
 using Content.Shared.Preferences.Loadouts;
-using Content.Shared.Random.Helpers;
 using Content.Shared.Roles;
 using Content.Shared.Traits;
 using Robust.Shared.Collections;
@@ -77,6 +33,12 @@ namespace Content.Shared.Preferences
         public const int MaxNameLength = 32;
         public const int MaxLoadoutNameLength = 32;
         public const int MaxDescLength = 512;
+
+        public const int DefaultBalance = 75000;
+
+        //private readonly Dictionary<string, JobPriority> _jobPriorities; // Frontier: commented out during merge.
+        //private readonly List<string> _antagPreferences; // Frontier: commented out during merge.
+        //private readonly List<string> _traitPreferences; // Frontier: commented out during merge.
 
         /// <summary>
         /// Job preferences for initial spawn.
@@ -127,16 +89,14 @@ namespace Content.Shared.Preferences
         [DataField]
         public int Age { get; set; } = 18;
 
-        // #Goobstation - Prefered Borg Name Stuff
-
-        [DataField]
-        public string BorgName { get; set; } = "Genero-Bot";
-
         [DataField]
         public Sex Sex { get; private set; } = Sex.Male;
 
         [DataField]
         public Gender Gender { get; private set; } = Gender.Male;
+
+        [DataField] // Frontier: Bank balance
+        public int BankBalance { get; private set; } = DefaultBalance; // Frontier: Bank balance
 
         /// <summary>
         /// <see cref="Appearance"/>
@@ -176,31 +136,37 @@ namespace Content.Shared.Preferences
         [DataField]
         public PreferenceUnavailableMode PreferenceUnavailable { get; private set; } =
             PreferenceUnavailableMode.SpawnAsOverflow;
-        // #Goobstation - Borg Preferred Name (borgname)
+
+        /// <summary>
+        /// The company affiliation of the character
+        /// </summary>
+        [DataField]
+        public string Company { get; private set; } = "None";
+
         public HumanoidCharacterProfile(
             string name,
             string flavortext,
             string species,
-            string borgname,
             int age,
             Sex sex,
             Gender gender,
+            int bankBalance,
             HumanoidCharacterAppearance appearance,
             SpawnPriorityPreference spawnPriority,
             Dictionary<ProtoId<JobPrototype>, JobPriority> jobPriorities,
             PreferenceUnavailableMode preferenceUnavailable,
             HashSet<ProtoId<AntagPrototype>> antagPreferences,
             HashSet<ProtoId<TraitPrototype>> traitPreferences,
-            Dictionary<string, RoleLoadout> loadouts)
-
+            Dictionary<string, RoleLoadout> loadouts,
+            string company = "None")
         {
             Name = name;
             FlavorText = flavortext;
             Species = species;
-            BorgName = borgname;
             Age = age;
             Sex = sex;
             Gender = gender;
+            BankBalance = bankBalance;
             Appearance = appearance;
             SpawnPriority = spawnPriority;
             _jobPriorities = jobPriorities;
@@ -208,20 +174,19 @@ namespace Content.Shared.Preferences
             _antagPreferences = antagPreferences;
             _traitPreferences = traitPreferences;
             _loadouts = loadouts;
+            Company = company;
+        }
 
-            var hasHighPrority = false;
-            foreach (var (key, value) in _jobPriorities)
-            {
-                if (value == JobPriority.Never)
-                    _jobPriorities.Remove(key);
-                else if (value != JobPriority.High)
-                    continue;
-
-                if (hasHighPrority)
-                    _jobPriorities[key] = JobPriority.Medium;
-
-                hasHighPrority = true;
-            }
+        /// <summary>Copy constructor but with overridable references (to prevent useless copies)</summary>
+        private HumanoidCharacterProfile(
+            HumanoidCharacterProfile other,
+            Dictionary<ProtoId<JobPrototype>, JobPriority> jobPriorities,
+            HashSet<ProtoId<AntagPrototype>> antagPreferences,
+            HashSet<ProtoId<TraitPrototype>> traitPreferences,
+            Dictionary<string, RoleLoadout> loadouts)
+            : this(other.Name, other.FlavorText, other.Species, other.Age, other.Sex, other.Gender, other.BankBalance, other.Appearance, other.SpawnPriority,
+                jobPriorities, other.PreferenceUnavailable, antagPreferences, traitPreferences, loadouts, other.Company)
+        {
         }
 
         /// <summary>Copy constructor</summary>
@@ -229,18 +194,18 @@ namespace Content.Shared.Preferences
             : this(other.Name,
                 other.FlavorText,
                 other.Species,
-                // #Goobstation - Borg Preferred Name
-                other.BorgName,
                 other.Age,
                 other.Sex,
                 other.Gender,
+                other.BankBalance,
                 other.Appearance.Clone(),
                 other.SpawnPriority,
                 new Dictionary<ProtoId<JobPrototype>, JobPriority>(other.JobPriorities),
                 other.PreferenceUnavailable,
                 new HashSet<ProtoId<AntagPrototype>>(other.AntagPreferences),
                 new HashSet<ProtoId<TraitPrototype>>(other.TraitPreferences),
-                new Dictionary<string, RoleLoadout>(other.Loadouts))
+                new Dictionary<string, RoleLoadout>(other.Loadouts),
+                other.Company)
         {
         }
 
@@ -267,7 +232,7 @@ namespace Content.Shared.Preferences
         }
 
         // TODO: This should eventually not be a visual change only.
-        public static HumanoidCharacterProfile Random(HashSet<string>? ignoredSpecies = null)
+        public static HumanoidCharacterProfile Random(HashSet<string>? ignoredSpecies = null, int balance = DefaultBalance)
         {
             var prototypeManager = IoCManager.Resolve<IPrototypeManager>();
             var random = IoCManager.Resolve<IRobustRandom>();
@@ -278,10 +243,10 @@ namespace Content.Shared.Preferences
                 .ToArray()
             ).ID;
 
-            return RandomWithSpecies(species);
+            return RandomWithSpecies(species: species, balance: balance);
         }
 
-        public static HumanoidCharacterProfile RandomWithSpecies(string species = SharedHumanoidAppearanceSystem.DefaultSpecies)
+        public static HumanoidCharacterProfile RandomWithSpecies(string species = SharedHumanoidAppearanceSystem.DefaultSpecies, int balance = DefaultBalance)
         {
             var prototypeManager = IoCManager.Resolve<IPrototypeManager>();
             var random = IoCManager.Resolve<IRobustRandom>();
@@ -307,14 +272,9 @@ namespace Content.Shared.Preferences
             }
 
             var name = GetName(species, gender);
-
-            // #Goobstation - Borg Preferred Name
-            var borgname = GetBorgName();
-
             return new HumanoidCharacterProfile()
             {
                 Name = name,
-                BorgName = borgname,
                 Sex = sex,
                 Age = age,
                 Gender = gender,
@@ -338,13 +298,6 @@ namespace Content.Shared.Preferences
             return new(this) { Age = age };
         }
 
-        // #Goobstation - Borg Stuff (see above for more borgname things
-
-        public HumanoidCharacterProfile WithBorgName(string borgname)
-        {
-            return new(this) { BorgName = borgname };
-        }
-
         public HumanoidCharacterProfile WithSex(Sex sex)
         {
             return new(this) { Sex = sex };
@@ -354,6 +307,13 @@ namespace Content.Shared.Preferences
         {
             return new(this) { Gender = gender };
         }
+
+        // Frontier: this is probably an issue and should be removed.
+        public HumanoidCharacterProfile WithBankBalance(int bankBalance)
+        {
+            return new(this) { BankBalance = bankBalance };
+        }
+        // End Frontier
 
         public HumanoidCharacterProfile WithSpecies(string species)
         {
@@ -429,11 +389,16 @@ namespace Content.Shared.Preferences
             return new(this) { PreferenceUnavailable = mode };
         }
 
+        public HumanoidCharacterProfile WithCompany(string company)
+        {
+            return new(this) { Company = company };
+        }
+
         public HumanoidCharacterProfile WithAntagPreferences(IEnumerable<ProtoId<AntagPrototype>> antagPreferences)
         {
             return new(this)
             {
-                _antagPreferences = new(antagPreferences),
+                _antagPreferences = new (antagPreferences),
             };
         }
 
@@ -522,24 +487,41 @@ namespace Content.Shared.Preferences
                 ("age", Age)
             );
 
+        // Frontier
+        public string BankBalanceText => BankSystemExtensions.ToSpesoString(BankBalance);
+
         public bool MemberwiseEquals(ICharacterProfile maybeOther)
         {
             if (maybeOther is not HumanoidCharacterProfile other) return false;
             if (Name != other.Name) return false;
             if (Age != other.Age) return false;
-            // #Goobstation - Borg Preferred Name
-            if (BorgName != other.BorgName) return false;
             if (Sex != other.Sex) return false;
             if (Gender != other.Gender) return false;
-            if (Species != other.Species) return false;
+            if (BankBalance != other.BankBalance) return false;
             if (PreferenceUnavailable != other.PreferenceUnavailable) return false;
             if (SpawnPriority != other.SpawnPriority) return false;
+            if (Species != other.Species) return false;
+            if (Company != other.Company) return false;
             if (!_jobPriorities.SequenceEqual(other._jobPriorities)) return false;
             if (!_antagPreferences.SequenceEqual(other._antagPreferences)) return false;
             if (!_traitPreferences.SequenceEqual(other._traitPreferences)) return false;
-            if (!Loadouts.SequenceEqual(other.Loadouts)) return false;
             if (FlavorText != other.FlavorText) return false;
-            return Appearance.MemberwiseEquals(other.Appearance);
+            if (!Appearance.MemberwiseEquals(other.Appearance)) return false;
+
+            // Compare loadouts
+            if (Loadouts.Count != other.Loadouts.Count)
+                return false;
+
+            foreach (var (key, loadout) in Loadouts)
+            {
+                if (!other.Loadouts.TryGetValue(key, out var otherLoadout))
+                    return false;
+
+                if (loadout != otherLoadout)
+                    return false;
+            }
+
+            return true;
         }
 
         public void EnsureValid(ICommonSession session, IDependencyCollection collection)
@@ -592,10 +574,17 @@ namespace Content.Shared.Preferences
 
             name = name.Trim();
 
-
-            if (configManager.GetCVar(CCVars.RestrictedNames))
+            if (configManager.GetCVar(CCVars.RestrictedNames) && Species != "IPC")
             {
-                name = RestrictedNameRegex.Replace(name, string.Empty);
+                name = Regex.Replace(name, @"[^\u0041-\u005A,\u0061-\u007A,\u00C0-\u00D6,\u00D8-\u00F6,\u00F8-\u00FF,\u0100-\u017F, -]", string.Empty);
+                /*
+                 * 0041-005A  Basic Latin: Uppercase Latin Alphabet
+                 * 0061-007A  Basic Latin: Lowercase Latin Alphabet
+                 * 00C0-00D6  Latin-1 Supplement: Letters I
+                 * 00D8-00F6  Latin-1 Supplement: Letters II
+                 * 00F8-00FF  Latin-1 Supplement: Letters III
+                 * 0100-017F  Latin Extended A: European Latin
+                 */
             }
 
             if (configManager.GetCVar(CCVars.ICNameCase))
@@ -609,7 +598,6 @@ namespace Content.Shared.Preferences
                 name = GetName(Species, gender);
             }
 
-
             string flavortext;
             if (FlavorText.Length > MaxDescLength)
             {
@@ -619,27 +607,15 @@ namespace Content.Shared.Preferences
             {
                 flavortext = FormattedMessage.RemoveMarkupOrThrow(FlavorText);
             }
-            // #Goobstation - Borg Preferred Name
-            string borgname;
-            if (string.IsNullOrEmpty(BorgName))
-            {
-                borgname = GetBorgName();
-            }
-            else if (BorgName.Length > MaxNameLength)
-            {
-                borgname = BorgName[..MaxNameLength];
-            }
-            else
-            {
-                borgname = BorgName;
-            }
 
-            borgname = borgname.Trim();
-
-            if (string.IsNullOrEmpty(borgname))
+            // Frontier
+            //make sure theres no funny bank stuff going on
+            var bankBalance = BankBalance;
+            if (BankBalance <= 0)
             {
-                borgname = GetBorgName();
+                bankBalance = 0;
             }
+            // End Frontier
 
             var appearance = HumanoidCharacterAppearance.EnsureValid(Appearance, Species, Sex);
 
@@ -689,13 +665,20 @@ namespace Content.Shared.Preferences
 
             Name = name;
             FlavorText = flavortext;
-            // #Goobstation - Borg Preferred Name
-            BorgName = borgname;
             Age = age;
             Sex = sex;
             Gender = gender;
+            BankBalance = bankBalance;
             Appearance = appearance;
             SpawnPriority = spawnPriority;
+
+            // Check if the company exists, if not set to "None"
+            if (!string.IsNullOrEmpty(Company) &&
+                Company != "None" &&
+                !prototypeManager.HasIndex<CompanyPrototype>(Company))
+            {
+                Company = "None";
+            }
 
             _jobPriorities.Clear();
 
@@ -785,15 +768,6 @@ namespace Content.Shared.Preferences
             var namingSystem = IoCManager.Resolve<IEntitySystemManager>().GetEntitySystem<NamingSystem>();
             return namingSystem.GetName(species, gender);
         }
-        // #Goobstation - Borg Preferred Name
-        public static string GetBorgName()
-        {
-            var random = IoCManager.Resolve<IRobustRandom>();
-            var prototypeSystem = IoCManager.Resolve<IPrototypeManager>();
-            var prototype = prototypeSystem.Index<LocalizedDatasetPrototype>("NamesBorg");
-            return random.Pick(prototype);
-
-        }
 
         public override bool Equals(object? obj)
         {
@@ -809,15 +783,14 @@ namespace Content.Shared.Preferences
             hashCode.Add(_loadouts);
             hashCode.Add(Name);
             hashCode.Add(FlavorText);
-            // #Goobstation - Borg Preferred Name
-            hashCode.Add(BorgName);
             hashCode.Add(Species);
             hashCode.Add(Age);
-            hashCode.Add((int) Sex);
-            hashCode.Add((int) Gender);
+            hashCode.Add((int)Sex);
+            hashCode.Add((int)Gender);
             hashCode.Add(Appearance);
-            hashCode.Add((int) SpawnPriority);
-            hashCode.Add((int) PreferenceUnavailable);
+            hashCode.Add(BankBalance); // Frontier
+            hashCode.Add((int)SpawnPriority);
+            hashCode.Add((int)PreferenceUnavailable);
             return hashCode.ToHashCode();
         }
 

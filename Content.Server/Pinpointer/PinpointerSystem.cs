@@ -1,26 +1,10 @@
-// SPDX-FileCopyrightText: 2021 Alexander Evgrashin <evgrashin.adl@gmail.com>
-// SPDX-FileCopyrightText: 2021 Vera Aguilera Puerto <gradientvera@outlook.com>
-// SPDX-FileCopyrightText: 2022 Alex Evgrashin <aevgrashin@yandex.ru>
-// SPDX-FileCopyrightText: 2022 Justin Trotter <trotter.justin@gmail.com>
-// SPDX-FileCopyrightText: 2022 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Chief-Engineer <119664036+Chief-Engineer@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Slava0135 <40753025+Slava0135@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 metalgearsloth <comedian_vs_clown@hotmail.com>
-// SPDX-FileCopyrightText: 2024 0x6273 <0x40@keemail.me>
-// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using Content.Shared.Interaction;
 using Content.Shared.Pinpointer;
 using System.Linq;
 using System.Numerics;
 using Robust.Shared.Utility;
 using Content.Server.Shuttles.Events;
+using Content.Shared.IdentityManagement;
 
 namespace Content.Server.Pinpointer;
 
@@ -168,6 +152,15 @@ public sealed class PinpointerSystem : SharedPinpointerSystem
 
         var dirVec = CalculateDirection(uid, target.Value);
         var oldDist = pinpointer.DistanceToTarget;
+
+        // Frontier: if the pinpointer has a max range and the distance to target is greater than the max range, set the distance to unknown
+        if (pinpointer.MaxRange > 0 && dirVec != null && dirVec.Value.LengthSquared() > pinpointer.MaxRange * pinpointer.MaxRange)
+        {
+            SetDistance(uid, Distance.Unknown, pinpointer);
+            TrySetArrowAngle(uid, Angle.Zero, pinpointer);
+            return;
+        }
+
         if (dirVec != null)
         {
             var angle = dirVec.Value.ToWorldAngle();

@@ -1,11 +1,4 @@
-// SPDX-FileCopyrightText: 2024 Simon <63975668+Simyon264@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Errant <35878406+Errant-4@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 slarticodefast <161409025+slarticodefast@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
-using Robust.Shared.Configuration;
+﻿using Robust.Shared.Configuration;
 
 namespace Content.Shared.CCVar;
 
@@ -49,16 +42,4 @@ public sealed partial class CCVars
     /// </summary>
     public static readonly CVarDef<bool> AdminOverlayClassic =
         CVarDef.Create("ui.admin_overlay_classic", false, CVar.CLIENTONLY | CVar.ARCHIVE);
-
-    /// <summary>
-    /// If true, the admin overlay will display the total time of the players
-    /// </summary>
-    public static readonly CVarDef<bool> AdminOverlayPlaytime =
-        CVarDef.Create("ui.admin_overlay_playtime", false, CVar.CLIENTONLY | CVar.ARCHIVE);
-
-    /// <summary>
-    /// If true, the admin overlay will display the players starting position.
-    /// </summary>
-    public static readonly CVarDef<bool> AdminOverlayStartingJob =
-        CVarDef.Create("ui.admin_overlay_starting_job", false, CVar.CLIENTONLY | CVar.ARCHIVE);
 }

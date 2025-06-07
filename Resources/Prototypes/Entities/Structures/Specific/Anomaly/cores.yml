@@ -1,22 +1,3 @@
-# SPDX-FileCopyrightText: 2023 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 PursuitInAshes <91865152+PursuitInAshes@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 AJCM-git <60196617+AJCM-git@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 August Sun <45527070+august-sun@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 BombasterDS <115770678+BombasterDS@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Ed <96445749+TheShuEd@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Errant <35878406+Errant-4@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Kara <lunarautomaton6@gmail.com>
-# SPDX-FileCopyrightText: 2024 ScarKy0 <106310278+ScarKy0@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Scribbles0 <91828755+Scribbles0@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 august-sun <45527070+august.sun@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 chromiumboy <50505512+chromiumboy@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 slarticodefast <161409025+slarticodefast@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 BombasterDS <deniskaporoshok@gmail.com>
-# SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
 - type: entity
   parent: BaseItem
   id: BaseAnomalyCore
@@ -52,8 +33,6 @@
     timeToDecay: 600
     startPrice: 10000
     endPrice: 200
-  - type: MovedByPressure #Goob - space wind moment
-    enabled: false 
 
 - type: entity
   parent: BaseAnomalyCore
@@ -70,11 +49,6 @@
   - type: IgnitionSource
     temperature: 400
     ignited: true
-  - type: Enchanter # Goobstation
-    maxLevel: 2 # Non-inert cores can roll max level
-    enchants:
-    - EnchantFireAspect
-    - EnchantLavaforged
 
 - type: entity
   parent: BaseAnomalyCore
@@ -88,10 +62,6 @@
     energy: 10
     color: "#1e070e"
     castShadows: false
-  - type: Enchanter # Goobstation
-    maxLevel: 2 # Non-inert cores can roll max level
-    enchants:
-    - EnchantKnockback
 
 - type: entity
   parent: BaseAnomalyCore
@@ -105,10 +75,6 @@
     energy: 1.5
     color: "#befaff"
     castShadows: false
-  - type: Enchanter # Goobstation
-    maxLevel: 4 # Non-inert cores can roll max level
-    enchants:
-    - EnchantProtFire
 
 - type: entity
   parent: BaseAnomalyCore
@@ -123,10 +89,6 @@
     energy: 3.5
     color: "#cb5b7e"
     castShadows: false
-  - type: Enchanter # Goobstation
-    maxLevel: 5 # Non-inert cores can roll max level
-    enchants:
-    - EnchantSharpness
 
 - type: entity
   parent: BaseAnomalyCore
@@ -140,11 +102,6 @@
     energy: 3.5
     color: "#5ca8cb"
     castShadows: false
-  - type: Enchanter # Goobstation
-    maxLevel: 3 # Non-inert cores can roll max level
-    enchants:
-    - EnchantProtection
-    - EnchantUnbreaking
 
 - type: entity
   parent: BaseAnomalyCore
@@ -158,11 +115,6 @@
     energy: 3.5
     color: "#ffffff"
     castShadows: false
-  - type: Enchanter # Goobstation
-    maxLevel: 4 # Non-inert cores can roll max level
-    enchants:
-    - EnchantSlippery
-    - EnchantUnslippable
 
 - type: entity
   parent: BaseAnomalyCore
@@ -190,9 +142,6 @@
     color: "#ffffaa"
     castShadows: false
   - type: Electrified
-  - type: Enchanter # Goobstation
-    enchants:
-    - EnchantInsulated
 
 - type: entity
   parent: BaseAnomalyCore
@@ -208,10 +157,6 @@
     energy: 2.0
     color: "#6270bb"
     castShadows: false
-  - type: Enchanter # Goobstation
-    maxLevel: 3 # Non-inert cores can roll max level
-    enchants:
-    - EnchantThorns
 
 - type: entity
   parent: [ BaseAnomalyCore, BaseShadow ]
@@ -251,11 +196,6 @@
     energy: 2.0
     color: "#fc0303"
     castShadows: false
-  - type: Enchanter # Goobstation
-    maxLevel: 3 # Non-inert cores can roll max level
-    enchants:
-    - EnchantFortune
-
 
 # Inert cores
 
@@ -286,11 +226,6 @@
     energy: 1.5
     color: "#fca3c0"
     castShadows: false
-  - type: Enchanter # Goobstation
-    maxLevel: 1
-    enchants:
-    - EnchantFireAspect
-    - EnchantLavaforged
 
 - type: entity
   parent: BaseAnomalyInertCore
@@ -304,10 +239,6 @@
     energy: 10
     color: "#1e070e"
     castShadows: false
-  - type: Enchanter # Goobstation
-    maxLevel: 1
-    enchants:
-    - EnchantKnockback
 
 - type: entity
   parent: BaseAnomalyInertCore
@@ -321,10 +252,6 @@
     energy: 1.5
     color: "#befaff"
     castShadows: false
-  - type: Enchanter # Goobstation
-    maxLevel: 2
-    enchants:
-    - EnchantProtFire
 
 - type: entity
   parent: BaseAnomalyInertCore
@@ -339,10 +266,6 @@
     energy: 3.5
     color: "#cb5b7e"
     castShadows: false
-  - type: Enchanter # Goobstation
-    maxLevel: 3
-    enchants:
-    - EnchantSharpness
 
 - type: entity
   parent: BaseAnomalyInertCore
@@ -356,11 +279,6 @@
     energy: 3.5
     color: "#5ca8cb"
     castShadows: false
-  - type: Enchanter # Goobstation
-    maxLevel: 1
-    enchants:
-    - EnchantProtection
-    - EnchantUnbreaking
 
 - type: entity
   parent: BaseAnomalyInertCore
@@ -374,11 +292,6 @@
     energy: 3.5
     color: "#ffffff"
     castShadows: false
-  - type: Enchanter # Goobstation
-    maxLevel: 2 # Non-inert cores can roll max level
-    enchants:
-    - EnchantSlippery
-    - EnchantUnslippable
 
 - type: entity
   parent: BaseAnomalyInertCore
@@ -405,10 +318,6 @@
     energy: 2.0
     color: "#ffffaa"
     castShadows: false
-  - type: Enchanter # Goobstation
-    maxLevel: 4 # Insuls rolling
-    enchants:
-    - EnchantBudgetInsulated
 
 - type: entity
   parent: BaseAnomalyInertCore
@@ -424,10 +333,6 @@
     energy: 2.0
     color: "#6270bb"
     castShadows: false
-  - type: Enchanter # Goobstation
-    maxLevel: 2
-    enchants:
-    - EnchantThorns
 
 - type: entity
   parent: [ BaseAnomalyInertCore, BaseShadow ]
@@ -467,7 +372,3 @@
     energy: 2.0
     color: "#fc0303"
     castShadows: false
-  - type: Enchanter # Goobstation
-    maxLevel: 2
-    enchants:
-    - EnchantFortune

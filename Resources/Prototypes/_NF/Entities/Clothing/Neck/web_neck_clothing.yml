@@ -1,9 +1,3 @@
-# SPDX-FileCopyrightText: 2024 dustylens <54123313+dustylens@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-# SPDX-FileCopyrightText: 2025 pheenty <fedorlukin2006@gmail.com>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
 - type: entity
   parent: ClothingNeckBase # Frontier - Change to neck
   id: ClothingNeckClassicPonchoWeb
@@ -15,8 +9,12 @@
   - type: Clothing
     sprite: _NF/Clothing/Neck/Misc/classic_poncho_web.rsi
   - type: Construction
-    graph: ClothingNeckClassicPonchoWeb
-    node: end
+    graph: ClothingNeckClassicPonchoWebGraph
+    node: ClothingNeckClassicPonchoWebNode
+  - type: Butcherable
+    spawned:
+    - id: MaterialWebSilk1
+      amount: 5
 
 - type: entity
   parent: ClothingNeckBase # Frontier - Change to neck
@@ -29,8 +27,12 @@
   - type: Clothing
     sprite: _NF/Clothing/Neck/Misc/poncho_web.rsi
   - type: Construction
-    graph: ClothingNeckPonchoWeb
-    node: end
+    graph: ClothingNeckPonchoWebGraph
+    node: ClothingNeckPonchoWebNode
+  - type: Butcherable
+    spawned:
+    - id: MaterialWebSilk1
+      amount: 5
 
 - type: entity
   parent: ClothingNeckBase # Frontier - Change to neck
@@ -43,5 +45,9 @@
   - type: Clothing
     sprite: _NF/Clothing/Neck/Cloaks/cloak_web.rsi
   - type: Construction
-    graph: ClothingNeckCloakWeb
-    node: end
+    graph: ClothingNeckCloakWebGraph
+    node: ClothingNeckCloakWebNode
+  - type: Butcherable
+    spawned:
+    - id: MaterialWebSilk1
+      amount: 5

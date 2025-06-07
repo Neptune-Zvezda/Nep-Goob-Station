@@ -1,13 +1,3 @@
-// SPDX-FileCopyrightText: 2022 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <drsmugleaf@gmail.com>
-// SPDX-FileCopyrightText: 2023 Jezithyr <jezithyr@gmail.com>
-// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 0x6273 <0x40@keemail.me>
-// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: MIT
-
 using Content.Shared.Mobs;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
@@ -35,9 +25,9 @@ public sealed class DamageOverlay : Overlay
     /// <summary>
     /// Handles the red pulsing overlay
     /// </summary>
-    public float PainLevel = 0f;
+    public float BruteLevel = 0f;
 
-    private float _oldPainLevel = 0f;
+    private float _oldBruteLevel = 0f;
 
     /// <summary>
     /// Handles the darkening overlay.
@@ -102,14 +92,14 @@ public sealed class DamageOverlay : Overlay
             DeadLevel = 0f;
         }
 
-        if (!MathHelper.CloseTo(_oldPainLevel, PainLevel, 0.001f))
+        if (!MathHelper.CloseTo(_oldBruteLevel, BruteLevel, 0.001f))
         {
-            var diff = PainLevel - _oldPainLevel;
-            _oldPainLevel += GetDiff(diff, lastFrameTime);
+            var diff = BruteLevel - _oldBruteLevel;
+            _oldBruteLevel += GetDiff(diff, lastFrameTime);
         }
         else
         {
-            _oldPainLevel = PainLevel;
+            _oldBruteLevel = BruteLevel;
         }
 
         if (!MathHelper.CloseTo(_oldOxygenLevel, OxygenLevel, 0.001f))
@@ -145,7 +135,7 @@ public sealed class DamageOverlay : Overlay
 
         // Makes debugging easier don't @ me
         float level = 0f;
-        level = _oldPainLevel;
+        level = _oldBruteLevel;
 
         // TODO: Lerping
         if (level > 0f && _oldCritLevel <= 0f)
@@ -175,7 +165,7 @@ public sealed class DamageOverlay : Overlay
         }
         else
         {
-            _oldPainLevel = PainLevel;
+            _oldBruteLevel = BruteLevel;
         }
 
         level = State != MobState.Critical ? _oldOxygenLevel : 1f;

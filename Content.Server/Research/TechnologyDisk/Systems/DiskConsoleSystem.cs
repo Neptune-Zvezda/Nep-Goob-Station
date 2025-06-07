@@ -1,12 +1,3 @@
-// SPDX-FileCopyrightText: 2023 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Pieter-Jan Briers <pieterjan.briers@gmail.com>
-// SPDX-FileCopyrightText: 2024 Ed <96445749+TheShuEd@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 metalgearsloth <comedian_vs_clown@hotmail.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using Content.Server.Research.Systems;
 using Content.Server.Research.TechnologyDisk.Components;
 using Content.Shared.UserInterface;
@@ -29,6 +20,7 @@ public sealed class DiskConsoleSystem : EntitySystem
     public override void Initialize()
     {
         SubscribeLocalEvent<DiskConsoleComponent, DiskConsolePrintDiskMessage>(OnPrintDisk);
+        SubscribeLocalEvent<DiskConsoleComponent, DiskConsolePrintRareDiskMessage>(OnPrintRareDisk); // Frontier
         SubscribeLocalEvent<DiskConsoleComponent, ResearchServerPointsChangedEvent>(OnPointsChanged);
         SubscribeLocalEvent<DiskConsoleComponent, ResearchRegistrationChangedEvent>(OnRegistrationChanged);
         SubscribeLocalEvent<DiskConsoleComponent, BeforeActivatableUIOpenEvent>(OnBeforeUiOpen);
@@ -47,7 +39,10 @@ public sealed class DiskConsoleSystem : EntitySystem
                 continue;
 
             RemComp(uid, printing);
-            Spawn(console.DiskPrototype, xform.Coordinates);
+            if (!console.DiskRare)
+                Spawn(console.DiskPrototype, xform.Coordinates);
+            else
+                Spawn(console.DiskPrototypeRare, xform.Coordinates);
         }
     }
 
@@ -67,6 +62,27 @@ public sealed class DiskConsoleSystem : EntitySystem
 
         var printing = EnsureComp<DiskConsolePrintingComponent>(uid);
         printing.FinishTime = _timing.CurTime + component.PrintDuration;
+        component.DiskRare = false;
+        UpdateUserInterface(uid, component);
+    }
+
+    private void OnPrintRareDisk(EntityUid uid, DiskConsoleComponent component, DiskConsolePrintRareDiskMessage args) // Frontier
+    {
+        if (HasComp<DiskConsolePrintingComponent>(uid))
+            return;
+
+        if (!_research.TryGetClientServer(uid, out var server, out var serverComp))
+            return;
+
+        if (serverComp.Points < component.PricePerRareDisk)
+            return;
+
+        _research.ModifyServerPoints(server.Value, -component.PricePerRareDisk, serverComp);
+        _audio.PlayPvs(component.PrintSound, uid);
+
+        var printing = EnsureComp<DiskConsolePrintingComponent>(uid);
+        printing.FinishTime = _timing.CurTime + component.PrintDuration;
+        component.DiskRare = true;
         UpdateUserInterface(uid, component);
     }
 
@@ -99,7 +115,10 @@ public sealed class DiskConsoleSystem : EntitySystem
         var canPrint = !(TryComp<DiskConsolePrintingComponent>(uid, out var printing) && printing.FinishTime >= _timing.CurTime) &&
                        totalPoints >= component.PricePerDisk;
 
-        var state = new DiskConsoleBoundUserInterfaceState(totalPoints, component.PricePerDisk, canPrint);
+        var canPrintRare = !(TryComp<DiskConsolePrintingComponent>(uid, out var printingRare) && printingRare.FinishTime >= _timing.CurTime) &&
+                       totalPoints >= component.PricePerRareDisk;
+
+        var state = new DiskConsoleBoundUserInterfaceState(totalPoints, component.PricePerDisk, component.PricePerRareDisk, canPrint, canPrintRare);
         _ui.SetUiState(uid, DiskConsoleUiKey.Key, state);
     }
 

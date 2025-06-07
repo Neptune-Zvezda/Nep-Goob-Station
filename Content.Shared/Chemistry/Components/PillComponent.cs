@@ -1,9 +1,3 @@
-// SPDX-FileCopyrightText: 2023 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 metalgearsloth <comedian_vs_clown@hotmail.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: MIT
-
 using Robust.Shared.GameStates;
 
 namespace Content.Shared.Chemistry.Components;
@@ -18,4 +12,10 @@ public sealed partial class PillComponent : Component
     [DataField("pillType")]
     [ViewVariables(VVAccess.ReadWrite)]
     public uint PillType;
+
+    /// <summary>
+    /// Frontier: if true, pill appearance will be randomly generated on init.
+    /// </summary>
+    [DataField(serverOnly: true)]
+    public bool Random;
 }

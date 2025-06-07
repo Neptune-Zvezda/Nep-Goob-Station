@@ -1,60 +1,7 @@
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Alice "Arimah" Heurlin <30327355+arimah@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Aviu00 <93730715+Aviu00@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Chief-Engineer <119664036+Chief-Engineer@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 DrSmugleaf <10968691+DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Ed <96445749+TheShuEd@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Errant <35878406+Errant-4@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Flareguy <78941145+Flareguy@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 HS <81934438+HolySSSS@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 IProduceWidgets <107586145+IProduceWidgets@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Mr. 27 <45323883+Dutch-VanDerLinde@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 PJBot <pieterjan.briers+bot@gmail.com>
-// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-// SPDX-FileCopyrightText: 2024 Plykiya <58439124+Plykiya@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Rouge2t7 <81053047+Sarahon@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Tayrtahn <tayrtahn@gmail.com>
-// SPDX-FileCopyrightText: 2024 Truoizys <153248924+Truoizys@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 TsjipTsjip <19798667+TsjipTsjip@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Ubaser <134914314+UbaserB@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Vasilis <vasilis@pikachu.systems>
-// SPDX-FileCopyrightText: 2024 Zylofan <80375291+Zylofan@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 beck-thompson <107373427+beck-thompson@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 lzk <124214523+lzk228@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 osjarw <62134478+osjarw@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 plykiya <plykiya@protonmail.com>
-// SPDX-FileCopyrightText: 2024 yglop <95057024+yglop@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Арт <123451459+JustArt1m@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2025 Aidenkrz <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2025 Aineias1 <dmitri.s.kiselev@gmail.com>
-// SPDX-FileCopyrightText: 2025 FaDeOkno <143940725+FaDeOkno@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 McBosserson <148172569+McBosserson@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Milon <plmilonpl@gmail.com>
-// SPDX-FileCopyrightText: 2025 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2025 Rouden <149893554+Roudenn@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 TheBorzoiMustConsume <197824988+TheBorzoiMustConsume@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Unlumination <144041835+Unlumy@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Winkarst <74284083+Winkarst-cpu@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 coderabbitai[bot] <136622811+coderabbitai[bot]@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 deltanedas <@deltanedas:kde.org>
-// SPDX-FileCopyrightText: 2025 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 gluesniffler <linebarrelerenthusiast@gmail.com>
-// SPDX-FileCopyrightText: 2025 username <113782077+whateverusername0@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 whateverusername0 <whateveremail>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using System.Linq;
-using Content.Shared._Goobstation.Silo;
 using Content.Shared.Interaction;
 using Content.Shared.Interaction.Components;
+using Content.Shared.Mobs;
 using Content.Shared.Stacks;
 using Content.Shared.Whitelist;
 using JetBrains.Annotations;
@@ -75,7 +22,8 @@ public abstract class SharedMaterialStorageSystem : EntitySystem
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] private readonly EntityWhitelistSystem _whitelistSystem = default!;
-    [Dependency] private readonly SharedSiloSystem _silo = default!; // Goobstation
+
+    [Dependency] private readonly SharedStackSystem _sharedStackSystem = default!; // Frontier
 
     /// <summary>
     /// Default volume for a sheet if the material's entity prototype has no material composition.
@@ -135,8 +83,6 @@ public abstract class SharedMaterialStorageSystem : EntitySystem
     {
         if (!Resolve(uid, ref component))
             return 0; //you have nothing
-        if (component.ConnectToSilo && _silo.TryGetMaterialAmount(uid, material, out var amount)) // Goobstation
-            return amount;
         return component.Storage.GetValueOrDefault(material, 0);
     }
 
@@ -150,8 +96,6 @@ public abstract class SharedMaterialStorageSystem : EntitySystem
     {
         if (!Resolve(uid, ref component))
             return 0;
-        if (component.ConnectToSilo && _silo.TryGetTotalMaterialAmount(uid, out var amount)) // Goobstation
-            return amount;
         return component.Storage.Values.Sum();
     }
 
@@ -185,12 +129,8 @@ public abstract class SharedMaterialStorageSystem : EntitySystem
         if (!CanTakeVolume(uid, volume, component))
             return false;
 
-        if (!component.IgnoreMaterialWhiteList) // Goobstation Change - Shitcode.
-            if (component.MaterialWhiteList == null ? false : !component.MaterialWhiteList.Contains(materialId))
-                return false;
-
-        if (component.ConnectToSilo && _silo.TryGetMaterialAmount(uid, materialId, out var siloAmount)) // Goobstation
-            return siloAmount + volume >= 0;
+        if (component.MaterialWhiteList == null ? false : !component.MaterialWhiteList.Contains(materialId))
+            return false;
 
         var amount = component.Storage.GetValueOrDefault(materialId);
         return amount + volume >= 0;
@@ -202,7 +142,7 @@ public abstract class SharedMaterialStorageSystem : EntitySystem
     /// <param name="entity"></param>
     /// <param name="materials"></param>
     /// <returns>If the amount can be changed</returns>
-    public bool CanChangeMaterialAmount(Entity<MaterialStorageComponent?> entity, Dictionary<string,int> materials)
+    public bool CanChangeMaterialAmount(Entity<MaterialStorageComponent?> entity, Dictionary<string, int> materials)
     {
         if (!Resolve(entity, ref entity.Comp))
             return false;
@@ -233,35 +173,16 @@ public abstract class SharedMaterialStorageSystem : EntitySystem
         if (!CanChangeMaterialAmount(uid, materialId, volume, component))
             return false;
 
-        // Goob start
-        EntityUid storageUid;
-        Dictionary<ProtoId<MaterialPrototype>, int> storage;
-        if (component.ConnectToSilo)
-        {
-            var silo = _silo.GetSilo(uid);
-            if (dirty && silo != null)
-                Dirty(silo.Value);
-            storage = silo != null ? silo.Value.Comp.Storage : component.Storage;
-            storageUid = silo != null ? silo.Value : uid;
-        }
-        else
-        {
-            storage = component.Storage;
-            storageUid = uid;
-        }
-
-        var existing = storage.GetOrNew(materialId);
-        // Goob end
-
+        var existing = component.Storage.GetOrNew(materialId);
         existing += volume;
 
         if (existing == 0)
-            storage.Remove(materialId); // Goob edit
+            component.Storage.Remove(materialId);
         else
-            storage[materialId] = existing; // Goob edit
+            component.Storage[materialId] = existing;
 
         var ev = new MaterialAmountChangedEvent();
-        RaiseLocalEvent(storageUid, ref ev); // Goob edit
+        RaiseLocalEvent(uid, ref ev);
 
         if (dirty)
             Dirty(uid, component);
@@ -275,7 +196,7 @@ public abstract class SharedMaterialStorageSystem : EntitySystem
     /// <param name="entity"></param>
     /// <param name="materials"></param>
     /// <returns>If the amount can be changed</returns>
-    public bool TryChangeMaterialAmount(Entity<MaterialStorageComponent?> entity, Dictionary<string,int> materials)
+    public bool TryChangeMaterialAmount(Entity<MaterialStorageComponent?> entity, Dictionary<string, int> materials)
     {
         if (!Resolve(entity, ref entity.Comp))
             return false;
@@ -289,8 +210,6 @@ public abstract class SharedMaterialStorageSystem : EntitySystem
                 return false;
         }
 
-        if (entity.Comp.ConnectToSilo) // Goobstation
-            _silo.DirtySilo(entity);
         Dirty(entity, entity.Comp);
         return true;
     }
@@ -369,10 +288,98 @@ public abstract class SharedMaterialStorageSystem : EntitySystem
         _appearance.SetData(receiver, MaterialStorageVisuals.Inserting, true);
         Dirty(receiver, insertingComp);
 
-        var ev = new MaterialEntityInsertedEvent(user, toInsert, material, multiplier); // Lavaland Change
+        var ev = new MaterialEntityInsertedEvent(material);
         RaiseLocalEvent(receiver, ref ev);
         return true;
     }
+
+    // Frontier: partial stack insertion
+    /// <summary>
+    /// Tries to insert as much of an entity as possible into the material storage.
+    /// </summary>
+    public virtual bool TryInsertMaxPossibleMaterialEntity(EntityUid user,
+        EntityUid toInsert,
+        EntityUid receiver,
+        out bool empty,
+        MaterialStorageComponent? storage = null,
+        MaterialComponent? material = null,
+        PhysicalCompositionComponent? composition = null)
+    {
+        empty = false;
+        if (!Resolve(receiver, ref storage))
+            return false;
+
+        if (!Resolve(toInsert, ref material, ref composition, false))
+            return false;
+
+        if (_whitelistSystem.IsWhitelistFail(storage.Whitelist, toInsert))
+            return false;
+
+        if (HasComp<UnremoveableComponent>(toInsert))
+            return false;
+
+        int multiplier;
+        if (storage.StorageLimit is not null && TryComp<StackComponent>(toInsert, out var stack))
+        {
+            var availableVolume = (int)storage.StorageLimit - GetTotalMaterialAmount(receiver, storage);
+            var volumePerSheet = 0;
+            foreach (var (_, vol) in composition.MaterialComposition)
+            {
+                volumePerSheet += vol;
+            }
+            multiplier = availableVolume / volumePerSheet;
+            if (multiplier >= stack.Count)
+            {
+                empty = true;
+                multiplier = stack.Count;
+            }
+        }
+        else
+        {
+            multiplier = TryComp<StackComponent>(toInsert, out var stackComponent) ? stackComponent.Count : 1;
+            empty = true;
+        }
+
+        // Inserting into a full container (or with a lingering stack)
+        if (multiplier <= 0)
+            return false;
+
+        // Material Whitelist checked implicitly by CanChangeMaterialAmount();
+
+        var totalVolume = 0;
+        foreach (var (mat, vol) in composition.MaterialComposition)
+        {
+            if (!CanChangeMaterialAmount(receiver, mat, vol * multiplier, storage))
+                return false;
+            totalVolume += vol * multiplier;
+        }
+
+        if (!CanTakeVolume(receiver, totalVolume, storage))
+            return false;
+
+        foreach (var (mat, vol) in composition.MaterialComposition)
+        {
+            TryChangeMaterialAmount(receiver, mat, vol * multiplier, storage);
+        }
+
+        var insertingComp = EnsureComp<InsertingMaterialStorageComponent>(receiver);
+        insertingComp.EndTime = _timing.CurTime + storage.InsertionTime;
+        if (!storage.IgnoreColor)
+        {
+            _prototype.TryIndex<MaterialPrototype>(composition.MaterialComposition.Keys.First(), out var lastMat);
+            insertingComp.MaterialColor = lastMat?.Color;
+        }
+        _appearance.SetData(receiver, MaterialStorageVisuals.Inserting, true);
+        Dirty(receiver, insertingComp);
+
+        if (!empty)
+            _sharedStackSystem.Use(toInsert, multiplier);
+
+        var ev = new MaterialEntityInsertedEvent(material);
+        RaiseLocalEvent(receiver, ref ev);
+        return true;
+    }
+    // End Frontier: partial stack insertion
 
     /// <summary>
     /// Broadcasts an event that will collect a list of which materials
@@ -394,7 +401,7 @@ public abstract class SharedMaterialStorageSystem : EntitySystem
     {
         if (args.Handled || !component.InsertOnInteract)
             return;
-        args.Handled = TryInsertMaterialEntity(args.User, args.Used, uid, component);
+        args.Handled = TryInsertMaxPossibleMaterialEntity(args.User, args.Used, uid, out _, component); // Frontier: use autosplit version
     }
 
     private void OnDatabaseModified(Entity<MaterialStorageComponent> ent, ref TechnologyDatabaseModifiedEvent args)

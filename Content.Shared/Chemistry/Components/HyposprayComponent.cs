@@ -1,14 +1,7 @@
-// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2024 Plykiya <58439124+Plykiya@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Plykiya <plykiya@protonmail.com>
-// SPDX-FileCopyrightText: 2024 beck-thompson <107373427+beck-thompson@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
+using Content.Shared.DoAfter; // Frontier: Upstream, #30704 - MIT
 using Content.Shared.FixedPoint;
 using Robust.Shared.GameStates;
+using Robust.Shared.Serialization;
 using Robust.Shared.Audio;
 
 namespace Content.Shared.Chemistry.Components;
@@ -40,4 +33,25 @@ public sealed partial class HyposprayComponent : Component
     /// </summary>
     [DataField]
     public bool InjectOnly = false;
+
+    // Frontier: Upstream, #30704 - MIT
+    /// <summary>
+    /// If set over 0, enables a doafter for the hypospray which must be completed for injection.
+    /// </summary>
+    [DataField]
+    public float DoAfterTime = 0f;
+    // End Frontier
+
+    /// <summary>
+    /// Frontier: if true, object will not inject when attacking.
+    /// </summary>
+    [DataField]
+    public bool PreventCombatInjection;
 }
+
+// Frontier: Upstream, #30704 - MIT
+[Serializable, NetSerializable]
+public sealed partial class HyposprayDoAfterEvent : SimpleDoAfterEvent
+{
+}
+// End Frontier

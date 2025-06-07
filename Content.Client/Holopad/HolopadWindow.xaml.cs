@@ -1,8 +1,3 @@
-// SPDX-FileCopyrightText: 2024 chromiumboy <50505512+chromiumboy@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using Content.Client.Popups;
 using Content.Client.UserInterface.Controls;
 using Content.Shared.Access.Systems;
@@ -66,6 +61,9 @@ public sealed partial class HolopadWindow : FancyWindow
         StartBroadcastButton.OnPressed += args => { OnHolopadStartBroadcastMessage(); };
         ActivateProjectorButton.OnPressed += args => { OnHolopadActivateProjectorMessage(); };
         RequestStationAiButton.OnPressed += args => { OnHolopadRequestStationAiMessage(); };
+
+        // Frontier - disable the call AI button until AI is finished implemented
+        RequestStationAiButton.Visible = false;
 
         // XML formatting
         AnswerCallButton.AddStyleClass("ButtonAccept");

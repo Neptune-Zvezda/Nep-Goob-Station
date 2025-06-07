@@ -1,12 +1,7 @@
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Jake Huxell <JakeHuxell@pm.me>
-// SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: MIT
-
+using Content.Shared._Mono.Company;
 using Content.Shared.Shuttles.Components;
 using JetBrains.Annotations;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared.Shuttles.Systems;
 
@@ -47,7 +42,42 @@ public abstract partial class SharedShuttleSystem
             return null;
         }
 
-        return string.IsNullOrEmpty(entName) ? Loc.GetString("shuttle-console-unknown") : entName;
+        // Get the company information if available
+        Color? companyColor = null;
+        string? companyName = null;
+
+        if (TryComp<_Mono.Company.CompanyComponent>(gridUid, out var companyComp) && !string.IsNullOrEmpty(companyComp.CompanyName))
+        {
+            if (IoCManager.Resolve<IPrototypeManager>().TryIndex<CompanyPrototype>(companyComp.CompanyName, out var prototype))
+            {
+                // Don't include "None" companies in the IFF label
+                if (prototype.ID != "None")
+                {
+                    companyName = prototype.Name;
+                    companyColor = prototype.Color;
+                }
+            }
+            else
+            {
+                // For unknown companies, still check if it's not "None"
+                if (companyComp.CompanyName != "None")
+                {
+                    companyName = companyComp.CompanyName;
+                    companyColor = Color.Yellow;
+                }
+            }
+        }
+
+        var labelText = string.IsNullOrEmpty(entName) ? Loc.GetString("shuttle-console-unknown") : entName;
+
+        // Add company info if available
+        if (companyName != null && companyColor != null)
+        {
+            // Return a formatted label that the client can parse properly
+            return $"{labelText}\n{companyName}";
+        }
+
+        return labelText;
     }
 
     /// <summary>
@@ -57,6 +87,9 @@ public abstract partial class SharedShuttleSystem
     public void SetIFFColor(EntityUid gridUid, Color color, IFFComponent? component = null)
     {
         component ??= EnsureComp<IFFComponent>(gridUid);
+
+        if (component.ReadOnly) // Frontier: POI IFF protection
+            return; // Frontier: POI IFF protection
 
         if (component.Color.Equals(color))
             return;
@@ -70,6 +103,9 @@ public abstract partial class SharedShuttleSystem
     public void AddIFFFlag(EntityUid gridUid, IFFFlags flags, IFFComponent? component = null)
     {
         component ??= EnsureComp<IFFComponent>(gridUid);
+
+        if (component.ReadOnly) // Frontier: POI IFF protection
+            return; // Frontier: POI IFF protection
 
         if ((component.Flags & flags) == flags)
             return;
@@ -85,6 +121,9 @@ public abstract partial class SharedShuttleSystem
         if (!Resolve(gridUid, ref component, false))
             return;
 
+        if (component.ReadOnly) // Frontier: POI IFF protection
+            return; // Frontier: POI IFF protection
+
         if ((component.Flags & flags) == 0x0)
             return;
 
@@ -92,4 +131,18 @@ public abstract partial class SharedShuttleSystem
         Dirty(gridUid, component);
         UpdateIFFInterfaces(gridUid, component);
     }
+
+    // Frontier: POI IFF protection
+    [PublicAPI]
+    public void SetIFFReadOnly(EntityUid gridUid, bool readOnly, IFFComponent? component = null)
+    {
+        if (!Resolve(gridUid, ref component, false))
+            return;
+
+        if (component.ReadOnly == readOnly)
+            return;
+
+        component.ReadOnly = readOnly;
+    }
+    // End Frontier
 }

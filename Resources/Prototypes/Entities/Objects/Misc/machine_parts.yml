@@ -1,45 +1,21 @@
-# SPDX-FileCopyrightText: 2020 Vera Aguilera Puerto <6766154+Zumorica@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2021 Swept <sweptwastaken@protonmail.com>
-# SPDX-FileCopyrightText: 2023 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 kxv <136233650+kxvvv@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 lzk <124214523+lzk228@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 AJCM-git <60196617+AJCM-git@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 BombasterDS <115770678+BombasterDS@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Emisse <99158783+Emisse@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Ilya246 <57039557+Ilya246@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aidenkrz <aiden@djkraz.com>
-# SPDX-FileCopyrightText: 2025 RatherUncreative <RatherUncreativeName@proton.me>
-# SPDX-FileCopyrightText: 2025 Ted Lukin <66275205+pheenty@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Whatstone <whatston3@gmail.com>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
-- type: entity
+﻿- type: entity
   id: BaseStockPart
   name: stock part
-  parent: BaseItem
+  parent: [BaseItem, RecyclableItemDeviceTiny] # Frontier: added RecyclableItemDeviceTiny
   description: What?
   abstract: true
   components:
     - type: Sprite
-      sprite: Objects/Misc/stock_parts.rsi
+      sprite: _NF/Objects/Misc/stock_parts.rsi # Frontier
     - type: Item
       size: Tiny
+    - type: GuideHelp
+      guides:
+      - MachineUpgrading
     - type: Stack
       count: 1
-    - type: PhysicalComposition #Goobstation - Recycle update
-      materialComposition:
-        Steel: 12
-        Plastic: 12
-  # Goobstation - Custom stack splitting dialog
-    - type: UserInterface
-      interfaces:
-        enum.StackCustomSplitUiKey.Key:
-          type: StackCustomSplitBoundUserInterface
-    - type: StockPart # Goobstation
+
+# Rating 1
 
 - type: entity
   id: CapacitorStockPart
@@ -53,9 +29,11 @@
     - type: Tag
       tags:
         - CapacitorStockPart
+    - type: MachinePart # Frontier
+      part: Capacitor # Frontier
+      rating: 1 # Frontier
     - type: Stack
       stackType: Capacitor
-
 
 - type: entity
   id: MicroManipulatorStockPart
@@ -66,6 +44,9 @@
   components:
     - type: Sprite
       state: micro_mani
+    - type: MachinePart # Frontier
+      part: Manipulator # Frontier
+      rating: 1 # Frontier
     - type: Stack
       stackType: Manipulator
 
@@ -78,5 +59,8 @@
   components:
     - type: Sprite
       state: matter_bin
+    - type: MachinePart # Frontier
+      part: MatterBin # Frontier
+      rating: 1 # Frontier
     - type: Stack
       stackType: MatterBin

@@ -1,19 +1,3 @@
-# SPDX-FileCopyrightText: 2023 rosieposie <52761126+rosieposieeee@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Aidenkrz <aiden@djkraz.com>
-# SPDX-FileCopyrightText: 2024 Archylle <81660513+Archylle@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Flareguy <78941145+Flareguy@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-# SPDX-FileCopyrightText: 2024 Plykiya <58439124+Plykiya@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 inquisitor-star <81660513+inquisitor-star@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 inquisitor-star <thecatankha@gmail.com>
-# SPDX-FileCopyrightText: 2024 lzk <124214523+lzk228@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 plykiya <plykiya@protonmail.com>
-# SPDX-FileCopyrightText: 2024 starch <starchpersonal@gmail.com>
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
 #SOFTSUITS
 #Basic EVA
 - type: entity
@@ -23,11 +7,12 @@
   components:
   - type: StorageFill
     contents:
-        - id: OxygenTankFilled
         - id: NitrogenTankFilled
+        - id: OxygenTankFilled
         - id: ClothingOuterHardsuitEVA
         - id: ClothingHeadHelmetEVA
         - id: ClothingMaskBreath
+        - id: JetpackMiniFilled # Frontier
 
 #Basic EVA (Big Ass Helmet)
 - type: entity
@@ -42,6 +27,7 @@
         - id: ClothingOuterHardsuitEVA
         - id: ClothingHeadHelmetEVALarge
         - id: ClothingMaskBreath
+        - id: JetpackMiniFilled # Frontier
 
 #Emergency EVA
 - type: entity
@@ -55,6 +41,7 @@
         - id: NitrogenTankFilled
         - id: ClothingOuterSuitEmergency
         - id: ClothingMaskBreath
+        - id: JetpackMiniFilled # Frontier
 
 #Prisoner EVA
 - type: entity
@@ -80,9 +67,10 @@
     contents:
         - id: OxygenTankFilled
         - id: NitrogenTankFilled
-        - id: ClothingOuterHardsuitSyndicateDurathread
+        - id: ClothingOuterHardsuitSyndicate
         - id: ClothingHeadHelmetSyndicate
         - id: ClothingMaskGasSyndicate
+        - id: JetpackBlackFilled # Frontier
 
 #Pirate EVA
 - type: entity
@@ -94,8 +82,10 @@
     contents:
         - id: OxygenTankFilled
         - id: NitrogenTankFilled
-        - id: ClothingOuterHardsuitPirateEVA
-        - id: ClothingMaskGas
+        - id: ClothingOuterHardsuitPirateScaf # Mono
+#        - id: ClothingMaskGas # Mono
+        - id: JetpackBlackFilled # Frontier
+        - id: ClothingShoesBootsMagSyndie # Mono
 
 #NTSRA Voidsuit
 - type: entity
@@ -105,6 +95,8 @@
   components:
   - type: StorageFill
     contents:
+        - id: OxygenTankFilled
+        - id: NitrogenTankFilled
         - id: JetpackVoidFilled
         - id: ClothingOuterHardsuitAncientEVA
         - id: ClothingHeadHelmetAncient
@@ -123,6 +115,7 @@
         - id: NitrogenTankFilled
         - id: ClothingOuterHardsuitBasic
         - id: ClothingMaskBreath
+        - id: JetpackMiniFilled # Frontier
 
 #Engineering hardsuit
 - type: entity
@@ -135,10 +128,11 @@
         - id: OxygenTankFilled
         - id: NitrogenTankFilled
         - id: ClothingShoesBootsMag
-        - id: ClothingOuterHardsuitEngineering
+        - id: UndeterminedVoidsuitEngineer # Goob edit
         - id: ClothingMaskBreath
+        - id: JetpackMiniFilled # Frontier
   - type: AccessReader
-    access: [["Engineering"]]
+    # access: [["Engineering"]] # Frontier
 
 #Atmospherics hardsuit
 - type: entity
@@ -150,10 +144,11 @@
     contents:
         - id: OxygenTankFilled
         - id: NitrogenTankFilled
-        - id: ClothingOuterHardsuitAtmos
+        - id: ClothingModsuitAtmostechPowerCell
         - id: ClothingMaskBreath
+        - id: JetpackMiniFilled # Frontier
   - type: AccessReader
-    access: [["Atmospherics"]]
+    # access: [["Atmospherics"]] # Frontier
 
 #Security hardsuit
 - type: entity
@@ -165,8 +160,10 @@
     contents:
         - id: OxygenTankFilled
         - id: NitrogenTankFilled
-        - id: ClothingOuterHardsuitSecurity
+        - id: UndeterminedVoidsuitSecurity # Goob edit
         - id: ClothingMaskBreath
+        - id: JetpackSecurityFilled # Frontier
+        - id: ClothingShoesBootsMagSecurityFilled # Frontier
   - type: AccessReader
     access: [["Security"]]
 
@@ -181,7 +178,7 @@
       entity_storage: !type:NestedSelector
         tableId: FillChiefEngineerHardsuit
   - type: AccessReader
-    access: [["ChiefEngineer"]]
+    # access: [["ChiefEngineer"]] # Frontier
 
 #CMO's hardsuit
 - type: entity
@@ -194,7 +191,7 @@
       entity_storage: !type:NestedSelector
         tableId: FillChiefMedicalOfficerHardsuit
   - type: AccessReader
-    access: [ [ "ChiefMedicalOfficer" ] ]
+    # access: [ [ "ChiefMedicalOfficer" ] ] # Frontier
 
 #RD's hardsuit
 - type: entity
@@ -207,7 +204,7 @@
       entity_storage: !type:NestedSelector
         tableId: FillResearchDirectorHardsuit
   - type: AccessReader
-    access: [ [ "ResearchDirector" ] ]
+    # access: [ [ "ResearchDirector" ] ] # Frontier
 
 #HOS's hardsuit
 - type: entity
@@ -234,6 +231,8 @@
         - id: NitrogenTankFilled
         - id: ClothingOuterHardsuitWarden
         - id: ClothingMaskBreath
+        - id: JetpackSecurityFilled # Frontier
+        - id: ClothingShoesBootsMagSecurityFilled # Frontier
   - type: AccessReader
     access: [["Armory"]]
 
@@ -248,7 +247,7 @@
       entity_storage: !type:NestedSelector
         tableId: FillCaptainHardsuit
   - type: AccessReader
-    access: [["Captain"]]
+    # access: [["Captain"]] # Frontier
 
 #Salvage hardsuit
 - type: entity
@@ -256,15 +255,12 @@
   parent: SuitStorageBase
   suffix: Salvage
   components:
-  - type: StorageFill
-    contents:
-      - id: OxygenTankFilled
-      - id: NitrogenTankFilled
-      - id: ClothingShoesBootsMag
-      - id: ClothingOuterHardsuitSalvage #Goobstation
-      - id: ClothingMaskGasExplorer
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: FillSalvageSpecialistHardsuitSpatio
   - type: AccessReader
-    access: [["Salvage"]]
+    # access: [["Salvage"]] # Frontier
 
 #Blood-red hardsuit
 - type: entity
@@ -279,19 +275,23 @@
         - id: ClothingOuterHardsuitSyndie
         - id: ClothingShoesBootsMagSyndie
         - id: ClothingMaskGasSyndicate
+        - id: JetpackBlackFilled # Frontier
 
 #Pirate Captain's hardsuit
 - type: entity
   id: SuitStoragePirateCap
   parent: SuitStorageBase
-  suffix: Pirate Captain
+  suffix: Rogue Commander
   components:
   - type: StorageFill
     contents:
         - id: OxygenTankFilled
         - id: NitrogenTankFilled
-        - id: ClothingOuterHardsuitPirateCap
-        - id: ClothingMaskGas
+        - id: ClothingOuterHardsuitPirateScaf # Mono
+        - id: ClothingMaskGasSwat # Mono
+        - id: ClothingNeckCloakPirateCap # Frontier
+        - id: JetpackBlackFilled # Frontier
+        - id: ClothingShoesBootsMagSyndie # Mono
 
 #Wizard
 - type: entity
@@ -305,3 +305,4 @@
         - id: NitrogenTankFilled
         - id: ClothingOuterHardsuitWizard
         - id: ClothingMaskBreath
+        - id: JetpackBlackFilled # Frontier: JetpackVoidFilled<JetpackBlackFilled

@@ -1,32 +1,9 @@
-// SPDX-FileCopyrightText: 2020 Metal Gear Sloth <metalgearsloth@gmail.com>
-// SPDX-FileCopyrightText: 2020 Morshu32 <paulbisaccia@live.it>
-// SPDX-FileCopyrightText: 2020 ShadowCommander <10494922+ShadowCommander@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2021 AJCM-git <60196617+AJCM-git@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2021 Acruid <shatter66@gmail.com>
-// SPDX-FileCopyrightText: 2021 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2021 Galactic Chimp <63882831+GalacticChimp@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2021 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-// SPDX-FileCopyrightText: 2021 Remie Richards <remierichards@gmail.com>
-// SPDX-FileCopyrightText: 2021 T <tomeno@lulzsec.co.uk>
-// SPDX-FileCopyrightText: 2021 Tomeno <Tomeno@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2021 Visne <39844191+Visne@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2021 chairbender <kwhipke1@gmail.com>
-// SPDX-FileCopyrightText: 2021 mirrorcult <notzombiedude@gmail.com>
-// SPDX-FileCopyrightText: 2022 Paul Ritter <ritter.paul1@googlemail.com>
-// SPDX-FileCopyrightText: 2022 mirrorcult <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2022 wrexbe <81056464+wrexbe@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 TemporalOroboros <TemporalOroboros@gmail.com>
-// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 themias <89101928+themias@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 using System.Text;
+using Content.Client.Arcade.UI;
 using Content.Client.Resources;
 using Content.Shared.Arcade;
 using Content.Shared.Input;
@@ -35,6 +12,10 @@ using Robust.Client.ResourceManagement;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.CustomControls;
+using Robust.Shared.Graphics;
+using Robust.Shared.IoC;
+using Robust.Shared.Localization;
+using Robust.Shared.Maths;
 using Robust.Shared.Utility;
 using static Robust.Client.UserInterface.Controls.BoxContainer;
 
@@ -42,8 +23,8 @@ namespace Content.Client.Arcade
 {
     public sealed class BlockGameMenu : DefaultWindow
     {
-        private static readonly Color OverlayBackgroundColor = new(74, 74, 81, 180);
-        private static readonly Color OverlayShadowColor = new(0, 0, 0, 83);
+        private static readonly Color OverlayBackgroundColor = new(74,76,74,180);
+        private static readonly Color OverlayShadowColor = new(0,0,0,83);
 
         private static readonly Vector2 BlockSize = new(15, 15);
 
@@ -403,7 +384,7 @@ namespace Content.Client.Arcade
             };
             var backgroundPanel = new PanelContainer
             {
-                PanelOverride = new StyleBoxFlat { BackgroundColor = Color.FromHex("#86868d") }
+                PanelOverride = new StyleBoxFlat{BackgroundColor = Color.FromHex("#869086")}
             };
             backgroundPanel.AddChild(_gameGrid);
             gamePanel.AddChild(backgroundPanel);
@@ -415,7 +396,7 @@ namespace Content.Client.Arcade
             var previewBack = new StyleBoxTexture
             {
                 Texture = panelTex,
-                Modulate = Color.FromHex("#4a4a51")
+                Modulate = Color.FromHex("#4a4d4a")
             };
             previewBack.SetPatchMargin(StyleBox.Margin.All, 10);
 
@@ -453,7 +434,7 @@ namespace Content.Client.Arcade
             var previewBack = new StyleBoxTexture
             {
                 Texture = panelTex,
-                Modulate = Color.FromHex("#4a4a51")
+                Modulate = Color.FromHex("#4a4d4a")
             };
             previewBack.SetPatchMargin(StyleBox.Margin.All, 10);
 

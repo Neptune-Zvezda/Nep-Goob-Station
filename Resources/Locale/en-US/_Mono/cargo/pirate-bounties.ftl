@@ -1,0 +1,26 @@
+pirate-bounty-item-merc-suit = Mercernary Hardsuit
+pirate-bounty-item-tsfmc-tacsuit = TSFMC Tacsuit
+pirate-bounty-item-energy-weapon = TSFMC Energy Weapon
+pirate-bounty-item-standard-tsf-longarm = TSFMC/PMC Standard Longarm
+pirate-bounty-item-experimental-tsf-weapon = TSF Experimental Weapon
+pirate-bounty-item-shipweapon = Ship Gunnery Turret
+pirate-bounty-item-fentanyl = Fentanyl Crystal
+pirate-bounty-item-ftldrive = Bluespace Drive
+pirate-bounty-item-shield = Ship Shield System
+pirate-bounty-item-gcs = Gunnery Control Server
+pirate-bounty-item-encryption-key-TSFMC = TSFMC Encryption Key
+pirate-bounty-item-cybernetics = Bionic Limbs
+pirate-bounty-item-techfab = Techfab
+pirate-bounty-item-rtg = RTG
+
+pirate-bounty-description-generic = The Insurgency is in need of this.
+pirate-bounty-description-encryption-key-TSFMC = Make sure to pop the encryption key out with a screwdriver first, we don't care for the headset itself.
+pirate-bounty-description-merc-suit = SCAF suits, Mercernary Hardsuits, and PMC Hardsuits count equally towards this. Not your own SCAF suits though.
+pirate-bounty-description-tsfmctacsuit = Any TSFMC tacsuit equally counts to this.
+pirate-bounty-description-energy-weapon = HF-Katanas, All Energy Swords and TSF Energy Shields count towards this. Energy Cutlasses, VT-7s and Syndicate Energy Shields do not.
+pirate-bounty-description-standard-tsf-longarm = Standard TSF/PMC Balistic Longarms, as well as TSF Laser Weaponry. The Annie, X-O1 Multiphase, and Pulse Carbine does not count for this.
+pirate-bounty-description-experimental-tsf-weapon = Annies. Antique Laser Guns. Pulse Carbines/Rifles. The X-01 Multiphase. Get one and be rewarded heavily.
+pirate-bounty-description-shipweapon = This is any turret controlled by a GCS.
+pirate-bounty-description-techfab = Lathes do not count. Only techfabs.
+pirate-bounty-description-cybernetics = Any bionic limbs (JWL arms, SPEED legs, etc) and bionic eyes will count to this.
+pirate-bounty-description-rtg = Damaged RTGs count towards this as well.

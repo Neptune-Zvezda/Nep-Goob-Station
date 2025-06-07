@@ -1,119 +1,9 @@
-// SPDX-FileCopyrightText: 2022 Myctai <108953437+Myctai@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 metalgearsloth <metalgearsloth@gmail.com>
-// SPDX-FileCopyrightText: 2023 Artjom <artjombebenin@gmail.com>
-// SPDX-FileCopyrightText: 2023 Kevin Zheng <kevinz5000@gmail.com>
-// SPDX-FileCopyrightText: 2023 Morb <14136326+Morb0@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 TemporalOroboros <TemporalOroboros@gmail.com>
-// SPDX-FileCopyrightText: 2024 12rabbits <53499656+12rabbits@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Aiden <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2024 Alzore <140123969+Blackern5000@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 ArtisticRoomba <145879011+ArtisticRoomba@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Brandon Hu <103440971+Brandon-Huu@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 CaasGit <87243814+CaasGit@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Chief-Engineer <119664036+Chief-Engineer@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Cojoke <83733158+Cojoke-dot@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Dimastra <65184747+Dimastra@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Dimastra <dimastra@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 DrSmugleaf <10968691+DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Ed <96445749+TheShuEd@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Emisse <99158783+Emisse@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 EmoGarbage404 <retron404@gmail.com>
-// SPDX-FileCopyrightText: 2024 Eoin Mcloughlin <helloworld@eoinrul.es>
-// SPDX-FileCopyrightText: 2024 Errant <35878406+Errant-4@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Flareguy <78941145+Flareguy@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Hrosts <35345601+Hrosts@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 IProduceWidgets <107586145+IProduceWidgets@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Ian <ignaz.k@live.de>
-// SPDX-FileCopyrightText: 2024 Ilya246 <57039557+Ilya246@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 JIPDawg <51352440+JIPDawg@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 JIPDawg <JIPDawg93@gmail.com>
-// SPDX-FileCopyrightText: 2024 Joel Zimmerman <JoelZimmerman@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 JustCone <141039037+JustCone14@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Killerqu00 <47712032+Killerqu00@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Ko4ergaPunk <62609550+Ko4ergaPunk@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Kukutis96513 <146854220+Kukutis96513@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Lye <128915833+Lyroth001@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 MerrytheManokit <167581110+MerrytheManokit@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Mervill <mervills.email@gmail.com>
-// SPDX-FileCopyrightText: 2024 Moomoobeef <62638182+Moomoobeef@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Mr. 27 <45323883+Dutch-VanDerLinde@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 MureixloI <132683811+MureixloI@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 NakataRin <45946146+NakataRin@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 OrangeMoronage9622 <whyteterry0092@gmail.com>
-// SPDX-FileCopyrightText: 2024 PJBot <pieterjan.briers+bot@gmail.com>
-// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers@gmail.com>
-// SPDX-FileCopyrightText: 2024 Plykiya <58439124+Plykiya@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 PopGamer46 <yt1popgamer@gmail.com>
-// SPDX-FileCopyrightText: 2024 Preston Smith <92108534+thetolbean@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Psychpsyo <60073468+Psychpsyo@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 PursuitInAshes <pursuitinashes@gmail.com>
-// SPDX-FileCopyrightText: 2024 QueerNB <176353696+QueerNB@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Repo <47093363+Titian3@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 RiceMar1244 <138547931+RiceMar1244@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Saphire Lattice <lattice@saphi.re>
-// SPDX-FileCopyrightText: 2024 ShadowCommander <10494922+ShadowCommander@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Simon <63975668+Simyon264@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 SlamBamActionman <83650252+SlamBamActionman@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Spessmann <156740760+Spessmann@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Stalen <33173619+stalengd@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 TakoDragon <69509841+BackeTako@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Tayrtahn <tayrtahn@gmail.com>
-// SPDX-FileCopyrightText: 2024 Thomas <87614336+Aeshus@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 TsjipTsjip <19798667+TsjipTsjip@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Ubaser <134914314+UbaserB@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Unkn0wn_Gh0st <shadowstalkermll@gmail.com>
-// SPDX-FileCopyrightText: 2024 Vasilis <vasilis@pikachu.systems>
-// SPDX-FileCopyrightText: 2024 Vigers Ray <60344369+VigersRay@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Winkarst <74284083+Winkarst-cpu@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 beck-thompson <107373427+beck-thompson@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 deathride58 <deathride58@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 dffdff2423 <dffdff2423@gmail.com>
-// SPDX-FileCopyrightText: 2024 eoineoineoin <github@eoinrul.es>
-// SPDX-FileCopyrightText: 2024 foboscheshir <156405958+foboscheshir@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 lzk <124214523+lzk228@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 metalgearsloth <comedian_vs_clown@hotmail.com>
-// SPDX-FileCopyrightText: 2024 nikthechampiongr <32041239+nikthechampiongr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 plykiya <plykiya@protonmail.com>
-// SPDX-FileCopyrightText: 2024 saintmuntzer <47153094+saintmuntzer@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 shamp <140359015+shampunj@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 slarticodefast <161409025+slarticodefast@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 stellar-novas <stellar_novas@riseup.net>
-// SPDX-FileCopyrightText: 2024 strO0pwafel <153459934+strO0pwafel@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 stroopwafel <j.o.luijkx@student.tudelft.nl>
-// SPDX-FileCopyrightText: 2024 themias <89101928+themias@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 to4no_fix <156101927+chavonadelal@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 voidnull000 <18663194+voidnull000@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aidenkrz <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2025 Aineias1 <dmitri.s.kiselev@gmail.com>
-// SPDX-FileCopyrightText: 2025 FaDeOkno <143940725+FaDeOkno@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 McBosserson <148172569+McBosserson@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Milon <plmilonpl@gmail.com>
-// SPDX-FileCopyrightText: 2025 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2025 Rouden <149893554+Roudenn@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 TheBorzoiMustConsume <197824988+TheBorzoiMustConsume@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Unlumination <144041835+Unlumy@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 coderabbitai[bot] <136622811+coderabbitai[bot]@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 deltanedas <@deltanedas:kde.org>
-// SPDX-FileCopyrightText: 2025 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 gluesniffler <linebarrelerenthusiast@gmail.com>
-// SPDX-FileCopyrightText: 2025 username <113782077+whateverusername0@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 whateverusername0 <whateveremail>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
+using Content.Server._Mono.Shuttles.Components;
 using Content.Server.Power.EntitySystems;
 using Content.Server.Shuttles.Components;
 using Content.Server.Shuttles.Events;
 using Content.Server.Station.Systems;
+using Content.Shared._NF.Shuttles.Events; // Frontier
 using Content.Shared.ActionBlocker;
 using Content.Shared.Alert;
 using Content.Shared.Popups;
@@ -132,6 +22,11 @@ using Robust.Shared.GameStates;
 using Robust.Shared.Map;
 using Robust.Shared.Utility;
 using Content.Shared.UserInterface;
+using Content.Shared.Access.Systems; // Frontier
+using Content.Shared.Construction.Components; // Frontier
+using Content.Server.Radio.EntitySystems;
+using Content.Server.Station.Components;
+using Content.Shared.Verbs;
 
 namespace Content.Server.Shuttles.Systems;
 
@@ -148,8 +43,9 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
     [Dependency] private readonly TagSystem _tags = default!;
     [Dependency] private readonly UserInterfaceSystem _ui = default!;
     [Dependency] private readonly SharedContentEyeSystem _eyeSystem = default!;
-
-    [Dependency] private readonly _Lavaland.Shuttles.Systems.DockingConsoleSystem _dockingConsole = default!; // Lavaland Change: FTL
+    [Dependency] private readonly AccessReaderSystem _access = default!;
+    [Dependency] private readonly RadioSystem _radioSystem = default!;
+    [Dependency] private readonly StationJobsSystem _stationJobs = default!;
 
     private EntityQuery<MetaDataComponent> _metaQuery;
     private EntityQuery<TransformComponent> _xformQuery;
@@ -163,14 +59,19 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
         _metaQuery = GetEntityQuery<MetaDataComponent>();
         _xformQuery = GetEntityQuery<TransformComponent>();
 
+        InitializeDeviceLinking(); // Initialize device linking functionality
+
+        SubscribeLocalEvent<ShuttleConsoleComponent, ComponentStartup>(OnConsoleStartup);
         SubscribeLocalEvent<ShuttleConsoleComponent, ComponentShutdown>(OnConsoleShutdown);
         SubscribeLocalEvent<ShuttleConsoleComponent, PowerChangedEvent>(OnConsolePowerChange);
         SubscribeLocalEvent<ShuttleConsoleComponent, AnchorStateChangedEvent>(OnConsoleAnchorChange);
         SubscribeLocalEvent<ShuttleConsoleComponent, ActivatableUIOpenAttemptEvent>(OnConsoleUIOpenAttempt);
+        SubscribeLocalEvent<ShuttleConsoleComponent, GetVerbsEvent<Verb>>(AddPanicButtonVerb);
         Subs.BuiEvents<ShuttleConsoleComponent>(ShuttleConsoleUiKey.Key, subs =>
         {
             subs.Event<ShuttleConsoleFTLBeaconMessage>(OnBeaconFTLMessage);
             subs.Event<ShuttleConsoleFTLPositionMessage>(OnPositionFTLMessage);
+            subs.Event<ToggleFTLLockRequestMessage>(OnToggleFTLLock);
             subs.Event<BoundUIClosedEvent>(OnConsoleUIClose);
         });
 
@@ -191,6 +92,8 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
         SubscribeLocalEvent<FTLDestinationComponent, ComponentShutdown>(OnFtlDestShutdown);
 
         InitializeFTL();
+
+        InitializeNFDrone(); // Frontier: add our drone subscriptions
     }
 
     private void OnFtlDestStartup(EntityUid uid, FTLDestinationComponent component, ComponentStartup args)
@@ -228,8 +131,6 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
         {
             UpdateState(entity, ref dockState);
         }
-
-        _dockingConsole.UpdateConsolesUsing(gridUid); // Lavaland Change: FTL
     }
 
     /// <summary>
@@ -279,6 +180,10 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
     {
         DockingInterfaceState? dockState = null;
         UpdateState(uid, ref dockState);
+        _shuttle.NfSetPowered(uid, component, args.Powered); // Frontier
+
+        // Handle job slots when power changes
+        HandleJobSlotsOnPowerChange(uid, component, args.Powered);
     }
 
     private bool TryPilot(EntityUid user, EntityUid uid)
@@ -289,6 +194,16 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
             !Transform(uid).Anchored ||
             !_blocker.CanInteract(user, uid))
         {
+            return false;
+        }
+
+        if (!_access.IsAllowed(user, uid)) // Frontier: check access
+            return false; // Frontier
+
+        // Check if console is locked
+        if (TryComp<ShuttleConsoleLockComponent>(uid, out var lockComp) && lockComp.Locked)
+        {
+            // _popup.PopupEntity(Loc.GetString("shuttle-console-locked"), uid, user); // Mono
             return false;
         }
 
@@ -317,8 +232,94 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
     {
         if (ent.Comp.Console != null)
         {
-            RemovePilot(ent, ent);
+            RemovePilot(ent);
         }
+    }
+
+    /// <summary>
+    /// Handles FTL lock toggling for docked shuttles
+    /// </summary>
+    private void OnToggleFTLLock(EntityUid uid, ShuttleConsoleComponent component, ToggleFTLLockRequestMessage args)
+    {
+        // Get the console's grid (shuttle)
+        var consoleXform = Transform(uid);
+        var shuttleGrid = consoleXform.GridUid;
+
+        Logger.DebugS("shuttle", $"Server received FTL lock request with {args.DockedEntities.Count} entities, enabled={args.Enabled}");
+
+        // If the shuttleGrid is null, we can't do anything
+        if (shuttleGrid == null)
+        {
+            Logger.DebugS("shuttle", $"Cannot toggle FTL lock: console {ToPrettyString(uid)} is not on a grid");
+            return;
+        }
+
+        bool processedMainGrid = false;
+
+        // Process each entity in the request
+        foreach (var dockedEntityNet in args.DockedEntities)
+        {
+            var dockedEntity = GetEntity(dockedEntityNet);
+
+            // Check if this is the main shuttle grid
+            if (dockedEntity == shuttleGrid)
+            {
+                processedMainGrid = true;
+            }
+
+            if (TryComp<FTLLockComponent>(dockedEntity, out var ftlLock))
+            {
+                Logger.DebugS("shuttle", $"Setting FTL lock for {ToPrettyString(dockedEntity)} to {args.Enabled}");
+                ftlLock.Enabled = args.Enabled;
+                Dirty(dockedEntity, ftlLock);
+            }
+        }
+
+        // If we didn't process the main grid yet, do it now
+        if (!processedMainGrid && shuttleGrid != null)
+        {
+            if (TryComp<FTLLockComponent>(shuttleGrid, out var ftlLock))
+            {
+                Logger.DebugS("shuttle", $"Setting FTL lock for main grid {ToPrettyString(shuttleGrid.Value)} to {args.Enabled}");
+                ftlLock.Enabled = args.Enabled;
+                Dirty(shuttleGrid.Value, ftlLock);
+            }
+        }
+    }
+
+    /// <summary>
+    /// Sets the FTL lock state of a shuttle entity.
+    /// </summary>
+    /// <param name="shuttleUid">The shuttle entity to modify</param>
+    /// <param name="dockedEntities">List of docked entities to also modify, or empty to only modify the shuttle</param>
+    /// <param name="enabled">The desired FTL lock state (true to enable, false to disable)</param>
+    /// <returns>True if at least one entity was modified, false otherwise</returns>
+    public bool ToggleFTLLock(EntityUid shuttleUid, List<NetEntity> dockedEntities, bool enabled)
+    {
+        var modified = false;
+
+        // Modify the main shuttle if it has the component
+        if (TryComp<FTLLockComponent>(shuttleUid, out var shuttleFtlLock))
+        {
+            shuttleFtlLock.Enabled = enabled;
+            Dirty(shuttleUid, shuttleFtlLock);
+            modified = true;
+        }
+
+        // Modify any docked entities if provided
+        foreach (var dockedEntityNet in dockedEntities)
+        {
+            var dockedEntity = GetEntity(dockedEntityNet);
+
+            if (TryComp<FTLLockComponent>(dockedEntity, out var ftlLock))
+            {
+                ftlLock.Enabled = enabled;
+                Dirty(dockedEntity, ftlLock);
+                modified = true;
+            }
+        }
+
+        return modified;
     }
 
     /// <summary>
@@ -335,6 +336,11 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
             if (xform.ParentUid != xform.GridUid)
                 continue;
 
+            // Frontier: skip unanchored docks (e.g. portable gaslocks)
+            if (HasComp<AnchorableComponent>(uid) && !xform.Anchored)
+                continue;
+            // End Frontier
+
             var gridDocks = result.GetOrNew(GetNetEntity(xform.GridUid.Value));
 
             var state = new DockingPortState()
@@ -347,6 +353,11 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
                     _xformQuery.TryGetComponent(comp.DockedWith, out var otherDockXform) ?
                     GetNetEntity(otherDockXform.GridUid) :
                     null,
+                LabelName = comp.Name != null ? Loc.GetString(comp.Name) : null, // Frontier: docking labels
+                RadarColor = comp.RadarColor, // Frontier
+                HighlightedRadarColor = comp.HighlightedRadarColor, // Frontier
+                DockType = comp.DockType, // Frontier
+                ReceiveOnly = comp.ReceiveOnly, // Frontier
             };
 
             gridDocks.Add(state);
@@ -381,7 +392,7 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
         }
         else
         {
-            navState = new NavInterfaceState(0f, null, null, new Dictionary<NetEntity, List<DockingPortState>>());
+            navState = new NavInterfaceState(0f, null, null, new Dictionary<NetEntity, List<DockingPortState>>(), InertiaDampeningMode.Dampen); // Frontier: inertia dampening);
             mapState = new ShuttleMapInterfaceState(
                 FTLState.Invalid,
                 default,
@@ -496,29 +507,40 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
     public NavInterfaceState GetNavState(Entity<RadarConsoleComponent?, TransformComponent?> entity, Dictionary<NetEntity, List<DockingPortState>> docks)
     {
         if (!Resolve(entity, ref entity.Comp1, ref entity.Comp2))
-            return new NavInterfaceState(SharedRadarConsoleSystem.DefaultMaxRange, null, null, docks);
+            return new NavInterfaceState(SharedRadarConsoleSystem.DefaultMaxRange, null, null, docks, Shared._NF.Shuttles.Events.InertiaDampeningMode.Dampen); // Frontier: add inertia dampening
+
+        // Get port names from the console component if available
+        var portNames = new Dictionary<string, string>();
+        if (TryComp<ShuttleConsoleComponent>(entity, out var consoleComp))
+        {
+            portNames = consoleComp.PortNames;
+        }
 
         return GetNavState(
             entity,
             docks,
             entity.Comp2.Coordinates,
-            entity.Comp2.LocalRotation);
+            entity.Comp2.LocalRotation,
+            portNames);
     }
 
     public NavInterfaceState GetNavState(
         Entity<RadarConsoleComponent?, TransformComponent?> entity,
         Dictionary<NetEntity, List<DockingPortState>> docks,
         EntityCoordinates coordinates,
-        Angle angle)
+        Angle angle,
+        Dictionary<string, string>? portNames = null)
     {
         if (!Resolve(entity, ref entity.Comp1, ref entity.Comp2))
-            return new NavInterfaceState(SharedRadarConsoleSystem.DefaultMaxRange, GetNetCoordinates(coordinates), angle, docks);
+            return new NavInterfaceState(SharedRadarConsoleSystem.DefaultMaxRange, GetNetCoordinates(coordinates), angle, docks, InertiaDampeningMode.Dampen); // Frontier: add inertial dampening
 
         return new NavInterfaceState(
             entity.Comp1.MaxRange,
             GetNetCoordinates(coordinates),
             angle,
-            docks);
+            docks,
+            _shuttle.NfGetInertiaDampeningMode(entity), // Frontier: inertia dampening
+            portNames);
     }
 
     /// <summary>
@@ -555,5 +577,194 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
             stateDuration,
             beacons ?? new List<ShuttleBeaconObject>(),
             exclusions ?? new List<ShuttleExclusionObject>());
+    }
+
+    /// <summary>
+    /// Adds the panic button verb to the shuttle console
+    /// </summary>
+    private void AddPanicButtonVerb(EntityUid uid, ShuttleConsoleComponent component, GetVerbsEvent<Verb> args)
+    {
+        if (!args.CanAccess || !args.CanInteract || !this.IsPowered(uid, EntityManager))
+            return;
+
+        // Don't show the panic button if the console is locked (either emergency locked or normally locked)
+        if (TryComp<ShuttleConsoleLockComponent>(uid, out var lockComp) && (lockComp.EmergencyLocked || lockComp.Locked))
+            return;
+
+        // Create the panic button verb
+        Verb verb = new()
+        {
+            Act = () => SendPanicSignal(uid, args.User),
+            Text = Loc.GetString("shuttle-console-panic-button"),
+            Priority = 1,
+        };
+
+        args.Verbs.Add(verb);
+    }
+
+    /// <summary>
+    /// Sends an emergency signal to the TSFMC radio channel with the shuttle's name and location
+    /// </summary>
+    private void SendPanicSignal(EntityUid uid, EntityUid user, ShuttleConsoleComponent? component = null, MetaDataComponent? gridMeta = null)
+    {
+        if (!Resolve(uid, ref component))
+            return;
+
+        // Get the grid entity
+        if (Transform(uid).GridUid is not {} gridUid)
+        {
+            _popup.PopupEntity(Loc.GetString("shuttle-console-panic-no-grid"), uid, user);
+            return;
+        }
+
+        // Get grid name
+        if (!Resolve(gridUid, ref gridMeta))
+        {
+            _popup.PopupEntity(Loc.GetString("shuttle-console-panic-failed"), uid, user);
+            return;
+        }
+
+        var gridName = gridMeta.EntityName;
+        var mapCoordinates = _transform.ToMapCoordinates(Transform(uid).Coordinates);
+
+        // Construct emergency message
+        var message = Loc.GetString("shuttle-console-panic-message",
+            ("gridName", gridName),
+            ("coordinates", $"{mapCoordinates.Position.X:0.0}, {mapCoordinates.Position.Y:0.0}"));
+
+        // Send to TSFMC radio channel
+        _radioSystem.SendRadioMessage(user, message, "Nfsd", uid); // god bro why.
+
+        // Lock the console in emergency mode
+        var lockSystem = EntityManager.EntitySysManager.GetEntitySystem<ShuttleConsoleLockSystem>();
+        lockSystem.SetEmergencyLock(uid, true);
+
+        // Show confirmation popup
+        _popup.PopupEntity(Loc.GetString("shuttle-console-panic-sent"), uid, user);
+    }
+
+    /// <summary>
+    /// Handles job slots when shuttle console power changes.
+    /// </summary>
+    private void HandleJobSlotsOnPowerChange(EntityUid consoleUid, ShuttleConsoleComponent component, bool powered)
+    {
+        // Get the console's transform to find the grid
+        if (!TryComp<TransformComponent>(consoleUid, out var consoleXform) || consoleXform.GridUid == null)
+            return;
+
+        var gridUid = consoleXform.GridUid.Value;
+
+        // Only handle job slots for shuttles (grids with ShuttleComponent)
+        if (!HasComp<ShuttleComponent>(gridUid))
+            return;
+
+        // Find the station that owns this shuttle
+        var owningStation = _station.GetOwningStation(gridUid);
+        if (owningStation == null)
+            return;
+
+        // Check if the grid has any powered shuttle consoles
+        var hasPoweredConsole = HasPoweredShuttleConsole(gridUid);
+
+        if (!hasPoweredConsole)
+        {
+            // No powered consoles
+            SaveAndCloseJobSlots(gridUid, owningStation.Value);
+        }
+        else
+        {
+            // Has powered console
+            RestoreJobSlots(gridUid, owningStation.Value);
+        }
+    }
+
+    /// <summary>
+    /// Checks if the grid has any powered shuttle consoles.
+    /// </summary>
+    private bool HasPoweredShuttleConsole(EntityUid gridUid)
+    {
+        var query = AllEntityQuery<ShuttleConsoleComponent, TransformComponent>();
+
+        while (query.MoveNext(out var consoleUid, out _, out var xform))
+        {
+            // Check if this console is on our grid
+            if (xform.GridUid != gridUid)
+                continue;
+
+            // Check if this console is powered
+            if (this.IsPowered(consoleUid, EntityManager))
+                return true;
+        }
+
+        return false;
+    }
+
+    /// <summary>
+    /// Saves the current job slots for the station and sets them all to 0 (closed).
+    /// </summary>
+    private void SaveAndCloseJobSlots(EntityUid gridUid, EntityUid station)
+    {
+        // Get or create the job slots component on the grid
+        var jobSlotsComp = EnsureComp<ShuttleConsoleJobSlotsComponent>(gridUid);
+
+        // If we already have saved slots, don't save again
+        if (jobSlotsComp.SavedJobSlots.Count > 0)
+            return;
+
+        // Clear any previous saved state and set the owning station
+        jobSlotsComp.SavedJobSlots.Clear();
+        jobSlotsComp.OwningStation = station;
+
+        // Get all current job slots for the station
+        if (!TryComp<StationJobsComponent>(station, out var stationJobs))
+            return;
+
+        // Save current job slots
+        foreach (var (jobId, slots) in stationJobs.JobList)
+        {
+            // Only save jobs that have slots available (not 0)
+            if (slots != 0)
+            {
+                jobSlotsComp.SavedJobSlots[jobId] = slots;
+
+                // Set the job slot to 0 (closed)
+                _stationJobs.TrySetJobSlot(station, jobId, 0);
+            }
+        }
+    }
+
+    /// <summary>
+    /// Restores the previously saved job slots for the station.
+    /// </summary>
+    private void RestoreJobSlots(EntityUid gridUid, EntityUid station)
+    {
+        // Get the job slots component from the grid
+        if (!TryComp<ShuttleConsoleJobSlotsComponent>(gridUid, out var jobSlotsComp))
+            return;
+
+        // If no saved slots, nothing to restore
+        if (jobSlotsComp.SavedJobSlots.Count == 0)
+            return;
+
+        // Verify this is for the correct station
+        if (jobSlotsComp.OwningStation != station)
+            return;
+
+        // Restore all saved job slots
+        foreach (var (jobId, savedSlots) in jobSlotsComp.SavedJobSlots)
+        {
+            if (savedSlots.HasValue)
+            {
+                _stationJobs.TrySetJobSlot(station, jobId, savedSlots.Value);
+            }
+            else
+            {
+                _stationJobs.MakeJobUnlimited(station, jobId);
+            }
+        }
+
+        // Clear the saved state
+        jobSlotsComp.SavedJobSlots.Clear();
+        jobSlotsComp.OwningStation = null;
     }
 }

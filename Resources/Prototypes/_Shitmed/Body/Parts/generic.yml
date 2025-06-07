@@ -1,12 +1,4 @@
-# SPDX-FileCopyrightText: 2024 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aviu00 <93730715+Aviu00@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Martynas6ha4 <martynashagriefer@gmail.com>
-# SPDX-FileCopyrightText: 2025 Piras314 <p1r4s@proton.me>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
-- type: entity
+- type: entity # Mono - Doesn't work yet sadly
   parent: HeadHuman
   id: BioSynthHeadEmpty
   name: bio-synthetic hollow head
@@ -37,24 +29,16 @@
         type: Hand
 
 - type: entity
-  parent: [PartHuman, BaseLeftHand]
+  parent: LeftHandHuman
   id: BioSynthLeftHand
   name: bio-synthetic left hand
   description: This left hand can be transplanted into any living organism and it will adapt to its recipient.
-  components:
-  - type: Sprite
-    sprite: Mobs/Species/Human/parts.rsi
-    state: "l_hand"
 
 - type: entity
-  parent: [PartHuman, BaseRightHand]
+  parent: RightHandHuman
   id: BioSynthRightHand
   name: bio-synthetic right hand
   description: This right hand can be transplanted into any living organism and it will adapt to its recipient.
-  components:
-  - type: Sprite
-    sprite: Mobs/Species/Human/parts.rsi
-    state: "r_hand"
 
 - type: entity
   parent: LeftLegHuman
@@ -100,11 +84,6 @@
   name: pizza left arm
   description: For when you want to turn someone into a Space John's.
   components:
-  - type: BodyPart
-    partType: Arm
-    symmetry: Left
-    toolName: "a left arm"
-    baseLayerId: MobPizzaLArm
   - type: Sprite
     sprite: _Shitmed/Mobs/Species/Misc/Pizza/parts.rsi
     state: "l_arm"
@@ -115,11 +94,6 @@
   name: pizza right arm
   description: For when you want to turn someone into a Space John's.
   components:
-  - type: BodyPart
-    partType: Arm
-    symmetry: Right
-    toolName: "a right arm"
-    baseLayerId: MobPizzaRArm
   - type: Sprite
     sprite: _Shitmed/Mobs/Species/Misc/Pizza/parts.rsi
     state: "r_arm"

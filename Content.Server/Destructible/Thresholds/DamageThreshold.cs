@@ -1,20 +1,3 @@
-// SPDX-FileCopyrightText: 2021 Acruid <shatter66@gmail.com>
-// SPDX-FileCopyrightText: 2021 Javier Guardia Fernández <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2021 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2021 Paul <ritter.paul1+git@googlemail.com>
-// SPDX-FileCopyrightText: 2021 Paul Ritter <ritter.paul1@googlemail.com>
-// SPDX-FileCopyrightText: 2021 Vera Aguilera Puerto <6766154+Zumorica@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2021 Vera Aguilera Puerto <gradientvera@outlook.com>
-// SPDX-FileCopyrightText: 2021 Visne <39844191+Visne@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 mirrorcult <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2022 wrexbe <81056464+wrexbe@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Chief-Engineer <119664036+Chief-Engineer@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aviu00 <93730715+Aviu00@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using Content.Server.Destructible.Thresholds.Behaviors;
 using Content.Server.Destructible.Thresholds.Triggers;
 using Content.Shared.Damage;
@@ -25,7 +8,7 @@ namespace Content.Server.Destructible.Thresholds
     public sealed partial class DamageThreshold
     {
         [DataField("behaviors")]
-        public List<IThresholdBehavior> Behaviors = new(); // Goob edit
+        private List<IThresholdBehavior> _behaviors = new();
 
         /// <summary>
         ///     Whether or not this threshold was triggered in the previous call to
@@ -57,7 +40,7 @@ namespace Content.Server.Destructible.Thresholds
         /// <summary>
         ///     Behaviors to activate once this threshold is triggered.
         /// </summary>
-        // [ViewVariables] public IReadOnlyList<IThresholdBehavior> Behaviors => _behaviors; // Goob edit
+        [ViewVariables] public IReadOnlyList<IThresholdBehavior> Behaviors => _behaviors;
 
         public bool Reached(DamageableComponent damageable, DestructibleSystem system)
         {
@@ -83,6 +66,7 @@ namespace Content.Server.Destructible.Thresholds
             }
 
             OldTriggered = true;
+            Triggered = true;
             return true;
         }
 
@@ -96,16 +80,28 @@ namespace Content.Server.Destructible.Thresholds
         /// </param>
         /// <param name="entityManager"></param>
         /// <param name="cause"></param>
-        public void Execute(EntityUid owner, DestructibleSystem system, IEntityManager entityManager, EntityUid? cause)
+        public void Execute(EntityUid owner, DestructibleSystem system, IEntityManager entityManager, EntityUid? cause = null)
         {
-            Triggered = true;
-
-            foreach (var behavior in Behaviors)
+            foreach (var behavior in _behaviors)
             {
-                // The owner has been deleted. We stop execution of behaviors here.
                 if (!entityManager.EntityExists(owner))
                     return;
+                
+                behavior.Execute(owner, system, cause);
+            }
+        }
 
+        /// <summary>
+        /// Special version of Execute that allows prevention of gibbing from space damage
+        /// </summary>
+        public void Reached(EntityUid owner, DestructibleSystem system, EntityUid? cause = null, bool spaceOrigin = false)
+        {
+            foreach (var behavior in _behaviors)
+            {
+                // Skip gibbing behaviors if the damage is from space
+                if (spaceOrigin && behavior is GibBehavior)
+                    continue;
+                
                 behavior.Execute(owner, system, cause);
             }
         }

@@ -1,56 +1,3 @@
-// SPDX-FileCopyrightText: 2021 Vera Aguilera Puerto <6766154+Zumorica@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2021 Wrexbe <wrexbe@protonmail.com>
-// SPDX-FileCopyrightText: 2021 mirrorcult <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2022 Acruid <shatter66@gmail.com>
-// SPDX-FileCopyrightText: 2022 LittleBuilderJane <63973502+LittleBuilderJane@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Vera Aguilera Puerto <gradientvera@outlook.com>
-// SPDX-FileCopyrightText: 2022 metalgearsloth <comedian_vs_clown@hotmail.com>
-// SPDX-FileCopyrightText: 2022 metalgearsloth <metalgearsloth@gmail.com>
-// SPDX-FileCopyrightText: 2022 wrexbe <81056464+wrexbe@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Tom Leys <tom@crump-leys.com>
-// SPDX-FileCopyrightText: 2024 12rabbits <53499656+12rabbits@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Alzore <140123969+Blackern5000@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 ArtisticRoomba <145879011+ArtisticRoomba@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Brandon Hu <103440971+Brandon-Huu@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Dimastra <65184747+Dimastra@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Dimastra <dimastra@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Ed <96445749+TheShuEd@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Emisse <99158783+Emisse@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Eoin Mcloughlin <helloworld@eoinrul.es>
-// SPDX-FileCopyrightText: 2024 IProduceWidgets <107586145+IProduceWidgets@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 JIPDawg <51352440+JIPDawg@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 JIPDawg <JIPDawg93@gmail.com>
-// SPDX-FileCopyrightText: 2024 Mervill <mervills.email@gmail.com>
-// SPDX-FileCopyrightText: 2024 Moomoobeef <62638182+Moomoobeef@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 PJBot <pieterjan.briers+bot@gmail.com>
-// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers@gmail.com>
-// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2024 PopGamer46 <yt1popgamer@gmail.com>
-// SPDX-FileCopyrightText: 2024 PursuitInAshes <pursuitinashes@gmail.com>
-// SPDX-FileCopyrightText: 2024 QueerNB <176353696+QueerNB@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Saphire Lattice <lattice@saphi.re>
-// SPDX-FileCopyrightText: 2024 ShadowCommander <10494922+ShadowCommander@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Simon <63975668+Simyon264@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Spessmann <156740760+Spessmann@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Thomas <87614336+Aeshus@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Winkarst <74284083+Winkarst-cpu@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 deltanedas <@deltanedas:kde.org>
-// SPDX-FileCopyrightText: 2024 eoineoineoin <github@eoinrul.es>
-// SPDX-FileCopyrightText: 2024 github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 lzk <124214523+lzk228@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 slarticodefast <161409025+slarticodefast@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 stellar-novas <stellar_novas@riseup.net>
-// SPDX-FileCopyrightText: 2024 themias <89101928+themias@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using Content.Server.Doors.Systems;
 using Content.Server.NPC.Pathfinding;
 using Content.Server.Shuttles.Components;
@@ -58,6 +5,7 @@ using Content.Server.Shuttles.Events;
 using Content.Shared.Doors;
 using Content.Shared.Doors.Components;
 using Content.Shared.Popups;
+using Content.Shared.Shuttles.Components;
 using Content.Shared.Shuttles.Events;
 using Content.Shared.Shuttles.Systems;
 using Robust.Shared.Map;
@@ -108,6 +56,7 @@ namespace Content.Server.Shuttles.Systems
             // in which case I would also add their subs here.
             SubscribeLocalEvent<ShuttleConsoleComponent, DockRequestMessage>(OnRequestDock);
             SubscribeLocalEvent<ShuttleConsoleComponent, UndockRequestMessage>(OnRequestUndock);
+            SubscribeLocalEvent<ShuttleConsoleComponent, UndockAllRequestMessage>(OnRequestUndockAll);
         }
 
         public void UndockDocks(EntityUid gridUid)
@@ -387,10 +336,63 @@ namespace Content.Server.Shuttles.Systems
             if (dock.Comp.DockedWith == null)
                 return;
 
+            // Check if either shuttle is in FTL before undocking
+            var otherDockUid = dock.Comp.DockedWith.Value;
+            var shuttleUid = Transform(dock).GridUid;
+            var otherShuttleUid = Transform(otherDockUid).GridUid;
+
+            bool dockedInFTL = false;
+            EntityUid? ftlSourceShuttle = null;
+            FTLComponent? ftlComp = null;
+
+            // Check if either shuttle is in FTL travel
+            if (shuttleUid != null && TryComp<FTLComponent>(shuttleUid, out var shuttleFTL) &&
+                shuttleFTL.State == FTLState.Travelling)
+            {
+                dockedInFTL = true;
+                ftlSourceShuttle = shuttleUid;
+                ftlComp = shuttleFTL;
+            }
+            else if (otherShuttleUid != null && TryComp<FTLComponent>(otherShuttleUid, out var otherShuttleFTL) &&
+                     otherShuttleFTL.State == FTLState.Travelling)
+            {
+                dockedInFTL = true;
+                ftlSourceShuttle = otherShuttleUid;
+                ftlComp = otherShuttleFTL;
+            }
+
             OnUndock(dock.Owner);
             OnUndock(dock.Comp.DockedWith.Value);
             Cleanup(dock.Owner, dock);
             _console.RefreshShuttleConsoles();
+
+            // If undocking occurred during FTL travel, we need to update the FTL components
+            if (dockedInFTL && ftlSourceShuttle != null && ftlComp != null)
+            {
+                // The linked shuttle should be the main shuttle controlling FTL
+                var mainFTLShuttle = ftlComp.LinkedShuttle ?? ftlSourceShuttle.Value;
+
+                // For both shuttles, make sure they can complete their FTL journey independently
+                if (shuttleUid != null && shuttleUid != mainFTLShuttle &&
+                    TryComp<FTLComponent>(shuttleUid, out var shuttleFtlComp) && shuttleFtlComp.State == FTLState.Travelling)
+                {
+                    // Make sure the undocked shuttle maintains the same FTL state
+                    // This allows the undocked shuttle to complete its FTL journey
+                    // Set no LinkedShuttle so it will be processed independently
+                    shuttleFtlComp.LinkedShuttle = null;
+                    Dirty(shuttleUid.Value, shuttleFtlComp);
+                }
+
+                if (otherShuttleUid != null && otherShuttleUid != mainFTLShuttle &&
+                    TryComp<FTLComponent>(otherShuttleUid, out var otherFtlComp) && otherFtlComp.State == FTLState.Travelling)
+                {
+                    // Make sure the undocked shuttle maintains the same FTL state
+                    // This allows the undocked shuttle to complete its FTL journey
+                    // Set no LinkedShuttle so it will be processed independently
+                    otherFtlComp.LinkedShuttle = null;
+                    Dirty(otherShuttleUid.Value, otherFtlComp);
+                }
+            }
         }
 
         private void OnUndock(EntityUid dockUid)
@@ -452,6 +454,14 @@ namespace Content.Server.Shuttles.Systems
                 return;
             }
 
+            // Frontier: ensure dock initiator isn't receive only.
+            if (ourDockComp.ReceiveOnly)
+            {
+                _popup.PopupCursor(Loc.GetString("shuttle-console-dock-fail"));
+                return;
+            }
+            // End Frontier
+
             // Cheating?
             if (!TryComp(ourDock, out TransformComponent? xformA) ||
                 xformA.GridUid != shuttleUid)
@@ -493,6 +503,11 @@ namespace Content.Server.Shuttles.Systems
                 return false;
             }
 
+            // Frontier: mask docking types
+            if ((dockA.Comp.DockType & dockB.Comp.DockType) == DockType.None)
+                return false;
+            // End Frontier
+
             var xformA = Transform(dockA);
             var xformB = Transform(dockB);
 
@@ -504,6 +519,38 @@ namespace Content.Server.Shuttles.Systems
 
             return CanDock(new MapCoordinates(worldPosA, xformA.MapID), worldRotA,
                 new MapCoordinates(worldPosB, xformB.MapID), worldRotB);
+        }
+
+        private void OnRequestUndockAll(EntityUid uid, ShuttleConsoleComponent component, UndockAllRequestMessage args)
+        {
+            if (args.DockEntities.Count == 0)
+                return;
+
+            var undockedAny = false;
+
+            foreach (var dockEntity in args.DockEntities)
+            {
+                if (!TryGetEntity(dockEntity, out var dockEnt) ||
+                    !TryComp(dockEnt, out DockingComponent? dockComp))
+                {
+                    continue;
+                }
+
+                var dock = (dockEnt.Value, dockComp);
+
+                if (!CanUndock(dock))
+                {
+                    continue;
+                }
+
+                Undock(dock);
+                undockedAny = true;
+            }
+
+            if (!undockedAny)
+            {
+                _popup.PopupCursor(Loc.GetString("shuttle-console-undock-fail"));
+            }
         }
     }
 }

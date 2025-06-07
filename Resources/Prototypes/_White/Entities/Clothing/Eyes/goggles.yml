@@ -1,9 +1,3 @@
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Armok <155400926+ARMOKS@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aviu00 <93730715+Aviu00@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Spatison <137375981+Spatison@users.noreply.github.com>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
 # Night Vision Goggles
 
 - type: entity
@@ -20,32 +14,31 @@
     flashDurationMultiplier: 2
     isEquipment: true
   - type: IdentityBlocker
+    coverage: EYES
 
 - type: entity
-  parent: [ClothingEyesBase,BaseSyndicateContraband]
+  parent: ClothingEyesNightVisionGoggles
   id: ClothingEyesNightVisionGogglesSyndie
-  name: syndicate night vision goggles
-  description: A high-tech pair of night vision goggles. Has medical analysis technology.
+  suffix: "Chameleon"
   components:
-  - type: Sprite
-    sprite: _White/Clothing/Eyes/Goggles/snightvision.rsi
-  - type: Clothing
-    sprite: _White/Clothing/Eyes/Goggles/snightvision.rsi
-  - type: NightVision
-    flashDurationMultiplier: 2
-    isEquipment: true
-  - type: IdentityBlocker
-    coverage: EYES
-  - type: ShowHealthBars
-    damageContainers:
-    - Biological
+  - type: Tag
+    tags: [] # ignore "WhitelistChameleon" tag
+  - type: ChameleonClothing
+    slot: [eyes]
+    default: ClothingEyesGlassesSunglasses
+  - type: UserInterface
+    interfaces:
+      enum.ChameleonUiKey.Key:
+        type: ChameleonBoundUserInterface
 
 - type: entity
   parent: ClothingEyesNightVisionGogglesSyndie
   id: ClothingEyesNightVisionGogglesNukie
-  suffix: "NukeOps"
+  suffix: "Chameleon, NukeOps"
   components:
   - type: ShowSyndicateIcons
+  - type: ShowJobIcons
+  - type: ShowMindShieldIcons
 
 # Thermal Vision Goggles
 
@@ -68,26 +61,24 @@
     coverage: EYES
 
 - type: entity
-  parent: [ClothingEyesBase, BaseSyndicateContraband]
+  parent: ClothingEyesThermalVisionGoggles
   id: ClothingEyesThermalVisionGogglesSyndie
-  name: thermal vision goggles
-  description: A high-tech pair of thermal goggles.
+  suffix: "Chameleon"
   components:
-  - type: Sprite
-    sprite: _White/Clothing/Eyes/Goggles/sthermals.rsi
-  - type: Clothing
-    sprite: _White/Clothing/Eyes/Goggles/sthermals.rsi
-  - type: ThermalVision
-    flashDurationMultiplier: 2
-    isEquipment: true
-    toggleAction: ToggleThermalVision
-  - type: IdentityBlocker
-    coverage: EYES
+  - type: Tag
+    tags: [] # ignore "WhitelistChameleon" tag
+  - type: ChameleonClothing
+    slot: [eyes]
+    default: ClothingEyesGlassesSunglasses
+  - type: UserInterface
+    interfaces:
+      enum.ChameleonUiKey.Key:
+        type: ChameleonBoundUserInterface
 
 - type: entity
   parent: ClothingEyesThermalVisionGogglesSyndie
   id: ClothingEyesThermalVisionGogglesNukie
-  suffix: "NukeOps"
+  suffix: "Chameleon, NukeOps"
   components:
   - type: ShowSyndicateIcons
   - type: ShowJobIcons

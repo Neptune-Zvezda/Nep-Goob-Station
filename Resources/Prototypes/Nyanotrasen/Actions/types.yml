@@ -1,13 +1,8 @@
-# SPDX-FileCopyrightText: 2024 Aidenkrz <aiden@djkraz.com>
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
 - type: entity
   id: ActionEatMouse
   name: action-name-eat-mouse
   description: action-description-eat-mouse
-  categories: [ HideSpawnMenu ]
+  categories: [ HideSpawnMenu ] # Frontier
   components:
   - type: InstantAction
     icon: Nyanotrasen/Icons/verbiconfangs.png
@@ -17,7 +12,7 @@
   id: ActionHairball
   name: action-name-hairball
   description: action-description-hairball
-  categories: [ HideSpawnMenu ]
+  categories: [ HideSpawnMenu ] # Frontier
   components:
   - type: InstantAction
     charges: 1

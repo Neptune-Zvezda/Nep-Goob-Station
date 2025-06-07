@@ -1,10 +1,3 @@
-// SPDX-FileCopyrightText: 2024 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aviu00 <93730715+Aviu00@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Piras314 <p1r4s@proton.me>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using System.Linq;
 using Content.Server.Power.Components;
 using Content.Shared.Containers.ItemSlots;
@@ -21,6 +14,7 @@ using Content.Shared.Popups;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
 using Content.Server._EinsteinEngines.Power.Components;
+using Content.Server._EinsteinEngines.Silicon;
 
 namespace Content.Server._EinsteinEngines.Power;
 
@@ -88,8 +82,7 @@ public sealed class BatteryDrinkerSystem : EntitySystem
             Broadcast = false,
             DistanceThreshold = 1.35f,
             RequireCanInteract = true,
-            CancelDuplicate = false,
-            MultiplyDelay = false, // Goobstation
+            CancelDuplicate = false
         };
 
         _doAfter.TryStartDoAfter(args);

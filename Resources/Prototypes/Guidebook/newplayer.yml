@@ -1,17 +1,12 @@
-# SPDX-FileCopyrightText: 2024 AJCM <AJCM@tutanota.com>
-# SPDX-FileCopyrightText: 2024 Tayrtahn <tayrtahn@gmail.com>
-# SPDX-FileCopyrightText: 2024 UBlueberry <161545003+UBlueberry@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
 - type: guideEntry
   id: NewPlayer
   name: guide-entry-newplayer
+  priority: -3 # Frontier: 0<-3
   text: "/ServerInfo/Guidebook/NewPlayer/NewPlayer.xml"
   children:
   - Controls
   - CharacterCreation
+  - StartingGear # Frontier
 
 - type: guideEntry
   id: Controls
@@ -23,7 +18,7 @@
 - type: guideEntry
   id: Radio
   name: guide-entry-radio
-  text: "/ServerInfo/Guidebook/NewPlayer/Controls/Radio.xml" 
+  text: "/ServerInfo/Guidebook/NewPlayer/Controls/Radio.xml"
 
 - type: guideEntry
   id: CharacterCreation
@@ -31,7 +26,7 @@
   text: "/ServerInfo/Guidebook/NewPlayer/CharacterCreation.xml"
   children:
   - YourFirstCharacter
-  - Species 
+  - Species
 
 - type: guideEntry
   id: YourFirstCharacter

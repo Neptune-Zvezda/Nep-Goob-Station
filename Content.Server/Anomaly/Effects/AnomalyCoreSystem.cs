@@ -1,9 +1,3 @@
-// SPDX-FileCopyrightText: 2023 Ed <96445749+TheShuEd@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: MIT
-
 using Content.Server.Cargo.Systems;
 using Content.Shared.Anomaly.Components;
 using Robust.Shared.Timing;
@@ -24,6 +18,14 @@ public sealed class AnomalyCoreSystem : EntitySystem
 
     private void OnGetPrice(Entity<AnomalyCoreComponent> core, ref PriceCalculationEvent args)
     {
+        // Frontier: quick path
+        if (core.Comp.EndPrice == core.Comp.StartPrice)
+        {
+            args.Price = core.Comp.EndPrice;
+            return;
+        }
+        // End Frontier
+
         var timeLeft = core.Comp.DecayMoment - _gameTiming.CurTime;
         var lerp = timeLeft.TotalSeconds / core.Comp.TimeToDecay;
         lerp = Math.Clamp(lerp, 0, 1);

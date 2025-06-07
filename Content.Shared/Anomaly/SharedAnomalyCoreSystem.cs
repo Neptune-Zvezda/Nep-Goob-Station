@@ -1,12 +1,3 @@
-// SPDX-FileCopyrightText: 2023 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 ActiveMammmoth <140334666+ActiveMammmoth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 ActiveMammmoth <kmcsmooth@gmail.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 gus <august.eymann@gmail.com>
-// SPDX-FileCopyrightText: 2025 keronshb <54602815+keronshb@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using Content.Shared.Anomaly.Components;
 using Content.Shared.Construction.Components;
 using Content.Shared.Containers.ItemSlots;
@@ -15,6 +6,8 @@ using Content.Shared.Weapons.Melee.Components;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Timing;
+using Robust.Shared.Network; // Frontier
+using Content.Shared.Anomaly.Effects; // Frontier
 
 namespace Content.Shared.Anomaly;
 
@@ -26,6 +19,7 @@ public sealed class SharedAnomalyCoreSystem : EntitySystem
     [Dependency] private readonly IGameTiming _gameTiming = default!;
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
     [Dependency] private readonly ItemSlotsSystem _itemSlots = default!;
+    [Dependency] private readonly INetManager _net = default!; // Frontier
 
     public override void Initialize()
     {
@@ -118,4 +112,24 @@ public sealed class SharedAnomalyCoreSystem : EntitySystem
         component.IsDecayed = true;
         Dirty(uid, component);
     }
+
+    // Frontier: settable anomaly price
+    /// <summary>
+    ///  Sets the value of an anomaly core based on the number of points it earned.
+    /// </summary>
+    /// <param name="uid">The anomaly core entity</param>
+    /// <param name="component">The anomaly core component to set.</param>
+    /// <param name="pointsEarned">The number of points earned by the anomaly during its lifetime.</param>
+    [Access(typeof(SharedAnomalySystem), typeof(SharedInnerBodyAnomalySystem))]
+    public void SetValueFromPointsEarned(EntityUid uid, AnomalyCoreComponent component, int pointsEarned)
+    {
+        if (!_net.IsServer)
+            return;
+
+        int price = (int)double.Clamp((pointsEarned * component.PointPriceCoefficient), component.MinimumPrice, component.MaximumPrice);
+
+        component.StartPrice = price;
+        component.EndPrice = price;
+    }
+    // End Frontier: settable anomaly price
 }

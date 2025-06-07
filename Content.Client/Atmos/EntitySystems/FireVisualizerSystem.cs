@@ -1,13 +1,3 @@
-// SPDX-FileCopyrightText: 2022 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 TekuNut <13456422+TekuNut@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-// SPDX-FileCopyrightText: 2023 Visne <39844191+Visne@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aviu00 <93730715+Aviu00@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using Content.Client.Atmos.Components;
 using Content.Shared.Atmos;
 using Robust.Client.GameObjects;
@@ -26,7 +16,7 @@ public sealed class FireVisualizerSystem : VisualizerSystem<FireVisualsComponent
     {
         base.Initialize();
 
-        SubscribeLocalEvent<FireVisualsComponent, ComponentStartup>(OnComponentStartup); // Goob edit
+        SubscribeLocalEvent<FireVisualsComponent, ComponentInit>(OnComponentInit);
         SubscribeLocalEvent<FireVisualsComponent, ComponentShutdown>(OnShutdown);
     }
 
@@ -47,7 +37,7 @@ public sealed class FireVisualizerSystem : VisualizerSystem<FireVisualsComponent
         }
     }
 
-    private void OnComponentStartup(EntityUid uid, FireVisualsComponent component, ComponentStartup args) // Goob edit
+    private void OnComponentInit(EntityUid uid, FireVisualsComponent component, ComponentInit args)
     {
         if (!TryComp<SpriteComponent>(uid, out var sprite) || !TryComp(uid, out AppearanceComponent? appearance))
             return;

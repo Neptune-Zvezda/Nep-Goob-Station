@@ -1,15 +1,3 @@
-// SPDX-FileCopyrightText: 2022 Alex Evgrashin <aevgrashin@yandex.ru>
-// SPDX-FileCopyrightText: 2022 Alexander Evgrashin <evgrashin.adl@gmail.com>
-// SPDX-FileCopyrightText: 2022 Kara <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2022 mirrorcult <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2022 wrexbe <81056464+wrexbe@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 T-Stalker <43253663+DogZeroX@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: MIT
-
 using Content.Shared.Xenoarchaeology.XenoArtifacts;
 using Robust.Shared.Audio;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
@@ -70,7 +58,7 @@ public sealed partial class ArtifactComponent : Component
     /// to determine the monetary value of the artifact
     /// </summary>
     [DataField("priceMultiplier"), ViewVariables(VVAccess.ReadWrite)]
-    public float PriceMultiplier = 0.05f;
+    public float PriceMultiplier = 0.4f; // Frontier: 0.175 < 0.4
 
     /// <summary>
     /// The base amount of research points for each artifact node.
@@ -105,6 +93,18 @@ public sealed partial class ArtifactComponent : Component
     };
 
     [DataField("activateActionEntity")] public EntityUid? ActivateActionEntity;
+
+    /// <summary>
+    /// Frontier: When set to true, any newly visited nodes contribute no new points.
+    /// </summary>
+    [ViewVariables(VVAccess.ReadWrite)]
+    public bool RemoveGainedPoints = false;
+
+    /// <summary>
+    /// Frontier: Points being skipped (e.g. by triggering a node through spraying an artifact).
+    /// </summary>
+    [ViewVariables(VVAccess.ReadWrite)]
+    public int SkippedPoints;
 }
 
 /// <summary>

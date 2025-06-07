@@ -1,8 +1,3 @@
-# SPDX-FileCopyrightText: 2024 Tonk-GCR <190437025+Tonk-GCR@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
 - type: flavor
   id: basic
   flavorType: Base
@@ -32,3 +27,43 @@
   id: bees
   flavorType: Complex
   description: flavor-complex-bees
+
+- type: flavor
+  id: avocado
+  flavorType: Complex
+  description: flavor-complex-avocado
+
+- type: flavor
+  id: cucumber
+  flavorType: Complex
+  description: flavor-complex-cucumber
+
+- type: flavor
+  id: pear
+  flavorType: Complex
+  description: flavor-complex-pear
+
+- type: flavor
+  id: honeycomb
+  flavorType: Complex
+  description: flavor-complex-honeycomb
+
+- type: flavor
+  id: wassail
+  flavorType: Complex
+  description: flavor-complex-wassail
+  
+- type: flavor
+  id: finenoodles
+  flavorType: Complex
+  description: flavor-complex-fine-noodles
+
+- type: flavor
+  id: richbroth
+  flavorType: Complex
+  description: flavor-complex-rich-broth
+
+- type: flavor
+  id: tangy
+  flavorType: Complex
+  description: flavor-complex-tangy

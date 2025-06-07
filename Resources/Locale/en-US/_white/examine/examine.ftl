@@ -1,7 +1,6 @@
 ﻿# Poggers examine system
 
 examine-name = It's [bold]{$name}[/bold]!
-examine-name-selfaware = It's you!
 examine-can-see = Looking at {OBJECT($ent)}, you can see:
 examine-can-see-nothing = {CAPITALIZE(GENDER($ent))} is completely naked!
 
@@ -23,6 +22,7 @@ id-card-examine-full = - {CAPITALIZE(POSS-ADJ($wearer))} ID: [bold]{$nameAndJob}
 
 # Selfaware version
 
+examine-name-selfaware = This is you, [bold]{$name}[/bold]!
 examine-can-see-selfaware = Looking at yourself, you can see:
 examine-can-see-nothing-selfaware = You are completely naked!
 

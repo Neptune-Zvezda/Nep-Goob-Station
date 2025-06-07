@@ -1,13 +1,3 @@
-// SPDX-FileCopyrightText: 2023 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 deltanedas <@deltanedas:kde.org>
-// SPDX-FileCopyrightText: 2024 August Eymann <august.eymann@gmail.com>
-// SPDX-FileCopyrightText: 2024 Steve <marlumpy@gmail.com>
-// SPDX-FileCopyrightText: 2024 chromiumboy <50505512+chromiumboy@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 marc-pelletier <113944176+marc-pelletier@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using Content.Shared.RCD.Systems;
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
@@ -53,18 +43,6 @@ public sealed partial class RCDComponent : Component
     public RCDPrototype CachedPrototype { get; set; } = default!;
 
     /// <summary>
-    /// Indicates if a mirrored version of the construction prototype should be used (if available)
-    /// </summary>
-    [AutoNetworkedField, ViewVariables(VVAccess.ReadOnly)]
-    public bool UseMirrorPrototype = false;
-
-    /// <summary>
-    /// Indicates whether this is an RCD or an RPD
-    /// </summary>
-    [DataField, AutoNetworkedField]
-    public bool IsRpd { get; set; } = false;
-
-    /// <summary>
     /// The direction constructed entities will face upon spawning
     /// </summary>
     [DataField, AutoNetworkedField]
@@ -91,4 +69,18 @@ public sealed partial class RCDComponent : Component
     /// </remarks>
     [ViewVariables(VVAccess.ReadOnly)]
     public Transform ConstructionTransform { get; private set; } = default!;
+    
+    /// <summary>
+    /// Frontier - Shipyard RCD
+    /// A flag that limits RCD to the authorized ships.
+    /// </summary>
+    [DataField("isShipyardRCD"), AutoNetworkedField]
+    public bool IsShipyardRCD;
+    
+    /// <summary>
+    /// Frontier - Shipyard RCD
+    /// The uid to which this RCD is limited to be used on.
+    /// </summary>
+    [DataField("linkedShuttleUid"), AutoNetworkedField]
+    public EntityUid? LinkedShuttleUid = null;
 }

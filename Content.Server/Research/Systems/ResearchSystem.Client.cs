@@ -1,13 +1,6 @@
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 exincore <me@exin.xyz>
-// SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
+using System.Threading.Tasks;
 using Content.Server.Power.EntitySystems;
 using Content.Shared.Research.Components;
 
@@ -65,15 +58,17 @@ public sealed partial class ResearchSystem
 
     private void OnClientMapInit(EntityUid uid, ResearchClientComponent component, MapInitEvent args)
     {
-        var allServers = new List<Entity<ResearchServerComponent>>();
-        var query = AllEntityQuery<ResearchServerComponent>();
-        while (query.MoveNext(out var serverUid, out var serverComp))
+        var maybeGrid = Transform(uid).GridUid;
+        if (maybeGrid is { } grid)
         {
-            allServers.Add((serverUid, serverComp));
-        }
+            var servers = new HashSet<Entity<ResearchServerComponent>>();
+            _lookup.GetChildEntities(grid, servers);
 
-        if (allServers.Count > 0)
-            RegisterClient(uid, allServers[0], component, allServers[0]);
+            foreach (var server in servers)
+            {
+                RegisterClient(uid, server, component);
+            }
+        }
     }
 
     private void OnClientShutdown(EntityUid uid, ResearchClientComponent component, ComponentShutdown args)
@@ -93,9 +88,9 @@ public sealed partial class ResearchSystem
 
         TryGetClientServer(uid, out _, out var serverComponent, component);
 
-        var names = GetServerNames();
+        var names = GetNFServerNames(uid);
         var state = new ResearchClientBoundInterfaceState(names.Length, names,
-            GetServerIds(), serverComponent?.Id ?? -1);
+            GetNFServerIds(uid), serverComponent?.Id ?? -1);
 
         _uiSystem.SetUiState(uid, ResearchClientUiKey.Key, state);
     }

@@ -1,96 +1,3 @@
-// SPDX-FileCopyrightText: 2022 Moony <moonheart08@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Morber <14136326+Morb0@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Rane <60792108+Elijahrane@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Veritius <veritiusgaming@gmail.com>
-// SPDX-FileCopyrightText: 2022 wrexbe <81056464+wrexbe@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Flipp Syder <76629141+vulppine@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Moony <moony@hellomouse.net>
-// SPDX-FileCopyrightText: 2023 PrPleGoo <PrPleGoo@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Scribbles0 <91828755+Scribbles0@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 TemporalOroboros <TemporalOroboros@gmail.com>
-// SPDX-FileCopyrightText: 2023 Vordenburg <114301317+Vordenburg@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 moonheart08 <moonheart08@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 0x6273 <0x40@keemail.me>
-// SPDX-FileCopyrightText: 2024 12rabbits <53499656+12rabbits@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 AJCM-git <60196617+AJCM-git@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Aidenkrz <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2024 Alzore <140123969+Blackern5000@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 ArtisticRoomba <145879011+ArtisticRoomba@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 BombasterDS <115770678+BombasterDS@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Brandon Hu <103440971+Brandon-Huu@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 DieselMohawk <gavin.drinka@gmail.com>
-// SPDX-FileCopyrightText: 2024 Dimastra <65184747+Dimastra@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Dimastra <dimastra@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Ed <96445749+TheShuEd@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Emisse <99158783+Emisse@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Eoin Mcloughlin <helloworld@eoinrul.es>
-// SPDX-FileCopyrightText: 2024 Errant <35878406+Errant-4@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Firewatch <54725557+musicmanvr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Hannah Giovanna Dawson <karakkaraz@gmail.com>
-// SPDX-FileCopyrightText: 2024 IProduceWidgets <107586145+IProduceWidgets@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 JIPDawg <51352440+JIPDawg@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 JIPDawg <JIPDawg93@gmail.com>
-// SPDX-FileCopyrightText: 2024 JustCone <141039037+JustCone14@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Kara <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2024 Krunklehorn <42424291+Krunklehorn@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Mervill <mervills.email@gmail.com>
-// SPDX-FileCopyrightText: 2024 MisterMecky <mrmecky@hotmail.com>
-// SPDX-FileCopyrightText: 2024 Moomoobeef <62638182+Moomoobeef@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Mr. 27 <45323883+Dutch-VanDerLinde@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Mr. 27 <koolthunder019@gmail.com>
-// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 PJBot <pieterjan.briers+bot@gmail.com>
-// SPDX-FileCopyrightText: 2024 Partmedia <kevinz5000@gmail.com>
-// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers@gmail.com>
-// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2024 PoTeletubby <151896601+PoTeletubby@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 PopGamer46 <yt1popgamer@gmail.com>
-// SPDX-FileCopyrightText: 2024 PursuitInAshes <pursuitinashes@gmail.com>
-// SPDX-FileCopyrightText: 2024 QueerNB <176353696+QueerNB@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 RumiTiger <154005209+RumiTiger@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Saphire Lattice <lattice@saphi.re>
-// SPDX-FileCopyrightText: 2024 ShadowCommander <10494922+ShadowCommander@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 ShadowCommander <shadowjjt@gmail.com>
-// SPDX-FileCopyrightText: 2024 Simon <63975668+Simyon264@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 SlamBamActionman <83650252+SlamBamActionman@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Spessmann <156740760+Spessmann@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Tayrtahn <tayrtahn@gmail.com>
-// SPDX-FileCopyrightText: 2024 Thomas <87614336+Aeshus@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Unisol <1929445+Unisol@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Winkarst <74284083+Winkarst-cpu@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 beck-thompson <107373427+beck-thompson@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 coolboy911 <85909253+coolboy911@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 deltanedas <@deltanedas:kde.org>
-// SPDX-FileCopyrightText: 2024 eoineoineoin <github@eoinrul.es>
-// SPDX-FileCopyrightText: 2024 github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 lunarcomets <140772713+lunarcomets@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 lzk <124214523+lzk228@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 metalgearsloth <comedian_vs_clown@hotmail.com>
-// SPDX-FileCopyrightText: 2024 nikthechampiongr <32041239+nikthechampiongr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 osjarw <oskariwjarvinen@gmail.com>
-// SPDX-FileCopyrightText: 2024 saintmuntzer <47153094+saintmuntzer@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 slarticodefast <161409025+slarticodefast@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 stellar-novas <stellar_novas@riseup.net>
-// SPDX-FileCopyrightText: 2024 themias <89101928+themias@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 username <113782077+whateverusername0@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 whateverusername0 <whateveremail>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2025 BombasterDS <deniskaporoshok@gmail.com>
-// SPDX-FileCopyrightText: 2025 BombasterDS2 <shvalovdenis.workmail@gmail.com>
-// SPDX-FileCopyrightText: 2025 JORJ949 <159719201+JORJ949@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Milon <milonpl.git@proton.me>
-// SPDX-FileCopyrightText: 2025 SX_7 <sn1.test.preria.2002@gmail.com>
-// SPDX-FileCopyrightText: 2025 Theodore Lukin <66275205+pheenty@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using Content.Server.Access.Systems;
 using Content.Server.Humanoid;
 using Content.Server.IdentityManagement;
@@ -104,7 +11,6 @@ using Content.Shared.Clothing;
 using Content.Shared.DetailExaminable;
 using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Prototypes;
-using Content.Shared.NameIdentifier;
 using Content.Shared.PDA;
 using Content.Shared.Preferences;
 using Content.Shared.Preferences.Loadouts;
@@ -119,6 +25,14 @@ using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
+using Content.Server.Spawners.Components;
+using Content.Shared._NF.Bank.Components; // DeltaV
+using Content.Server._NF.Bank; // Frontier
+using Content.Server.Preferences.Managers; // Frontier
+using System.Linq;
+using Content.Shared.NameIdentifier; // Frontier
+using Content.Server._EinsteinEngines.Silicon.IPC;
+using Content.Shared.Radio.Components; // Goobstation
 
 namespace Content.Server.Station.Systems;
 
@@ -139,6 +53,11 @@ public sealed class StationSpawningSystem : SharedStationSpawningSystem
     [Dependency] private readonly PdaSystem _pdaSystem = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private readonly IDependencyCollection _dependencyCollection = default!; // Frontier
+    [Dependency] private readonly IServerPreferencesManager _preferences = default!; // Frontier
+    [Dependency] private readonly InternalEncryptionKeySpawner _internalEncryption = default!; // Goobstation
+
+    [Dependency] private readonly BankSystem _bank = default!; // Frontier
     private bool _randomizeCharacters;
 
     /// <inheritdoc/>
@@ -155,17 +74,21 @@ public sealed class StationSpawningSystem : SharedStationSpawningSystem
     /// <param name="job">The job to assign, if any.</param>
     /// <param name="profile">The character profile to use, if any.</param>
     /// <param name="stationSpawning">Resolve pattern, the station spawning component for the station.</param>
+    /// <param name="spawnPointType">Delta-V: Set desired spawn point type.</param>
+    /// <param name="session">Frontier: The session associated with the character, if any.</param>
     /// <returns>The resulting player character, if any.</returns>
     /// <exception cref="ArgumentException">Thrown when the given station is not a station.</exception>
     /// <remarks>
     /// This only spawns the character, and does none of the mind-related setup you'd need for it to be playable.
     /// </remarks>
-    public EntityUid? SpawnPlayerCharacterOnStation(EntityUid? station, ProtoId<JobPrototype>? job, HumanoidCharacterProfile? profile, StationSpawningComponent? stationSpawning = null)
+    public EntityUid? SpawnPlayerCharacterOnStation(EntityUid? station, ProtoId<JobPrototype>? job, HumanoidCharacterProfile? profile, StationSpawningComponent? stationSpawning = null, SpawnPointType spawnPointType = SpawnPointType.Unset, ICommonSession? session = null) // Frontier: add session
     {
         if (station != null && !Resolve(station.Value, ref stationSpawning))
             throw new ArgumentException("Tried to use a non-station entity as a station!", nameof(station));
 
-        var ev = new PlayerSpawningEvent(job, profile, station);
+        // Delta-V: Set desired spawn point type.
+        // Frontier: add session
+        var ev = new PlayerSpawningEvent(job, profile, station, spawnPointType, session);
 
         RaiseLocalEvent(ev);
         DebugTools.Assert(ev.SpawnResult is { Valid: true } or null);
@@ -185,13 +108,15 @@ public sealed class StationSpawningSystem : SharedStationSpawningSystem
     /// <param name="profile">Appearance profile to use for the character.</param>
     /// <param name="station">The station this player is being spawned on.</param>
     /// <param name="entity">The entity to use, if one already exists.</param>
+    /// <param name="session">Frontier: The session associated with the entity, if one exists.</param>
     /// <returns>The spawned entity</returns>
     public EntityUid SpawnPlayerMob(
         EntityCoordinates coordinates,
         ProtoId<JobPrototype>? job,
         HumanoidCharacterProfile? profile,
         EntityUid? station,
-        EntityUid? entity = null)
+        EntityUid? entity = null,
+        ICommonSession? session = null) // Frontier
     {
         _prototypeManager.TryIndex(job ?? string.Empty, out var prototype);
         RoleLoadout? loadout = null;
@@ -208,6 +133,7 @@ public sealed class StationSpawningSystem : SharedStationSpawningSystem
             {
                 loadout = new RoleLoadout(jobLoadout);
                 loadout.SetDefault(profile, _actors.GetSession(entity), _prototypeManager);
+                loadout.EnsureValid(profile!, session, _dependencyCollection); // Frontier - profile must not be null, but if it was, TryGetValue above should fail
             }
         }
 
@@ -226,15 +152,6 @@ public sealed class StationSpawningSystem : SharedStationSpawningSystem
 
             DoJobSpecials(job, jobEntity);
             _identity.QueueIdentityUpdate(jobEntity);
-            // #Goobstation - Borg Preferred Name
-            if (profile != null && (prototype.ID == "Borg" || prototype.ID == "StationAi"))
-            {
-                var name = profile.BorgName;
-                if ((TryComp<NameIdentifierComponent>(jobEntity, out var nameIdentifier)) && (prototype.ID !="StationAi"))
-                    name = $"{name} {nameIdentifier.FullIdentifier}";
-
-                _metaSystem.SetEntityName(jobEntity, name);
-            }
             return jobEntity;
         }
 
@@ -264,15 +181,109 @@ public sealed class StationSpawningSystem : SharedStationSpawningSystem
             profile = HumanoidCharacterProfile.RandomWithSpecies(speciesId);
         }
 
+
+
         if (loadout != null)
         {
-            EquipRoleLoadout(entity.Value, loadout, roleProto!);
-        }
+            /// Frontier: overwriting EquipRoleLoadout
+            //EquipRoleLoadout(entity.Value, loadout, roleProto!);
+            var initialBankBalance = profile!.BankBalance; //Frontier
+            var bankBalance = profile!.BankBalance; //Frontier
+            bool hasBalance = false; // Frontier
 
-        if (prototype?.StartingGear != null)
-        {
-            var startingGear = _prototypeManager.Index<StartingGearPrototype>(prototype.StartingGear);
-            EquipStartingGear(entity.Value, startingGear, raiseEvent: false);
+            // Note: since this is stored per character, we don't have a cached
+            //       reference for randomly generated characters.
+            PlayerPreferences? prefs = null;
+            if (session != null &&
+                _preferences.TryGetCachedPreferences(session.UserId, out prefs) &&
+                prefs.IndexOfCharacter(profile) != -1)
+            {
+                hasBalance = true;
+            }
+
+            // Order loadout selections by the order they appear on the prototype.
+            foreach (var group in loadout.SelectedLoadouts.OrderBy(x => roleProto!.Groups.FindIndex(e => e == x.Key)))
+            {
+                List<ProtoId<LoadoutPrototype>> equippedItems = new(); //Frontier - track purchased items (list: few items)
+                foreach (var items in group.Value)
+                {
+                    if (!_prototypeManager.TryIndex(items.Prototype, out var loadoutProto))
+                    {
+                        Log.Error($"Unable to find loadout prototype for {items.Prototype}");
+                        continue;
+                    }
+
+                    // Handle any extra data here.
+
+                    //Frontier - we handle bank stuff so we are wrapping each item spawn inside our own cached check.
+                    //If the user's preferences haven't been loaded, only give them free items or fallbacks.
+                    //This way, we will spawn every item we can afford in the order that they were originally sorted.
+                    if (loadoutProto.Price <= bankBalance && (loadoutProto.Price <= 0 || hasBalance))
+                    {
+                        bankBalance -= int.Max(0, loadoutProto.Price); // Treat negatives as zero.
+                        EquipStartingGear(entity.Value, loadoutProto, raiseEvent: false);
+                        equippedItems.Add(loadoutProto.ID);
+
+                        // Add support for IPC encryption keys from loadout headsets
+                        if (HasComp<EncryptionKeyHolderComponent>(entity.Value))
+                        {
+                            _internalEncryption.TryInsertEncryptionKey(entity.Value, loadoutProto); // Removed EntityManager
+                        }
+                    }
+                }
+
+                // If a character cannot afford their current job loadout, ensure they have fallback items for mandatory categories.
+                if (_prototypeManager.TryIndex(group.Key, out var groupPrototype) &&
+                    equippedItems.Count < groupPrototype.MinLimit)
+                {
+                    foreach (var fallback in groupPrototype.Fallbacks)
+                    {
+                        // Do not duplicate items in loadout
+                        if (equippedItems.Contains(fallback))
+                        {
+                            continue;
+                        }
+
+                        if (!_prototypeManager.TryIndex(fallback, out var loadoutProto))
+                        {
+                            Log.Error($"Unable to find loadout prototype for fallback {fallback}");
+                            continue;
+                        }
+
+                        // Validate effects against the current character.
+                        if (!loadout.IsValid(profile!, _actors.GetSession(entity!), fallback, _dependencyCollection, out var _))
+                        {
+                            continue;
+                        }
+
+                        EquipStartingGear(entity.Value, loadoutProto, raiseEvent: false);
+                        equippedItems.Add(fallback);
+
+                        // Add support for IPC encryption keys from loadout headsets
+                        if (HasComp<EncryptionKeyHolderComponent>(entity.Value))
+                        {
+                            _internalEncryption.TryInsertEncryptionKey(entity.Value, loadoutProto); // Removed EntityManager
+                        }
+
+                        // Minimum number of items equipped, no need to load more prototypes.
+                        if (equippedItems.Count >= groupPrototype.MinLimit)
+                            break;
+                    }
+                }
+            }
+
+            // Frontier: do not re-equip roleLoadout, make sure we equip job startingGear,
+            // and deduct loadout costs from a bank account if we have one.
+            if (prototype?.StartingGear is not null)
+                EquipStartingGear(entity.Value, prototype.StartingGear, raiseEvent: false);
+
+            var bankComp = EnsureComp<BankAccountComponent>(entity.Value);
+
+            if (hasBalance)
+            {
+                _bank.TryBankWithdraw(session!, prefs!, profile!, initialBankBalance - bankBalance, out var newBalance);
+            }
+            /// End Frontier: overwriting EquipRoleLoadout
         }
 
         var gearEquippedEv = new StartingGearEquippedEvent(entity.Value);
@@ -280,11 +291,20 @@ public sealed class StationSpawningSystem : SharedStationSpawningSystem
 
         if (profile != null)
         {
+            // Frontier: allow pseudonyms
+            var name = loadout != null && !string.IsNullOrEmpty(loadout.EntityName) ? loadout.EntityName : profile.Name;
+            // Janky hack for borgs
+            if (TryComp<NameIdentifierComponent>(entity.Value, out var identifier))
+            {
+                // Append our name identifier (why have a pseudonym for a role that has a complete name identifier group?)
+                name = $"{name} {identifier.FullIdentifier}";
+            }
+            // End Frontier
             if (prototype != null)
-                SetPdaAndIdCardData(entity.Value, profile.Name, prototype, station);
+                SetPdaAndIdCardData(entity.Value, name, prototype, station); // Frontier: profile.Name<name
 
             _humanoidSystem.LoadProfile(entity.Value, profile);
-            _metaSystem.SetEntityName(entity.Value, profile.Name);
+            _metaSystem.SetEntityName(entity.Value, name); // Frontier: profile.Name<name
             if (profile.FlavorText != "" && _configurationManager.GetCVar(CCVars.FlavorText))
             {
                 AddComp<DetailExaminableComponent>(entity.Value).Content = profile.FlavorText;
@@ -374,11 +394,21 @@ public sealed class PlayerSpawningEvent : EntityEventArgs
     /// The target station, if any.
     /// </summary>
     public readonly EntityUid? Station;
+    /// <summary>
+    /// Delta-V: Desired SpawnPointType, if any.
+    /// </summary>
+    public readonly SpawnPointType DesiredSpawnPointType;
+    /// <summary>
+    /// Frontier: The session associated with the entity, if any.
+    /// </summary>
+    public readonly ICommonSession? Session;
 
-    public PlayerSpawningEvent(ProtoId<JobPrototype>? job, HumanoidCharacterProfile? humanoidCharacterProfile, EntityUid? station)
+    public PlayerSpawningEvent(ProtoId<JobPrototype>? job, HumanoidCharacterProfile? humanoidCharacterProfile, EntityUid? station, SpawnPointType spawnPointType = SpawnPointType.Unset, ICommonSession? session = null) // Frontier: added session
     {
         Job = job;
         HumanoidCharacterProfile = humanoidCharacterProfile;
         Station = station;
+        DesiredSpawnPointType = spawnPointType;
+        Session = session; // Frontier
     }
 }

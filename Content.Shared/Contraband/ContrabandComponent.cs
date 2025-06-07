@@ -1,14 +1,5 @@
-// SPDX-FileCopyrightText: 2024 EmoGarbage404 <retron404@gmail.com>
-// SPDX-FileCopyrightText: 2024 Kara <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Plykiya <58439124+Plykiya@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 John <35928781+sporkyz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 slarticodefast <161409025+slarticodefast@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
-using Content.Shared.Roles;
+﻿using Content.Shared.Roles;
+using Content.Shared.Store; // Frontier: turn-in features
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 
@@ -17,7 +8,7 @@ namespace Content.Shared.Contraband;
 /// <summary>
 /// This is used for marking entities that are considered 'contraband' IC and showing it clearly in examine.
 /// </summary>
-[RegisterComponent, NetworkedComponent, Access(typeof(ContrabandSystem)), AutoGenerateComponentState]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState] // Frontier: removed Access(typeof(ContrabandSystem))
 public sealed partial class ContrabandComponent : Component
 {
     /// <summary>
@@ -43,4 +34,27 @@ public sealed partial class ContrabandComponent : Component
     [DataField]
     [AutoNetworkedField]
     public HashSet<ProtoId<JobPrototype>> AllowedJobs = new();
+
+    // Frontier: turn-in features
+    /// <summary>
+    ///     The set of currency types this item can be redeemed 
+    /// </summary>
+    [DataField]
+    [AutoNetworkedField]
+    public Dictionary<ProtoId<CurrencyPrototype>, int> TurnInValues = new();
+
+    /// <summary>
+    ///     If true, will not show contraband status on examine.  Useful for chameleon shoes and other camouflaged items.
+    /// </summary>
+    [DataField]
+    [AutoNetworkedField]
+    public bool HideValues = false;
+
+    /// <summary>
+    ///     If true, will not show the carry status ("avoid carrying this around"/"in the clear").
+    /// </summary>
+    [DataField]
+    [AutoNetworkedField]
+    public bool HideCarryStatus = false;
+    // End Frontier: turn-in extensions
 }

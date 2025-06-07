@@ -1,13 +1,4 @@
-// SPDX-FileCopyrightText: 2024 Simon <63975668+Simyon264@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 slarticodefast <161409025+slarticodefast@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Myra <vasilis@pikachu.systems>
-// SPDX-FileCopyrightText: 2025 PJB3005 <pieterjan.briers+git@gmail.com>
-// SPDX-FileCopyrightText: 2025 Winkarst <74284083+Winkarst-cpu@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
-using Content.Shared.Roles;
+﻿using Content.Shared.Roles;
 using Robust.Shared.Configuration;
 
 namespace Content.Shared.CCVar;
@@ -30,7 +21,7 @@ public sealed partial class CCVars
     ///     Controls the duration of the lobby timer in seconds. Defaults to 2 minutes and 30 seconds.
     /// </summary>
     public static readonly CVarDef<int>
-        GameLobbyDuration = CVarDef.Create("game.lobbyduration", 150, CVar.ARCHIVE);
+        GameLobbyDuration = CVarDef.Create("game.lobbyduration", 180, CVar.ARCHIVE); // Frontier: 150<180
 
     /// <summary>
     ///     Controls if players can latejoin at all.
@@ -42,7 +33,7 @@ public sealed partial class CCVars
     ///     Controls the default game preset.
     /// </summary>
     public static readonly CVarDef<string>
-        GameLobbyDefaultPreset = CVarDef.Create("game.defaultpreset", "secret", CVar.ARCHIVE);
+        GameLobbyDefaultPreset = CVarDef.Create("game.defaultpreset", "nfpirate", CVar.ARCHIVE); // Frontier: secret<nfpirate
 
     /// <summary>
     ///     Controls if the game can force a different preset if the current preset's criteria are not met.
@@ -63,12 +54,6 @@ public sealed partial class CCVars
         GameLobbyEnableWin = CVarDef.Create("game.enablewin", true, CVar.ARCHIVE);
 
     /// <summary>
-    ///     Controls if round-end window shows whether the objective was completed or not.
-    /// </summary>
-    public static readonly CVarDef<bool>
-        GameShowGreentext = CVarDef.Create("game.showgreentext", true, CVar.ARCHIVE | CVar.SERVERONLY);
-
-    /// <summary>
     ///     Controls the maximum number of character slots a player is allowed to have.
     /// </summary>
     public static readonly CVarDef<int>
@@ -78,7 +63,7 @@ public sealed partial class CCVars
     ///     Controls the game map prototype to load. SS14 stores these prototypes in Prototypes/Maps.
     /// </summary>
     public static readonly CVarDef<string>
-        GameMap = CVarDef.Create("game.map", string.Empty, CVar.SERVERONLY);
+        GameMap = CVarDef.Create("game.map", "Frontier", CVar.SERVERONLY); // Frontier: string.Empty<Frontier
 
     /// <summary>
     ///     Controls whether to use world persistence or not.
@@ -110,13 +95,13 @@ public sealed partial class CCVars
     ///     Is map rotation enabled?
     /// </summary>
     public static readonly CVarDef<bool>
-        GameMapRotation = CVarDef.Create("game.map_rotation", true, CVar.SERVERONLY);
+        GameMapRotation = CVarDef.Create("game.map_rotation", false, CVar.SERVERONLY); // Frontier: false
 
     /// <summary>
     ///     If roles should be restricted based on time.
     /// </summary>
     public static readonly CVarDef<bool>
-        GameRoleTimers = CVarDef.Create("game.role_timers", false, CVar.SERVER | CVar.REPLICATED);
+        GameRoleTimers = CVarDef.Create("game.role_timers", true, CVar.SERVER | CVar.REPLICATED);
 
     /// <summary>
     ///     Override default role requirements using a <see cref="JobRequirementOverridePrototype"/>
@@ -128,7 +113,7 @@ public sealed partial class CCVars
     ///     If roles should be restricted based on whether or not they are whitelisted.
     /// </summary>
     public static readonly CVarDef<bool>
-        GameRoleWhitelist = CVarDef.Create("game.role_whitelist", false, CVar.SERVER | CVar.REPLICATED);
+        GameRoleWhitelist = CVarDef.Create("game.role_whitelist", true, CVar.SERVER | CVar.REPLICATED);
 
     /// <summary>
     ///     Whether or not disconnecting inside of a cryopod should remove the character or just store them until they reconnect.
@@ -406,4 +391,19 @@ public sealed partial class CCVars
     /// </summary>
     public static readonly CVarDef<bool> GameHostnameInTitlebar =
         CVarDef.Create("game.hostname_in_titlebar", true, CVar.SERVER | CVar.REPLICATED);
+
+    /// Mono Changes Below
+
+    /// <summary>
+    ///     Enable dynamic adjustment of role timers and whitelists based on player count.
+    /// </summary>
+    public static readonly CVarDef<bool> DynamicRolesEnabled =
+         CVarDef.Create("game.dynamic_roles.enabled", true, CVar.SERVERONLY | CVar.ARCHIVE);
+
+    /// <summary>
+    ///     The player count at or below which role timers and whitelists are disabled if dynamic roles are enabled.
+    ///     Set to 0 to always disable timers and whitelists when dynamic roles are enabled.
+    /// </summary>
+    public static readonly CVarDef<int> DynamicRolesPlayerThreshold =
+         CVarDef.Create("game.dynamic_roles.player_threshold", 5, CVar.SERVERONLY | CVar.ARCHIVE);
 }

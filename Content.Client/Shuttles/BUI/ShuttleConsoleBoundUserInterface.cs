@@ -1,22 +1,15 @@
-// SPDX-FileCopyrightText: 2022 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 TemporalOroboros <TemporalOroboros@gmail.com>
-// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using Content.Client.Shuttles.UI;
 using Content.Shared.Shuttles.BUIStates;
 using Content.Shared.Shuttles.Events;
 using JetBrains.Annotations;
 using Robust.Client.UserInterface;
+using Robust.Shared.Log;
 using Robust.Shared.Map;
 
 namespace Content.Client.Shuttles.BUI;
 
 [UsedImplicitly]
-public sealed class ShuttleConsoleBoundUserInterface : BoundUserInterface
+public sealed partial class ShuttleConsoleBoundUserInterface : BoundUserInterface // Frontier: added partial
 {
     [ViewVariables]
     private ShuttleConsoleWindow? _window;
@@ -34,6 +27,20 @@ public sealed class ShuttleConsoleBoundUserInterface : BoundUserInterface
         _window.RequestBeaconFTL += OnFTLBeaconRequest;
         _window.DockRequest += OnDockRequest;
         _window.UndockRequest += OnUndockRequest;
+        _window.UndockAllRequest += OnUndockAllRequest;
+        _window.ToggleFTLLockRequest += OnToggleFTLLockRequest;
+        NfOpen(); // Frontier
+    }
+
+    private void OnToggleFTLLockRequest(List<NetEntity> dockEntities, bool enabled)
+    {
+        Logger.DebugS("shuttle", $"ShuttleConsoleBUI: Sending FTL lock request with enabled={enabled}, entities={string.Join(", ", dockEntities)}");
+        SendMessage(new ToggleFTLLockRequestMessage(dockEntities, enabled));
+    }
+
+    private void OnUndockAllRequest(List<NetEntity> dockEntities)
+    {
+        SendMessage(new UndockAllRequestMessage(dockEntities));
     }
 
     private void OnUndockRequest(NetEntity entity)

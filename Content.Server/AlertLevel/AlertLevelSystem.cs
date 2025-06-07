@@ -1,33 +1,14 @@
-// SPDX-FileCopyrightText: 2022 Flipp Syder <76629141+vulppine@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Júlio César Ueti <52474532+Mirino97@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Kevin Zheng <kevinz5000@gmail.com>
-// SPDX-FileCopyrightText: 2022 Moony <moonheart08@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Morbo <14136326+Morb0@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Veritius <veritiusgaming@gmail.com>
-// SPDX-FileCopyrightText: 2022 keronshb <54602815+keronshb@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 metalgearsloth <comedian_vs_clown@hotmail.com>
-// SPDX-FileCopyrightText: 2023 Daniil Sikinami <60344369+VigersRay@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Moony <moony@hellomouse.net>
-// SPDX-FileCopyrightText: 2023 Pieter-Jan Briers <pieterjan.briers@gmail.com>
-// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 moonheart08 <moonheart08@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 0x6273 <0x40@keemail.me>
-// SPDX-FileCopyrightText: 2024 Mr. 27 <45323883+Dutch-VanDerLinde@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using System.Linq;
 using Content.Server.Chat.Systems;
 using Content.Server.Station.Systems;
 using Content.Shared.CCVar;
+using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Configuration;
 using Robust.Shared.Prototypes;
+using Content.Server.GameTicking; // Frontier
+using Robust.Shared.Player; // Frontier
+using Content.Server._NF.SectorServices; // Frontier
 
 namespace Content.Server.AlertLevel;
 
@@ -38,13 +19,16 @@ public sealed class AlertLevelSystem : EntitySystem
     [Dependency] private readonly ChatSystem _chatSystem = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly StationSystem _stationSystem = default!;
+    [Dependency] private readonly GameTicker _ticker = default!; // Frontier
+    [Dependency] private readonly SectorServiceSystem _sectorService = default!;
 
     // Until stations are a prototype, this is how it's going to have to be.
     public const string DefaultAlertLevelSet = "stationAlerts";
 
     public override void Initialize()
     {
-        SubscribeLocalEvent<StationInitializedEvent>(OnStationInitialize);
+        //SubscribeLocalEvent<StationInitializedEvent>(OnStationInitialize); // Frontier: sector-wide services
+        SubscribeLocalEvent<AlertLevelComponent, ComponentInit>(OnInit); // Frontier: sector-wide services
         SubscribeLocalEvent<PrototypesReloadedEventArgs>(OnPrototypeReload);
     }
 
@@ -68,6 +52,8 @@ public sealed class AlertLevelSystem : EntitySystem
         }
     }
 
+    // Frontier: sector-wide services
+    /*
     private void OnStationInitialize(StationInitializedEvent args)
     {
         if (!TryComp<AlertLevelComponent>(args.Station, out var alertLevelComponent))
@@ -88,6 +74,26 @@ public sealed class AlertLevelSystem : EntitySystem
 
         SetLevel(args.Station, defaultLevel, false, false, true);
     }
+    */
+
+    private void OnInit(EntityUid uid, AlertLevelComponent comp, ComponentInit args)
+    {
+        if (!_prototypeManager.TryIndex(comp.AlertLevelPrototype, out AlertLevelPrototype? alerts))
+        {
+            return;
+        }
+
+        comp.AlertLevels = alerts;
+
+        var defaultLevel = comp.AlertLevels.DefaultLevel;
+        if (string.IsNullOrEmpty(defaultLevel))
+        {
+            defaultLevel = comp.AlertLevels.Levels.Keys.First();
+        }
+
+        SetLevel(uid, defaultLevel, false, false, true);
+    }
+    // End Frontier
 
     private void OnPrototypeReload(PrototypesReloadedEventArgs args)
     {
@@ -120,20 +126,30 @@ public sealed class AlertLevelSystem : EntitySystem
 
     public string GetLevel(EntityUid station, AlertLevelComponent? alert = null)
     {
-        if (!Resolve(station, ref alert))
-        {
+        // Frontier: sector-wide alarms
+        if (!TryComp(_sectorService.GetServiceEntity(), out alert))
             return string.Empty;
-        }
+
+        // if (!Resolve(station, ref alert))
+        // {
+        //     return string.Empty;
+        // }
+        // End Frontier
 
         return alert.CurrentLevel;
     }
 
     public float GetAlertLevelDelay(EntityUid station, AlertLevelComponent? alert = null)
     {
-        if (!Resolve(station, ref alert))
-        {
+        // Frontier: sector-wide alarms
+        if (!TryComp(_sectorService.GetServiceEntity(), out alert))
             return float.NaN;
-        }
+
+        // if (!Resolve(station, ref alert))
+        // {
+        //     return float.NaN;
+        // }
+        // End Frontier
 
         return alert.CurrentDelay;
     }
@@ -150,8 +166,13 @@ public sealed class AlertLevelSystem : EntitySystem
     public void SetLevel(EntityUid station, string level, bool playSound, bool announce, bool force = false,
         bool locked = false, MetaDataComponent? dataComponent = null, AlertLevelComponent? component = null)
     {
-        if (!Resolve(station, ref component, ref dataComponent)
-            || component.AlertLevels == null
+        // Frontier: sector-wide alerts
+        EntityUid sectorEnt = _sectorService.GetServiceEntity();
+        if (!TryComp<AlertLevelComponent>(sectorEnt, out component))
+            return;
+        // End Frontier
+
+        if (component.AlertLevels == null // Frontier: remove component, resolve station to data component later
             || !component.AlertLevels.Levels.TryGetValue(level, out var detail)
             || component.CurrentLevel == level)
         {
@@ -174,7 +195,7 @@ public sealed class AlertLevelSystem : EntitySystem
         component.CurrentLevel = level;
         component.IsLevelLocked = locked;
 
-        var stationName = dataComponent.EntityName;
+        //var stationName = dataComponent.EntityName; // Frontier: remove station name
 
         var name = level.ToLower();
 
@@ -199,7 +220,9 @@ public sealed class AlertLevelSystem : EntitySystem
         {
             if (detail.Sound != null)
             {
-                var filter = _stationSystem.GetInOwningStation(station);
+                //var filter = _stationSystem.GetInOwningStation(station); // Frontier: global alerts
+                var filter = Filter.Empty(); // Frontier
+                filter.AddInMap(_ticker.DefaultMap, EntityManager); // Frontier
                 _audio.PlayGlobal(detail.Sound, filter, true, detail.Sound.Params);
             }
             else
@@ -208,13 +231,14 @@ public sealed class AlertLevelSystem : EntitySystem
             }
         }
 
-        if (announce)
+        if (announce && Resolve(station, ref dataComponent)) // Frontier: add Resolve for dataComponent
         {
+            var stationName = dataComponent.EntityName; // Frontier: moved down
             _chatSystem.DispatchStationAnnouncement(station, announcementFull, playDefaultSound: playDefault,
                 colorOverride: detail.Color, sender: stationName);
         }
 
-        RaiseLocalEvent(new AlertLevelChangedEvent(station, level));
+        RaiseLocalEvent(new AlertLevelChangedEvent(EntityUid.Invalid, level)); // Frontier: pass invalid, we have no station
     }
 }
 

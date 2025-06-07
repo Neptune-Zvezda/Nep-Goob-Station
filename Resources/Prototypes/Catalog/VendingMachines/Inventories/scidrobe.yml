@@ -1,18 +1,3 @@
-# SPDX-FileCopyrightText: 2022 Andreas Kämper <andreas@kaemper.tech>
-# SPDX-FileCopyrightText: 2022 Fishfish458 <47410468+Fishfish458@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2022 fishfish458 <fishfish458>
-# SPDX-FileCopyrightText: 2022 mirrorcult <lunarautomaton6@gmail.com>
-# SPDX-FileCopyrightText: 2023 Emisse <99158783+Emisse@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 Flareguy <78941145+Flareguy@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 Kilk <142771861+TheKilk@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 OctoRocket <88291550+OctoRocket@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 mhamster <81412348+mhamsterr@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 SX_7 <sn1.test.preria.2002@gmail.com>
-# SPDX-FileCopyrightText: 2025 Ted Lukin <66275205+pheenty@users.noreply.github.com>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
 - type: vendingMachineInventory
   id: SciDrobeInventory
   startingInventory:
@@ -20,6 +5,7 @@
     ClothingBackpackSatchelScience: 3
     ClothingBackpackDuffelScience: 3
     ClothingBackpackMessengerScience: 3 # Frontier
+    ClothingOuterEVASuitScientist: 3 # Frontier
     ClothingUniformJumpsuitScientist: 3
     ClothingUniformJumpskirtScientist: 3
     ClothingUniformJumpsuitScientistFormal: 3
@@ -31,5 +17,35 @@
     ClothingOuterWinterSci: 2
     ClothingNeckScarfStripedPurple: 3
     ClothingShoesBootsWinterSci: 2
+    # Frontier
+    ClothingHeadHatHoodBioScientist: 1
+    ClothingOuterBioScientist: 1
+# RoboDrobe:
+    ClothingOuterCoatRobo: 2
+    ClothingUniformJumpsuitRoboticist: 2
+    ClothingUniformJumpskirtRoboticist: 2
+    ClothingShoesColorBlack: 2
+    ClothingHandsGlovesFingerless: 2
+    ClothingHeadHatCorpsoft: 2
+    ClothingHeadBandSkull: 2
+    ClothingHeadsetRobotics: 2
+    ClothingOuterWinterRobo: 2
+    ClothingShoesBootsWinterRobo: 2 #Delta V: Add departmental winter boots
+# Senior:
+    ClothingUniformJumpsuitSeniorResearcher: 1
+    ClothingUniformJumpskirtSeniorResearcher: 1
+    ClothingOuterCoatLabSeniorResearcher: 1
+# RD:
+    ClothingUniformJumpsuitResearchDirector: 1
+    ClothingUniformJumpskirtResearchDirector: 1
+    ClothingOuterWinterRD: 1
+    ClothingShoesBootsWinterRD: 1
+    ClothingHeadHatBeretRND: 1
+    ClothingNeckMantleRD: 1
+    ClothingNeckCloakRd: 1
+    ClothingHandsGlovesColorPurple: 1
+    ClothingHeadsetAltScience: 1
+    RubberStampRd: 1
+    # End Frontier
   contrabandInventory:
     ToyFigurineResearchDirector: 1

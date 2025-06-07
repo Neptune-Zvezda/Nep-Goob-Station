@@ -1,39 +1,7 @@
-# SPDX-FileCopyrightText: 2019 Swept <49448379+SweptWasTaken@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2020 AJCM-git <60196617+AJCM-git@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2020 Exp <theexp111@gmail.com>
-# SPDX-FileCopyrightText: 2020 Víctor Aguilera Puerto <6766154+Zumorica@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2021 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2021 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2021 Paul <ritter.paul1+git@googlemail.com>
-# SPDX-FileCopyrightText: 2021 Paul Ritter <ritter.paul1@googlemail.com>
-# SPDX-FileCopyrightText: 2021 SETh lafuente <cetaciocascarudo@gmail.com>
-# SPDX-FileCopyrightText: 2021 SethLafuente <84478872+SethLafuente@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2021 Swept <sweptwastaken@protonmail.com>
-# SPDX-FileCopyrightText: 2021 Vera Aguilera Puerto <gradientvera@outlook.com>
-# SPDX-FileCopyrightText: 2021 Vera Aguilera Puerto <zddm@outlook.es>
-# SPDX-FileCopyrightText: 2022 Chris V <HoofedEar@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2022 Rane <60792108+Elijahrane@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2022 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2022 metalgearsloth <comedian_vs_clown@hotmail.com>
-# SPDX-FileCopyrightText: 2023 Jeff <velcroboy333@hotmail.com>
-# SPDX-FileCopyrightText: 2023 Moony <moony@hellomouse.net>
-# SPDX-FileCopyrightText: 2023 RiceMar1244 <138547931+RiceMar1244@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 Velcroboy <107660393+IamVelcroboy@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 brainfood1183 <113240905+brainfood1183@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 liltenhead <104418166+liltenhead@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Ed <96445749+TheShuEd@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Minty642 <42335609+Minty642@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 PECK <74548962+PeccNeck@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Tayrtahn <tayrtahn@gmail.com>
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
 - type: latheRecipe
   id: SheetSteel
   result: SheetSteel1
-  completetime: 0
+  completetime: 0.06 # Frontier: 0<0.06 (~2/30)
   materials:
     RawIron: 100
     Coal: 30
@@ -49,7 +17,7 @@
 - type: latheRecipe
   id: SheetGlass1
   result: SheetGlass1
-  completetime: 0
+  completetime: 0.06 # Frontier: 0<0.06 (~2/30)
   materials:
     RawQuartz: 100
 
@@ -64,7 +32,7 @@
 - type: latheRecipe
   id: SheetRGlass
   result: SheetRGlass1
-  completetime: 0
+  completetime: 0.06 # Frontier: 0<0.06 (~2/30)
   materials:
     Glass: 100
     Steel: 50
@@ -73,7 +41,7 @@
 - type: latheRecipe
   id: SheetRGlassRaw
   result: SheetRGlass1
-  completetime: 0
+  completetime: 0.06 # Frontier: 0<0.06 (~2/30)
   materials:
     RawQuartz: 100
     RawIron: 50
@@ -91,7 +59,7 @@
 - type: latheRecipe
   id: SheetPGlass1
   result: SheetPGlass1
-  completetime: 0
+  completetime: 0.06 # Frontier: 0<0.06 (~2/30)
   materials:
     RawQuartz: 100
     RawPlasma: 100
@@ -107,7 +75,7 @@
 - type: latheRecipe
   id: SheetRPGlass1
   result: SheetRPGlass1
-  completetime: 0
+  completetime: 0.06 # Frontier: 0<0.06 (~2/30)
   materials:
     RawQuartz: 100
     RawPlasma: 100
@@ -127,7 +95,7 @@
 - type: latheRecipe
   id: SheetPlasma1
   result: SheetPlasma1
-  completetime: 0
+  completetime: 0.06 # Frontier: 0<0.06 (~2/30)
   materials:
     RawPlasma: 100
 
@@ -141,7 +109,7 @@
 - type: latheRecipe
   id: SheetPlasteel1
   result: SheetPlasteel1
-  completetime: 0
+  completetime: 0.06 # Frontier: 0<0.06 (~2/30)
   materials:
     RawPlasma: 100
     RawIron: 200 #Twice as durable as steel, Twice the material cost
@@ -150,7 +118,7 @@
 - type: latheRecipe
   id: SheetPlasteel30
   result: SheetPlasteel
-  completetime: 5
+  completetime: 2 # Frontier: 5<2
   materials:
     RawPlasma: 3000
     RawIron: 6000 #Twice as durable as steel, Twice the material cost
@@ -166,7 +134,7 @@
 - type: latheRecipe
   id: SheetUGlass1
   result: SheetUGlass1
-  completetime: 0
+  completetime: 0.06 # Frontier: 0<0.06 (~2/30)
   materials:
     RawUranium: 100
     RawQuartz: 100
@@ -182,7 +150,7 @@
 - type: latheRecipe
   id: SheetRUGlass1
   result: SheetRUGlass1
-  completetime: 0
+  completetime: 0.06 # Frontier: 0<0.06 (~2/30)
   materials:
     RawUranium: 100
     RawQuartz: 100
@@ -223,28 +191,28 @@
 - type: latheRecipe
   id: MaterialDiamond
   result: MaterialDiamond1
-  completetime: 0
+  completetime: 0.06 # Frontier: 0<0.06 (~2/30)
   materials:
     RawDiamond: 100
 
 - type: latheRecipe
   id: SheetUranium1
   result: SheetUranium1
-  completetime: 0
+  completetime: 0.06 # Frontier: 0<0.06 (~2/30)
   materials:
     RawUranium: 100
 
 - type: latheRecipe
   id: IngotGold1
   result: IngotGold1
-  completetime: 0
+  completetime: 0.06 # Frontier: 0<0.06 (~2/30)
   materials:
     RawGold: 100
 
 - type: latheRecipe
   id: IngotSilver1
   result: IngotSilver1
-  completetime: 0
+  completetime: 0.06 # Frontier: 0<0.06 (~2/30)
   materials:
     RawSilver: 100
 
@@ -252,14 +220,14 @@
   id: SheetPlastic
   result: SheetPlastic1
   applyMaterialDiscount: false
-  completetime: 0
+  completetime: 0.06 # Frontier: 0<0.06 (~2/30)
   materials:
     Plastic: 100
 
 - type: latheRecipe
   id: MaterialBananium1
   result: MaterialBananium1
-  completetime: 0
+  completetime: 0.06 # Frontier: 0<0.06 (~2/30)
   materials:
     RawBananium: 100
 
@@ -273,6 +241,8 @@
 - type: latheRecipe
   id: SheetPaper
   result: SheetPaper1
+  categories: [Materials] # Frontier
   completetime: 1
+  applyMaterialDiscount: false # Frontier
   materials:
     Wood: 50

@@ -1,20 +1,3 @@
-// SPDX-FileCopyrightText: 2023 Ben <50087092+benev0@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 BenOwnby <ownbyb@appstate.edu>
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 metalgearsloth <comedian_vs_clown@hotmail.com>
-// SPDX-FileCopyrightText: 2024 Jezithyr <jezithyr@gmail.com>
-// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2024 TGRCDev <tgrc@tgrc.dev>
-// SPDX-FileCopyrightText: 2024 Tayrtahn <tayrtahn@gmail.com>
-// SPDX-FileCopyrightText: 2024 Tornado Tech <54727692+Tornado-Technology@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Verm <32827189+Vermidia@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 TemporalOroboros <TemporalOroboros@gmail.com>
-// SPDX-FileCopyrightText: 2025 gus <august.eymann@gmail.com>
-// SPDX-FileCopyrightText: 2025 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using Content.Shared.Administration.Logs;
 using Content.Shared.Examine;
 using Content.Shared.Construction.Components;
@@ -26,6 +9,7 @@ using Content.Shared.Interaction;
 using Content.Shared.Movement.Pulling.Components;
 using Content.Shared.Movement.Pulling.Systems;
 using Content.Shared.Popups;
+using Content.Shared.Tools;
 using Content.Shared.Tools.Components;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
@@ -99,7 +83,7 @@ public sealed partial class AnchorableSystem : EntitySystem
         // Log unanchor attempt (server only)
         _adminLogger.Add(LogType.Anchor, LogImpact.Low, $"{ToPrettyString(userUid):user} is trying to unanchor {ToPrettyString(uid):entity} from {transform.Coordinates:targetlocation}");
 
-        _tool.UseTool(usingUid, userUid, uid, anchorable.Delay, usingTool.Qualities, new TryUnanchorCompletedEvent());
+        _tool.UseTool(usingUid, userUid, uid, anchorable.CurrentDelay, usingTool.Qualities, new TryUnanchorCompletedEvent()); // Frontier: Delay<CurrentDelay
     }
 
     private void OnInteractUsing(EntityUid uid, AnchorableComponent anchorable, InteractUsingEvent args)
@@ -161,7 +145,7 @@ public sealed partial class AnchorableSystem : EntitySystem
 
         if (TryComp<PullableComponent>(uid, out var pullable) && pullable.Puller != null)
         {
-            _pulling.TryStopPull(uid, pullable, ignoreGrab: true); // goobstation edit
+            _pulling.TryStopPull(uid, pullable);
         }
 
         // TODO: Anchoring snaps rn anyway!
@@ -256,7 +240,7 @@ public sealed partial class AnchorableSystem : EntitySystem
             return;
         }
 
-        _tool.UseTool(usingUid, userUid, uid, anchorable.Delay, usingTool.Qualities, new TryAnchorCompletedEvent());
+        _tool.UseTool(usingUid, userUid, uid, anchorable.CurrentDelay, usingTool.Qualities, new TryAnchorCompletedEvent()); // Frontier: Delay<CurrentDelay
     }
 
     private bool Valid(
@@ -288,7 +272,7 @@ public sealed partial class AnchorableSystem : EntitySystem
         else
             RaiseLocalEvent(uid, (UnanchorAttemptEvent) attempt);
 
-        anchorable.Delay += attempt.Delay;
+        anchorable.CurrentDelay = anchorable.Delay + attempt.Delay; // Frontier: assign delay from base value
 
         return !attempt.Cancelled;
     }

@@ -1,9 +1,4 @@
-// SPDX-FileCopyrightText: 2024 Simon <63975668+Simyon264@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
-using Robust.Shared.Configuration;
+﻿using Robust.Shared.Configuration;
 
 namespace Content.Shared.CCVar;
 
@@ -24,7 +19,7 @@ public sealed partial class CCVars
     ///     Disabled: Cloning has full biomass cost and reclaimer can reclaim corpses with souls. (Playtested and balanced for MRP+).
     /// </summary>
     public static readonly CVarDef<bool> BiomassEasyMode =
-        CVarDef.Create("biomass.easy_mode", false, CVar.SERVERONLY);
+        CVarDef.Create("biomass.easy_mode", true, CVar.SERVERONLY);
 
     /// <summary>
     ///     A scale factor applied to a grid's bounds when trying to find a spot to randomly generate an anomaly.
@@ -60,7 +55,7 @@ public sealed partial class CCVars
     ///     This is useful to free some space automatically. Auto-deletion runs only on server boot.
     /// </summary>
     public static readonly CVarDef<int> ResourceUploadingStoreDeletionDays =
-        CVarDef.Create("netres.store_deletion_days", 30, CVar.SERVER | CVar.SERVERONLY);
+        CVarDef.Create("netres.store_deletion_days", 0, CVar.SERVER | CVar.SERVERONLY); // Frontier 30<0
 
     /// <summary>
     ///     If a server update restart is pending, the delay after the last player leaves before we actually restart. In seconds.
@@ -86,13 +81,13 @@ public sealed partial class CCVars
     ///     The maximum amount of time the entity GC can process, in ms.
     /// </summary>
     public static readonly CVarDef<int> GCMaximumTimeMs =
-        CVarDef.Create("entgc.maximum_time_ms", 5, CVar.SERVERONLY);
+        CVarDef.Create("entgc.maximum_time_ms", 10, CVar.SERVERONLY); // Frontier: 5<10
 
     public static readonly CVarDef<bool> GatewayGeneratorEnabled =
-        CVarDef.Create("gateway.generator_enabled", true);
+        CVarDef.Create("gateway.generator_enabled", false); // Frontier: false
 
     public static readonly CVarDef<string> TippyEntity =
-        CVarDef.Create("tippy.entity", "Tippy", CVar.SERVER | CVar.REPLICATED);
+        CVarDef.Create("tippy.entity", "NFTippy", CVar.SERVER | CVar.REPLICATED); // Frontier: Tippy<NFTippy
 
     /// <summary>
     ///     The number of seconds that must pass for a single entity to be able to point at something again.

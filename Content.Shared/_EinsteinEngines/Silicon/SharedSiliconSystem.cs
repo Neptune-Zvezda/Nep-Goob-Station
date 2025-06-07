@@ -1,8 +1,3 @@
-// SPDX-FileCopyrightText: 2024 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using Content.Shared._EinsteinEngines.Silicon.Components;
 using Content.Shared.Alert;
 using Content.Shared.Bed.Sleep;
@@ -26,12 +21,12 @@ public sealed class SharedSiliconChargeSystem : EntitySystem
         SubscribeLocalEvent<SiliconComponent, ComponentInit>(OnSiliconInit);
         SubscribeLocalEvent<SiliconComponent, SiliconChargeStateUpdateEvent>(OnSiliconChargeStateUpdate);
         SubscribeLocalEvent<SiliconComponent, RefreshMovementSpeedModifiersEvent>(OnRefreshMovespeed);
-        SubscribeLocalEvent<SiliconComponent, ItemSlotInsertAttemptEvent>(OnItemSlotInsertAttempt);
-        SubscribeLocalEvent<SiliconComponent, ItemSlotEjectAttemptEvent>(OnItemSlotEjectAttempt);
-        SubscribeLocalEvent<SiliconComponent, TryingToSleepEvent>(OnTryingToSleep);    
+        /*SubscribeLocalEvent<SiliconComponent, ItemSlotInsertAttemptEvent>(OnItemSlotInsertAttempt); Monolith IPC rework
+        SubscribeLocalEvent<SiliconComponent, ItemSlotEjectAttemptEvent>(OnItemSlotEjectAttempt);*/
+        SubscribeLocalEvent<SiliconComponent, TryingToSleepEvent>(OnTryingToSleep);
     }
-
-    private void OnItemSlotInsertAttempt(EntityUid uid, SiliconComponent component, ref ItemSlotInsertAttemptEvent args)
+/*
+    private void OnItemSlotInsertAttempt(EntityUid uid, SiliconComponent component, ref ItemSlotInsertAttemptEvent args) Monolith IPC rework
     {
         if (args.Cancelled
             || !TryComp<PowerCellSlotComponent>(uid, out var cellSlotComp)
@@ -52,7 +47,7 @@ public sealed class SharedSiliconChargeSystem : EntitySystem
 
         args.Cancelled = true;
     }
-
+*/
     private void OnSiliconInit(EntityUid uid, SiliconComponent component, ComponentInit args)
     {
         if (!component.BatteryPowered)
@@ -71,7 +66,7 @@ public sealed class SharedSiliconChargeSystem : EntitySystem
         if (!component.BatteryPowered)
             return;
 
-        var closest = 0;
+        var closest = 1; //Monolith IPC rework
 
         foreach (var state in component.SpeedModifierThresholds)
             if (component.ChargeState >= state.Key && state.Key > closest)

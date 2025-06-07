@@ -1,17 +1,6 @@
-# SPDX-FileCopyrightText: 2023 Ed <96445749+TheShuEd@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 ElectroJr <leonsfriedrich@gmail.com>
-# SPDX-FileCopyrightText: 2023 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 faint <46868845+ficcialfaint@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Aidenkrz <aiden@djkraz.com>
-# SPDX-FileCopyrightText: 2024 Lamrr <96937466+Lamrr@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
 - type: entity
   name: candle
-  parent: BaseItem
+  parent: [BaseItem, RecyclableItemOrganicTiny] # Frontier: added RecyclableItemOrganicTiny
   id: Candle
   description: A thin wick threaded through fat.
   components:
@@ -44,7 +33,7 @@
       alwaysCombustible: true
       canExtinguish: true
       firestacksOnIgnite: 3.0
-      firestackFade: -0.01
+      firestackFade: -0.001 # Frontier -0.01<-0.001 
       damage:
         types:
           Heat: 0.1
@@ -66,7 +55,7 @@
       thresholds:
       - trigger:
           !type:DamageTrigger
-          damage: 100
+          damage: 1000 # Frontier 100<1000 
         behaviors:
         - !type:DoActsBehavior
           acts: [ "Destruction" ]
@@ -182,7 +171,7 @@
       thresholds:
       - trigger:
           !type:DamageTrigger
-          damage: 60
+          damage: 550 # Frontier 60<550 
         behaviors:
         - !type:SpawnEntitiesBehavior
         - !type:DoActsBehavior

@@ -1,118 +1,3 @@
-// SPDX-FileCopyrightText: 2021 E F R <602406+Efruit@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2021 Paul Ritter <ritter.paul1@googlemail.com>
-// SPDX-FileCopyrightText: 2021 T <tomeno@lulzsec.co.uk>
-// SPDX-FileCopyrightText: 2021 Tomeno <Tomeno@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 20kdc <asdd2808@gmail.com>
-// SPDX-FileCopyrightText: 2022 Kara D <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2022 Moony <moonheart08@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Veritius <veritiusgaming@gmail.com>
-// SPDX-FileCopyrightText: 2022 Visne <39844191+Visne@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 mirrorcult <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2022 wrexbe <81056464+wrexbe@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 LankLTE <135308300+LankLTE@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 0x6273 <0x40@keemail.me>
-// SPDX-FileCopyrightText: 2024 Aiden <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2024 Alex Pavlenko <diraven@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Alice "Arimah" Heurlin <30327355+arimah@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Alzore <140123969+Blackern5000@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Boaz1111 <149967078+Boaz1111@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Brandon Hu <103440971+Brandon-Huu@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 CaasGit <87243814+CaasGit@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Chief-Engineer <119664036+Chief-Engineer@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Cojoke <83733158+Cojoke-dot@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 DrSmugleaf <10968691+DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Ed <96445749+TheShuEd@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Emisse <99158783+Emisse@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 EmoGarbage404 <retron404@gmail.com>
-// SPDX-FileCopyrightText: 2024 Eoin Mcloughlin <helloworld@eoinrul.es>
-// SPDX-FileCopyrightText: 2024 Errant <35878406+Errant-4@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Flareguy <78941145+Flareguy@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Ghagliiarghii <68826635+Ghagliiarghii@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 HS <81934438+HolySSSS@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Hrosts <35345601+Hrosts@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 IProduceWidgets <107586145+IProduceWidgets@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Ian <ignaz.k@live.de>
-// SPDX-FileCopyrightText: 2024 Ilya246 <57039557+Ilya246@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Joel Zimmerman <JoelZimmerman@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 JustCone <141039037+JustCone14@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Kara <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2024 Killerqu00 <47712032+Killerqu00@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Ko4ergaPunk <62609550+Ko4ergaPunk@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Kukutis96513 <146854220+Kukutis96513@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 LordCarve <27449516+LordCarve@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Lye <128915833+Lyroth001@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 MerrytheManokit <167581110+MerrytheManokit@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Mervill <mervills.email@gmail.com>
-// SPDX-FileCopyrightText: 2024 MilenVolf <63782763+MilenVolf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Mr. 27 <45323883+Dutch-VanDerLinde@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 MureixloI <132683811+MureixloI@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Myzumi <34660019+Myzumi@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 NakataRin <45946146+NakataRin@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 OrangeMoronage9622 <whyteterry0092@gmail.com>
-// SPDX-FileCopyrightText: 2024 PJBot <pieterjan.briers+bot@gmail.com>
-// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2024 Plykiya <58439124+Plykiya@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Preston Smith <92108534+thetolbean@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Psychpsyo <60073468+Psychpsyo@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Redfire1331 <125223432+Redfire1331@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Repo <47093363+Titian3@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 RiceMar1244 <138547931+RiceMar1244@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Rouge2t7 <81053047+Sarahon@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 ShadowCommander <10494922+ShadowCommander@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Simon <63975668+Simyon264@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 SlamBamActionman <83650252+SlamBamActionman@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Stalen <33173619+stalengd@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 TakoDragon <69509841+BackeTako@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Tayrtahn <tayrtahn@gmail.com>
-// SPDX-FileCopyrightText: 2024 Thomas <87614336+Aeshus@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Truoizys <153248924+Truoizys@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 TsjipTsjip <19798667+TsjipTsjip@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Ubaser <134914314+UbaserB@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Unkn0wn_Gh0st <shadowstalkermll@gmail.com>
-// SPDX-FileCopyrightText: 2024 Vasilis <vasilis@pikachu.systems>
-// SPDX-FileCopyrightText: 2024 Vigers Ray <60344369+VigersRay@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Whatstone <166147148+whatston3@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Whatstone <whatston3@gmail.com>
-// SPDX-FileCopyrightText: 2024 beck-thompson <107373427+beck-thompson@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 deathride58 <deathride58@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 deltanedas <@deltanedas:kde.org>
-// SPDX-FileCopyrightText: 2024 dffdff2423 <57052305+dffdff2423@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 dffdff2423 <dffdff2423@gmail.com>
-// SPDX-FileCopyrightText: 2024 eoineoineoin <github@eoinrul.es>
-// SPDX-FileCopyrightText: 2024 foboscheshir <156405958+foboscheshir@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 lzk <124214523+lzk228@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 metalgearsloth <comedian_vs_clown@hotmail.com>
-// SPDX-FileCopyrightText: 2024 neutrino <67447925+neutrino-laser@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 nikthechampiongr <32041239+nikthechampiongr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 osjarw <62134478+osjarw@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 plykiya <plykiya@protonmail.com>
-// SPDX-FileCopyrightText: 2024 redfire1331 <Redfire1331@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 saintmuntzer <47153094+saintmuntzer@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 shamp <140359015+shampunj@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 slarticodefast <161409025+slarticodefast@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 sleepyyapril <123355664+sleepyyapril@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 strO0pwafel <153459934+strO0pwafel@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 stroopwafel <j.o.luijkx@student.tudelft.nl>
-// SPDX-FileCopyrightText: 2024 themias <89101928+themias@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 to4no_fix <156101927+chavonadelal@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 voidnull000 <18663194+voidnull000@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Арт <123451459+JustArt1m@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Misandry <mary@thughunt.ing>
-// SPDX-FileCopyrightText: 2025 Pieter-Jan Briers <pieterjan.briers@gmail.com>
-// SPDX-FileCopyrightText: 2025 SX_7 <sn1.test.preria.2002@gmail.com>
-// SPDX-FileCopyrightText: 2025 Winkarst <74284083+Winkarst-cpu@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 gus <august.eymann@gmail.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -120,11 +5,11 @@ using System.Text.Json;
 using System.Text.Json.Nodes;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using Content.Goobstation.Common.CCVar;
 using Content.Server.Administration.Managers;
 using Content.Server.Afk;
 using Content.Server.Database;
 using Content.Server.Discord;
+using Content.Server.Discord.DiscordLink;
 using Content.Server.GameTicking;
 using Content.Server.Players.RateLimiting;
 using Content.Server.Preferences.Managers;
@@ -161,6 +46,7 @@ namespace Content.Server.Administration.Systems
         [Dependency] private readonly IServerDbManager _dbManager = default!;
         [Dependency] private readonly PlayerRateLimitManager _rateLimit = default!;
         [Dependency] private readonly IServerPreferencesManager _preferencesManager = default!;
+        [Dependency] private readonly DiscordChatLink _discordChatLink = default!;
 
         [GeneratedRegex(@"^https://(?:(?:canary|ptb)\.)?discord\.com/api/webhooks/(\d+)/((?!.*/).*)$")]
         private static partial Regex DiscordRegex();
@@ -396,6 +282,18 @@ namespace Content.Server.Administration.Systems
                 var discordMessage = GenerateAHelpMessage(messageParams);
                 queue.Enqueue(discordMessage);
             }
+
+            // Send to Discord chat link (thread-based integration)
+            // Fire and forget - don't block the main thread
+            _ = Task.Run(async () =>
+            {
+                var lookup = await _playerLocator.LookupIdAsync(session.UserId);
+                var playerName = lookup?.Username ?? "Unknown";
+                var roundId = _gameTicker.RoundId;
+                var characterName = _minds.GetCharacterName(session.UserId);
+                var discordMessage = $"{session.Name} {message}";
+                _discordChatLink.SendAhelpMessage(session.UserId, playerName, "System", discordMessage, true, roundId, characterName);
+            });
         }
 
         private void OnGameRunLevelChanged(GameRunLevelChangedEvent args)
@@ -751,20 +649,14 @@ namespace Content.Server.Administration.Systems
         public void OnWebhookBwoinkTextMessage(BwoinkTextMessage message, ServerApi.BwoinkActionBody body)
         {
             // Note for forks:
-            AdminData webhookAdminData = new();
+            // Create admin data with Adminhelp flag so Discord messages are treated as admin messages
+            AdminData webhookAdminData = new()
+            {
+                Flags = AdminFlags.Adminhelp
+            };
 
-            var bwoinkParams = new BwoinkParams(
-                message,
-                SystemUserId,
-                webhookAdminData,
-                body.Username,
-                null,
-                body.UserOnly,
-                body.WebhookUpdate,
-                true,
-                body.RoleName,
-                body.RoleColor);
-            OnBwoinkInternal(bwoinkParams);
+            // TODO: fix args
+            OnBwoinkInternal(message, SystemUserId, webhookAdminData, body.Username, null, body.UserOnly, body.WebhookUpdate, true);
         }
 
         protected override void OnBwoinkTextMessage(BwoinkTextMessage message, EntitySessionEventArgs eventArgs)
@@ -788,79 +680,80 @@ namespace Content.Server.Administration.Systems
             if (_rateLimit.CountAction(eventArgs.SenderSession, RateLimitKey) != RateLimitStatus.Allowed)
                 return;
 
-            var bwoinkParams = new BwoinkParams(message,
-                eventArgs.SenderSession.UserId,
-                senderAdmin,
-                eventArgs.SenderSession.Name,
-                eventArgs.SenderSession.Channel,
-                false,
-                true,
-                false);
-            OnBwoinkInternal(bwoinkParams);
+            OnBwoinkInternal(message, eventArgs.SenderSession.UserId, senderAdmin, eventArgs.SenderSession.Name, eventArgs.SenderSession.Channel, false, true, false);
         }
 
         /// <summary>
         /// Sends a bwoink. Common to both internal messages (sent via the ahelp or admin interface) and webhook messages (sent through the webhook, e.g. via Discord)
         /// </summary>
-        /// <param name="bwoinkParams">The parameters of the message being sent.</param>
-        private void OnBwoinkInternal(BwoinkParams bwoinkParams)
+        /// <param name="message">The message being sent.</param>
+        /// <param name="senderId">The network GUID of the person sending the message.</param>
+        /// <param name="senderAdmin">The admin privileges of the person sending the message.</param>
+        /// <param name="senderName">The name of the person sending the message.</param>
+        /// <param name="senderChannel">The channel to send a message to, e.g. in case of failure to send</param>
+        /// <param name="sendWebhook">If true, message should be sent off through the webhook if possible</param>
+        /// <param name="fromWebhook">Message originated from a webhook (e.g. Discord)</param>
+        private void OnBwoinkInternal(BwoinkTextMessage message, NetUserId senderId, AdminData? senderAdmin, string senderName, INetChannel? senderChannel, bool userOnly, bool sendWebhook, bool fromWebhook)
         {
-            _activeConversations[bwoinkParams.Message.UserId] = DateTime.Now;
+            _activeConversations[message.UserId] = DateTime.Now;
 
-            var escapedText = FormattedMessage.EscapeText(bwoinkParams.Message.Text);
-            var adminColor = _config.GetCVar(GoobCVars.AdminBwoinkColor);
-            var adminPrefix = "";
-            var bwoinkText = $"{bwoinkParams.SenderName}";
+            var escapedText = FormattedMessage.EscapeText(message.Text);
+
+            string bwoinkText;
+            string adminPrefix = "";
 
             //Getting an administrator position
-            if (_config.GetCVar(CCVars.AhelpAdminPrefix))
+            if (_config.GetCVar(CCVars.AhelpAdminPrefix) && senderAdmin is not null && senderAdmin.Title is not null)
             {
-                if (bwoinkParams.SenderAdmin is not null && bwoinkParams.SenderAdmin.Title is not null)
-                    adminPrefix = $"[bold]\\[{bwoinkParams.SenderAdmin.Title}\\][/bold] ";
-
-                if (_config.GetCVar(GoobCVars.UseDiscordRoleName) && bwoinkParams.RoleName is not null)
-                    adminPrefix = $"[bold]\\[{bwoinkParams.RoleName}\\][/bold] ";
+                adminPrefix = $"[bold]\\[{senderAdmin.Title}\\][/bold] ";
             }
 
-            // If role color is enabled and exists, use it, otherwise use the discord reply color
-            if (_config.GetCVar(GoobCVars.DiscordReplyColor) != string.Empty && bwoinkParams.FromWebhook)
-                adminColor = _config.GetCVar(GoobCVars.DiscordReplyColor);
-
-            if (_config.GetCVar(GoobCVars.UseDiscordRoleColor) && bwoinkParams.RoleColor is not null)
-                adminColor = bwoinkParams.RoleColor;
-
-            if (!bwoinkParams.FromWebhook
-                && _config.GetCVar(GoobCVars.UseAdminOOCColorInBwoinks)
-                && bwoinkParams.SenderAdmin is not null)
+            if (senderAdmin is not null &&
+                senderAdmin.Flags ==
+                AdminFlags.Adminhelp) // Mentor. Not full admin. That's why it's colored differently.
             {
-                var prefs = _preferencesManager.GetPreferences(bwoinkParams.SenderId);
-                adminColor = prefs.AdminOOCColor.ToHex();
+                bwoinkText = $"[color=purple]{adminPrefix}{senderName}[/color]";
+            }
+            else if (fromWebhook || senderAdmin is not null && senderAdmin.HasFlag(AdminFlags.Adminhelp)) // Frontier: anything sent via webhooks are from an admin.
+            {
+                // For Discord messages, use the senderName as-is since it already contains formatting
+                if (fromWebhook)
+                {
+                    bwoinkText = $"{adminPrefix}{senderName}";
+                }
+                else
+                {
+                    // Get the admin's OOC color from preferences if available
+                    string colorHex = "#FF0000"; // Default red color
+                    if (senderAdmin is not null)
+                    {
+                        var prefs = _preferencesManager.GetPreferences(senderId);
+                        if (prefs != null)
+                        {
+                            colorHex = prefs.AdminOOCColor.ToHex();
+                        }
+                    }
+                    bwoinkText = $"[color={colorHex}]{adminPrefix}{senderName}[/color]";
+                }
+            }
+            else
+            {
+                bwoinkText = $"{senderName}";
             }
 
-            if (bwoinkParams.SenderAdmin is not null)
-            {
-                if (bwoinkParams.SenderAdmin.Flags ==
-                    AdminFlags.Adminhelp) // Mentor. Not full admin. That's why it's colored differently.
-                    bwoinkText = $"[color=purple]{adminPrefix}{bwoinkParams.SenderName}[/color]";
-                else if (bwoinkParams.FromWebhook || bwoinkParams.SenderAdmin.HasFlag(AdminFlags.Adminhelp)) // Frontier: anything sent via webhooks are from an admin.
-                    bwoinkText = $"[color={adminColor}]{adminPrefix}{bwoinkParams.SenderName}[/color]";
-            }
+            bwoinkText = $"{(fromWebhook ? Loc.GetString("bwoink-message-discord") : "")}{(message.AdminOnly ? Loc.GetString("bwoink-message-admin-only") : !message.PlaySound ? Loc.GetString("bwoink-message-silent") : "")} {bwoinkText}: {escapedText}";
 
-            if (bwoinkParams.FromWebhook)
-                bwoinkText = $"{_config.GetCVar(GoobCVars.DiscordReplyPrefix)}{bwoinkText}";
-
-            bwoinkText = $"{(bwoinkParams.Message.AdminOnly ? Loc.GetString("bwoink-message-admin-only") : !bwoinkParams.Message.PlaySound ? Loc.GetString("bwoink-message-silent") : "")} {bwoinkText}: {escapedText}";
-
+            var senderAHelpAdmin = senderAdmin?.HasFlag(AdminFlags.Adminhelp) ?? false;
             // If it's not an admin / admin chooses to keep the sound and message is not an admin only message, then play it.
-            var playSound = (bwoinkParams.SenderAdmin == null || bwoinkParams.Message.PlaySound) && !bwoinkParams.Message.AdminOnly;
-            var msg = new BwoinkTextMessage(bwoinkParams.Message.UserId, bwoinkParams.SenderId, bwoinkText, playSound: playSound, adminOnly: bwoinkParams.Message.AdminOnly);
+            var playSound = (!senderAHelpAdmin || message.PlaySound) && !message.AdminOnly;
+            var msg = new BwoinkTextMessage(message.UserId, senderId, bwoinkText, playSound: playSound, adminOnly: message.AdminOnly);
 
             LogBwoink(msg);
 
             var admins = GetTargetAdmins();
 
             // Notify all admins
-            if (!bwoinkParams.UserOnly)
+            if (!userOnly)
             {
                 foreach (var channel in admins)
                 {
@@ -870,13 +763,13 @@ namespace Content.Server.Administration.Systems
 
             string adminPrefixWebhook = "";
 
-            if (_config.GetCVar(CCVars.AhelpAdminPrefixWebhook) && bwoinkParams.SenderAdmin is not null && bwoinkParams.SenderAdmin.Title is not null)
+            if (_config.GetCVar(CCVars.AhelpAdminPrefixWebhook) && senderAdmin is not null && senderAdmin.Title is not null)
             {
-                adminPrefixWebhook = $"[bold]\\[{bwoinkParams.SenderAdmin.Title}\\][/bold] ";
+                adminPrefixWebhook = $"[bold]\\[{senderAdmin.Title}\\][/bold] ";
             }
 
             // Notify player
-            if (_playerManager.TryGetSessionById(bwoinkParams.Message.UserId, out var session) && !bwoinkParams.Message.AdminOnly)
+            if (_playerManager.TryGetSessionById(message.UserId, out var session) && !message.AdminOnly)
             {
                 if (!admins.Contains(session.Channel))
                 {
@@ -885,22 +778,28 @@ namespace Content.Server.Administration.Systems
                     {
                         string overrideMsgText;
                         // Doing the same thing as above, but with the override name. Theres probably a better way to do this.
-                        if (bwoinkParams.SenderAdmin is not null &&
-                            bwoinkParams.SenderAdmin.Flags ==
+                        if (senderAdmin is not null &&
+                            senderAdmin.Flags ==
                             AdminFlags.Adminhelp) // Mentor. Not full admin. That's why it's colored differently.
+                        {
                             overrideMsgText = $"[color=purple]{adminPrefixWebhook}{_overrideClientName}[/color]";
-                        else if (bwoinkParams.SenderAdmin is not null && bwoinkParams.SenderAdmin.HasFlag(AdminFlags.Adminhelp))
+                        }
+                        else if (senderAdmin is not null && senderAdmin.HasFlag(AdminFlags.Adminhelp))
+                        {
                             overrideMsgText = $"[color=red]{adminPrefixWebhook}{_overrideClientName}[/color]";
+                        }
                         else
-                            overrideMsgText = $"{bwoinkParams.SenderName}"; // Not an admin, name is not overridden.
+                        {
+                            overrideMsgText = $"{senderName}"; // Not an admin, name is not overridden.
+                        }
 
-                        if (bwoinkParams.FromWebhook)
-                            overrideMsgText = $"{_config.GetCVar(GoobCVars.DiscordReplyPrefix)}{overrideMsgText}";
+                        if (fromWebhook)
+                            overrideMsgText = $"(DC) {overrideMsgText}";
 
-                        overrideMsgText = $"{(bwoinkParams.Message.PlaySound ? "" : "(S) ")}{overrideMsgText}: {escapedText}";
+                        overrideMsgText = $"{(message.PlaySound ? "" : "(S) ")}{overrideMsgText}: {escapedText}";
 
-                        RaiseNetworkEvent(new BwoinkTextMessage(bwoinkParams.Message.UserId,
-                                bwoinkParams.SenderId,
+                        RaiseNetworkEvent(new BwoinkTextMessage(message.UserId,
+                                senderId,
                                 overrideMsgText,
                                 playSound: playSound),
                             session.Channel);
@@ -911,13 +810,13 @@ namespace Content.Server.Administration.Systems
             }
 
             var sendsWebhook = _webhookUrl != string.Empty;
-            if (sendsWebhook && bwoinkParams.SendWebhook)
+            if (sendsWebhook && sendWebhook)
             {
                 if (!_messageQueues.ContainsKey(msg.UserId))
                     _messageQueues[msg.UserId] = new Queue<DiscordRelayedData>();
 
-                var str = bwoinkParams.Message.Text;
-                var unameLength = bwoinkParams.SenderName.Length;
+                var str = message.Text;
+                var unameLength = senderName.Length;
 
                 if (unameLength + str.Length + _maxAdditionalChars > DescriptionMax)
                 {
@@ -926,31 +825,45 @@ namespace Content.Server.Administration.Systems
 
                 var nonAfkAdmins = GetNonAfkAdmins();
                 var messageParams = new AHelpMessageParams(
-                    bwoinkParams.SenderName,
+                    senderName,
                     str,
-                    bwoinkParams.SenderId != bwoinkParams.Message.UserId,
+                    senderId != message.UserId,
                     _gameTicker.RoundDuration().ToString("hh\\:mm\\:ss"),
                     _gameTicker.RunLevel,
                     playedSound: playSound,
-                    isDiscord: bwoinkParams.FromWebhook,
-                    adminOnly: bwoinkParams.Message.AdminOnly,
+                    isDiscord: fromWebhook,
+                    adminOnly: message.AdminOnly,
                     noReceivers: nonAfkAdmins.Count == 0
                 );
                 _messageQueues[msg.UserId].Enqueue(GenerateAHelpMessage(messageParams));
+            }
+
+            // Send to Discord chat link (thread-based integration)
+            if (sendWebhook && !fromWebhook)
+            {
+                // Fire and forget - don't block the main thread
+                _ = Task.Run(async () =>
+                {
+                    var lookup = await _playerLocator.LookupIdAsync(message.UserId);
+                    var playerName = lookup?.Username ?? "Unknown";
+                    var roundId = _gameTicker.RoundId;
+                    var characterName = _minds.GetCharacterName(message.UserId);
+                    _discordChatLink.SendAhelpMessage(message.UserId, playerName, senderName, message.Text, message.AdminOnly, roundId, characterName);
+                });
             }
 
             if (admins.Count != 0 || sendsWebhook)
                 return;
 
             // No admin online, let the player know
-            if (bwoinkParams.SenderChannel != null)
+            if (senderChannel != null)
             {
                 var systemText = Loc.GetString("bwoink-system-starmute-message-no-other-users");
-                var starMuteMsg = new BwoinkTextMessage(bwoinkParams.Message.UserId, SystemUserId, systemText);
-                RaiseNetworkEvent(starMuteMsg, bwoinkParams.SenderChannel);
+                var starMuteMsg = new BwoinkTextMessage(message.UserId, SystemUserId, systemText);
+                RaiseNetworkEvent(starMuteMsg, senderChannel);
             }
         }
-        // End Frontier:
+        // End Frontier: webhook text messages
 
         private IList<INetChannel> GetNonAfkAdmins()
         {
@@ -971,7 +884,6 @@ namespace Content.Server.Administration.Systems
 
         private DiscordRelayedData GenerateAHelpMessage(AHelpMessageParams parameters)
         {
-            var config = IoCManager.Resolve<IConfigurationManager>();
             var stringbuilder = new StringBuilder();
 
             if (parameters.Icon != null)
@@ -987,10 +899,8 @@ namespace Content.Server.Administration.Systems
                 stringbuilder.Append($" **{parameters.RoundTime}**");
             if (!parameters.PlayedSound)
                 stringbuilder.Append($" **{(parameters.AdminOnly ? Loc.GetString("bwoink-message-admin-only") : Loc.GetString("bwoink-message-silent"))}**");
-
             if (parameters.IsDiscord) // Frontier - Discord Indicator
-                stringbuilder.Append($" **{config.GetCVar(GoobCVars.DiscordReplyPrefix)}**");
-
+                stringbuilder.Append($" **{Loc.GetString("bwoink-message-discord")}**"); // Frontier - Discord Indicator
             if (parameters.Icon == null)
                 stringbuilder.Append($" **{parameters.Username}:** ");
             else
@@ -1065,8 +975,8 @@ namespace Content.Server.Administration.Systems
             string roundTime,
             GameRunLevel roundState,
             bool playedSound,
-            bool adminOnly = false,
             bool isDiscord = false, // Frontier
+            bool adminOnly = false,
             bool noReceivers = false,
             string? icon = null)
         {
@@ -1080,44 +990,6 @@ namespace Content.Server.Administration.Systems
             AdminOnly = adminOnly;
             NoReceivers = noReceivers;
             Icon = icon;
-        }
-    }
-
-    public sealed class BwoinkParams
-    {
-        public SharedBwoinkSystem.BwoinkTextMessage Message { get; set; }
-        public NetUserId SenderId { get; set; }
-        public AdminData? SenderAdmin { get; set; }
-        public string SenderName { get; set; }
-        public INetChannel? SenderChannel { get; set; }
-        public bool UserOnly { get; set; }
-        public bool SendWebhook { get; set; }
-        public bool FromWebhook { get; set; }
-        public string? RoleName { get; set; }
-        public string? RoleColor { get; set; }
-
-        public BwoinkParams(
-            SharedBwoinkSystem.BwoinkTextMessage message,
-            NetUserId senderId,
-            AdminData? senderAdmin,
-            string senderName,
-            INetChannel? senderChannel,
-            bool userOnly,
-            bool sendWebhook,
-            bool fromWebhook,
-            string? roleName = null,
-            string? roleColor = null)
-        {
-            Message = message;
-            SenderId = senderId;
-            SenderAdmin = senderAdmin;
-            SenderName = senderName;
-            SenderChannel = senderChannel;
-            UserOnly = userOnly;
-            SendWebhook = sendWebhook;
-            FromWebhook = fromWebhook;
-            RoleName = roleName;
-            RoleColor = roleColor;
         }
     }
 

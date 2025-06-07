@@ -1,11 +1,6 @@
-// SPDX-FileCopyrightText: 2024 0x6273 <0x40@keemail.me>
-// SPDX-FileCopyrightText: 2024 Arendian <137322659+Arendian@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 LankLTE <135308300+LankLTE@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: MIT
-
+using Content.Server.Cargo.Components;
 using Content.Server.Mind;
+using Content.Shared._NF.Bank.Components; // Frontier
 using Content.Shared.Species.Components;
 using Content.Shared.Body.Events;
 using Content.Shared.Zombies;
@@ -47,9 +42,19 @@ public sealed partial class NymphSystem : EntitySystem
         if (HasComp<ZombieComponent>(args.OldBody)) // Zombify the new nymph if old one is a zombie
             _zombie.ZombifyEntity(nymph);
 
-        // Move the mind if there is one and it's supposed to be transferred
         if (comp.TransferMind == true && _mindSystem.TryGetMind(args.OldBody, out var mindId, out var mind))
+        {
+            // Move the mind if there is one and it's supposed to be transferred
             _mindSystem.TransferTo(mindId, nymph, mind: mind);
+
+
+            // Frontier: bank account transfer, mob setup
+            EnsureComp<CargoSellBlacklistComponent>(nymph);
+
+            if (HasComp<BankAccountComponent>(args.OldBody))
+                EnsureComp<BankAccountComponent>(nymph);
+            // End Frontier
+        }
 
         // Delete the old organ
         QueueDel(uid);

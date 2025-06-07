@@ -1,9 +1,5 @@
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Hannah Giovanna Dawson <karakkaraz@gmail.com>
-// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: MIT
+﻿using Content.Shared.Construction.Prototypes;
+using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 
 namespace Content.Server.Xenoarchaeology.Equipment.Components;
 
@@ -14,6 +10,18 @@ namespace Content.Server.Xenoarchaeology.Equipment.Components;
 [RegisterComponent]
 public sealed partial class TraversalDistorterComponent : Component
 {
+    [ViewVariables(VVAccess.ReadWrite)]
+    public float BiasChance;
+
+    [DataField("baseBiasChance")]
+    public float BaseBiasChance = 0.7f;
+
+    [DataField("machinePartBiasChance", customTypeSerializer: typeof(PrototypeIdSerializer<MachinePartPrototype>))]
+    public string MachinePartBiasChance = "Manipulator";
+
+    [DataField("partRatingBiasChance")]
+    public float PartRatingBiasChance = 1.1f;
+
     [ViewVariables(VVAccess.ReadWrite)]
     public BiasDirection BiasDirection = BiasDirection.Up;
 

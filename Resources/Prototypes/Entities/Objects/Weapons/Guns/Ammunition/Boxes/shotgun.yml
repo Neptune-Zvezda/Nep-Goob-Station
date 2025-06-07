@@ -1,18 +1,5 @@
-# SPDX-FileCopyrightText: 2024 Boaz1111 <149967078+Boaz1111@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Cojoke <83733158+Cojoke-dot@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-# SPDX-FileCopyrightText: 2024 Plykiya <58439124+Plykiya@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Plykiya <plykiya@protonmail.com>
-# SPDX-FileCopyrightText: 2024 SpaceRox1244 <138547931+SpaceRox1244@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 metalgearsloth <comedian_vs_clown@hotmail.com>
-# SPDX-FileCopyrightText: 2024 username <113782077+whateverusername0@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 whateverusername0 <whateveremail>
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
 - type: entity
-  parent: BaseItem
+  parent: [BaseItem, RecyclableItemCardboard] # Frontier: added RecyclableItemCardboard
   id: BaseAmmoProvider
   abstract: true
   components:
@@ -25,7 +12,7 @@
     sprite: Objects/Storage/boxes.rsi
 
 - type: entity
-  parent: BaseAmmoProvider
+  parent: [BaseAmmoProvider, RecyclableItemCardboard] # Frontier: added RecyclableItemCardboard
   id: AmmoProviderShotgunShell
   abstract: true
   components:
@@ -51,11 +38,15 @@
   components:
     - type: BallisticAmmoProvider
       proto: ShellShotgunBeanbag
+    - type: MagazineVisuals
+      magState: mag-beanbag
+      steps: 5
+      zeroVisible: false
     - type: Sprite
       layers:
       - state: base
         map: ["enum.GunVisualLayers.Base"]
-      - state: mag-1
+      - state: mag-beanbag-1
         map: ["enum.GunVisualLayers.Mag"]
       - state: beanbag
 
@@ -82,14 +73,14 @@
     - type: BallisticAmmoProvider
       proto: ShellShotgunSlug
     - type: MagazineVisuals
-      magState: mag-alt
+      magState: mag-slug
       steps: 5
       zeroVisible: false
     - type: Sprite
       layers:
       - state: base
         map: ["enum.GunVisualLayers.Base"]
-      - state: mag-alt-1
+      - state: mag-slug-1
         map: ["enum.GunVisualLayers.Mag"]
       - state: slug
 
@@ -100,11 +91,15 @@
   components:
     - type: BallisticAmmoProvider
       proto: ShellShotgunFlare
+    - type: MagazineVisuals
+      magState: mag-flare
+      steps: 5
+      zeroVisible: false
     - type: Sprite
       layers:
       - state: base
         map: ["enum.GunVisualLayers.Base"]
-      - state: mag-1
+      - state: mag-flare-1
         map: ["enum.GunVisualLayers.Mag"]
       - state: flare
 
@@ -115,11 +110,15 @@
   components:
     - type: BallisticAmmoProvider
       proto: ShellShotgunIncendiary
+    - type: MagazineVisuals
+      magState: mag-incend
+      steps: 5
+      zeroVisible: false
     - type: Sprite
       layers:
       - state: base
         map: ["enum.GunVisualLayers.Base"]
-      - state: mag-1
+      - state: mag-incend-1
         map: ["enum.GunVisualLayers.Mag"]
       - state: incendiary
 
@@ -131,14 +130,14 @@
     - type: BallisticAmmoProvider
       proto: ShellShotgunUranium
     - type: MagazineVisuals
-      magState: mag-alt
+      magState: mag-uranium
       steps: 5
       zeroVisible: false
     - type: Sprite
       layers:
       - state: base
         map: ["enum.GunVisualLayers.Base"]
-      - state: mag-alt-1
+      - state: mag-uranium-1
         map: ["enum.GunVisualLayers.Mag"]
       - state: uranium
 
@@ -149,11 +148,15 @@
   components:
     - type: BallisticAmmoProvider
       proto: ShellShotgunPractice
+    - type: MagazineVisuals
+      magState: mag-practice
+      steps: 5
+      zeroVisible: false
     - type: Sprite
       layers:
       - state: base
         map: ["enum.GunVisualLayers.Base"]
-      - state: mag-1
+      - state: mag-practice-1
         map: ["enum.GunVisualLayers.Mag"]
       - state: practice
 
@@ -164,10 +167,14 @@
   components:
     - type: BallisticAmmoProvider
       proto: ShellTranquilizer
+    - type: MagazineVisuals
+      magState: mag-tranq
+      steps: 5
+      zeroVisible: false
     - type: Sprite
       layers:
       - state: base
         map: ["enum.GunVisualLayers.Base"]
-      - state: mag-1
+      - state: mag-tranq-1
         map: ["enum.GunVisualLayers.Mag"]
       - state: tranquilizer

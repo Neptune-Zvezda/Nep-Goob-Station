@@ -1,12 +1,8 @@
-// SPDX-FileCopyrightText: 2024 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using Content.Server.Administration.Logs;
 using Content.Server.Cargo.Components;
 using Content.Server.Stack;
 using Content.Shared._EinsteinEngines.Silicon.BlindHealing;
+using Content.Shared.Cargo.Components;
 using Content.Shared.Damage;
 using Content.Shared.Database;
 using Content.Shared.DoAfter;
@@ -55,7 +51,7 @@ public sealed class BlindHealingSystem : SharedBlindHealingSystem
         _popup.PopupEntity(str, uid, args.User);
 
     }
-    
+
     private bool TryHealBlindness(EntityUid uid, EntityUid user, EntityUid target, float delay)
     {
         var doAfterEventArgs =

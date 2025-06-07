@@ -1,36 +1,81 @@
-# SPDX-FileCopyrightText: 2022 mirrorcult <lunarautomaton6@gmail.com>
-# SPDX-FileCopyrightText: 2024 SlamBamActionman <83650252+SlamBamActionman@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 TsjipTsjip <19798667+TsjipTsjip@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 deathride58 <deathride58@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 lzk <124214523+lzk228@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 slarticodefast <161409025+slarticodefast@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
+#"Map":
+# - changed-files:
+#   - any-glob-to-any-file: "Resources/Maps/**/*.yml" # All .yml files in the Resources/Maps directory, recursive.
 
-"Changes: Sprites":
+"Map-Admin":
 - changed-files:
-  - any-glob-to-any-file: '**/*.rsi/*.png'
+  - any-glob-to-any-file: "Resources/Maps/_NF/Admin/**/*.yml" # Grid Files
 
-"Changes: Map":
+"Map-Bluespace":
+- changed-files:
+  - any-glob-to-any-file: "Resources/Maps/_NF/Bluespace/**/*.yml" # Grid Files
+
+"Map-Dungeon":
+- changed-files:
+  - any-glob-to-any-file: "Resources/Maps/_NF/Dungeon/**/*.yml" # Grid Files
+
+"Map-Outpost":
 - changed-files:
   - any-glob-to-any-file:
-    - 'Resources/Maps/**/*.yml'
-    - 'Resources/Prototypes/Maps/**/*.yml'
+    - "Resources/Maps/_NF/Outpost/*.yml" # Map Files
+    - "Resources/Prototypes/_MF/Maps/Outpost/*.yml" # Prototypes Files
 
-"Changes: UI":
+"Map-Shuttle":
 - changed-files:
-  - any-glob-to-any-file: '**/*.xaml*'
+  - any-glob-to-any-file:
+    - "Resources/Maps/_NF/Shuttles/**/*.yml" # Grid Files
+    - "Resources/Prototypes/_NF/Shipyard/**/*.yml" # Prototypes Files
 
-"Changes: Shaders":
+"Map-POI":
+- changed-files:
+  - any-glob-to-any-file:
+    - "Resources/Maps/_NF/POI/**/*.yml" # Grid Files
+    - "Resources/Prototypes/_MF/Maps/POI/**/*.yml" # Prototypes Files
+
+"Sprites":
+- changed-files:
+  - any-glob-to-any-file:
+    - "**/*.rsi/*.png"
+    - "**/*.rsi/*.json"
+
+"UI":
+- changed-files:
+  - any-glob-to-any-file: "**/*.xaml*"
+
+"C#":
+- changed-files:
+  - any-glob-to-any-file: "**/*.cs"
+
+"Shaders":
 - changed-files:
   - any-glob-to-any-file: '**/*.swsl'
 
-"Changes: Audio":
+"Audio":
 - changed-files:
   - any-glob-to-any-file: '**/*.ogg'
 
-"Changes: No C#":
+"No C#":
 - changed-files:
-  # Equiv to any-glob-to-all as long as this has one matcher. If ALL changed files are not C# files, then apply label.
   - all-globs-to-all-files: "!**/*.cs"
+
+"Docs":
+- changed-files:
+  - any-glob-to-any-file:
+    - "**/*.xml"
+    - "**/*.md"
+
+"FTL":
+- changed-files:
+  - any-glob-to-any-file: "Resources/Locale/**/*.ftl"
+
+"YML":
+- all:
+  - changed-files:
+    - any-glob-to-any-file: "**/*.yml"
+    - all-globs-to-any-file:
+      - "!Resources/Maps/_NF/**/*.yml"
+      - "!Resources/Prototypes/Maps/_NF/**/*.yml"
+
+"DB Migration":
+- changed-files:
+  - any-glob-to-any-file: "Content.Server.Database/Migrations/**/*.cs"

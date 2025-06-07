@@ -1,9 +1,3 @@
-// SPDX-FileCopyrightText: 2024 Aidenkrz <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using Content.Shared.Actions;
 using Content.Shared.Actions.Events;
 using Content.Shared.Audio;
@@ -18,11 +12,17 @@ using Content.Shared.Nutrition.EntitySystems;
 using Content.Server.Body.Components;
 using Content.Server.Chemistry.Containers.EntitySystems;
 using Content.Server.Medical;
+using Content.Server.Nutrition.EntitySystems;
 using Content.Server.Nutrition.Components;
+using Content.Server.Chemistry.EntitySystems;
 using Content.Server.Popups;
+using Content.Shared.Chemistry.EntitySystems;
+using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
+using Robust.Shared.Player;
 using Robust.Shared.Random;
 using Robust.Shared.Prototypes;
+using Content.Shared.CombatMode.Pacification; // Frontier
 
 namespace Content.Server.Abilities.Felinid;
 
@@ -49,6 +49,7 @@ public sealed partial class FelinidSystem : EntitySystem
         SubscribeLocalEvent<FelinidComponent, DidUnequipHandEvent>(OnUnequipped);
         SubscribeLocalEvent<HairballComponent, ThrowDoHitEvent>(OnHairballHit);
         SubscribeLocalEvent<HairballComponent, GettingPickedUpAttemptEvent>(OnHairballPickupAttempt);
+        SubscribeLocalEvent<HairballComponent, AttemptPacifiedThrowEvent>(OnHairballAttemptPacifiedThrow); // Frontier - Block hairball abuse
     }
 
     private Queue<EntityUid> RemQueue = new();
@@ -151,7 +152,7 @@ public sealed partial class FelinidSystem : EntitySystem
         Del(component.EatActionTarget.Value);
         component.EatActionTarget = null;
 
-        _audio.PlayPvs("/Audio/DeltaV/Items/eatfood.ogg", uid, AudioHelpers.WithVariation(0.15f));
+        _audio.PlayPvs("/Audio/_DV/Items/eatfood.ogg", uid, AudioHelpers.WithVariation(0.15f));
 
         _hungerSystem.ModifyHunger(uid, 50f, hunger);
 
@@ -192,5 +193,10 @@ public sealed partial class FelinidSystem : EntitySystem
             _vomitSystem.Vomit(args.User);
             args.Cancel();
         }
+    }
+
+    private void OnHairballAttemptPacifiedThrow(Entity<HairballComponent> ent, ref AttemptPacifiedThrowEvent args) // Frontier - Block hairball abuse
+    {
+        args.Cancel("pacified-cannot-throw-hairball");
     }
 }

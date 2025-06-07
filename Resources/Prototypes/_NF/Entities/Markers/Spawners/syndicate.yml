@@ -1,0 +1,91 @@
+- type: entity
+  name: Contraband Crate Spawner
+  suffix: DeadDrop
+  id: SpawnContrabandCrate
+  parent: MarkerBase
+  components:
+    - type: Sprite
+      layers:
+        - state: red
+        - sprite: Structures/Storage/Crates/generic.rsi
+          state: icon
+    - type: RandomSpawner
+      prototypes:
+        - CrateTradeContrabandSecure5
+        - CrateTradeContrabandSecure4
+        - CrateTradeContrabandSecure3
+        - CrateTradeContrabandSecure2
+        - CrateTradeContrabandSecure1
+        - CrateTradeContrabandSecure1
+        - LandMineExplosive
+        - BannerSyndicate
+        - Telecrystal1
+        - Telecrystal1 # Mono
+      rarePrototypes:
+        - Telecrystal5
+        - Telecrystal5 # Mono
+        - Telecrystal5 # Mono
+        - SpawnMobWeaponTurretLaserSyndicateNF # Mono
+        - CrateSyndicateSurplusBundle # Mono
+      rareChance: 0.1 # Mono
+
+- type: entity
+  name: Contraband Crate Spawner
+  suffix: Event
+  id: SpawnEventContrabandCrate
+  parent: MarkerBase
+  components:
+    - type: Sprite
+      layers:
+        - state: red
+        - sprite: Structures/Storage/Crates/generic.rsi
+          state: icon
+    - type: RandomSpawner
+      prototypes:
+        - CrateTradeContrabandSecure5
+        - CrateTradeContrabandSecure4
+        - CrateTradeContrabandSecure3
+      rarePrototypes:
+        - CrateSyndicateSurplusBundle
+        - CrateSyndicateSurplusBundle
+        - CrateSyndicateSurplusBundle
+        - CrateSyndicateSuperSurplusBundle
+      rareChance: 0.1
+
+- type: entity
+  name: Syndicate POI Pinpointer
+  id: PinpointerSyndicatePOISpawner
+  parent: MarkerBase
+  suffix: 10
+  components:
+    - type: Sprite
+      layers:
+        - state: red
+        - sprite: Objects/Devices/pinpointer.rsi
+          state: pinpointer-syndicate
+    - type: RandomSpawner
+      prototypes:
+        - ClothingBackpackDuffelSyndicateEVABundle
+        - ClothingBackpackSyndicate
+        - ClothingMaskGasSyndicate
+        - SyndieHandyFlag
+        - SyndicatePersonalAI
+        - ClothingBeltSyndieHolster
+        - ClothingEyesHudSyndicate
+        - ClothingBackpackDuffelSyndicatePyjamaBundle
+        - ClothingBackpackDuffelSyndicateMedicalBundleFilled
+        - EncryptionKeySyndie
+        - ClothingShoesBootsMagSyndie
+        - ClothingHeadsetAltSyndicate
+        - ToyFigurineNukieElite
+        - ToyNuke
+        - PlushieNuke
+        - Telecrystal5
+        - Telecrystal5
+      rarePrototypes:
+        - ClothingBackpackDuffelSyndicateHardsuitBundle
+        - ClothingBackpackDuffelSyndicateMedicHardsuitBundle
+        - PinpointerSyndicatePOI
+        - PinpointerSyndicatePOI
+      rareChance: 0.2 # Mono
+      offset: 0

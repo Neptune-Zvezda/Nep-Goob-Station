@@ -1,11 +1,3 @@
-// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2024 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Misandry <mary@thughunt.ing>
-// SPDX-FileCopyrightText: 2025 gus <august.eymann@gmail.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using Robust.Shared.Random;
 using Content.Shared._EinsteinEngines.Silicon.Components;
 using Content.Server.Power.Components;
@@ -20,13 +12,16 @@ using Content.Shared.Movement.Systems;
 using Content.Server.Body.Components;
 using Content.Shared.Mind.Components;
 using System.Diagnostics.CodeAnalysis;
-using Content.Goobstation.Common.CCVar;
 using Content.Server.PowerCell;
 using Robust.Shared.Timing;
 using Robust.Shared.Configuration;
 using Robust.Shared.Utility;
+using Content.Shared.CCVar;
 using Content.Shared.PowerCell.Components;
+using Content.Shared.Mind;
 using Content.Shared.Alert;
+using Content.Server._EinsteinEngines.Silicon.Death;
+using Content.Server._EinsteinEngines.Power.Components;
 
 namespace Content.Server._EinsteinEngines.Silicon.Charge;
 
@@ -89,7 +84,7 @@ public sealed class SiliconChargeSystem : EntitySystem
             // Check if the Silicon is an NPC, and if so, follow the delay as specified in the CVAR.
             if (siliconComp.EntityType.Equals(SiliconType.Npc))
             {
-                var updateTime = _config.GetCVar(GoobCVars.SiliconNpcUpdateTime);
+                var updateTime = _config.GetCVar(CCVars.SiliconNpcUpdateTime);
                 if (_timing.CurTime - siliconComp.LastDrainTime < TimeSpan.FromSeconds(updateTime))
                     continue;
 

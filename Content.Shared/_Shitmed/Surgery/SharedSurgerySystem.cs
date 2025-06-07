@@ -1,14 +1,6 @@
-// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2024 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Janet Blackquill <uhhadd@gmail.com>
-// SPDX-FileCopyrightText: 2025 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 deltanedas <@deltanedas:kde.org>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using System.Linq;
 using Content.Shared._Shitmed.Medical.Surgery.Conditions;
+using Content.Shared._Shitmed.Medical.Surgery.Effects.Complete;
 using Content.Shared.Body.Systems;
 using Content.Shared._Shitmed.Medical.Surgery.Steps;
 using Content.Shared._Shitmed.Medical.Surgery.Steps.Parts;
@@ -27,7 +19,6 @@ using Content.Shared.Humanoid.Markings;
 using Content.Shared.Interaction;
 using Content.Shared.Inventory;
 using Content.Shared.Popups;
-using Content.Shared.Prototypes;
 using Content.Shared.Standing;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map;
@@ -55,21 +46,8 @@ public abstract partial class SharedSurgerySystem : EntitySystem
     [Dependency] private readonly RotateToFaceSystem _rotateToFace = default!;
     [Dependency] private readonly StandingStateSystem _standing = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly SharedUserInterfaceSystem _ui = default!;
 
-    /// <summary>
-    /// Cache of all surgery prototypes' singleton entities.
-    /// Cleared after a prototype reload.
-    /// </summary>
     private readonly Dictionary<EntProtoId, EntityUid> _surgeries = new();
-
-    private readonly List<EntProtoId> _allSurgeries = new();
-
-    /// <summary>
-    /// Every surgery entity prototype id.
-    /// Kept in sync with prototype reloads.
-    /// </summary>
-    public IReadOnlyList<EntProtoId> AllSurgeries => _allSurgeries;
 
     public override void Initialize()
     {
@@ -77,28 +55,21 @@ public abstract partial class SharedSurgerySystem : EntitySystem
 
         SubscribeLocalEvent<RoundRestartCleanupEvent>(OnRoundRestartCleanup);
 
-        SubscribeLocalEvent<SurgeryTargetComponent, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<SurgeryTargetComponent, SurgeryDoAfterEvent>(OnTargetDoAfter);
         SubscribeLocalEvent<SurgeryCloseIncisionConditionComponent, SurgeryValidEvent>(OnCloseIncisionValid);
         //SubscribeLocalEvent<SurgeryLarvaConditionComponent, SurgeryValidEvent>(OnLarvaValid);
-        SubscribeLocalEvent<SurgeryHasBodyConditionComponent, SurgeryValidEvent>(OnHasBodyConditionValid);
         SubscribeLocalEvent<SurgeryPartConditionComponent, SurgeryValidEvent>(OnPartConditionValid);
         SubscribeLocalEvent<SurgeryOrganConditionComponent, SurgeryValidEvent>(OnOrganConditionValid);
         SubscribeLocalEvent<SurgeryWoundedConditionComponent, SurgeryValidEvent>(OnWoundedValid);
         SubscribeLocalEvent<SurgeryPartRemovedConditionComponent, SurgeryValidEvent>(OnPartRemovedConditionValid);
-        SubscribeLocalEvent<SurgeryBodyConditionComponent, SurgeryValidEvent>(OnBodyConditionValid);
-        SubscribeLocalEvent<SurgeryOrganSlotConditionComponent, SurgeryValidEvent>(OnOrganSlotConditionValid);
         SubscribeLocalEvent<SurgeryPartPresentConditionComponent, SurgeryValidEvent>(OnPartPresentConditionValid);
         SubscribeLocalEvent<SurgeryMarkingConditionComponent, SurgeryValidEvent>(OnMarkingPresentValid);
         SubscribeLocalEvent<SurgeryBodyComponentConditionComponent, SurgeryValidEvent>(OnBodyComponentConditionValid);
         SubscribeLocalEvent<SurgeryPartComponentConditionComponent, SurgeryValidEvent>(OnPartComponentConditionValid);
         SubscribeLocalEvent<SurgeryOrganOnAddConditionComponent, SurgeryValidEvent>(OnOrganOnAddConditionValid);
         //SubscribeLocalEvent<SurgeryRemoveLarvaComponent, SurgeryCompletedEvent>(OnRemoveLarva);
-        SubscribeLocalEvent<PrototypesReloadedEventArgs>(OnPrototypesReloaded);
 
         InitializeSteps();
-
-        LoadPrototypes();
     }
 
     private void OnRoundRestartCleanup(RoundRestartCleanupEvent ev)
@@ -106,25 +77,13 @@ public abstract partial class SharedSurgerySystem : EntitySystem
         _surgeries.Clear();
     }
 
-    private void OnMapInit(Entity<SurgeryTargetComponent> ent, ref MapInitEvent args)
-    {
-        var data = new InterfaceData("SurgeryBui");
-        _ui.SetUi(ent.Owner, SurgeryUIKey.Key, data);
-    }
-
     private void OnTargetDoAfter(Entity<SurgeryTargetComponent> ent, ref SurgeryDoAfterEvent args)
     {
         if (!_timing.IsFirstTimePredicted)
             return;
 
-        if (args.Cancelled)
-        {
-            var failEv = new SurgeryStepFailedEvent(args.User, ent, args.Surgery, args.Step);
-            RaiseLocalEvent(args.User, ref failEv);
-            return;
-        }
-
-        if (args.Handled
+        if (args.Cancelled
+            || args.Handled
             || args.Target is not { } target
             || !IsSurgeryValid(ent, target, args.Surgery, args.Step, args.User, out var surgery, out var part, out var step)
             || !PreviousStepsComplete(ent, part, surgery, args.Step)
@@ -134,11 +93,9 @@ public abstract partial class SharedSurgerySystem : EntitySystem
             return;
         }
 
-        var complete = IsStepComplete(ent, part, args.Step, surgery);
-        args.Repeat = HasComp<SurgeryRepeatableStepComponent>(step) && !complete;
-        var ev = new SurgeryStepEvent(args.User, ent, part, GetTools(args.User), surgery, step, complete);
+        args.Repeat = (HasComp<SurgeryRepeatableStepComponent>(step) && !IsStepComplete(ent, part, args.Step, surgery));
+        var ev = new SurgeryStepEvent(args.User, ent, part, GetTools(args.User), surgery);
         RaiseLocalEvent(step, ref ev);
-        RaiseLocalEvent(args.User, ref ev);
         RefreshUI(ent);
     }
 
@@ -240,28 +197,6 @@ public abstract partial class SharedSurgerySystem : EntitySystem
             args.Cancelled = true;
     }
 
-    private void OnHasBodyConditionValid(Entity<SurgeryHasBodyConditionComponent> ent, ref SurgeryValidEvent args)
-    {
-        if (CompOrNull<BodyPartComponent>(args.Part)?.Body == null)
-            args.Cancelled = true;
-    }
-
-    private void OnPartConditionValid(Entity<SurgeryPartConditionComponent> ent, ref SurgeryValidEvent args)
-    {
-        if (!TryComp<BodyPartComponent>(args.Part, out var part))
-        {
-            args.Cancelled = true;
-            return;
-        }
-
-        var typeMatch = part.PartType == ent.Comp.Part;
-        var symmetryMatch = ent.Comp.Symmetry == null || part.Symmetry == ent.Comp.Symmetry;
-        var valid = typeMatch && symmetryMatch;
-
-        if (ent.Comp.Inverse ? valid : !valid)
-            args.Cancelled = true;
-    }
-
     private void OnOrganConditionValid(Entity<SurgeryOrganConditionComponent> ent, ref SurgeryValidEvent args)
     {
         if (!TryComp<BodyPartComponent>(args.Part, out var partComp)
@@ -288,29 +223,23 @@ public abstract partial class SharedSurgerySystem : EntitySystem
         }
     }
 
-    private void OnBodyConditionValid(Entity<SurgeryBodyConditionComponent> ent, ref SurgeryValidEvent args)
-    {
-        if (TryComp<BodyComponent>(args.Body, out var body) && body.Prototype is {} bodyId)
-            args.Cancelled |= ent.Comp.Accepted.Contains(bodyId) ^ !ent.Comp.Inverse;
-    }
-
-    private void OnOrganSlotConditionValid(Entity<SurgeryOrganSlotConditionComponent> ent, ref SurgeryValidEvent args)
-    {
-        args.Cancelled |= _body.CanInsertOrgan(args.Part, ent.Comp.OrganSlot) ^ !ent.Comp.Inverse;
-    }
-
     private void OnPartRemovedConditionValid(Entity<SurgeryPartRemovedConditionComponent> ent, ref SurgeryValidEvent args)
     {
+        // First check if the part can have a slot for attachment
         if (!_body.CanAttachToSlot(args.Part, ent.Comp.Connection))
         {
             args.Cancelled = true;
             return;
         }
 
-        var results = _body.GetBodyChildrenOfType(args.Body, ent.Comp.Part, symmetry: ent.Comp.Symmetry).ToList();
+        // Get any existing body parts of the specified type/symmetry
+        var results = _body.GetBodyChildrenOfType(args.Body, ent.Comp.Part, symmetry: ent.Comp.Symmetry);
+
+        // If there are no existing parts of this type, allow the surgery (return without cancelling)
         if (results is not { } || !results.Any())
             return;
 
+        // If there are existing parts but none have the reattached component, cancel the surgery
         if (!results.Any(part => HasComp<BodyPartReattachedComponent>(part.Id)))
             args.Cancelled = true;
     }
@@ -332,6 +261,21 @@ public abstract partial class SharedSurgerySystem : EntitySystem
 
         if ((!ent.Comp.Inverse && hasMarking) || (ent.Comp.Inverse && !hasMarking))
             args.Cancelled = true;
+    }
+
+    private void OnPartConditionValid(Entity<SurgeryPartConditionComponent> ent, ref SurgeryValidEvent args)
+    {
+        if (!TryComp<BodyPartComponent>(args.Part, out var bodyPart) ||
+            bodyPart.PartType != ent.Comp.Part ||
+            (ent.Comp.Symmetry.HasValue && bodyPart.Symmetry != ent.Comp.Symmetry))
+        {
+            if (!ent.Comp.Inverse)
+                args.Cancelled = true;
+        }
+        else if (ent.Comp.Inverse)
+        {
+            args.Cancelled = true;
+        }
     }
 
     /*private void OnRemoveLarva(Entity<SurgeryRemoveLarvaComponent> ent, ref SurgeryCompletedEvent args)
@@ -415,28 +359,5 @@ public abstract partial class SharedSurgerySystem : EntitySystem
 
     protected virtual void RefreshUI(EntityUid body)
     {
-    }
-
-    private void OnPrototypesReloaded(PrototypesReloadedEventArgs args)
-    {
-        if (!args.WasModified<EntityPrototype>())
-            return;
-
-        LoadPrototypes();
-    }
-
-    private void LoadPrototypes()
-    {
-        // Cache is probably invalid so delete it
-        foreach (var uid in _surgeries.Values)
-        {
-            Del(uid);
-        }
-        _surgeries.Clear();
-
-        _allSurgeries.Clear();
-        foreach (var entity in _prototypes.EnumeratePrototypes<EntityPrototype>())
-            if (entity.HasComponent<SurgeryComponent>())
-                _allSurgeries.Add(new EntProtoId(entity.ID));
     }
 }

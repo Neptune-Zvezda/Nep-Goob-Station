@@ -1,131 +1,3 @@
-# SPDX-FileCopyrightText: 2020 Vera Aguilera Puerto <zddm@outlook.es>
-# SPDX-FileCopyrightText: 2021 20kdc <asdd2808@gmail.com>
-# SPDX-FileCopyrightText: 2021 SETh lafuente <cetaciocascarudo@gmail.com>
-# SPDX-FileCopyrightText: 2021 SethLafuente <84478872+SethLafuente@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2021 Swept <sweptwastaken@protonmail.com>
-# SPDX-FileCopyrightText: 2021 Visne <39844191+Visne@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2022 0x6273 <0x40@keemail.me>
-# SPDX-FileCopyrightText: 2022 August Eymann <august.eymann@gmail.com>
-# SPDX-FileCopyrightText: 2022 Chris V <HoofedEar@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2022 Flipp Syder <76629141+vulppine@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2022 Francesco <frafonia@gmail.com>
-# SPDX-FileCopyrightText: 2022 Jack Fox <35575261+DubiousDoggo@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2022 Lamrr <96937466+Lamrr@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2022 Moony <moonheart08@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2022 Paul Ritter <ritter.paul1@googlemail.com>
-# SPDX-FileCopyrightText: 2022 Peptide90 <78795277+Peptide90@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2022 Rane <60792108+Elijahrane@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2022 Ripmorld <60119809+UKNOWH@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2022 Vera Aguilera Puerto <6766154+Zumorica@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2022 corentt <36075110+corentt@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2022 mirrorcult <lunarautomaton6@gmail.com>
-# SPDX-FileCopyrightText: 2023 AjexRose <112997230+AjexRose@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 ChilbroBaggins <107660393+ChilbroBaggins@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 Colin-Tel <113523727+Colin-Tel@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 Dawid Bla <46636558+DawBla@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 Jeff <velcroboy333@hotmail.com>
-# SPDX-FileCopyrightText: 2023 OttoMaticode <124523848+OttoMaticode@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 Segonist <74138556+Segonist@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 Slava0135 <40753025+Slava0135@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 Whisper <121047731+QuietlyWhisper@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 chromiumboy <50505512+chromiumboy@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 crazybrain23 <44417085+crazybrain23@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 liltenhead <104418166+liltenhead@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 Арт <123451459+JustArt1m@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 AWF <you@example.com>
-# SPDX-FileCopyrightText: 2024 Aiden <aiden@djkraz.com>
-# SPDX-FileCopyrightText: 2024 Aidenkrz <aiden@djkraz.com>
-# SPDX-FileCopyrightText: 2024 Alzore <140123969+Blackern5000@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 ArtisticRoomba <145879011+ArtisticRoomba@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Boaz1111 <149967078+Boaz1111@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 BombasterDS <115770678+BombasterDS@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Brandon Hu <103440971+Brandon-Huu@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 CaasGit <87243814+CaasGit@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Chief-Engineer <119664036+Chief-Engineer@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Cojoke <83733158+Cojoke-dot@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 DrSmugleaf <10968691+DrSmugleaf@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Ed <96445749+TheShuEd@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Emisse <99158783+Emisse@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 EmoGarbage404 <retron404@gmail.com>
-# SPDX-FileCopyrightText: 2024 Eoin Mcloughlin <helloworld@eoinrul.es>
-# SPDX-FileCopyrightText: 2024 Errant <35878406+Errant-4@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Flareguy <78941145+Flareguy@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 GitHubUser53123 <110841413+GitHubUser53123@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Hannah Giovanna Dawson <karakkaraz@gmail.com>
-# SPDX-FileCopyrightText: 2024 Hrosts <35345601+Hrosts@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 IProduceWidgets <107586145+IProduceWidgets@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Ian <ignaz.k@live.de>
-# SPDX-FileCopyrightText: 2024 Ilya246 <57039557+Ilya246@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Joel Zimmerman <JoelZimmerman@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Julian Giebel <juliangiebel@live.de>
-# SPDX-FileCopyrightText: 2024 JustCone <141039037+JustCone14@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Kevin Zheng <kevinz5000@gmail.com>
-# SPDX-FileCopyrightText: 2024 Killerqu00 <47712032+Killerqu00@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Kira Bridgeton <161087999+Verbalase@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Ko4ergaPunk <62609550+Ko4ergaPunk@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Kukutis96513 <146854220+Kukutis96513@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Lye <128915833+Lyroth001@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Menshin <Menshin@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 MerrytheManokit <167581110+MerrytheManokit@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Mervill <mervills.email@gmail.com>
-# SPDX-FileCopyrightText: 2024 Mr. 27 <45323883+Dutch-VanDerLinde@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 MureixloI <132683811+MureixloI@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Nairod <110078045+Nairodian@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 NakataRin <45946146+NakataRin@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 OrangeMoronage9622 <whyteterry0092@gmail.com>
-# SPDX-FileCopyrightText: 2024 PJBot <pieterjan.briers+bot@gmail.com>
-# SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-# SPDX-FileCopyrightText: 2024 Plykiya <58439124+Plykiya@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Preston Smith <92108534+thetolbean@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Psychpsyo <60073468+Psychpsyo@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Repo <47093363+Titian3@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 RiceMar1244 <138547931+RiceMar1244@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 ScarKy0 <106310278+ScarKy0@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 ShadowCommander <10494922+ShadowCommander@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Simon <63975668+Simyon264@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 SlamBamActionman <83650252+SlamBamActionman@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Stalen <33173619+stalengd@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 TakoDragon <69509841+BackeTako@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Thomas <87614336+Aeshus@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 TsjipTsjip <19798667+TsjipTsjip@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Tunguso4ka <71643624+Tunguso4ka@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Ubaser <134914314+UbaserB@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Unkn0wn_Gh0st <shadowstalkermll@gmail.com>
-# SPDX-FileCopyrightText: 2024 Vasilis <vasilis@pikachu.systems>
-# SPDX-FileCopyrightText: 2024 Vigers Ray <60344369+VigersRay@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 beck-thompson <107373427+beck-thompson@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 deathride58 <deathride58@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 degradka <69397649+degradka@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 deltanedas <39013340+deltanedas@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 deltanedas <@deltanedas:kde.org>
-# SPDX-FileCopyrightText: 2024 dffdff2423 <dffdff2423@gmail.com>
-# SPDX-FileCopyrightText: 2024 eoineoineoin <github@eoinrul.es>
-# SPDX-FileCopyrightText: 2024 foboscheshir <156405958+foboscheshir@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 iNVERTED <alextjorgensen@gmail.com>
-# SPDX-FileCopyrightText: 2024 lzk <124214523+lzk228@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 metalgearsloth <comedian_vs_clown@hotmail.com>
-# SPDX-FileCopyrightText: 2024 nikthechampiongr <32041239+nikthechampiongr@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 plykiya <plykiya@protonmail.com>
-# SPDX-FileCopyrightText: 2024 saintmuntzer <47153094+saintmuntzer@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 shamp <140359015+shampunj@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 slarticodefast <161409025+slarticodefast@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 strO0pwafel <153459934+strO0pwafel@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 stroopwafel <j.o.luijkx@student.tudelft.nl>
-# SPDX-FileCopyrightText: 2024 themias <89101928+themias@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 to4no_fix <156101927+chavonadelal@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 voidnull000 <18663194+voidnull000@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 wafehling <wafehling@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 yglop <95057024+yglop@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
 - type: entity
   id: AutolatheMachineCircuitboard
   parent: BaseMachineCircuitboard
@@ -134,9 +6,10 @@
   components:
     - type: MachineBoard
       prototype: Autolathe
+      requirements: # Frontier
+        MatterBin: 3 # Frontier stackRequirements<requirements
+        Manipulator: 1 # Frontier stackRequirements<requirements
       stackRequirements:
-        MatterBin: 3
-        Manipulator: 1
         Glass: 1
 
 - type: entity
@@ -147,8 +20,9 @@
   components:
   - type: MachineBoard
     prototype: AutolatheHyperConvection
+    requirements: # Frontier
+      MatterBin: 3 # Frontier stackRequirements<requirements
     stackRequirements:
-      MatterBin: 3
       Glass: 1
     tagRequirements:
       Igniter:
@@ -163,9 +37,9 @@
   components:
     - type: MachineBoard
       prototype: Protolathe
-      stackRequirements:
-        MatterBin: 2
-        Manipulator: 2
+      requirements: # Frontier
+        MatterBin: 2 # Frontier stackRequirements<requirements
+        Manipulator: 2 # Frontier stackRequirements<requirements
       tagRequirements:
         GlassBeaker:
           amount: 2
@@ -179,8 +53,8 @@
   components:
   - type: MachineBoard
     prototype: ProtolatheHyperConvection
-    stackRequirements:
-      MatterBin: 2
+    requirements: # Frontier
+      MatterBin: 2 # Frontier stackRequirements<requirements
     tagRequirements:
       GlassBeaker:
         amount: 2
@@ -197,23 +71,25 @@
   components:
     - type: MachineBoard
       prototype: Biofabricator
+      requirements: # Frontier
+        MatterBin: 4 # Frontier stackRequirements<requirements
       stackRequirements:
-        MatterBin: 4
         Glass: 1
 
 - type: entity
   id: SecurityTechFabCircuitboard
   parent: BaseMachineCircuitboard
   name: security techfab machine board
+  categories: [ HideSpawnMenu ] # Frontier
   description: A machine printed circuit board for a security techfab.
   components:
     - type: Sprite
       state: security
     - type: MachineBoard
       prototype: SecurityTechFab
-      stackRequirements:
-        MatterBin: 2
-        Manipulator: 2
+      requirements: # Frontier
+        MatterBin: 2 # Frontier stackRequirements<requirements
+        Manipulator: 2 # Frontier stackRequirements<requirements
       tagRequirements:
         GlassBeaker:
           amount: 2
@@ -229,9 +105,9 @@
       state: security
     - type: MachineBoard
       prototype: AmmoTechFab
-      stackRequirements:
-        MatterBin: 1
-        Manipulator: 1
+      requirements: # Frontier
+        MatterBin: 1 # Frontier stackRequirements<requirements
+        Manipulator: 1 # Frontier stackRequirements<requirements
 
 - type: entity
   id: MedicalTechFabCircuitboard
@@ -243,15 +119,17 @@
       state: medical
     - type: MachineBoard
       prototype: MedicalTechFab
-      stackRequirements:
-        MatterBin: 2
-        Manipulator: 2
+      requirements: # Frontier
+        MatterBin: 2 # Frontier stackRequirements<requirements
+        Manipulator: 2 # Frontier stackRequirements<requirements
       tagRequirements:
         GlassBeaker:
           amount: 2
           defaultPrototype: Beaker
     - type: StealTarget
       stealGroup: MedicalTechFabCircuitboard
+    - type: PirateBountyItem # Frontier
+      id: MedicalTechFabCircuitboard # Frontier
 
 - type: entity
   id: CircuitImprinterMachineCircuitboard
@@ -262,9 +140,9 @@
     state: science
   - type: MachineBoard
     prototype: CircuitImprinter
-    stackRequirements:
-      MatterBin: 1
-      Manipulator: 1
+    requirements: # Frontier
+      MatterBin: 1 # Frontier stackRequirements<requirements
+      Manipulator: 1 # Frontier stackRequirements<requirements
     tagRequirements:
       GlassBeaker:
         amount: 2
@@ -280,8 +158,8 @@
     state: science
   - type: MachineBoard
     prototype: CircuitImprinterHyperConvection
-    stackRequirements:
-      MatterBin: 2
+    requirements: # Frontier
+      MatterBin: 2 # Frontier stackRequirements<requirements
     tagRequirements:
       GlassBeaker:
         amount: 2
@@ -299,9 +177,10 @@
     state: science
   - type: MachineBoard
     prototype: ExosuitFabricator
+    requirements: # Frontier
+      MatterBin: 1 # Frontier stackRequirements<requirements
+      Manipulator: 3 # Frontier stackRequirements<requirements
     stackRequirements:
-      MatterBin: 1
-      Manipulator: 3
       Glass: 5
   - type: GuideHelp
     guides:
@@ -331,8 +210,8 @@
     state: service
   - type: MachineBoard
     prototype: Biogenerator
-    stackRequirements:
-      MatterBin: 2
+    requirements: # Frontier
+      MatterBin: 2 # Frontier stackRequirements<requirements
     tagRequirements:
       GlassBeaker:
         amount: 1
@@ -345,9 +224,9 @@
   components:
   - type: MachineBoard
     prototype: UniformPrinter
-    stackRequirements:
-      MatterBin: 1
-      Manipulator: 2
+    requirements: # Frontier
+      MatterBin: 1 # Frontier stackRequirements<requirements
+      Manipulator: 2 # Frontier stackRequirements<requirements
 
 - type: entity
   id: VaccinatorMachineCircuitboard
@@ -358,9 +237,10 @@
     state: medical
   - type: MachineBoard
     prototype: Vaccinator
+    requirements: # Frontier
+      MatterBin: 1 # Frontier stackRequirements<requirements
+      Manipulator: 1 # Frontier stackRequirements<requirements
     stackRequirements:
-      MatterBin: 1
-      Manipulator: 1
       Cable: 5
     tagRequirements:
         GlassBeaker:
@@ -397,10 +277,13 @@
       state: science
     - type: MachineBoard
       prototype: MachineArtifactAnalyzer
+      requirements: # Frontier
+        Manipulator: 3 # Frontier stackRequirements<requirements
+        Capacitor: 1 # Frontier stackRequirements<requirements
       stackRequirements:
-        Manipulator: 3
-        Capacitor: 1
         Glass: 5
+    - type: PirateBountyItem # Frontier
+      id: ArtifactAnalyzerMachineCircuitboard # Frontier
 
 - type: entity
   id: ArtifactCrusherMachineCircuitboard
@@ -412,8 +295,9 @@
     state: science
   - type: MachineBoard
     prototype: MachineArtifactCrusher
+    requirements: # Frontier
+      Manipulator: 2 # Frontier stackRequirements<requirements
     stackRequirements:
-      Manipulator: 2
       Glass: 1
       Steel: 5
 
@@ -427,8 +311,9 @@
       state: science
     - type: MachineBoard
       prototype: MachineAnomalyVessel
+      requirements: # Frontier
+        Capacitor: 3 # Frontier stackRequirements<requirements
       stackRequirements:
-        Capacitor: 3
         Cable: 1
         PlasmaGlass: 10
 
@@ -442,8 +327,9 @@
     state: science
   - type: MachineBoard
     prototype: MachineAnomalyVesselExperimental
+    requirements: # Frontier
+      Capacitor: 3 # Frontier stackRequirements<requirements
     stackRequirements:
-      Capacitor: 3
       Cable: 5
       PlasmaGlass: 15
       MetalRod: 4
@@ -458,9 +344,10 @@
       state: science
     - type: MachineBoard
       prototype: MachineAnomalySynchronizer
+      requirements: # Frontier
+        Manipulator: 2 # Frontier stackRequirements<requirements
+        Capacitor: 5 # Frontier stackRequirements<requirements
       stackRequirements:
-        Manipulator: 2
-        Capacitor: 5
         PlasmaGlass: 5
         Cable: 5
 
@@ -474,8 +361,9 @@
       state: science
     - type: MachineBoard
       prototype: MachineAPE
+      requirements: # Frontier
+        Capacitor: 2 # Frontier stackRequirements<requirements
       stackRequirements:
-        Capacitor: 2
         Cable: 1
         Glass: 1
 
@@ -489,9 +377,10 @@
     state: engineering
   - type: MachineBoard
     prototype: GasThermoMachineFreezer
+    requirements: # Frontier
+      MatterBin: 2 # Frontier stackRequirements<requirements
+      Capacitor: 2 # Frontier stackRequirements<requirements
     stackRequirements:
-      MatterBin: 2
-      Capacitor: 2
       Cable: 5
   - type: Construction
     deconstructionTarget: null
@@ -508,9 +397,10 @@
     state: engineering
   - type: MachineBoard
     prototype: GasThermoMachineHeater
+    requirements: # Frontier
+      MatterBin: 2 # Frontier stackRequirements<requirements
+      Capacitor: 2 # Frontier stackRequirements<requirements
     stackRequirements:
-      MatterBin: 2
-      Capacitor: 2
       Cable: 5
   - type: Construction
     graph: ThermomachineBoard
@@ -527,9 +417,10 @@
     state: engineering
   - type: MachineBoard
     prototype: GasThermoMachineHellfireFreezer
+    requirements: # Frontier
+      MatterBin: 2 # Frontier stackRequirements<requirements
+      Capacitor: 2 # Frontier stackRequirements<requirements
     stackRequirements:
-      MatterBin: 2
-      Capacitor: 2
       Plasma: 1
   - type: Construction
     deconstructionTarget: null
@@ -546,9 +437,10 @@
     state: engineering
   - type: MachineBoard
     prototype: GasThermoMachineHellfireHeater
+    requirements: # Frontier
+      MatterBin: 2 # Frontier stackRequirements<requirements
+      Capacitor: 2 # Frontier stackRequirements<requirements
     stackRequirements:
-      MatterBin: 2
-      Capacitor: 2
       Plasma: 1
   - type: Construction
     graph: ThermomachineBoard
@@ -565,8 +457,9 @@
     state: engineering
   - type: MachineBoard
     prototype: BaseGasCondenser
+    requirements: # Frontier
+      MatterBin: 1 # Frontier stackRequirements<requirements
     stackRequirements:
-      MatterBin: 1
       Glass: 1
 
 - type: entity
@@ -579,9 +472,10 @@
     state: engineering
   - type: MachineBoard
     prototype: PortableScrubber
+    requirements: # Frontier
+      MatterBin: 1 # Frontier stackRequirements<requirements
+      Manipulator: 2 # Frontier stackRequirements<requirements
     stackRequirements:
-      MatterBin: 1
-      Manipulator: 2
       Cable: 5
       Glass: 2
 
@@ -595,9 +489,10 @@
     state: engineering
   - type: MachineBoard
     prototype: SpaceHeater
+    requirements: # Frontier
+      MatterBin: 1 # Frontier stackRequirements<requirements
+      Capacitor: 2 # Frontier stackRequirements<requirements
     stackRequirements:
-      MatterBin: 1
-      Capacitor: 2
       Cable: 5
 
 - type: entity
@@ -610,9 +505,10 @@
       state: medical
     - type: MachineBoard
       prototype: CloningPod
+      requirements: # Frontier
+        MatterBin: 2 # Frontier stackRequirements<requirements
+        Manipulator: 2 # Frontier stackRequirements<requirements
       stackRequirements:
-        MatterBin: 2
-        Manipulator: 2
         Glass: 1
         Cable: 1
 
@@ -626,8 +522,9 @@
       state: medical
     - type: MachineBoard
       prototype: MedicalScanner
+      requirements: # Frontier
+        Capacitor: 1 # Frontier stackRequirements<requirements
       stackRequirements:
-        Capacitor: 1
         Glass: 5
         Cable: 1
 
@@ -667,8 +564,9 @@
       state: medical
     - type: MachineBoard
       prototype: ChemMaster
+      requirements: # Frontier
+        Capacitor: 1 # Frontier stackRequirements<requirements
       stackRequirements:
-        Capacitor: 1
         Glass: 1
         Cable: 1
       tagRequirements:
@@ -686,8 +584,10 @@
       state: medical
     - type: MachineBoard
       prototype: ChemDispenserEmpty
+      requirements: # Frontier
+        # Capacitor: 1 # Frontier stackRequirements<requirements
+        MatterBin: 1 # Frontier: upgrades number of stored jugs
       stackRequirements:
-        Capacitor: 1
         Glass: 1
         Steel: 3
       tagRequirements:
@@ -703,9 +603,10 @@
   components:
     - type: MachineBoard
       prototype: BiomassReclaimer
+      requirements: # Frontier
+        MatterBin: 2 # Frontier stackRequirements<requirements
+        Manipulator: 1 # Frontier stackRequirements<requirements
       stackRequirements:
-        MatterBin: 2
-        Manipulator: 1
         Steel: 5
       tagRequirements:
         Knife:
@@ -742,9 +643,10 @@
       state: service
     - type: MachineBoard
       prototype: SeedExtractor
+      requirements: # Frontier
+        Manipulator: 2 # Frontier stackRequirements<requirements
+        Capacitor: 1 # Frontier stackRequirements<requirements
       stackRequirements:
-        Manipulator: 2
-        Capacitor: 1
         # replacing the console screen
         Glass: 1
         Cable: 2
@@ -760,13 +662,11 @@
       state: power_mod
     - type: MachineBoard
       prototype: SMESBasicEmpty
+      requirements: # Frontier
+        Capacitor: 1 # Frontier stackRequirements<requirements
+        PowerCell: 4 # Frontier componentRequirements<requirements
       stackRequirements:
-        Capacitor: 1
         CableHV: 10
-      componentRequirements:
-        PowerCell:
-          amount: 4
-          defaultPrototype: PowerCellSmall
 
 - type: entity
   id: SMESAdvancedMachineCircuitboard
@@ -779,13 +679,11 @@
     state: power_mod
   - type: MachineBoard
     prototype: SMESAdvancedEmpty
+    requirements: # Frontier
+        Capacitor: 2 # Frontier stackRequirements<requirements
+        PowerCell: 8 # Frontier componentRequirements<requirements, 4<8
     stackRequirements:
-      Capacitor: 2
       CableHV: 20
-    componentRequirements:
-      PowerCell:
-        amount: 4
-        defaultPrototype: PowerCellMedium
 
 - type: entity
   id: CellRechargerCircuitboard
@@ -798,13 +696,14 @@
       state: charger_APC
     - type: MachineBoard
       prototype: PowerCellRecharger
+      requirements: # Frontier
+        Capacitor: 2 # Frontier stackRequirements<requirements
       stackRequirements:
-        Capacitor: 2
         Cable: 5
-    - type: PhysicalComposition #Goobstation - Recycle update
+    - type: PhysicalComposition
       materialComposition:
-        Steel: 12
-        Plastic: 12
+        Steel: 30
+        Plastic: 30
     - type: StaticPrice
       price: 15
 
@@ -819,14 +718,15 @@
       state: charger_APC
     - type: MachineBoard
       prototype: PowerCageRecharger
+      requirements: # Frontier
+        Capacitor: 4 # Frontier stackRequirements<requirements
       stackRequirements:
-        Capacitor: 4
         Steel: 5
         Cable: 10
-    - type: PhysicalComposition #Goobstation - Recycle update
+    - type: PhysicalComposition
       materialComposition:
-        Steel: 25
-        Glass: 125
+        Steel: 30
+        Plastic: 30
     - type: StaticPrice
       price: 30
 
@@ -841,13 +741,14 @@
       state: charger_APC
     - type: MachineBoard
       prototype: BorgCharger
+      requirements: # Frontier
+        Capacitor: 2 # Frontier stackRequirements<requirements
       stackRequirements:
-        Capacitor: 2
         Cable: 5
-    - type: PhysicalComposition #Goobstation - Recycle update
+    - type: PhysicalComposition
       materialComposition:
-        Steel: 12
-        Plastic: 12
+        Steel: 30
+        Plastic: 30
     - type: StaticPrice
       price: 15
 
@@ -862,13 +763,14 @@
       state: charger_APC
     - type: MachineBoard
       prototype: WeaponCapacitorRecharger
+      requirements: # Frontier
+        Capacitor: 2 # Frontier stackRequirements<requirements
       stackRequirements:
-        Capacitor: 2
         CableMV: 5
-    - type: PhysicalComposition #Goobstation - Recycle update
+    - type: PhysicalComposition
       materialComposition:
-        Steel: 12
-        Plastic: 12
+        Steel: 30
+        Plastic: 30
     - type: StaticPrice
       price: 15
 
@@ -883,14 +785,14 @@
     state: charger_APC
   - type: MachineBoard
     prototype: TurboItemRecharger
+    requirements: # Frontier
+      Capacitor: 2 # Frontier stackRequirements<requirements
     stackRequirements:
-      Capacitor: 2
       CableMV: 5
-  - type: PhysicalComposition #Goobstation - Recycle update
+  - type: PhysicalComposition
     materialComposition:
-      Steel: 25
-      Glass: 125
-      Gold: 25
+      Steel: 30
+      Plastic: 30
 
 - type: entity
   id: SubstationMachineCircuitboard
@@ -900,19 +802,17 @@
   components:
     - type: MachineBoard
       prototype: SubstationBasicEmpty
+      requirements: # Frontier
+        Capacitor: 1 # Frontier stackRequirements<requirements
+        PowerCell: 1 # Frontier componentRequirements<requirements
       stackRequirements:
-        Capacitor: 1
         CableMV: 5
         CableHV: 5
-      componentRequirements:
-        PowerCell:
-          amount: 1
-          defaultPrototype: PowerCellSmall
-    - type: PhysicalComposition #Goobstation - Recycle update
+    - type: PhysicalComposition
       materialComposition:
-        Glass: 125
+        Glass: 200
       chemicalComposition:
-        Silicon: 5
+        Silicon: 20
     - type: StaticPrice
       price: 58
 
@@ -958,14 +858,15 @@
       state: engineering
     - type: MachineBoard
       prototype: PortableGeneratorPacman
+      requirements: # Frontier
+        Capacitor: 1 # Frontier stackRequirements<requirements
       stackRequirements:
-        Capacitor: 1
         CableHV: 5
-    - type: PhysicalComposition #Goobstation - Recycle update
+    - type: PhysicalComposition
       materialComposition:
-        Glass: 125
+        Glass: 200
       chemicalComposition:
-        Silicon: 5
+        Silicon: 20
     - type: StaticPrice
       price: 40
 
@@ -976,8 +877,9 @@
   components:
   - type: MachineBoard
     prototype: Thruster
+    requirements: # Frontier
+      Capacitor: 4 # Frontier stackRequirements<requirements
     stackRequirements:
-      Capacitor: 4
       Steel: 5
 
 - type: entity
@@ -987,9 +889,10 @@
   components:
   - type: MachineBoard
     prototype: Gyroscope
+    requirements: # Frontier
+      Manipulator: 2 # Frontier stackRequirements<requirements
+      Capacitor: 1 # Frontier stackRequirements<requirements
     stackRequirements:
-      Manipulator: 2
-      Capacitor: 1
       Glass: 2
 
 - type: entity
@@ -1001,14 +904,15 @@
       state: engineering
     - type: MachineBoard
       prototype: PortableGeneratorSuperPacman
+      requirements: # Frontier
+        Capacitor: 2 # Frontier stackRequirements<requirements
       stackRequirements:
-        Capacitor: 2
         CableHV: 10
-    - type: PhysicalComposition #Goobstation - Recycle update
+    - type: PhysicalComposition
       materialComposition:
-        Glass: 125
+        Glass: 200
       chemicalComposition:
-        Silicon: 5
+        Silicon: 20
     - type: StaticPrice
       price: 40
 
@@ -1021,14 +925,15 @@
       state: engineering
     - type: MachineBoard
       prototype: PortableGeneratorJrPacman
+      requirements: # Frontier
+        Capacitor: 1 # Frontier stackRequirements<requirements
       stackRequirements:
-        Capacitor: 1
         Cable: 10
-    - type: PhysicalComposition #Goobstation - Recycle update
+    - type: PhysicalComposition
       materialComposition:
-        Glass: 125
+        Glass: 200
       chemicalComposition:
-        Silicon: 5
+        Silicon: 20
     - type: StaticPrice
       price: 40
 
@@ -1040,9 +945,9 @@
   components:
     - type: MachineBoard
       prototype: KitchenReagentGrinder
-      stackRequirements:
-        MatterBin: 2
-        Manipulator: 2
+      requirements: # Frontier
+        MatterBin: 2 # Frontier stackRequirements<requirements
+        Manipulator: 2 # Frontier stackRequirements<requirements
       tagRequirements:
         GlassBeaker:
           amount: 1
@@ -1056,8 +961,9 @@
   components:
     - type: MachineBoard
       prototype: ChemistryHotplate
+      requirements: # Frontier
+        Capacitor: 2 # Frontier stackRequirements<requirements
       stackRequirements:
-        Capacitor: 2
         Glass: 1
 
 - type: entity
@@ -1068,8 +974,9 @@
   components:
   - type: MachineBoard
     prototype: KitchenElectricGrill
+    requirements: # Frontier
+      Capacitor: 4 # Frontier stackRequirements<requirements
     stackRequirements:
-      Capacitor: 4
       Glass: 2
       Cable: 5
 
@@ -1082,9 +989,10 @@
       state: medical
     - type: MachineBoard
       prototype: StasisBed
+      requirements: # Frontier
+        Capacitor: 1 # Frontier stackRequirements<requirements
+        Manipulator: 1 # Frontier stackRequirements<requirements
       stackRequirements:
-        Capacitor: 1
-        Manipulator: 1
         Cable: 3
         Steel: 2
 
@@ -1098,8 +1006,9 @@
     state: medical
   - type: MachineBoard
     prototype: MachineElectrolysisUnit
+    requirements: # Frontier
+      Capacitor: 2 # Frontier stackRequirements<requirements
     stackRequirements:
-      Capacitor: 2
       Cable: 1
 
 - type: entity
@@ -1112,8 +1021,9 @@
     state: medical
   - type: MachineBoard
     prototype: MachineCentrifuge
+    requirements: # Frontier
+      Manipulator: 1 # Frontier stackRequirements<requirements
     stackRequirements:
-      Manipulator: 1
       Steel: 1
 
 - type: entity
@@ -1125,9 +1035,10 @@
       state: supply
     - type: MachineBoard
       prototype: OreProcessor
+      requirements: # Frontier
+        MatterBin: 1 # Frontier stackRequirements<requirements
+        Manipulator: 3 # Frontier stackRequirements<requirements
       stackRequirements:
-        MatterBin: 1
-        Manipulator: 3
         Glass: 1
 
 - type: entity
@@ -1139,9 +1050,10 @@
     state: supply
   - type: MachineBoard
     prototype: OreProcessorIndustrial
+    requirements: # Frontier
+      MatterBin: 1 # Frontier stackRequirements<requirements
+      Manipulator: 3 # Frontier stackRequirements<requirements
     stackRequirements:
-      MatterBin: 1
-      Manipulator: 3
       Glass: 1
 
 - type: entity
@@ -1151,9 +1063,9 @@
   components:
   - type: MachineBoard
     prototype: Sheetifier
-    stackRequirements:
-      MatterBin: 1
-      Manipulator: 1
+    requirements: # Frontier
+      MatterBin: 1 # Frontier stackRequirements<requirements
+      Manipulator: 1 # Frontier stackRequirements<requirements
 
 - type: entity
   id: MicrowaveMachineCircuitboard
@@ -1164,8 +1076,9 @@
       state: service
     - type: MachineBoard
       prototype: KitchenMicrowave
+      requirements: # Frontier
+        Capacitor: 1 # Frontier stackRequirements<requirements
       stackRequirements:
-        Capacitor: 1
         Glass: 2
         Cable: 2
     - type: Tag
@@ -1181,8 +1094,9 @@
       state: service
     - type: MachineBoard
       prototype: SyndicateMicrowave
+      requirements: # Frontier
+        Capacitor: 1 # Frontier stackRequirements<requirements
       stackRequirements:
-        Capacitor: 1
         Glass: 2
         Cable: 2
 
@@ -1195,8 +1109,8 @@
       state: service
     - type: MachineBoard
       prototype: FatExtractor
-      stackRequirements:
-        Manipulator: 1
+      requirements: # Frontier
+        Manipulator: 1 # Frontier stackRequirements<requirements
       componentRequirements:
         Utensil:
           amount: 1
@@ -1210,9 +1124,10 @@
   components:
   - type: MachineBoard
     prototype: MachineFlatpacker
+    requirements: # Frontier
+      Manipulator: 2 # Frontier stackRequirements<requirements
+      MatterBin: 1 # Frontier stackRequirements<requirements
     stackRequirements:
-      Manipulator: 2
-      MatterBin: 1
       Steel: 1
 
 - type: entity
@@ -1224,8 +1139,9 @@
       state: engineering
     - type: MachineBoard
       prototype: Emitter
+      requirements: # Frontier
+        Capacitor: 2 # Frontier stackRequirements<requirements
       stackRequirements:
-        Capacitor: 2
         CableHV: 5
         Glass: 2
 
@@ -1284,9 +1200,10 @@
   components:
   - type: MachineBoard
     prototype: GasRecycler
+    requirements: # Frontier
+      Capacitor: 1 # Frontier stackRequirements<requirements
+      Manipulator: 1 # Frontier stackRequirements<requirements
     stackRequirements:
-      Capacitor: 1
-      Manipulator: 1
       Steel: 10
       Plasma: 5
 
@@ -1300,6 +1217,8 @@
       state: service
     - type: MachineBoard
       prototype: BoozeDispenserEmpty
+      requirements: # Frontier
+        MatterBin: 1 # Frontier
       stackRequirements:
         Steel: 5
       tagRequirements:
@@ -1317,10 +1236,10 @@
       state: supply
     - type: MachineBoard
       prototype: CargoTelepad
+      requirements: # Frontier
+        Capacitor: 2 # Frontier stackRequirements<requirements
       stackRequirements:
-        Capacitor: 2
         Steel: 5
-        BSCrystal: 5 # Goobstation
 
 - type: entity
   id: SodaDispenserMachineCircuitboard
@@ -1332,6 +1251,8 @@
       state: service
     - type: MachineBoard
       prototype: SodaDispenserEmpty
+      requirements: # Frontier
+        MatterBin: 1 # Frontier
       stackRequirements:
         Steel: 5
       tagRequirements:
@@ -1361,8 +1282,9 @@
     state: supply
   - type: MachineBoard
     prototype: SalvageMagnet
+    requirements: # Frontier
+      Capacitor: 4 # Frontier stackRequirements<requirements
     stackRequirements:
-      Capacitor: 4
       Steel: 5
       CableHV: 5
       Cable: 2
@@ -1375,9 +1297,10 @@
   components:
   - type: MachineBoard
     prototype: GravityGeneratorMini
+    requirements: # Frontier
+      Capacitor: 4 # Frontier stackRequirements<requirements
+      MatterBin: 3 # Frontier stackRequirements<requirements
     stackRequirements:
-      Capacitor: 4
-      MatterBin: 3
       Steel: 5
       CableHV: 5
       Uranium: 2
@@ -1390,9 +1313,10 @@
   components:
   - type: MachineBoard
     prototype: StationAnchor
+    requirements: # Frontier
+      Capacitor: 4 # Frontier stackRequirements<requirements
+      MatterBin: 3 # Frontier stackRequirements<requirements
     stackRequirements:
-      Capacitor: 4
-      MatterBin: 3
       Steel: 10
       Glass: 5
       CableHV: 8
@@ -1405,9 +1329,10 @@
   components:
   - type: MachineBoard
     prototype: ReagentGrinderIndustrial
+    requirements: # Frontier
+      MatterBin: 1 # Frontier stackRequirements<requirements
+      Manipulator: 3 # Frontier stackRequirements<requirements
     stackRequirements:
-      MatterBin: 1
-      Manipulator: 3
       Glass: 1
 
 - type: entity
@@ -1431,10 +1356,11 @@
   components:
   - type: MachineBoard
     prototype: CutterMachine
+    requirements: # Frontier
+      Capacitor: 1 # Frontier stackRequirements<requirements
+      Manipulator: 1 # Frontier stackRequirements<requirements
     stackRequirements:
       Steel: 2
-      Capacitor: 1
-      Manipulator: 1
       Cable: 1
 
 # Shitmed Change Start

@@ -1,10 +1,3 @@
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aviu00 <93730715+Aviu00@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Spatison <137375981+Spatison@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using System.Linq;
 using System.Numerics;
 using Content.Shared._White.Standing;
@@ -66,11 +59,8 @@ public abstract class SharedBlinkSystem : EntitySystem
             return;
 
         var coords = _transform.GetWorldPosition(xform);
-        var length = msg.Direction.Length();
-        if (length <= 0f)
-            return;
         var dir = msg.Direction.Normalized();
-        var range = MathF.Min(blink.Distance, length);
+        var range = MathF.Min(blink.Distance, msg.Direction.Length());
 
         var ray = new CollisionRay(coords, dir, (int) (CollisionGroup.Impassable | CollisionGroup.InteractImpassable));
         var rayResults = _physics.IntersectRay(xform.MapID, ray, range, user, false).ToList();
@@ -85,6 +75,6 @@ public abstract class SharedBlinkSystem : EntitySystem
         _transform.SetWorldPosition(user, targetPos);
         _audio.PlayPredicted(blink.BlinkSound, user, user);
         if (_net.IsServer) // Prediction issues
-            _telefrag.DoTelefrag(user, xform.Coordinates, blink.KnockdownTime, blink.KnockdownRadius, autoStandUp: true);
+            _telefrag.DoTelefrag(user, xform.Coordinates, blink.KnockdownTime);
     }
 }

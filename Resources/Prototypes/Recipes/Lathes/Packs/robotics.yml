@@ -1,9 +1,3 @@
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Fishbait <Fishbait@git.ml>
-# SPDX-FileCopyrightText: 2025 SX_7 <sn1.test.preria.2002@gmail.com>
-# SPDX-FileCopyrightText: 2025 fishbait <gnesse@gmail.com>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
 ## Static
 
 - type: latheRecipePack
@@ -21,6 +15,23 @@
   - BorgModuleFireExtinguisher
   - BorgModuleRadiationDetection
   - BorgModuleTool
+  - BorgModuleSurgery # Shitmed Change
+
+- type: latheRecipePack
+  id: BorgModulesDynamic
+  recipes:
+  - BorgModuleAdvancedSurgery
+
+- type: latheRecipePack
+  id: SMCybernetics
+  recipes:
+  - JawsOfLifeLeftArm
+  - JawsOfLifeRightArm
+  - SpeedLeftLeg
+  - SpeedRightLeg
+  - BasicCyberneticEyes
+  - SecurityCyberneticEyes
+  - MedicalCyberneticEyes
 
 - type: latheRecipePack
   id: BorgLimbsStatic
@@ -38,7 +49,6 @@
   id: Robotics
   recipes:
   - ProximitySensor
-  - Drone
 
 - type: latheRecipePack
   id: BorgModules
@@ -52,7 +62,11 @@
   - BorgModuleHarvesting
   - BorgModuleDefibrillator
   - BorgModuleAdvancedTreatment
+  - BorgModuleJetpack # Frontier
+  - BorgModuleAdvancedParamedic # Frontier
+  - BorgModuleAdvancedMining # Frontier
 
+# Mono/Goob changes start
 - type: latheRecipePack
   id: MechParts
   recipes:
@@ -79,3 +93,15 @@
     - MechEquipmentGrabber
     - MechEquipmentHorn
     - MechEquipmentGrabberSmall
+
+- type: latheRecipePack
+  id: Modsuits
+  recipes:
+  - ModsuitChestplate
+  - ModsuitBoots
+  - ModsuitHelmet
+  - ModsuitGauntlets
+  - ModsuitShell
+  - ModsuitPlatingExternal
+  - ModsuitCoreStandard
+# Mono/Goob changes end

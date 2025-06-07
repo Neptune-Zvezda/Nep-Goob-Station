@@ -1,30 +1,18 @@
-// SPDX-FileCopyrightText: 2022 E F R <602406+Efruit@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Flipp Syder <76629141+vulppine@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Rane <60792108+Elijahrane@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Vera Aguilera Puerto <6766154+Zumorica@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 metalgearsloth <comedian_vs_clown@hotmail.com>
-// SPDX-FileCopyrightText: 2022 mirrorcult <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2022 vulppine <vulppine@gmail.com>
-// SPDX-FileCopyrightText: 2022 wrexbe <81056464+wrexbe@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 wrexbe <wrexbe@protonmail.com>
-// SPDX-FileCopyrightText: 2023 Julian Giebel <juliangiebel@live.de>
-// SPDX-FileCopyrightText: 2023 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 ScarKy0 <106310278+ScarKy0@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
+using Content.Server.AlertLevel;
 using Content.Server.Atmos.Monitor.Components;
 using Content.Server.DeviceNetwork.Components;
+using Content.Server.DeviceNetwork.Systems;
+using Content.Server.Power.Components;
 using Content.Server.Power.EntitySystems;
 using Content.Shared.Access.Systems;
+using Content.Shared.AlertLevel;
 using Content.Shared.Atmos.Monitor;
 using Content.Shared.CCVar;
+using Content.Shared.DeviceNetwork;
 using Content.Shared.DeviceNetwork.Systems;
 using Content.Shared.Interaction;
 using Content.Shared.Emag.Systems;
+using Robust.Server.GameObjects;
 using Robust.Shared.Configuration;
 
 namespace Content.Server.Atmos.Monitor.Systems;
@@ -43,6 +31,7 @@ public sealed class FireAlarmSystem : EntitySystem
         SubscribeLocalEvent<FireAlarmComponent, InteractHandEvent>(OnInteractHand);
         SubscribeLocalEvent<FireAlarmComponent, DeviceListUpdateEvent>(OnDeviceListSync);
         SubscribeLocalEvent<FireAlarmComponent, GotEmaggedEvent>(OnEmagged);
+        SubscribeLocalEvent<FireAlarmComponent, GotUnEmaggedEvent>(OnUnemagged); // Frontier
     }
 
     private void OnDeviceListSync(EntityUid uid, FireAlarmComponent component, DeviceListUpdateEvent args)
@@ -104,4 +93,23 @@ public sealed class FireAlarmSystem : EntitySystem
         RemCompDeferred<AtmosAlarmableComponent>(uid);
         args.Handled = true;
     }
+
+    // Frontier: demag
+    private void OnUnemagged(EntityUid uid, FireAlarmComponent component, ref GotUnEmaggedEvent args)
+    {
+        if (!_emag.CompareFlag(args.Type, EmagType.Interaction))
+            return;
+
+        if (!_emag.CheckFlag(uid, EmagType.Interaction))
+            return;
+
+        if (!HasComp<AtmosAlarmableComponent>(uid))
+        {
+            // Restore the atmos alarmable component to this device.
+            var alarmable = EnsureComp<AtmosAlarmableComponent>(uid);
+            _atmosAlarmable.Reset(uid, alarmable);
+        }
+        args.Handled = true;
+    }
+    // End Frontier
 }

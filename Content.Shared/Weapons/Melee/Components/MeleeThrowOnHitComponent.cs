@@ -1,16 +1,8 @@
-// SPDX-FileCopyrightText: 2023 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Ed <96445749+TheShuEd@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 ActiveMammmoth <140334666+ActiveMammmoth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 ActiveMammmoth <kmcsmooth@gmail.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Misandry <mary@thughunt.ing>
-// SPDX-FileCopyrightText: 2025 gus <august.eymann@gmail.com>
-// SPDX-FileCopyrightText: 2025 keronshb <54602815+keronshb@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
-// using Content.Shared._Goobstation.Boomerang; NO!!
+using System.Numerics;
 using Robust.Shared.GameStates;
+using Robust.Shared.Physics.Components;
+using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
+using Content.Shared.Whitelist; // Frontier
 
 namespace Content.Shared.Weapons.Melee.Components;
 
@@ -19,7 +11,7 @@ namespace Content.Shared.Weapons.Melee.Components;
 /// until it hits a wall or a time limit is exhausted.
 /// </summary>
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
-// [Access(typeof(MeleeThrowOnHitSystem), typeof(BoomerangSystem))] // Goobstation Edit - No implicit access
+[Access(typeof(MeleeThrowOnHitSystem))]
 public sealed partial class MeleeThrowOnHitComponent : Component
 {
     /// <summary>
@@ -39,6 +31,12 @@ public sealed partial class MeleeThrowOnHitComponent : Component
     /// </summary>
     [DataField, AutoNetworkedField]
     public bool UnanchorOnHit;
+
+    /// <summary>
+    /// Frontier - If any entities on the whitelist then UnanchorOnHit won't work on anything else.
+    /// </summary>
+    [DataField]
+    public EntityWhitelist? Whitelist;
 
     /// <summary>
     /// How long should this stun the target, if applicable?

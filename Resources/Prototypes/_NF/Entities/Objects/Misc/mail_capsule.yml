@@ -1,8 +1,3 @@
-# SPDX-FileCopyrightText: 2024 BombasterDS <115770678+BombasterDS@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
 - type: entity
   name: mail capsule
   suffix: Primed
@@ -37,7 +32,6 @@
           components:
           - Mail
           - Paper
-          - HyperlinkBook
         insertOnInteract: true
         priority: 3
       food_slot:
@@ -64,19 +58,19 @@
     containers:
       storagebase: !type:Container
         showEnts: False
-        occludes: true
+        occludes: True
         ents: []
       mail_slot: !type:ContainerSlot
         showEnts: False
-        occludes: true
+        occludes: True
         ent: null
       food_slot: !type:ContainerSlot
         showEnts: False
-        occludes: true
+        occludes: True
         ent: null
       cash_slot: !type:ContainerSlot
         showEnts: False
-        occludes: true
+        occludes: True
         ent: null
   - type: Appearance
   - type: ItemMapper
@@ -142,3 +136,14 @@
   - type: Sprite
     layers:
       - state: box
+
+# A bag full of mail capsules, for the ERT mail carrier
+- type: entity
+  parent: MailBag
+  suffix: Capsules
+  id: MailBagCapsulePrimed
+  components:
+  - type: StorageFill
+    contents:
+      - id: MailCapsulePrimed
+        amount: 10

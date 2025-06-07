@@ -1,37 +1,3 @@
-# SPDX-FileCopyrightText: 2020 AJCM-git <60196617+AJCM-git@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2020 DamianX <DamianX@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2020 Hugo Laloge <hugo.laloge@gmail.com>
-# SPDX-FileCopyrightText: 2020 Peter Wedder <burneddi@gmail.com>
-# SPDX-FileCopyrightText: 2021 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2021 Elijahrane <60792108+Elijahrane@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2021 Metal Gear Sloth <metalgearsloth@gmail.com>
-# SPDX-FileCopyrightText: 2021 Mith-randalf <84274729+Mith-randalf@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2021 Swept <sweptwastaken@protonmail.com>
-# SPDX-FileCopyrightText: 2021 SweptWasTaken <sweptwastaken@protonmail.com>
-# SPDX-FileCopyrightText: 2022 Cheackraze <71046427+Cheackraze@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2022 Chris V <HoofedEar@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2022 Emisse <99158783+Emisse@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2022 Kara <lunarautomaton6@gmail.com>
-# SPDX-FileCopyrightText: 2022 Lamrr <96937466+Lamrr@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2022 Moony <moonheart08@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2022 Paul Ritter <ritter.paul1@googlemail.com>
-# SPDX-FileCopyrightText: 2022 Peptide90 <78795277+Peptide90@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2022 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-# SPDX-FileCopyrightText: 2022 metalgearsloth <comedian_vs_clown@hotmail.com>
-# SPDX-FileCopyrightText: 2023 Fluffiest Floofers <thebluewulf@gmail.com>
-# SPDX-FileCopyrightText: 2023 MagnusCrowe <whiterider1988@yahoo.com>
-# SPDX-FileCopyrightText: 2023 Maxtone <124747282+MagnusCrowe@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 Nairod <110078045+Nairodian@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 Puro <103608145+PuroSlavKing@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 lzk <124214523+lzk228@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Aidenkrz <aiden@djkraz.com>
-# SPDX-FileCopyrightText: 2024 IProduceWidgets <107586145+IProduceWidgets@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Kira Bridgeton <161087999+Verbalase@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
 # Base
 
 - type: entity
@@ -76,6 +42,7 @@
   id: SpawnPointQuartermaster
   parent: SpawnPointJobBase
   name: quartermaster
+  categories: [ HideSpawnMenu ] # Frontier
   components:
   - type: SpawnPoint
     job_id: Quartermaster
@@ -89,6 +56,7 @@
   id: SpawnPointCargoTechnician
   parent: SpawnPointJobBase
   name: cargotechnician
+  categories: [ HideSpawnMenu ] # Frontier
   components:
   - type: SpawnPoint
     job_id: CargoTechnician
@@ -101,6 +69,7 @@
   id: SpawnPointSalvageSpecialist
   parent: SpawnPointJobBase
   name: salvagespecialist
+  categories: [ HideSpawnMenu ] # Frontier
   components:
   - type: SpawnPoint
     job_id: SalvageSpecialist
@@ -115,6 +84,7 @@
   id: SpawnPointPassenger
   parent: SpawnPointJobBase
   name: passenger
+  categories: [ HideSpawnMenu ] # Frontier
   components:
   - type: SpawnPoint
     job_id: Passenger
@@ -127,6 +97,7 @@
   id: SpawnPointTechnicalAssistant
   parent: SpawnPointJobBase
   name: technical assistant
+  categories: [ HideSpawnMenu ] # Frontier
   components:
   - type: SpawnPoint
     job_id: TechnicalAssistant
@@ -139,6 +110,7 @@
   id: SpawnPointMedicalIntern
   parent: SpawnPointJobBase
   name: medical intern
+  categories: [ HideSpawnMenu ] # Frontier
   components:
   - type: SpawnPoint
     job_id: MedicalIntern
@@ -151,6 +123,7 @@
   id: SpawnPointSecurityCadet
   parent: SpawnPointJobBase
   name: security cadet
+  categories: [ HideSpawnMenu ] # Frontier
   components:
   - type: SpawnPoint
     job_id: SecurityCadet
@@ -163,6 +136,7 @@
   id: SpawnPointResearchAssistant
   parent: SpawnPointJobBase
   name: research assistant
+  categories: [ HideSpawnMenu ] # Frontier
   components:
   - type: SpawnPoint
     job_id: ResearchAssistant
@@ -175,6 +149,7 @@
   id: SpawnPointServiceWorker
   parent: SpawnPointJobBase
   name: service worker
+  categories: [ HideSpawnMenu ] # Frontier
   components:
   - type: SpawnPoint
     job_id: ServiceWorker
@@ -187,6 +162,7 @@
   id: SpawnPointBartender
   parent: SpawnPointJobBase
   name: bartender
+  categories: [ HideSpawnMenu ] # Frontier
   components:
   - type: SpawnPoint
     job_id: Bartender
@@ -199,6 +175,7 @@
   id: SpawnPointChef
   parent: SpawnPointJobBase
   name: chef
+  categories: [ HideSpawnMenu ] # Frontier
   components:
   - type: SpawnPoint
     job_id: Chef
@@ -211,6 +188,7 @@
   id: SpawnPointBotanist
   parent: SpawnPointJobBase
   name: botanist
+  categories: [ HideSpawnMenu ] # Frontier
   components:
   - type: SpawnPoint
     job_id: Botanist
@@ -223,6 +201,7 @@
   id: SpawnPointClown
   parent: SpawnPointJobBase
   name: clown
+  categories: [ HideSpawnMenu ] # Frontier
   components:
   - type: SpawnPoint
     job_id: Clown
@@ -235,6 +214,7 @@
   id: SpawnPointMime
   parent: SpawnPointJobBase
   name: mime
+  categories: [ HideSpawnMenu ] # Frontier
   components:
   - type: SpawnPoint
     job_id: Mime
@@ -247,6 +227,7 @@
   id: SpawnPointChaplain
   parent: SpawnPointJobBase
   name: chaplain
+  categories: [ HideSpawnMenu ] # Frontier
   components:
   - type: SpawnPoint
     job_id: Chaplain
@@ -259,6 +240,7 @@
   id: SpawnPointLibrarian
   parent: SpawnPointJobBase
   name: librarian
+  categories: [ HideSpawnMenu ] # Frontier
   components:
   - type: SpawnPoint
     job_id: Librarian
@@ -271,6 +253,7 @@
   id: SpawnPointLawyer
   parent: SpawnPointJobBase
   name: lawyer
+  categories: [ HideSpawnMenu ] # Frontier
   components:
   - type: SpawnPoint
     job_id: Lawyer
@@ -283,6 +266,7 @@
   id: SpawnPointJanitor
   parent: SpawnPointJobBase
   name: janitor
+  categories: [ HideSpawnMenu ] # Frontier
   components:
   - type: SpawnPoint
     job_id: Janitor
@@ -295,6 +279,7 @@
   id: SpawnPointMusician
   parent: SpawnPointJobBase
   name: musician
+  categories: [ HideSpawnMenu ] # Frontier
   components:
   - type: SpawnPoint
     job_id: Musician
@@ -307,6 +292,7 @@
   id: SpawnPointBoxer
   parent: SpawnPointJobBase
   name: boxer
+  categories: [ HideSpawnMenu ] # Frontier
   components:
   - type: SpawnPoint
     job_id: Boxer
@@ -336,6 +322,7 @@
   id: SpawnPointCaptain
   parent: SpawnPointJobBase
   name: captain
+  categories: [ HideSpawnMenu ] # Frontier
   components:
   - type: SpawnPoint
     job_id: Captain
@@ -348,6 +335,7 @@
   id: SpawnPointHeadOfPersonnel
   parent: SpawnPointJobBase
   name: headofpersonnel
+  categories: [ HideSpawnMenu ] # Frontier
   components:
   - type: SpawnPoint
     job_id: HeadOfPersonnel
@@ -362,6 +350,7 @@
   id: SpawnPointChiefEngineer
   parent: SpawnPointJobBase
   name: chiefengineer
+  categories: [ HideSpawnMenu ] # Frontier
   components:
   - type: SpawnPoint
     job_id: ChiefEngineer
@@ -374,6 +363,7 @@
   id: SpawnPointStationEngineer
   parent: SpawnPointJobBase
   name: stationengineer
+  categories: [ HideSpawnMenu ] # Frontier
   components:
   - type: SpawnPoint
     job_id: StationEngineer
@@ -386,6 +376,7 @@
   id: SpawnPointAtmos
   parent: SpawnPointJobBase
   name: atmospherics
+  categories: [ HideSpawnMenu ] # Frontier
   components:
   - type: SpawnPoint
     job_id: AtmosphericTechnician
@@ -400,6 +391,7 @@
   id: SpawnPointChiefMedicalOfficer
   parent: SpawnPointJobBase
   name: chiefmedicalofficer
+  categories: [ HideSpawnMenu ] # Frontier
   components:
   - type: SpawnPoint
     job_id: ChiefMedicalOfficer
@@ -412,6 +404,7 @@
   id: SpawnPointMedicalDoctor
   parent: SpawnPointJobBase
   name: medicaldoctor
+  categories: [ HideSpawnMenu ] # Frontier
   components:
   - type: SpawnPoint
     job_id: MedicalDoctor
@@ -424,6 +417,7 @@
   id: SpawnPointParamedic
   parent: SpawnPointJobBase
   name: paramedic
+  categories: [ HideSpawnMenu ] # Frontier
   components:
   - type: SpawnPoint
     job_id: Paramedic
@@ -436,6 +430,7 @@
   id: SpawnPointChemist
   parent: SpawnPointJobBase
   name: chemist
+  categories: [ HideSpawnMenu ] # Frontier
   components:
   - type: SpawnPoint
     job_id: Chemist
@@ -450,6 +445,7 @@
   id: SpawnPointResearchDirector
   parent: SpawnPointJobBase
   name: researchdirector
+  categories: [ HideSpawnMenu ] # Frontier
   components:
   - type: SpawnPoint
     job_id: ResearchDirector
@@ -462,6 +458,7 @@
   id: SpawnPointScientist
   parent: SpawnPointJobBase
   name: scientist
+  categories: [ HideSpawnMenu ] # Frontier
   components:
   - type: SpawnPoint
     job_id: Scientist
@@ -476,6 +473,7 @@
   id: SpawnPointHeadOfSecurity
   parent: SpawnPointJobBase
   name: headofsecurity
+  categories: [ HideSpawnMenu ] # Frontier
   components:
   - type: SpawnPoint
     job_id: HeadOfSecurity
@@ -488,6 +486,7 @@
   id: SpawnPointWarden
   parent: SpawnPointJobBase
   name: warden
+  categories: [ HideSpawnMenu ] # Frontier
   components:
   - type: SpawnPoint
     job_id: Warden
@@ -500,6 +499,7 @@
   id: SpawnPointSecurityOfficer
   parent: SpawnPointJobBase
   name: securityofficer
+  categories: [ HideSpawnMenu ] # Frontier
   components:
   - type: SpawnPoint
     job_id: SecurityOfficer
@@ -512,6 +512,7 @@
   id: SpawnPointDetective
   parent: SpawnPointJobBase
   name: detective
+  categories: [ HideSpawnMenu ] # Frontier
   components:
   - type: SpawnPoint
     job_id: Detective
@@ -525,8 +526,8 @@
   parent: SpawnPointJobBase
   name: brigmedic
   components:
-  - type: SpawnPoint
-    job_id: Brigmedic
+  - type: SpawnPoint # Frontier
+    job_id: Brigmedic # Frontier
   - type: Sprite
     layers:
       - state: green
@@ -612,6 +613,7 @@
   id: SpawnPointReporter
   parent: SpawnPointJobBase
   name: reporter
+  categories: [ HideSpawnMenu ] # Frontier
   components:
   - type: SpawnPoint
     job_id: Reporter
@@ -624,6 +626,7 @@
   id: SpawnPointPsychologist
   parent: SpawnPointJobBase
   name: psychologist
+  categories: [ HideSpawnMenu ] # Frontier
   components:
   - type: SpawnPoint
     job_id: Psychologist
@@ -636,6 +639,7 @@
   id: SpawnPointZookeeper
   parent: SpawnPointJobBase
   name: zookeeper
+  categories: [ HideSpawnMenu ] # Frontier
   components:
   - type: SpawnPoint
     job_id: Zookeeper

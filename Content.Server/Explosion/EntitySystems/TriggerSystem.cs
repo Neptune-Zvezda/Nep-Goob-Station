@@ -1,75 +1,3 @@
-// SPDX-FileCopyrightText: 2019 Injazz <43905364+Injazz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2020 ComicIronic <comicironic@gmail.com>
-// SPDX-FileCopyrightText: 2020 Víctor Aguilera Puerto <6766154+Zumorica@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2020 chairbender <kwhipke1@gmail.com>
-// SPDX-FileCopyrightText: 2021 Acruid <shatter66@gmail.com>
-// SPDX-FileCopyrightText: 2021 Javier Guardia Fernández <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2021 Paul <ritter.paul1@googlemail.com>
-// SPDX-FileCopyrightText: 2021 Vera Aguilera Puerto <6766154+Zumorica@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2021 Vera Aguilera Puerto <gradientvera@outlook.com>
-// SPDX-FileCopyrightText: 2021 metalgearsloth <metalgearsloth@gmail.com>
-// SPDX-FileCopyrightText: 2021 mirrorcult <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2022 Alex Evgrashin <aevgrashin@yandex.ru>
-// SPDX-FileCopyrightText: 2022 Chris V <HoofedEar@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 EmoGarbage404 <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Jack Fox <35575261+DubiousDoggo@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Júlio César Ueti <52474532+Mirino97@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Moony <moonheart08@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Paul Ritter <ritter.paul1@googlemail.com>
-// SPDX-FileCopyrightText: 2022 ScalyChimp <72841710+scaly-chimp@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Snowni <101532866+Snowni@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 keronshb <54602815+keronshb@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 moonheart08 <moonheart08@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 themias <89101928+themias@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 wrexbe <81056464+wrexbe@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 AJCM <AJCM@tutanota.com>
-// SPDX-FileCopyrightText: 2023 AlexMorgan3817 <46600554+AlexMorgan3817@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Arendian <137322659+Arendian@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Doru991 <75124791+Doru991@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 ElectroJr <leonsfriedrich@gmail.com>
-// SPDX-FileCopyrightText: 2023 Emisse <99158783+Emisse@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Just-a-Unity-Dev <just-a-unity-dev@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Kara <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2023 LankLTE <135308300+LankLTE@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 LankLTE <twlowe06@gmail.com>
-// SPDX-FileCopyrightText: 2023 Pieter-Jan Briers <pieterjan.briers@gmail.com>
-// SPDX-FileCopyrightText: 2023 Slava0135 <40753025+Slava0135@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Slava0135 <super.novalskiy_0135@inbox.ru>
-// SPDX-FileCopyrightText: 2023 Visne <39844191+Visne@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Vordenburg <114301317+Vordenburg@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 eclips_e <67359748+Just-a-Unity-Dev@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Aexxie <codyfox.077@gmail.com>
-// SPDX-FileCopyrightText: 2024 BombasterDS <115770678+BombasterDS@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Cojoke <83733158+Cojoke-dot@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Ed <96445749+TheShuEd@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Jezithyr <jezithyr@gmail.com>
-// SPDX-FileCopyrightText: 2024 KISS <59531932+YuriyKiss@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2024 Plykiya <58439124+Plykiya@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Plykiya <plykiya@protonmail.com>
-// SPDX-FileCopyrightText: 2024 Winkarst <74284083+Winkarst-cpu@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Yurii Kis <yurii.kis@smartteksas.com>
-// SPDX-FileCopyrightText: 2024 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 deltanedas <@deltanedas:kde.org>
-// SPDX-FileCopyrightText: 2024 metalgearsloth <comedian_vs_clown@hotmail.com>
-// SPDX-FileCopyrightText: 2024 to4no_fix <156101927+chavonadelal@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aidenkrz <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2025 Aviu00 <93730715+Aviu00@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 SX-7 <sn1.test.preria.2002@gmail.com>
-// SPDX-FileCopyrightText: 2025 SolsticeOfTheWinter <solsticeofthewinter@gmail.com>
-// SPDX-FileCopyrightText: 2025 TemporalOroboros <TemporalOroboros@gmail.com>
-// SPDX-FileCopyrightText: 2025 TheBorzoiMustConsume <197824988+TheBorzoiMustConsume@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 slarticodefast <161409025+slarticodefast@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using Content.Server.Administration.Logs;
 using Content.Server.Body.Systems;
 using Content.Server.Explosion.Components;
@@ -86,7 +14,6 @@ using Content.Shared.Explosion.Components;
 using Content.Shared.Explosion.Components.OnTrigger;
 using Content.Shared.Implants.Components;
 using Content.Shared.Interaction;
-using Content.Shared.Interaction.Events;
 using Content.Shared.Inventory;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
@@ -96,17 +23,21 @@ using Content.Shared.Slippery;
 using Content.Shared.StepTrigger.Systems;
 using Content.Shared.Trigger;
 using Content.Shared.Weapons.Ranged.Events;
-using Content.Shared.Whitelist;
-using Content.Shared.Projectiles;
 using JetBrains.Annotations;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
 using Robust.Shared.Physics.Events;
 using Robust.Shared.Physics.Systems;
+using Content.Server.Station.Systems;
+using Content.Shared.Humanoid;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
-using Robust.Shared.Utility;
+using Content.Shared.Body.Components; // Frontier: Gib organs
+using Content.Shared.Projectiles; // Frontier: embed triggers
+using Content.Shared.Mind;
+using Content.Shared.Mind.Components;
+using Content.Shared.Roles;
 
 namespace Content.Server.Explosion.EntitySystems
 {
@@ -119,23 +50,6 @@ namespace Content.Server.Explosion.EntitySystems
         public EntityUid? User { get; }
 
         public TriggerEvent(EntityUid triggered, EntityUid? user = null)
-        {
-            Triggered = triggered;
-            User = user;
-        }
-    }
-
-    /// <summary>
-    /// Raised before a trigger is activated.
-    /// Goobstation: cancellableEEA instead of w/e abomination was there
-    /// </summary>
-    [ByRefEvent]
-    public sealed class BeforeTriggerEvent : CancellableEntityEventArgs
-    {
-        public EntityUid Triggered { get; }
-        public EntityUid? User { get; }
-
-        public BeforeTriggerEvent(EntityUid triggered, EntityUid? user = null)
         {
             Triggered = triggered;
             User = user;
@@ -167,8 +81,7 @@ namespace Content.Server.Explosion.EntitySystems
         [Dependency] private readonly SharedSolutionContainerSystem _solutionContainerSystem = default!;
         [Dependency] private readonly InventorySystem _inventory = default!;
         [Dependency] private readonly ElectrocutionSystem _electrocution = default!;
-        [Dependency] private readonly EntityWhitelistSystem _whitelist = default!;
-        [Dependency] private readonly EntityManager _entityManager = default!;
+        [Dependency] private readonly StationSystem _station = default!; // Frontier: medical insurance
 
         public override void Initialize()
         {
@@ -180,21 +93,21 @@ namespace Content.Server.Explosion.EntitySystems
             InitializeTimedCollide();
             InitializeVoice();
             InitializeMobstate();
+            InitializeBeingGibbed(); // Frontier
 
             SubscribeLocalEvent<TriggerOnSpawnComponent, MapInitEvent>(OnSpawnTriggered);
             SubscribeLocalEvent<TriggerOnCollideComponent, StartCollideEvent>(OnTriggerCollide);
             SubscribeLocalEvent<TriggerOnActivateComponent, ActivateInWorldEvent>(OnActivate);
-            SubscribeLocalEvent<TriggerOnUseComponent, UseInHandEvent>(OnUse);
             SubscribeLocalEvent<TriggerImplantActionComponent, ActivateImplantEvent>(OnImplantTrigger);
             SubscribeLocalEvent<TriggerOnStepTriggerComponent, StepTriggeredOffEvent>(OnStepTriggered);
             SubscribeLocalEvent<TriggerOnSlipComponent, SlipEvent>(OnSlipTriggered);
             SubscribeLocalEvent<TriggerWhenEmptyComponent, OnEmptyGunShotEvent>(OnEmptyTriggered);
             SubscribeLocalEvent<RepeatingTriggerComponent, MapInitEvent>(OnRepeatInit);
+            SubscribeLocalEvent<TriggerOnProjectileHitComponent, ProjectileHitEvent>(OnProjectileHitEvent); // Frontier: trigger on embed
 
             SubscribeLocalEvent<SpawnOnTriggerComponent, TriggerEvent>(OnSpawnTrigger);
             SubscribeLocalEvent<DeleteOnTriggerComponent, TriggerEvent>(HandleDeleteTrigger);
             SubscribeLocalEvent<ExplodeOnTriggerComponent, TriggerEvent>(HandleExplodeTrigger);
-            SubscribeLocalEvent<TriggerOnProjectileHitComponent, ProjectileHitEvent>(TriggerOnProjectileHit);
             SubscribeLocalEvent<FlashOnTriggerComponent, TriggerEvent>(HandleFlashTrigger);
             SubscribeLocalEvent<GibOnTriggerComponent, TriggerEvent>(HandleGibTrigger);
 
@@ -202,15 +115,6 @@ namespace Content.Server.Explosion.EntitySystems
             SubscribeLocalEvent<SoundOnTriggerComponent, TriggerEvent>(OnSoundTrigger);
             SubscribeLocalEvent<ShockOnTriggerComponent, TriggerEvent>(HandleShockTrigger);
             SubscribeLocalEvent<RattleComponent, TriggerEvent>(HandleRattleTrigger);
-
-            SubscribeLocalEvent<TriggerWhitelistComponent, BeforeTriggerEvent>(HandleWhitelist);
-        }
-
-        private void HandleWhitelist(Entity<TriggerWhitelistComponent> ent, ref BeforeTriggerEvent args)
-        {
-            // Goobedit
-            if (!_whitelist.CheckBoth(args.User, ent.Comp.Blacklist, ent.Comp.Whitelist))
-                args.Cancel();
         }
 
         private void OnSoundTrigger(EntityUid uid, SoundOnTriggerComponent component, TriggerEvent args)
@@ -257,23 +161,16 @@ namespace Content.Server.Explosion.EntitySystems
                 RemCompDeferred<AnchorOnTriggerComponent>(uid);
         }
 
-        private void OnSpawnTrigger(Entity<SpawnOnTriggerComponent> ent, ref TriggerEvent args)
+        private void OnSpawnTrigger(EntityUid uid, SpawnOnTriggerComponent component, TriggerEvent args)
         {
-            var xform = Transform(ent);
+            var xform = Transform(uid);
 
-            if (ent.Comp.mapCoords)
-            {
-                var mapCoords = _transformSystem.GetMapCoordinates(ent, xform);
-                Spawn(ent.Comp.Proto, mapCoords);
-            }
-            else
-            {
-                var coords = xform.Coordinates;
-                if (!coords.IsValid(EntityManager))
-                    return;
-                Spawn(ent.Comp.Proto, coords);
+            var coords = xform.Coordinates;
 
-            }
+            if (!coords.IsValid(EntityManager))
+                return;
+
+            Spawn(component.Proto, coords);
         }
 
         private void HandleExplodeTrigger(EntityUid uid, ExplodeOnTriggerComponent component, TriggerEvent args)
@@ -295,23 +192,49 @@ namespace Content.Server.Explosion.EntitySystems
             args.Handled = true;
         }
 
+        // Frontier: more configurable gib triggers
         private void HandleGibTrigger(EntityUid uid, GibOnTriggerComponent component, TriggerEvent args)
         {
-            if (!TryComp(uid, out TransformComponent? xform))
-                return;
+            EntityUid ent;
+            if (component.UseArgumentEntity)
+            {
+                ent = uid;
+            }
+            else
+            {
+                if (!TryComp(uid, out TransformComponent? xform))
+                    return;
+                ent = xform.ParentUid;
+            }
+
             if (component.DeleteItems)
             {
-                var items = _inventory.GetHandOrInventoryEntities(xform.ParentUid);
+                var items = _inventory.GetHandOrInventoryEntities(ent);
                 foreach (var item in items)
                 {
                     Del(item);
                 }
             }
-            _body.GibBody(xform.ParentUid, true);
+
+            if (component.DeleteOrgans) // Frontier - Gib organs
+            {
+                if (TryComp<BodyComponent>(ent, out var body))
+                {
+                    var organs = _body.GetBodyOrganEntityComps<TransformComponent>((ent, body));
+                    foreach (var organ in organs)
+                    {
+                        Del(organ.Owner);
+                    }
+                }
+            } // Frontier
+
+            if (component.Gib)
+                _body.GibBody(ent, true);
             args.Handled = true;
         }
+        // End Frontier
 
-
+        // Frontier: custom function implementation
         private void HandleRattleTrigger(EntityUid uid, RattleComponent component, TriggerEvent args)
         {
             if (!TryComp<SubdermalImplantComponent>(uid, out var implanted))
@@ -321,34 +244,98 @@ namespace Content.Server.Explosion.EntitySystems
                 return;
 
             // Gets location of the implant
-            var posText = FormattedMessage.RemoveMarkupOrThrow(_navMap.GetNearestBeaconString(uid));
-            var critMessage = Loc.GetString(component.CritMessage, ("user", implanted.ImplantedEntity.Value), ("position", posText));
-            var deathMessage = Loc.GetString(component.DeathMessage, ("user", implanted.ImplantedEntity.Value), ("position", posText));
+            var ownerXform = Transform(uid);
+            var pos = ownerXform.MapPosition;
+            var x = (int) pos.X;
+            var y = (int) pos.Y;
+            var posText = $"({x}, {y})";
+
+            // Frontier: Gets station location of the implant
+            var station = _station.GetOwningStation(uid);
+            var stationText = station is null ? null : $"{Name(station.Value)} ";
+
+            if (stationText == null)
+                stationText = "";
+
+            // Frontier: Gets species of the implant user
+            var speciesText = $"";
+            if (TryComp<HumanoidAppearanceComponent>(implanted.ImplantedEntity, out var species))
+                speciesText = $" ({species!.Species})";
+
+            var critMessage = Loc.GetString(component.CritMessage, ("user", implanted.ImplantedEntity.Value), ("specie", speciesText), ("grid", stationText!), ("position", posText));
+            var deathMessage = Loc.GetString(component.DeathMessage, ("user", implanted.ImplantedEntity.Value), ("specie", speciesText), ("grid", stationText!), ("position", posText));
 
             if (!TryComp<MobStateComponent>(implanted.ImplantedEntity, out var mobstate))
                 return;
 
-            // Sends a message to the radio channel specified by the implant
-            if (mobstate.CurrentState == MobState.Critical)
-                _radioSystem.SendRadioMessage(uid, critMessage, _prototypeManager.Index<RadioChannelPrototype>(component.RadioChannel), uid);
-            if (mobstate.CurrentState == MobState.Dead)
-                _radioSystem.SendRadioMessage(uid, deathMessage, _prototypeManager.Index<RadioChannelPrototype>(component.RadioChannel), uid);
+            if (mobstate.CurrentState != MobState.Alive)
+            {
+                // Check if this is a TSF job
+                var isTSF = false;
+                if (TryComp<MindContainerComponent>(implanted.ImplantedEntity, out var mindContainer) &&
+                    mindContainer.Mind.HasValue &&
+                    TryComp<MindComponent>(mindContainer.Mind.Value, out var mindComp))
+                {
+                    string jobTitle = "";
+
+                    // Try to get job name from the mind roles
+                    foreach (var roleId in mindComp.MindRoles)
+                    {
+                        if (!TryComp<MindRoleComponent>(roleId, out var mindRole) || mindRole.JobPrototype == null)
+                            continue;
+
+                        if (!_prototypeManager.TryIndex(mindRole.JobPrototype.Value, out var jobPrototype))
+                            continue;
+
+                        jobTitle = jobPrototype.LocalizedName;
+                        break;
+                    }
+
+                    isTSF = jobTitle.Equals(Loc.GetString("job-name-bailiff"), StringComparison.OrdinalIgnoreCase) ||
+                            jobTitle.Equals(Loc.GetString("job-name-brigmedic"), StringComparison.OrdinalIgnoreCase) ||
+                            jobTitle.Equals(Loc.GetString("job-name-cadet-nf"), StringComparison.OrdinalIgnoreCase) ||
+                            jobTitle.Equals(Loc.GetString("job-name-deputy"), StringComparison.OrdinalIgnoreCase) ||
+                            jobTitle.Equals(Loc.GetString("job-name-nf-detective"), StringComparison.OrdinalIgnoreCase) ||
+                            jobTitle.Equals(Loc.GetString("job-name-sheriff"), StringComparison.OrdinalIgnoreCase) ||
+                            jobTitle.Equals(Loc.GetString("job-name-stc"), StringComparison.OrdinalIgnoreCase) ||
+                            jobTitle.Equals(Loc.GetString("job-name-sr"), StringComparison.OrdinalIgnoreCase) ||
+                            jobTitle.Equals(Loc.GetString("job-name-pal"), StringComparison.OrdinalIgnoreCase);
+                }
+
+                // Sends a message to the radio channel specified by the implant
+                if (mobstate.CurrentState == MobState.Critical)
+                {
+                    // Use TSF channel for TSF jobs, otherwise use the original channel
+                    RadioChannelPrototype radioChannel;
+                    if (isTSF)
+                    {
+                        // Use explicit ProtoId for TSF channel
+                        radioChannel = _prototypeManager.Index<RadioChannelPrototype>(new ProtoId<RadioChannelPrototype>("Nfsd"));
+                    }
+                    else
+                    {
+                        // Use component's channel directly
+                        radioChannel = _prototypeManager.Index<RadioChannelPrototype>(component.RadioChannel);
+                    }
+
+                    _radioSystem.SendRadioMessage(uid, critMessage, radioChannel, uid);
+                }
+
+                if (mobstate.CurrentState == MobState.Dead)
+                {
+                    var radioChannel = _prototypeManager.Index<RadioChannelPrototype>(component.RadioChannel);
+                    _radioSystem.SendRadioMessage(uid, deathMessage, radioChannel, uid);
+                }
+            }
 
             args.Handled = true;
         }
+        // End Frontier
 
         private void OnTriggerCollide(EntityUid uid, TriggerOnCollideComponent component, ref StartCollideEvent args)
         {
             if (args.OurFixtureId == component.FixtureID && (!component.IgnoreOtherNonHard || args.OtherFixture.Hard))
                 Trigger(uid, args.OtherEntity);
-        }
-
-        //ShitChap - Spell Reflection Functionality
-        private void TriggerOnProjectileHit(Entity<TriggerOnProjectileHitComponent> uid, ref ProjectileHitEvent args)
-        {
-            if (uid.Comp.ExplosiveProjectile)
-                _explosions.TriggerExplosive(uid);
-            Trigger(uid, args.Target);
         }
 
         private void OnSpawnTriggered(EntityUid uid, TriggerOnSpawnComponent component, MapInitEvent args)
@@ -362,15 +349,6 @@ namespace Content.Server.Explosion.EntitySystems
                 return;
 
             Trigger(uid, args.User);
-            args.Handled = true;
-        }
-
-        private void OnUse(Entity<TriggerOnUseComponent> ent, ref UseInHandEvent args)
-        {
-            if (args.Handled)
-                return;
-
-            Trigger(ent.Owner, args.User);
             args.Handled = true;
         }
 
@@ -394,6 +372,13 @@ namespace Content.Server.Explosion.EntitySystems
             Trigger(uid, args.EmptyGun);
         }
 
+        // Frontier: embed triggers
+        private void OnProjectileHitEvent(EntityUid uid, TriggerOnProjectileHitComponent component, ref ProjectileHitEvent args)
+        {
+            Trigger(uid, args.Target);
+        }
+        // End Frontier
+
         private void OnRepeatInit(Entity<RepeatingTriggerComponent> ent, ref MapInitEvent args)
         {
             ent.Comp.NextTrigger = _timing.CurTime + ent.Comp.Delay;
@@ -401,11 +386,6 @@ namespace Content.Server.Explosion.EntitySystems
 
         public bool Trigger(EntityUid trigger, EntityUid? user = null)
         {
-            var beforeTriggerEvent = new BeforeTriggerEvent(trigger, user);
-            RaiseLocalEvent(trigger, ref beforeTriggerEvent);
-            if (beforeTriggerEvent.Cancelled)
-                return false;
-
             var triggerEvent = new TriggerEvent(trigger, user);
             EntityManager.EventBus.RaiseLocalEvent(trigger, triggerEvent, true);
             return triggerEvent.Handled;

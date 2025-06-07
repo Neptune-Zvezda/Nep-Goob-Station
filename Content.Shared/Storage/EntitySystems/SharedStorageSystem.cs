@@ -1,107 +1,3 @@
-// SPDX-FileCopyrightText: 2023 Pieter-Jan Briers <pieterjan.briers@gmail.com>
-// SPDX-FileCopyrightText: 2024 Aiden <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2024 Aidenkrz <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2024 Alex Pavlenko <diraven@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Alice "Arimah" Heurlin <30327355+arimah@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Alzore <140123969+Blackern5000@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Boaz1111 <149967078+Boaz1111@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Brandon Hu <103440971+Brandon-Huu@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 CaasGit <87243814+CaasGit@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Callmore <22885888+Callmore@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Chief-Engineer <119664036+Chief-Engineer@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Cojoke <83733158+Cojoke-dot@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Crude Oil <124208219+CroilBird@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 DrSmugleaf <10968691+DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Dvir <39403717+dvir001@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Ed <96445749+TheShuEd@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Emisse <99158783+Emisse@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 EmoGarbage404 <retron404@gmail.com>
-// SPDX-FileCopyrightText: 2024 Eoin Mcloughlin <helloworld@eoinrul.es>
-// SPDX-FileCopyrightText: 2024 Flareguy <78941145+Flareguy@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Ghagliiarghii <68826635+Ghagliiarghii@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 HS <81934438+HolySSSS@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Hrosts <35345601+Hrosts@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 I.K <45953835+notquitehadouken@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 IProduceWidgets <107586145+IProduceWidgets@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Ian <ignaz.k@live.de>
-// SPDX-FileCopyrightText: 2024 Ilya246 <57039557+Ilya246@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Joel Zimmerman <JoelZimmerman@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 JustCone <141039037+JustCone14@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Kara <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2024 Killerqu00 <47712032+Killerqu00@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Ko4ergaPunk <62609550+Ko4ergaPunk@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Krunklehorn <42424291+Krunklehorn@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Kukutis96513 <146854220+Kukutis96513@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Lye <128915833+Lyroth001@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 MerrytheManokit <167581110+MerrytheManokit@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Mervill <mervills.email@gmail.com>
-// SPDX-FileCopyrightText: 2024 MilenVolf <63782763+MilenVolf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Mr. 27 <45323883+Dutch-VanDerLinde@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 MureixloI <132683811+MureixloI@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 NakataRin <45946146+NakataRin@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 OrangeMoronage9622 <whyteterry0092@gmail.com>
-// SPDX-FileCopyrightText: 2024 PJBot <pieterjan.briers+bot@gmail.com>
-// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2024 Plykiya <58439124+Plykiya@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Plykiya <plykiya@protonmail.com>
-// SPDX-FileCopyrightText: 2024 Preston Smith <92108534+thetolbean@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Psychpsyo <60073468+Psychpsyo@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Redfire1331 <125223432+Redfire1331@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Repo <47093363+Titian3@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 RiceMar1244 <138547931+RiceMar1244@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Rouge2t7 <81053047+Sarahon@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 ShadowCommander <10494922+ShadowCommander@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 ShadowCommander <shadowjjt@gmail.com>
-// SPDX-FileCopyrightText: 2024 Simon <63975668+Simyon264@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 SlamBamActionman <83650252+SlamBamActionman@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Sphiral <145869023+SphiraI@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Stalen <33173619+stalengd@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 TakoDragon <69509841+BackeTako@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Tayrtahn <tayrtahn@gmail.com>
-// SPDX-FileCopyrightText: 2024 Thomas <87614336+Aeshus@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Truoizys <153248924+Truoizys@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 TsjipTsjip <19798667+TsjipTsjip@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Ubaser <134914314+UbaserB@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Unkn0wn_Gh0st <shadowstalkermll@gmail.com>
-// SPDX-FileCopyrightText: 2024 Vasilis <vasilis@pikachu.systems>
-// SPDX-FileCopyrightText: 2024 Vigers Ray <60344369+VigersRay@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 beck-thompson <107373427+beck-thompson@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 deathride58 <deathride58@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 deltanedas <@deltanedas:kde.org>
-// SPDX-FileCopyrightText: 2024 dffdff2423 <dffdff2423@gmail.com>
-// SPDX-FileCopyrightText: 2024 eoineoineoin <github@eoinrul.es>
-// SPDX-FileCopyrightText: 2024 foboscheshir <156405958+foboscheshir@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 metalgearsloth <comedian_vs_clown@hotmail.com>
-// SPDX-FileCopyrightText: 2024 neutrino <67447925+neutrino-laser@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 nikthechampiongr <32041239+nikthechampiongr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 notquitehadouken <tripwiregamer@gmail.com>
-// SPDX-FileCopyrightText: 2024 osjarw <62134478+osjarw@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 plykiya <plykiya@protonmail.com>
-// SPDX-FileCopyrightText: 2024 redfire1331 <Redfire1331@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 saintmuntzer <47153094+saintmuntzer@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 shamp <140359015+shampunj@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 slarticodefast <161409025+slarticodefast@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 strO0pwafel <153459934+strO0pwafel@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 stroopwafel <j.o.luijkx@student.tudelft.nl>
-// SPDX-FileCopyrightText: 2024 themias <89101928+themias@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 to4no_fix <156101927+chavonadelal@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 voidnull000 <18663194+voidnull000@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Арт <123451459+JustArt1m@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Errant <35878406+Errant-4@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Kyle Tyo <36606155+VerinSenpai@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Winkarst <74284083+Winkarst-cpu@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 lzk <124214523+lzk228@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using System.Collections.Frozen;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
@@ -120,8 +16,10 @@ using Content.Shared.Interaction;
 using Content.Shared.Interaction.Components;
 using Content.Shared.Inventory;
 using Content.Shared.Item;
+using Content.Shared.Nyanotrasen.Item.PseudoItem;
 using Content.Shared.Lock;
 using Content.Shared.Materials;
+using Content.Shared.Placeable;
 using Content.Shared.Popups;
 using Content.Shared.Stacks;
 using Content.Shared.Storage.Components;
@@ -381,11 +279,20 @@ public abstract class SharedStorageSystem : EntitySystem
             UpdateAppearance((uid, storageComp, null));
             Audio.PlayPredicted(storageComp.StorageCloseSound, uid, args.Actor);
         }
+
+        // Frontier: cherry-pick upstream #37075
+        if (TryComp<RecentlyOpenedStoragesComponent>(args.Actor, out var recently))
+        {
+            recently.OpenedStorages.ForEach(it => it.Remove(GetNetEntity(uid)));
+            recently.OpenedStorages.RemoveAll(it => it.Count == 0);
+            Dirty(args.Actor, recently);
+        }
+        // End Frontier: cherry-pick upstream #37075
     }
 
     private void AddUiVerb(EntityUid uid, StorageComponent component, GetVerbsEvent<ActivationVerb> args)
     {
-        if (component.ShowVerb == false || !CanInteract(args.User, (uid, component), args.CanAccess && args.CanInteract))
+        if (!CanInteract(args.User, (uid, component), args.CanAccess && args.CanInteract))
             return;
 
         // Does this player currently have the storage UI open?
@@ -460,6 +367,27 @@ public abstract class SharedStorageSystem : EntitySystem
         if (!UI.TryOpenUi(uid, StorageComponent.StorageUiKey.Key, entity))
             return;
 
+        // Frontier: cherry-pick upstream#37075
+        var recently = EnsureComp<RecentlyOpenedStoragesComponent>(entity);
+
+        if (!recently.OpenedStorages.Any(inner => inner.Contains(GetNetEntity(uid))))
+        {
+            if (ContainerSystem.TryGetContainingContainer((uid, null, null), out var container))
+            {
+                var parentList = recently.OpenedStorages.Find(it => it.Contains(GetNetEntity(container.Owner)));
+                if (parentList is null)
+                    recently.OpenedStorages.Add(new() { GetNetEntity(uid) });
+                else
+                    parentList.Add(GetNetEntity(uid));
+            }
+            else
+            {
+                recently.OpenedStorages.Add(new() { GetNetEntity(uid) });
+            }
+            Dirty(entity, recently);
+        }
+        // End Frontier: cherry-pick upstream#37075
+
         if (!silent)
         {
             Audio.PlayPredicted(storageComp.StorageOpenSound, uid, entity);
@@ -532,7 +460,24 @@ public abstract class SharedStorageSystem : EntitySystem
         }
         else
         {
-            OpenStorageUI(uid, args.User, storageComp, false);
+            // Frontier: cherry-pick upstream#37075
+            // OpenStorageUI(uid, args.User, storageComp, false);
+            if (ContainerSystem.TryGetContainingContainer((args.Target, null, null), out var container) &&
+                UI.IsUiOpen(container.Owner, StorageComponent.StorageUiKey.Key, args.User))
+            {
+                _nestedCheck = true;
+                HideStorageWindow(container.Owner, args.User);
+                OpenStorageUI(uid, args.User, storageComp, false);
+                _nestedCheck = false;
+            }
+            else
+            {
+                if (_openStorageLimit == 1)
+                    UI.CloseUserUis<StorageComponent.StorageUiKey>(args.User);
+
+                OpenStorageUI(uid, args.User, storageComp, false);
+            }
+            // End Frontier: cherry-pick upstream#37075
         }
 
         args.Handled = true;
@@ -859,6 +804,35 @@ public abstract class SharedStorageSystem : EntitySystem
         UpdateAppearance((ent.Owner, ent.Comp, null));
     }
 
+    // Frontier: cherry-pick upstream#37075
+    private int CountOpenInterfaces(EntityUid actor, EntityUid? excluding)
+    {
+        var count = 0;
+
+        if (!_userQuery.TryComp(actor, out var userComp))
+        {
+            return count;
+        }
+
+        foreach (var (ui, keys) in userComp.OpenInterfaces)
+        {
+            if (excluding is not null && ui == excluding)
+                continue;
+
+            foreach (var key in keys)
+            {
+                if (key is not StorageComponent.StorageUiKey)
+                    continue;
+
+                count++;
+                break;
+            }
+        }
+
+        return count;
+    }
+    // End Frontier: cherry-pick upstream#37075
+
     private void OnBoundUIAttempt(BoundUserInterfaceMessageAttempt args)
     {
         if (args.UiKey is not StorageComponent.StorageUiKey.Key ||
@@ -869,31 +843,46 @@ public abstract class SharedStorageSystem : EntitySystem
 
         var uid = args.Target;
         var actor = args.Actor;
-        var count = 0;
+        // Frontier: cherry-pick upstream #37075
+        // var count = 0;
 
-        if (_userQuery.TryComp(actor, out var userComp))
+        // if (_userQuery.TryComp(actor, out var userComp))
+        // {
+        //     foreach (var (ui, keys) in userComp.OpenInterfaces)
+        //     {
+        //         if (ui == uid)
+        //             continue;
+
+        //         foreach (var key in keys)
+        //         {
+        //             if (key is not StorageComponent.StorageUiKey)
+        //                 continue;
+
+        //             count++;
+
+        //             if (count >= _openStorageLimit)
+        //             {
+        //                 args.Cancel();
+        //             }
+
+        //             break;
+        //         }
+        //     }
+        // }
+        var openInterfaces = CountOpenInterfaces(actor, uid);
+
+        if (openInterfaces >= _openStorageLimit)
         {
-            foreach (var (ui, keys) in userComp.OpenInterfaces)
+            var comp = EnsureComp<RecentlyOpenedStoragesComponent>(actor);
+            var lastItem = comp.OpenedStorages.Last();
+            comp.OpenedStorages.RemoveAt(comp.OpenedStorages.Count - 1);
+            foreach (var storage in lastItem)
             {
-                if (ui == uid)
-                    continue;
-
-                foreach (var key in keys)
-                {
-                    if (key is not StorageComponent.StorageUiKey)
-                        continue;
-
-                    count++;
-
-                    if (count >= _openStorageLimit)
-                    {
-                        args.Cancel();
-                    }
-
-                    break;
-                }
+                UI.CloseUi(GetEntity(storage), StorageComponent.StorageUiKey.Key, actor);
             }
+            Dirty(actor, comp);
         }
+        // End Frontier: cherry-pick upstream#37075
     }
 
     private void OnEntInserted(Entity<StorageComponent> entity, ref EntInsertedIntoContainerMessage args)
@@ -1004,6 +993,9 @@ public abstract class SharedStorageSystem : EntitySystem
 
         foreach (var entity in entities.ToArray())
         {
+            if (HasComp<PseudoItemComponent>(entity)) // Nyanotrasen - They dont transfer properly
+                continue;
+
             Insert(target, entity, out _, user: user, targetComp, playSound: false);
         }
 
@@ -1518,6 +1510,22 @@ public abstract class SharedStorageSystem : EntitySystem
             return false;
 
         return GetCumulativeItemAreas(uid) < uid.Comp.Grid.GetArea() || HasSpaceInStacks(uid);
+    }
+
+    /// FRONTIER
+    /// <summary>
+    /// Returns true if there is enough space to fit an item based on slot counts and item stack size.
+    /// </summary>
+    public bool HasSlotSpaceFor(Entity<StorageComponent?> uid, Entity<ItemComponent?> itemEnt)
+    {
+        if (!Resolve(uid, ref uid.Comp) || !Resolve(itemEnt, ref itemEnt.Comp))
+            return false;
+
+        // If the amount of spaces that's left in the bag is less than the size of the item, return false.
+        var itemSpacesNeeded = ItemSystem.GetItemShape((itemEnt, itemEnt.Comp)).GetArea();
+        var availableSpaces = uid.Comp.Grid.GetArea() - GetCumulativeItemAreas(uid);
+
+        return availableSpaces >= itemSpacesNeeded || HasSpaceInStacks(uid);
     }
 
     private bool HasSpaceInStacks(Entity<StorageComponent?> uid, string? stackType = null)

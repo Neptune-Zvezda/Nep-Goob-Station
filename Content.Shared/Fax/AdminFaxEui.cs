@@ -1,11 +1,3 @@
-// SPDX-FileCopyrightText: 2023 Morb <14136326+Morb0@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 eoineoineoin <github@eoinrul.es>
-// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 dffdff2423 <dffdff2423@gmail.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using Content.Shared.Eui;
 using Robust.Shared.Serialization;
 
@@ -65,8 +57,9 @@ public static class AdminFaxEuiMsg
         public string StampState { get; }
         public Color StampColor { get; }
         public bool Locked { get; }
+        public bool StampProtected { get; } // Frontier
 
-        public Send(NetEntity target, string title, string from, string content, string stamp, Color stampColor, bool locked)
+        public Send(NetEntity target, string title, string from, string content, string stamp, Color stampColor, bool locked, bool stampProtected) // Frontier: stampProtected
         {
             Target = target;
             Title = title;
@@ -75,6 +68,7 @@ public static class AdminFaxEuiMsg
             StampState = stamp;
             StampColor = stampColor;
             Locked = locked;
+            StampProtected = stampProtected; // Frontier
         }
     }
 }

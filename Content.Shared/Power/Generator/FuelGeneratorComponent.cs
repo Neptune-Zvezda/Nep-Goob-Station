@@ -1,11 +1,3 @@
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-// SPDX-FileCopyrightText: 2024 Tayrtahn <tayrtahn@gmail.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using Content.Shared.Guidebook;
 using Robust.Shared.GameStates;
 
@@ -68,4 +60,16 @@ public sealed partial class FuelGeneratorComponent : Component
     /// </summary>
     [DataField]
     public float FuelEfficiencyConstant = 1.3f;
+
+    /// <summary>
+    /// Frontier - Strength of the radiation source in rads per watt.
+    /// </summary>
+    [DataField]
+    public float RadiationIntensity = 1 / 10_000.0f; // One rad/s per 10 kW.
+
+    /// <summary>
+    /// Frontier - Colour of radiation light emissions.
+    /// </summary>
+    [DataField]
+    public Color RadiationColor { get; set; } = Color.LimeGreen;
 }

@@ -1,29 +1,8 @@
-// SPDX-FileCopyrightText: 2022 Kara <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2022 Rane <60792108+Elijahrane@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 keronshb <54602815+keronshb@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Nim <128169402+Nimfar11@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Visne <39844191+Visne@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 0x6273 <0x40@keemail.me>
-// SPDX-FileCopyrightText: 2024 Fishbait <Fishbait@git.ml>
-// SPDX-FileCopyrightText: 2024 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2024 TemporalOroboros <TemporalOroboros@gmail.com>
-// SPDX-FileCopyrightText: 2024 fishbait <gnesse@gmail.com>
-// SPDX-FileCopyrightText: 2024 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2025 BombasterDS <deniskaporoshok@gmail.com>
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 Ilya246 <57039557+Ilya246@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using Content.Shared.Examine;
 using Content.Shared.Mobs;
 using Content.Shared.Stealth.Components;
 using Robust.Shared.Physics.Components; // Goobstation
+using Robust.Shared.GameStates;
 using Robust.Shared.Timing;
 
 namespace Content.Shared.Stealth;
@@ -119,6 +98,22 @@ public abstract class SharedStealthSystem : EntitySystem
         component.LastUpdated = _timing.CurTime;
     }
 
+    private void OnStealthGetState(EntityUid uid, StealthComponent component, ref ComponentGetState args)
+    {
+        args.State = new StealthComponentState(component.LastVisibility, component.LastUpdated, component.MaxVisibility, component.Enabled); // Shitmed Change
+    }
+
+    private void OnStealthHandleState(EntityUid uid, StealthComponent component, ref ComponentHandleState args)
+    {
+        if (args.Current is not StealthComponentState cast)
+            return;
+
+        SetEnabled(uid, cast.Enabled, component);
+        component.LastVisibility = cast.Visibility;
+        component.LastUpdated = cast.LastUpdated;
+        component.MaxVisibility = cast.MaxVisibility; // Shitmed Change
+    }
+
     private void OnMove(EntityUid uid, StealthOnMoveComponent component, ref MoveEvent args)
     {
         if (_timing.ApplyingState)
@@ -127,13 +122,8 @@ public abstract class SharedStealthSystem : EntitySystem
         if (args.NewPosition.EntityId != args.OldPosition.EntityId)
             return;
 
-        // Goobstation - Fixing stealth suit resolve error
-        if (!TryComp<StealthComponent>(uid, out var stealthComp))
-            return;
-
         var delta = component.MovementVisibilityRate * (args.NewPosition.Position - args.OldPosition.Position).Length();
-
-        ModifyVisibility(uid, delta, stealthComp); // Goobstation - Fixing stealth suit resolve error
+        ModifyVisibility(uid, delta);
     }
 
     // Goobstation - Proper invisibility
@@ -143,11 +133,8 @@ public abstract class SharedStealthSystem : EntitySystem
         if (TryComp<PhysicsComponent>(uid, out var phys))
             limit += Math.Min(component.MaxInvisibilityPenalty, phys.LinearVelocity.Length() * component.InvisibilityPenalty);
 
-        // Goobstation - Wait before accumulating stealth
-        var noMoveTime = (float) component.NoMoveTime.TotalSeconds;
-
-        if (args.Stealth.LastVisibility > limit && args.SecondsSinceUpdate > noMoveTime)
-            args.FlatModifier += (args.SecondsSinceUpdate - noMoveTime) * component.PassiveVisibilityRate;
+        if (args.Stealth.LastVisibility > limit)
+            args.FlatModifier += args.SecondsSinceUpdate * component.PassiveVisibilityRate;
     }
 
     /// <summary>

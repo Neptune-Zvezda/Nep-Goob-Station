@@ -1,17 +1,10 @@
-// SPDX-FileCopyrightText: 2024 Aidenkrz <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2025 JohnOakman <sremy2012@hotmail.fr>
-// SPDX-FileCopyrightText: 2025 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2025 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 deltanedas <@deltanedas:kde.org>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using Content.Server.Instruments;
 using Content.Server.Speech.Components;
+using Content.Server.UserInterface;
 using Content.Shared.Instruments;
+using Content.Shared.Instruments.UI;
 using Content.Shared.ActionBlocker;
+using Content.Shared.Bed.Sleep;
 using Content.Shared.Damage;
 using Content.Shared.Damage.ForceSay;
 using Content.Shared._DV.Harpy;
@@ -24,12 +17,9 @@ using Content.Shared.StatusEffect;
 using Content.Shared.Stunnable;
 using Content.Shared.UserInterface;
 using Content.Shared.Zombies;
+using Robust.Server.GameObjects;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
-using Content.Shared._DV.Harpy.Components;
-using Content.Shared.Bed.Sleep;
-using Content.Shared.Clothing.Components;
-using Content.Shared.Clothing;
 
 namespace Content.Server._DV.Harpy
 {
@@ -40,7 +30,6 @@ namespace Content.Server._DV.Harpy
         [Dependency] private readonly InventorySystem _inventorySystem = default!;
         [Dependency] private readonly ActionBlockerSystem _blocker = default!;
         [Dependency] private readonly IPrototypeManager _prototype = default!;
-        [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
 
         public override void Initialize()
         {
@@ -49,12 +38,11 @@ namespace Content.Server._DV.Harpy
             SubscribeLocalEvent<InstrumentComponent, MobStateChangedEvent>(OnMobStateChangedEvent);
             SubscribeLocalEvent<GotEquippedEvent>(OnEquip);
             SubscribeLocalEvent<EntityZombifiedEvent>(OnZombified);
+            SubscribeLocalEvent<InstrumentComponent, KnockedDownEvent>(OnKnockedDown);
             SubscribeLocalEvent<InstrumentComponent, StunnedEvent>(OnStunned);
             SubscribeLocalEvent<InstrumentComponent, SleepStateChangedEvent>(OnSleep);
             SubscribeLocalEvent<InstrumentComponent, StatusEffectAddedEvent>(OnStatusEffect);
-            SubscribeLocalEvent<HarpySingerComponent, BeforeDamageChangedEvent>(OnBeforeDamageChanged);
-            SubscribeLocalEvent<HarpySingerComponent, BoundUIClosedEvent>(OnBoundUIClosed);
-            SubscribeLocalEvent<HarpySingerComponent, BoundUIOpenedEvent>(OnBoundUIOpened);
+            SubscribeLocalEvent<InstrumentComponent, DamageChangedEvent>(OnDamageChanged);
 
             // This is intended to intercept the UI event and stop the MIDI UI from opening if the
             // singer is unable to sing. Thus it needs to run before the ActivatableUISystem.
@@ -66,7 +54,7 @@ namespace Content.Server._DV.Harpy
             // Check if an item that makes the singer mumble is equipped to their face
             // (not their pockets!). As of writing, this should just be the muzzle.
             if (TryComp<AddAccentClothingComponent>(args.Equipment, out var accent) &&
-                (accent.ReplacementPrototype == "mumble" || accent.Accent == "MumbleAccent") &&
+                accent.ReplacementPrototype == "mumble" &&
                 args.Slot == "mask")
             {
                 CloseMidiUi(args.Equipee);
@@ -82,6 +70,11 @@ namespace Content.Server._DV.Harpy
         private void OnZombified(ref EntityZombifiedEvent args)
         {
             CloseMidiUi(args.Target);
+        }
+
+        private void OnKnockedDown(EntityUid uid, InstrumentComponent component, ref KnockedDownEvent args)
+        {
+            CloseMidiUi(uid);
         }
 
         private void OnStunned(EntityUid uid, InstrumentComponent component, ref StunnedEvent args)
@@ -108,19 +101,25 @@ namespace Content.Server._DV.Harpy
         /// and maintenance overhead. It still reuses the values from DamageForceSayComponent, so
         /// any tweaks to that will keep ForceSay consistent with singing interruptions.
         /// </summary>
-        private void OnBeforeDamageChanged(EntityUid uid, HarpySingerComponent harpySingerComponent, BeforeDamageChangedEvent args)
+        private void OnDamageChanged(EntityUid uid, InstrumentComponent instrumentComponent, DamageChangedEvent args)
         {
-            if (!harpySingerComponent.ShutUpDamageThreshold.HasValue ||
-                !args.Damage.AnyPositive())
+            if (!TryComp<DamageForceSayComponent>(uid, out var component) ||
+                args.DamageDelta == null ||
+                !args.DamageIncreased ||
+                args.DamageDelta.GetTotal() < component.DamageThreshold ||
+                component.ValidDamageGroups == null)
                 return;
 
             var totalApplicableDamage = FixedPoint2.Zero;
-            foreach (var (group, value) in args.Damage.GetDamagePerGroup(_prototype))
+            foreach (var (group, value) in args.DamageDelta.GetDamagePerGroup(_prototype))
             {
+                if (!component.ValidDamageGroups.Contains(group))
+                    continue;
+
                 totalApplicableDamage += value;
             }
 
-            if (totalApplicableDamage >= harpySingerComponent.ShutUpDamageThreshold)
+            if (totalApplicableDamage >= component.DamageThreshold)
                 CloseMidiUi(uid);
         }
 
@@ -132,11 +131,7 @@ namespace Content.Server._DV.Harpy
             if (HasComp<ActiveInstrumentComponent>(uid) &&
                 TryComp<ActorComponent>(uid, out var actor))
             {
-                var ent = actor.PlayerSession.AttachedEntity;
-                if (ent == null)
-                    return;
-                _instrument.ToggleInstrumentUi(uid, ent.Value);
-
+                _instrument.ToggleInstrumentUi(uid, uid);
             }
         }
 
@@ -151,7 +146,7 @@ namespace Content.Server._DV.Harpy
             var zombified = TryComp<ZombieComponent>(uid, out var _);
             var muzzled = _inventorySystem.TryGetSlotEntity(uid, "mask", out var maskUid) &&
                 TryComp<AddAccentClothingComponent>(maskUid, out var accent) &&
-                (accent.ReplacementPrototype == "mumble" || accent.Accent == "MumbleAccent");
+                accent.ReplacementPrototype == "mumble";
 
             // Set this event as handled when the singer should be incapable of singing in order
             // to stop the ActivatableUISystem event from opening the MIDI UI.
@@ -160,25 +155,6 @@ namespace Content.Server._DV.Harpy
             // Tell the user that they can not sing.
             if (args.Handled)
                 _popupSystem.PopupEntity(Loc.GetString("no-sing-while-no-speak"), uid, uid, PopupType.Medium);
-        }
-
-        private void OnBoundUIClosed(EntityUid uid, HarpySingerComponent component, BoundUIClosedEvent args)
-        {
-            if (args.UiKey is not InstrumentUiKey)
-                return;
-
-            TryComp(uid, out AppearanceComponent? appearance);
-            _appearance.SetData(uid, HarpyVisualLayers.Singing, SingingVisualLayer.False, appearance);
-        }
-
-        private void OnBoundUIOpened(EntityUid uid, HarpySingerComponent component, BoundUIOpenedEvent args)
-        {
-            if (args.UiKey is not InstrumentUiKey)
-                return;
-
-            TryComp(uid, out AppearanceComponent? appearance);
-            _appearance.SetData(uid, HarpyVisualLayers.Singing, SingingVisualLayer.True, appearance);
-
         }
     }
 }

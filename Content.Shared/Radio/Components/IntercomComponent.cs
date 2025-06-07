@@ -1,9 +1,3 @@
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 
@@ -35,4 +29,16 @@ public sealed partial class IntercomComponent : Component
     /// </summary>
     [DataField, AutoNetworkedField]
     public List<ProtoId<RadioChannelPrototype>> SupportedChannels = new();
+
+    /// <summary>
+    /// Frontier - Start the intercom speaker with the map.
+    /// </summary>
+    [DataField]
+    public bool StartSpeakerOnMapInit { get; set; } = false;
+
+    /// <summary>
+    /// Frontier - Start the intercom microphone with the map.
+    /// </summary>
+    [DataField]
+    public bool StartMicrophoneOnMapInit { get; set; } = false;
 }

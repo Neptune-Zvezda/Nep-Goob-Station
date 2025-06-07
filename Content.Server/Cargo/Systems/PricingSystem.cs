@@ -1,35 +1,10 @@
-// SPDX-FileCopyrightText: 2022 Jezithyr <Jezithyr.@gmail.com>
-// SPDX-FileCopyrightText: 2022 Jezithyr <Jezithyr@gmail.com>
-// SPDX-FileCopyrightText: 2022 Moony <moonheart08@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 SpaceManiac <tad@platymuus.com>
-// SPDX-FileCopyrightText: 2022 corentt <36075110+corentt@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <drsmugleaf@gmail.com>
-// SPDX-FileCopyrightText: 2023 ElectroJr <leonsfriedrich@gmail.com>
-// SPDX-FileCopyrightText: 2023 Emisse <99158783+Emisse@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Jezithyr <jezithyr@gmail.com>
-// SPDX-FileCopyrightText: 2023 Kara <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2023 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 TemporalOroboros <TemporalOroboros@gmail.com>
-// SPDX-FileCopyrightText: 2023 Visne <39844191+Visne@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 metalgearsloth <comedian_vs_clown@hotmail.com>
-// SPDX-FileCopyrightText: 2024 Cojoke <83733158+Cojoke-dot@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Jake Huxell <JakeHuxell@pm.me>
-// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2024 Tayrtahn <tayrtahn@gmail.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using Content.Server.Administration;
 using Content.Server.Body.Systems;
 using Content.Server.Cargo.Components;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Administration;
 using Content.Shared.Body.Components;
+using Content.Shared.Cargo.Components;
 using Content.Shared.Chemistry.Components.SolutionManager;
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.Materials;
@@ -41,6 +16,8 @@ using Robust.Shared.Containers;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
+using Content.Server.Materials.Components; // Frontier
+using Content.Server._Mono.VendingMachine; // Mono
 using System.Linq;
 using Content.Shared.Research.Prototypes;
 
@@ -57,6 +34,7 @@ public sealed class PricingSystem : EntitySystem
     [Dependency] private readonly BodySystem _bodySystem = default!;
     [Dependency] private readonly MobStateSystem _mobStateSystem = default!;
     [Dependency] private readonly SharedSolutionContainerSystem _solutionContainerSystem = default!;
+    [Dependency] private readonly VendingMachinePurchaseSystem _vendingPurchase = default!; // Mono
 
     /// <inheritdoc/>
     public override void Initialize()
@@ -130,7 +108,7 @@ public sealed class PricingSystem : EntitySystem
         var partRatio = totalPartsPresent / (double) totalParts;
         var partPenalty = component.Price * (1 - partRatio) * component.MissingBodyPartPenalty;
 
-        args.Price += (component.Price - partPenalty) * (_mobStateSystem.IsAlive(uid, state) ? 1.0 : component.DeathPenalty);
+        args.Price += (component.Price - partPenalty) * (_mobStateSystem.IsAlive(uid, state) ? 1.0 : component.DeathPenalty) * (HasComp<LabGrownComponent>(uid) ? 1.0 : component.LabGrownPenalty); // Frontier - LabGrown
     }
 
     private double GetSolutionPrice(Entity<SolutionContainerManagerComponent> entity)
@@ -238,6 +216,29 @@ public sealed class PricingSystem : EntitySystem
     }
 
     /// <summary>
+    /// Add a hardcoded price for an item to set how much it will cost to buy it from a vending machine, while allowing staticPrice to set its sell price.
+    /// </summary>
+    public double GetEstimatedVendPrice(EntityPrototype prototype)
+    {
+        var ev = new EstimatedPriceCalculationEvent()
+        {
+            Prototype = prototype,
+        };
+
+        RaiseLocalEvent(ref ev);
+
+        if (ev.Handled)
+            return ev.Price;
+
+        var price = ev.Price;
+        price += GetVendPrice(prototype);
+
+        // TODO: Proper container support.
+
+        return price;
+    }
+
+    /// <summary>
     /// Appraises an entity, returning it's price.
     /// </summary>
     /// <param name="uid">The entity to appraise.</param>
@@ -249,6 +250,7 @@ public sealed class PricingSystem : EntitySystem
     public double GetPrice(EntityUid uid, bool includeContents = true)
     {
         var ev = new PriceCalculationEvent();
+        ev.Price = 0; // Structs doesnt initialize doubles when called by constructor.
         RaiseLocalEvent(uid, ref ev);
 
         if (ev.Handled)
@@ -282,6 +284,80 @@ public sealed class PricingSystem : EntitySystem
 
         return price;
     }
+
+    /// <summary>
+    /// Mono: Appraises an entity with vending machine discounts applied if applicable.
+    /// This method should be used by cargo systems when selling items.
+    /// </summary>
+    /// <param name="uid">The entity to appraise</param>
+    /// <param name="currentGrid">The grid where the entity is being sold</param>
+    /// <param name="includeContents">Whether to include contained entities</param>
+    /// <returns>The price with vending machine discount applied if applicable</returns>
+    public double GetPriceWithVendingDiscount(EntityUid uid, EntityUid currentGrid, bool includeContents = true)
+    {
+        var ev = new PriceCalculationEvent();
+        ev.Price = 0;
+        RaiseLocalEvent(uid, ref ev);
+
+        if (ev.Handled)
+            return ev.Price;
+
+        var price = ev.Price;
+        price += GetMaterialsPrice(uid);
+        price += GetSolutionsPrice(uid);
+
+        // Can't use static price with stackprice
+        var oldPrice = price;
+        price += GetStackPrice(uid);
+
+        if (oldPrice.Equals(price))
+        {
+            // Use the vending machine discount version of static price
+            price += GetStaticPriceWithVendingDiscount(uid, currentGrid);
+        }
+
+        if (includeContents && TryComp<ContainerManagerComponent>(uid, out var containers))
+        {
+            foreach (var container in containers.Containers.Values)
+            {
+                foreach (var ent in container.ContainedEntities)
+                {
+                    price += GetPriceWithVendingDiscount(ent, currentGrid);
+                }
+            }
+        }
+
+        return price;
+    }
+
+    // Begin Frontier - GetPrice variant that uses predicate
+    /// <summary>
+    /// Appraises an entity, returning its price. Respects predicate - an entity that is excluded will be removed from the
+    /// </summary>
+    /// <param name="uid">The entity to appraise.</param>
+    /// <param name="includeContents">Whether to examine its contents.</param>
+    /// <param name="predicate">An optional predicate that controls whether or not the entity or its children are counted toward the total.</param>
+    /// <returns>The price of the entity.</returns>
+    public double GetPriceConditional(EntityUid uid, bool includeContents = true, Func<EntityUid, bool>? predicate = null)
+    {
+        if (predicate is not null && !predicate(uid))
+            return 0.0;
+
+        var price = GetPrice(uid, false);
+
+        if (includeContents && TryComp<ContainerManagerComponent>(uid, out var containers))
+        {
+            foreach (var container in containers.Containers.Values)
+            {
+                foreach (var ent in container.ContainedEntities)
+                {
+                    price += GetPriceConditional(ent, true, predicate);
+                }
+            }
+        }
+        return price;
+    }
+    // End Frontier - GetPrice variant that uses predicate
 
     private double GetMaterialsPrice(EntityUid uid)
     {
@@ -388,6 +464,26 @@ public sealed class PricingSystem : EntitySystem
         return price;
     }
 
+    /// <summary>
+    /// Mono: Gets the static price with vending machine discounts applied if applicable.
+    /// This method should be used by cargo systems when selling items.
+    /// </summary>
+    /// <param name="uid">The entity to price</param>
+    /// <param name="currentGrid">The grid where the entity is being sold</param>
+    /// <returns>The price with vending machine discount applied if applicable</returns>
+    public double GetStaticPriceWithVendingDiscount(EntityUid uid, EntityUid currentGrid)
+    {
+        // Check if this entity has a vending machine discount
+        var discountPrice = _vendingPurchase.GetVendingMachineDiscountPrice(uid, currentGrid);
+        if (discountPrice.HasValue)
+        {
+            return discountPrice.Value;
+        }
+
+        // Fall back to normal static price
+        return GetStaticPrice(uid);
+    }
+
     private double GetStaticPrice(EntityPrototype prototype)
     {
         var price = 0.0;
@@ -400,6 +496,30 @@ public sealed class PricingSystem : EntitySystem
 
         return price;
     }
+
+    // New Frontiers - Stack Vendor Prices - Gets overwrite values for vendor prices.
+    // This code is licensed under AGPLv3. See AGPLv3.txt
+    private double GetVendPrice(EntityPrototype prototype)
+    {
+        var price = 0.0;
+
+        // Prefer static price to stack price component, take the first positive value read.
+        if (prototype.Components.TryGetValue(_factory.GetComponentName(typeof(StaticPriceComponent)), out var staticProto))
+        {
+            var staticComp = (StaticPriceComponent) staticProto.Component;
+            if (staticComp.VendPrice > 0.0)
+                price += staticComp.VendPrice;
+        }
+        if (price == 0.0 && prototype.Components.TryGetValue(_factory.GetComponentName(typeof(StackPriceComponent)), out var stackProto))
+        {
+            var stackComp = (StackPriceComponent) stackProto.Component;
+            if (stackComp.VendPrice > 0.0)
+                price += stackComp.VendPrice;
+        }
+
+        return price;
+    }
+    // End of modified code
 
     /// <summary>
     /// Appraises a grid, this is mainly meant to be used by yarrs.
@@ -417,7 +537,7 @@ public sealed class PricingSystem : EntitySystem
         {
             if (predicate is null || predicate(child))
             {
-                var subPrice = GetPrice(child);
+                var subPrice = GetPriceConditional(child, true, predicate); // Frontier: GetPrice<GetPriceConditional, add true, predicate
                 price += subPrice;
                 afterPredicate?.Invoke(child, subPrice);
             }

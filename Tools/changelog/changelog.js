@@ -1,10 +1,3 @@
-// SPDX-FileCopyrightText: 2024 Piras314 <92357316+Piras314@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Piras314 <p1r4s@proton.me>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
-// From https://github.com/DeltaV-Station/Delta-v/
 // Dependencies
 const fs = require("fs");
 const yaml = require("js-yaml");
@@ -14,7 +7,7 @@ const axios = require("axios");
 if (process.env.GITHUB_TOKEN) axios.defaults.headers.common["Authorization"] = `Bearer ${process.env.GITHUB_TOKEN}`;
 
 // Regexes
-const HeaderRegex = /^\s*(?::cl:|🆑) *([a-z0-9_\- ,]+)?\s+/im; // :cl: or 🆑 [0] followed by optional author name [1]
+const HeaderRegex = /^\s*(?::cl:|🆑) *([a-z0-9_\- ]+)?\s+/im; // :cl: or 🆑 [0] followed by optional author name [1]
 const EntryRegex = /^ *[*-]? *(add|remove|tweak|fix): *([^\n\r]+)\r?$/img; // * or - followed by change type [0] and change message [1]
 const CommentRegex = /<!--.*?-->/gs; // HTML comments
 
@@ -65,8 +58,6 @@ async function main() {
         id: getHighestCLNumber() + 1,
         time: time,
     };
-
-    console.log('entry (line 63): ', entry);
 
     // Write changelogs
     writeChangelog(entry);
@@ -148,15 +139,12 @@ function writeChangelog(entry) {
         data = yaml.load(file);
     }
 
-    console.log('entry (line 145): ', entry);
-    console.log('data (line 146): ', data);
-
     data.Entries.push(entry);
 
     // Write updated changelogs file
     fs.writeFileSync(
         `../../${process.env.CHANGELOG_DIR}`,
-        "Name: Nepulog\nOrder: -1\nEntries:\n" + // IF YOU ARE A FORK, CHANGE THIS!!!!!!!!!!!!
+        "Entries:\n" +
             yaml.dump(data.Entries, { indent: 2 }).replace(/^---/, "")
     );
 }

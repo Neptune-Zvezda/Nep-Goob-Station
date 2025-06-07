@@ -1,18 +1,12 @@
-// SPDX-FileCopyrightText: 2023 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 deltanedas <@deltanedas:kde.org>
-// SPDX-FileCopyrightText: 2024 Hannah Giovanna Dawson <karakkaraz@gmail.com>
-// SPDX-FileCopyrightText: 2024 Kara <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
+﻿using Content.Server.Construction;
+using Content.Server.Popups;
 using Content.Server.Power.EntitySystems;
 using Content.Server.Xenoarchaeology.Equipment.Components;
+using Content.Server.Xenoarchaeology.XenoArtifacts;
 using Content.Shared.Examine;
+using Content.Shared.Interaction;
 using Content.Shared.Placeable;
+using Robust.Shared.Player;
 using Robust.Shared.Timing;
 
 namespace Content.Server.Xenoarchaeology.Equipment.Systems;
@@ -26,6 +20,8 @@ public sealed class TraversalDistorterSystem : EntitySystem
     {
         SubscribeLocalEvent<TraversalDistorterComponent, MapInitEvent>(OnInit);
         SubscribeLocalEvent<TraversalDistorterComponent, ExaminedEvent>(OnExamine);
+        SubscribeLocalEvent<TraversalDistorterComponent, RefreshPartsEvent>(OnRefreshParts);
+        SubscribeLocalEvent<TraversalDistorterComponent, UpgradeExamineEvent>(OnUpgradeExamine);
 
         SubscribeLocalEvent<TraversalDistorterComponent, ItemPlacedEvent>(OnItemPlaced);
         SubscribeLocalEvent<TraversalDistorterComponent, ItemRemovedEvent>(OnItemRemoved);
@@ -69,8 +65,20 @@ public sealed class TraversalDistorterSystem : EntitySystem
                 examine = Loc.GetString("traversal-distorter-desc-down");
                 break;
         }
-
+        
         args.PushMarkup(examine);
+    }
+
+    private void OnRefreshParts(EntityUid uid, TraversalDistorterComponent component, RefreshPartsEvent args)
+    {
+        var biasRating = args.PartRatings[component.MachinePartBiasChance];
+
+        component.BiasChance = component.BaseBiasChance * MathF.Pow(component.PartRatingBiasChance, biasRating - 1);
+    }
+
+    private void OnUpgradeExamine(EntityUid uid, TraversalDistorterComponent component, UpgradeExamineEvent args)
+    {
+        args.AddPercentageUpgrade("traversal-distorter-upgrade-bias", component.BiasChance / component.BaseBiasChance);
     }
 
     private void OnItemPlaced(EntityUid uid, TraversalDistorterComponent component, ref ItemPlacedEvent args)

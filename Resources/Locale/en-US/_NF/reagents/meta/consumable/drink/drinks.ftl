@@ -1,8 +1,5 @@
-# SPDX-FileCopyrightText: 2024 Tonk-GCR <190437025+Tonk-GCR@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aiden <aiden@djkraz.com>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
+reagent-name-pumpkin-spice-latte = spiced pumpkin latte
+reagent-desc-pumpkin-spice-latte = It's autumn somewhere. Smells like cinnamon and cloves.
 
 reagent-name-gin-and-sonic = gin and sonic
 reagent-desc-gin-and-sonic = Why did the hedgehog go to Saturn? To collect its rings!
@@ -16,5 +13,20 @@ reagent-desc-pineapple-blast = For when the trees start talking. Smells tropical
 reagent-name-torpedo-juice = torpedo juice
 reagent-desc-torpedo-juice = The joys of drinking and unrestricted submarine warfare combined! Has a strong alcoholic smell.
 
-reagent-name-bees-knees = bee’s knees
+reagent-name-bees-knees = bee's knees
 reagent-desc-bees-knees = BEEEEEEEEEEEEEEES!!! Has a stingy smell.
+
+reagent-name-cucumber-water = cucumber water
+reagent-desc-cucumber-water = The fanciest of waters.
+
+reagent-name-honey = honey
+reagent-desc-honey = Thick, golden and sticky, the original sweetener.
+
+reagent-name-honey-iced-tea = honey iced tea
+reagent-desc-honey-iced-tea = Tea with a splash of honey.
+
+reagent-name-wassail = wassail
+reagent-desc-wassail = Hot mulled ale.
+
+reagent-name-eggnog = eggnog
+reagent-desc-eggnog = Creamy, sweet, and slightly boozy. Fully nogged.

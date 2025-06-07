@@ -1,11 +1,3 @@
-# SPDX-FileCopyrightText: 2024 Skubman <ba.fallaria@gmail.com>
-# SPDX-FileCopyrightText: 2024 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aiden <aiden@djkraz.com>
-# SPDX-FileCopyrightText: 2025 deltanedas <39013340+deltanedas@users.noreply.github.com>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
 surgery-popup-step-SurgeryStepOpenIncisionScalpel = {$user} is making an incision on {$target}'s {$part}.
 surgery-popup-step-SurgeryStepClampBleeders = {$user} is clamping the bleeders on {$target}'s {$part}.
 surgery-popup-step-SurgeryStepRetractSkin = {$user} is retracting the skin on {$target}'s {$part}.
@@ -43,8 +35,6 @@ surgery-popup-step-SurgeryStepRemoveItem = {$user} is removing something from {$
 surgery-popup-step-SurgeryStepRemoveOrgan = {$user} is removing an organ from {$target}'s {$part}!
 surgery-popup-step-SurgeryStepInsertOrgan = {$user} is inserting an organ into {$target}'s {$part}!
 
-surgery-popup-step-SurgeryStepOpenOrganSlot = {$user} is opening a cavity in {$target}'s {$part}!
-
 surgery-popup-procedure-SurgeryRemoveBrain-step-SurgeryStepRemoveOrgan = {$user} is removing the brain from {$target}'s {$part}!
 surgery-popup-procedure-SurgeryRemoveHeart-step-SurgeryStepRemoveOrgan = {$user} is removing the heart from {$target}'s {$part}!
 surgery-popup-procedure-SurgeryRemoveLiver-step-SurgeryStepRemoveOrgan = {$user} is removing the liver from {$target}'s {$part}!
@@ -60,5 +50,4 @@ surgery-popup-step-SurgeryStepInsertHeart = {$user} is inserting a heart into {$
 surgery-popup-step-SurgeryStepInsertStomach = {$user} is inserting a stomach into {$target}'s {$part}!
 
 surgery-popup-step-SurgeryStepSealOrganWound = {$user} is sealing the wounds on {$target}'s {$part}.
-surgery-popup-step-SurgeryStepLobotomize = {$user} is lobotomizing {$target}!
-surgery-popup-step-SurgeryStepMendBrainTissue = {$user} is mending the brain tissue on {$target}'s {$part}.
+

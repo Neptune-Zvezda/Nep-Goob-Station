@@ -1,34 +1,3 @@
-# SPDX-FileCopyrightText: 2022 Sissel <axel.roche@pm.me>
-# SPDX-FileCopyrightText: 2023 Emisse <99158783+Emisse@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 Kara <lunarautomaton6@gmail.com>
-# SPDX-FileCopyrightText: 2023 MagnusCrowe <whiterider1988@yahoo.com>
-# SPDX-FileCopyrightText: 2023 Maxtone <124747282+MagnusCrowe@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 Nairod <110078045+Nairodian@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 Puro <103608145+PuroSlavKing@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 Sailor <109166122+Equivocateur@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 TsjipTsjip <19798667+TsjipTsjip@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 Vasilis The Pikachu <vascreeper@yahoo.com>
-# SPDX-FileCopyrightText: 2023 Whisper <121047731+QuietlyWhisper@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Boaz1111 <149967078+Boaz1111@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Hmeister-real <118129069+Hmeister-real@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 IProduceWidgets <107586145+IProduceWidgets@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 LankLTE <135308300+LankLTE@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-# SPDX-FileCopyrightText: 2024 Pologuys <coverupformurder@gmail.com>
-# SPDX-FileCopyrightText: 2024 SlamBamActionman <83650252+SlamBamActionman@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Ubaser <134914314+UbaserB@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 username <113782077+whateverusername0@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aiden <aiden@djkraz.com>
-# SPDX-FileCopyrightText: 2025 SX_7 <sn1.test.preria.2002@gmail.com>
-# SPDX-FileCopyrightText: 2025 Simon <63975668+Simyon264@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 SpeltIncorrectyl <66873282+SpeltIncorrectyl@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Spessmann <156740760+Spessmann@users.noreply.github.com>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
 job-description-technical-assistant = Learn the basics of managing the station's power, as well as repairing the station's hull.
 job-description-atmostech = Optimize the station's atmospherics setup, and synthesize rare gases to use or sell.
 job-description-bartender = Manage the bar and keep it lively, give out drinks, and listen to the crew's stories.
@@ -40,7 +9,7 @@ job-description-cadet = Learn the basics of arresting criminals and managing the
 job-description-captain = Keep the station running, delegate work to the other heads of staff, and exert your will.
 job-description-cargotech = Deal with requisitions and deliveries, pilot the cargo shuttle to the trade station and back, and work with others to make ludicrous amounts of cash and then waste it all gambling.
 job-description-ce = Manage the engineering department to ensure power, atmospherics, and the hull are in perfect shape.
-job-description-centcomoff = Act as an ambassador to the newest state-of-the-art space station in Nanotrasen's fleet.
+job-description-centcomoff = Act as an ambassador to the newest colony on behalf of the Trans-Solar Federation.
 job-description-chaplain = Preach the good word of your deity and religion, and conduct spiritual healing and miracles with your bible.
 job-description-chef = Keep the station fed with a variety of food items, butcher dead animals to ensure ammonia doesn't leak, and help keep the bar lively.
 job-description-chemist = Produce medicinal drugs for the doctors to use, research ethically dubious rare chemicals, and produce weapons of war when enemies of the station arrive.
@@ -53,12 +22,12 @@ job-description-engineer = Keep the station's main engine & solars active, optim
 job-description-ertchaplain = Ensure the station crew's last rights are taken care of.
 job-description-ertengineer = Ensure that the station has power and clean air.
 job-description-ertjanitor = Ensure that the station is properly cleaned--for morale.
-job-description-ertleader = Lead the Emergency Response Team in dealing with threats to Nanotrasen assets.
+job-description-ertleader = Lead the Emergency Response Team in dealing with threats to TSF assets.
 job-description-ertmedic = Ensure that the crew of the station is kept alive and healthy.
 job-description-ertsecurity = Ensure that any active threats to the station are put to rest.
 job-description-hop = Handle access reassignment fairly using your ID console, manage the service department, and keep Ian safe.
-job-description-hos = Manage your security force and keep them efficient, quell dissent, and keep the other heads of staff safe.
-job-description-intern = Learn the basics of administering medicine, basic chemicals and using medical tools.
+job-description-hos = Manage your department and keep them efficient, quell dissent, and keep the sector safe.
+job-description-intern = Learn the basics of administering medicine, cloning the dead, and creating chemicals.
 job-description-janitor = Keep the station clean of any trash or slipping hazards, and help deal with rat infestations.
 job-description-lawyer = Ensure that every prisoner or criminal receives a fair judgment and trial if necessary.
 job-description-librarian = Manage the library, give out knowledge to any who seek it, and report on activities aboard the station.

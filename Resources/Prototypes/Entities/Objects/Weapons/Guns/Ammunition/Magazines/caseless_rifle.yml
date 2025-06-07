@@ -1,30 +1,7 @@
-# SPDX-FileCopyrightText: 2022 ElectroJr <leonsfriedrich@gmail.com>
-# SPDX-FileCopyrightText: 2022 Kara <lunarautomaton6@gmail.com>
-# SPDX-FileCopyrightText: 2022 T-Stalker <43253663+DogZeroX@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2022 T-Stalker <le0nel_1van@hotmail.com>
-# SPDX-FileCopyrightText: 2022 metalgearsloth <metalgearsloth@gmail.com>
-# SPDX-FileCopyrightText: 2023 Vordenburg <114301317+Vordenburg@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 lzk <124214523+lzk228@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-# SPDX-FileCopyrightText: 2024 Winkarst <74284083+Winkarst-cpu@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 username <113782077+whateverusername0@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 whateverusername0 <whateveremail>
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 BramvanZijp <56019239+BramvanZijp@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-# SPDX-FileCopyrightText: 2025 Ignaz "Ian" Kraft <ignaz.k@live.de>
-# SPDX-FileCopyrightText: 2025 Killerqu00 <47712032+Killerqu00@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 SX-7 <92227810+SX-7@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 pheenty <fedorlukin2006@gmail.com>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
 - type: entity
   id: BaseMagazineCaselessRifle
-  name: "magazine (9.5mm HP)" # Goob edit
-  parent: [ BaseItem, BaseSecurityContraband ]
+  name: "magazine (.25 caseless)"
+  parent: [ BaseCartridge, BaseC3SyndicateContrabandNoValue, RecyclableItemSteelTiny ] # Frontier: BaseSecurityContraband<BaseC3SyndicateContraband, added RecyclableItemSteelTiny
   abstract: true
   components:
   - type: Tag
@@ -57,7 +34,7 @@
 
 - type: entity
   id: BaseMagazineCaselessRifleShort
-  name: "caseless rifle short magazine (9.5mm HP)" # Goob edit
+  name: "caseless rifle short magazine (.25 caseless)"
   parent: BaseMagazineCaselessRifle
   abstract: true
   components:
@@ -76,7 +53,7 @@
 
 - type: entity
   id: BaseMagazinePistolCaselessRifle
-  name: "pistol magazine (9.5mm HP)" # Goob edit
+  name: "pistol magazine (.25 caseless)"
   parent: BaseMagazineCaselessRifle
   abstract: true
   components:
@@ -94,7 +71,7 @@
   - type: Sprite
     sprite: Objects/Weapons/Guns/Ammunition/Magazine/CaselessRifle/caseless_pistol_mag.rsi
     layers:
-    - state: red # Goob edit, why do they differ here in uplink
+    - state: base
       map: ["enum.GunVisualLayers.Base"]
     - state: mag-1
       map: ["enum.GunVisualLayers.Mag"]
@@ -106,7 +83,7 @@
 
 - type: entity
   id: MagazineCaselessRifle10x24
-  name: "box magazine (9.5mm HP)" # Goob edit
+  name: "box magazine (.25 caseless)"
   parent: BaseMagazineCaselessRifle
   components:
   - type: BallisticAmmoProvider
@@ -121,7 +98,7 @@
 
 - type: entity
   id: MagazinePistolCaselessRifle
-  name: "pistol magazine (9.5mm HP)" # Goob edit
+  name: "pistol magazine (.25 caseless)"
   parent: BaseMagazinePistolCaselessRifle
   components:
   - type: BallisticAmmoProvider
@@ -141,7 +118,7 @@
 
 - type: entity
   id: MagazinePistolCaselessRiflePractice
-  name: "pistol magazine (9.5mm practice)" # Goob edit
+  name: "pistol magazine (.25 caseless practice)"
   parent: BaseMagazinePistolCaselessRifle
   components:
   - type: BallisticAmmoProvider
@@ -161,7 +138,7 @@
 
 - type: entity
   id: MagazineCaselessRifle
-  name: "magazine (9.5mm HP)" # Goob edit
+  name: "magazine (.25 caseless)"
   parent: BaseMagazineCaselessRifle
   components:
   - type: BallisticAmmoProvider
@@ -175,7 +152,7 @@
 
 - type: entity
   id: MagazineCaselessRiflePractice
-  name: "magazine (9.5mm practice)" # Goob edit
+  name: "magazine (.25 caseless practice)"
   parent: BaseMagazineCaselessRifle
   components:
   - type: BallisticAmmoProvider
@@ -189,7 +166,7 @@
 
 - type: entity
   id: MagazineCaselessRifleShort
-  name: "short magazine (9.5mm HP)" # Goob edit
+  name: "short magazine (.25 caseless)"
   parent: BaseMagazineCaselessRifleShort
   components:
   - type: BallisticAmmoProvider
@@ -204,7 +181,7 @@
 
 - type: entity
   id: MagazineCaselessRifleShortPractice
-  name: "short magazine (9.5mm practice)" # Goob edit
+  name: "short magazine (.25 caseless practice)"
   parent: BaseMagazineCaselessRifleShort
   components:
   - type: BallisticAmmoProvider

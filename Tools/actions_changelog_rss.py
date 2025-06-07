@@ -1,10 +1,4 @@
 #!/usr/bin/env python3
-# SPDX-FileCopyrightText: 2024 Matt <psykzz@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-# SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
 
 #
 # Updates an RSS file on a remote server with updates to the changelog.
@@ -52,7 +46,7 @@ FEED_LANGUAGE    = "en-US"
 FEED_GUID_PREFIX = "ss14-changelog-wizards-"
 FEED_URL         = "https://central.spacestation14.io/changelog.xml"
 
-CHANGELOG_FILE = "Resources/Changelog/Changelog.yml"
+CHANGELOG_FILE = "Resources/Changelog/Frontier.yml" # Frontier: Changelog.yml<Frontier.yml
 
 TYPES_TO_EMOJI = {
     "Fix":    "🐛",

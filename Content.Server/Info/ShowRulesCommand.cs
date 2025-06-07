@@ -1,16 +1,3 @@
-// SPDX-FileCopyrightText: 2021 ShadowCommander <10494922+ShadowCommander@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Vera Aguilera Puerto <gradientvera@outlook.com>
-// SPDX-FileCopyrightText: 2022 mirrorcult <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2022 wrexbe <81056464+wrexbe@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 0x6273 <0x40@keemail.me>
-// SPDX-FileCopyrightText: 2024 AJCM-git <60196617+AJCM-git@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 LordCarve <27449516+LordCarve@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using Content.Server.Administration;
 using Content.Shared.Administration;
 using Content.Shared.CCVar;
@@ -73,5 +60,29 @@ public sealed class ShowRulesCommand : IConsoleCommand
         var coreRules = _configuration.GetCVar(CCVars.RulesFile);
         var message = new SendRulesInformationMessage { PopupTime = seconds, CoreRules = coreRules, ShouldShowRules = true};
         _net.ServerSendMessage(message, player.Channel);
+    }
+
+    public CompletionResult GetCompletion(IConsoleShell shell, string[] args)
+    {
+        if (args.Length == 1)
+        {
+            return CompletionResult.FromHintOptions(
+                CompletionHelper.SessionNames(players: _player),
+                Loc.GetString("<username>"));
+        }
+
+        if (args.Length == 2)
+        {
+            var durations = new CompletionOption[]
+            {
+                new("300", Loc.GetString("5 minutes")),
+                new("600", Loc.GetString("10 minutes")),
+                new("1200", Loc.GetString("20 minutes")),
+            };
+
+            return CompletionResult.FromHintOptions(durations, Loc.GetString("[seconds]"));
+        }
+
+        return CompletionResult.Empty;
     }
 }

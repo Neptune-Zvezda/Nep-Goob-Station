@@ -1,0 +1,25 @@
+- type: loadoutGroup
+  id: TsfmcFirearm
+  name: loadout-group-tsfmc-weapon
+  minLimit: 1
+  loadouts:
+  - TsfmcDrozdLoadout
+  - TsfmcLecterLoadout
+  - TsfmcEnergyGunLoadout
+  - TsfmcVulcanLoadout
+  fallbacks:
+  - TsfmcDrozdLoadout
+
+- type: loadoutGroup
+  id: TsfmcMag
+  name: loadout-group-tsfmc-magazine
+  minLimit: 1
+  loadouts:
+  - TsfmcSmgMagLoadout
+  - TsfmcSmgMagEmpLoadout
+  - TsfmcRifleMagLoadout
+  - TsfmcPistolMagLoadout
+  - TsfmcLightRifleMagLoadout
+  fallbacks:
+  - TsfmcSmgMagLoadout
+

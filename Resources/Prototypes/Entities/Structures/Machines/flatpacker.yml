@@ -1,18 +1,6 @@
-# SPDX-FileCopyrightText: 2024 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 SpeltIncorrectyl <66873282+SpeltIncorrectyl@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Tayrtahn <tayrtahn@gmail.com>
-# SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Benjamin Velliquette <32338704+bVelliquette@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-# SPDX-FileCopyrightText: 2025 deltanedas <@deltanedas:kde.org>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
-- type: entity
+﻿- type: entity
   id: MachineFlatpacker
-  parent: [ BaseMachinePowered, ConstructibleMachine, BaseSiloUtilizer ] # Goob edit
+  parent: [ BaseMachinePowered, ConstructibleMachine ]
   name: Flatpacker 1001
   description: An industrial machine used for expediting machine construction across the station.
   components:
@@ -45,9 +33,13 @@
   - type: FlatpackCreator
     baseMachineCost:
       Steel: 750
+      Silver: 100
+      Gold: 50
     baseComputerCost:
       Steel: 500
       Glass: 250
+      Silver: 100
+      Gold: 50
   - type: Machine
     board: FlatpackerMachineCircuitboard
   - type: MaterialStorage
@@ -80,18 +72,6 @@
           components:
           - MachineBoard
           - ComputerBoard
-  - type: AutomationSlots # Goobstation
-    slots:
-    - !type:AutomatedItemSlot
-      input: AutomationSlotBoard
-      output: AutomationSlotBoard
-      slotId: board_slot
-    - !type:AutomatedMaterialStorage
-      input: AutomationSlotMaterials
-      output: null # no automatic silo stealer...
-    - !type:AutomatedPorts
-      sinks:
-      - On
   - type: ContainerContainer
     containers:
       machine_board: !type:Container
@@ -102,8 +82,10 @@
     - machine_parts
     - machine_board
     - board_slot
-  - type: StaticPrice
-    price: 2000
+  - type: MaterialStorageMagnetPickup # Frontier
+    range: 0.30 # Frontier
+#  - type: StaticPrice # Frontier
+#    price: 2000
 
 - type: entity
   id: FlatpackerNoBoardEffect

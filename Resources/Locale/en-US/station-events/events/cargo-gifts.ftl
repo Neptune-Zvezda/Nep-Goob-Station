@@ -1,12 +1,6 @@
-# SPDX-FileCopyrightText: 2023 Tom Leys <tom@crump-leys.com>
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aiden <aiden@djkraz.com>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
 cargo-gifts-event-announcement = Congratulations! { $sender } has decided to send { $description } to the station { $dest }. Look for it in your next cargo shipment.
 cargo-gift-default-description = A bundle of gifts
-cargo-gift-default-sender = NanoTrasen
+cargo-gift-default-sender = Trans-Solar Federation
 cargo-gift-default-dest = Cargo Dept.
 
 cargo-gift-dest-bar = bar

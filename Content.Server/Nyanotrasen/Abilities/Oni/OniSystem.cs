@@ -1,30 +1,20 @@
-// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2024 ScyronX <166930367+ScyronX@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 SX-7 <92227810+SX-7@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Solstice <solsticeofthewinter@gmail.com>
-// SPDX-FileCopyrightText: 2025 coderabbitai[bot] <136622811+coderabbitai[bot]@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 pheenty <fedorlukin2006@gmail.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using Content.Server.Tools;
-using Content.Shared.Abilities.Oni;
 using Content.Shared.Tools.Components;
 using Content.Shared.Damage.Events;
-using Content.Shared.Item;
-using Content.Shared.Nyanotrasen.Abilities.Oni;
 using Content.Shared.Weapons.Melee.Events;
 using Content.Shared.Weapons.Ranged.Components;
+using Content.Shared.Weapons.Ranged.Systems;
 using Content.Shared.Wieldable.Components;
 using Robust.Shared.Containers;
 
 namespace Content.Server.Abilities.Oni
 {
-    public sealed class OniSystem : SharedOniSystem
+    public sealed class OniSystem : EntitySystem
     {
         [Dependency] private readonly ToolSystem _toolSystem = default!;
+        [Dependency] private readonly SharedGunSystem _gunSystem = default!;
+
+        private const double GunInaccuracyFactor = 17.0; // Frontier (20x<18x -> 10% buff)
 
         public override void Initialize()
         {
@@ -33,7 +23,7 @@ namespace Content.Server.Abilities.Oni
             SubscribeLocalEvent<OniComponent, EntRemovedFromContainerMessage>(OnEntRemoved);
             SubscribeLocalEvent<OniComponent, MeleeHitEvent>(OnOniMeleeHit);
             SubscribeLocalEvent<HeldByOniComponent, MeleeHitEvent>(OnHeldMeleeHit);
-            SubscribeLocalEvent<HeldByOniComponent, StaminaMeleeHitEvent>(OnStamHit);
+            SubscribeLocalEvent<HeldByOniComponent, TakeStaminaDamageEvent>(OnStamHit);
         }
 
         private void OnEntInserted(EntityUid uid, OniComponent component, EntInsertedIntoContainerMessage args)
@@ -41,34 +31,43 @@ namespace Content.Server.Abilities.Oni
             var heldComp = EnsureComp<HeldByOniComponent>(args.Entity);
             heldComp.Holder = uid;
 
-            if (TryComp<ToolComponent>(args.Entity, out var tool) && _toolSystem.HasQuality(args.Entity, "Prying", tool))
-                tool.SpeedModifier *= 1.66f;
-
-            if (HasComp<GunComponent>(args.Entity)
-            && !HasComp<WieldableComponent>(args.Entity)
-            && !HasComp<MultiHandedItemComponent>(args.Entity)
-            && !HasComp<OniAllowedGunComponent>(args.Entity))
+            if (TryComp<GunComponent>(args.Entity, out var gun))
             {
-                heldComp.WasOneHanded = true;
-                var wieldableComp = EnsureComp<WieldableComponent>(args.Entity);
-                wieldableComp.UnwieldOnUse = false;
-                wieldableComp.WieldedInhandPrefix = null;
-                EnsureComp<GunRequiresWieldComponent>(args.Entity);
+                // Frontier: adjust penalty for wielded malus (ensuring it's actually wieldable)
+                if (TryComp<GunWieldBonusComponent>(args.Entity, out var bonus) && HasComp<WieldableComponent>(args.Entity))
+                {
+                    //GunWieldBonus values are stored as negative.
+                    heldComp.minAngleAdded = (gun.MinAngle + bonus.MinAngle) * GunInaccuracyFactor;
+                    heldComp.angleIncreaseAdded = (gun.AngleIncrease + bonus.AngleIncrease) * GunInaccuracyFactor;
+                    heldComp.maxAngleAdded = (gun.MaxAngle + bonus.MaxAngle) * GunInaccuracyFactor;
+                }
+                else
+                {
+                    heldComp.minAngleAdded = gun.MinAngle * GunInaccuracyFactor;
+                    heldComp.angleIncreaseAdded = gun.AngleIncrease * GunInaccuracyFactor;
+                    heldComp.maxAngleAdded = gun.MaxAngle * GunInaccuracyFactor;
+                }
+
+                gun.MinAngle += heldComp.minAngleAdded;
+                gun.AngleIncrease += heldComp.angleIncreaseAdded;
+                gun.MaxAngle += heldComp.maxAngleAdded;
+                _gunSystem.RefreshModifiers(args.Entity); // Make sure values propagate to modified values (this also dirties the gun for us)
+                // End Frontier
             }
         }
 
         private void OnEntRemoved(EntityUid uid, OniComponent component, EntRemovedFromContainerMessage args)
         {
-            if (TryComp<ToolComponent>(args.Entity, out var tool) && _toolSystem.HasQuality(args.Entity, "Prying", tool))
-                tool.SpeedModifier /= 1.66f;
-
-            if (HasComp<GunComponent>(args.Entity)
-            && TryComp<HeldByOniComponent>(args.Entity, out var heldComp)
-            && heldComp.WasOneHanded)
+            // Frontier: angle manipulation stored in HeldByOniComponent
+            if (TryComp<GunComponent>(args.Entity, out var gun) &&
+                TryComp<HeldByOniComponent>(args.Entity, out var heldComp))
             {
-                RemComp<WieldableComponent>(args.Entity);
-                RemComp<GunRequiresWieldComponent>(args.Entity);
+                gun.MinAngle -= heldComp.minAngleAdded;
+                gun.AngleIncrease -= heldComp.angleIncreaseAdded;
+                gun.MaxAngle -= heldComp.maxAngleAdded;
+                _gunSystem.RefreshModifiers(args.Entity); // Make sure values propagate to modified values (this also dirties the gun for us)
             }
+            // End Frontier
 
             RemComp<HeldByOniComponent>(args.Entity);
         }
@@ -86,7 +85,7 @@ namespace Content.Server.Abilities.Oni
             args.ModifiersList.Add(oni.MeleeModifiers);
         }
 
-        private void OnStamHit(EntityUid uid, HeldByOniComponent component, StaminaMeleeHitEvent args)
+        private void OnStamHit(EntityUid uid, HeldByOniComponent component, TakeStaminaDamageEvent args)
         {
             if (!TryComp<OniComponent>(component.Holder, out var oni))
                 return;

@@ -1,0 +1,36 @@
+- type: vendingMachineInventory
+  id: NfsdTechInventory
+  startingInventory:
+    HyperlinkBookSpaceLaw: 20
+    HyperlinkBookNfsdSop: 20
+    Handcuffs: 10
+    Zipties: 10
+    GrenadeFlashBang: 10
+    NfsdWhistle: 5
+    TearGasGrenade: 4
+    ClusterBangFull: 2
+    GrenadeStinger: 4
+    Flash: 10
+    FlashlightNfsdLite: 10
+    HoloprojectorNfsd: 4
+    Tourniquet: 5
+    ClothingEyesGlassesSunglasses: 5
+    RiotShield: 3
+    RiotLaserShield: 3
+    RiotBulletShield: 3
+    Stunbaton: 4
+    WeaponDisabler: 4
+    WeaponCapacitorRechargerFlatpack: 10
+    Multitool: 8
+    ContrabandAppraisalTool: 5 # Frontier
+    CrowbarRed: 10 # Frontier
+    ForensicScanner: 3 # Frontier
+    BoxForensicPad: 3 # Frontier
+    LogProbeCartridge: 3 # Frontier
+    TrackingImplanter: 5 # Frontier
+#    MindShieldImplanter: 5 # Frontier
+  # security officers need to follow a diet regimen!
+#  contrabandInventory:
+#    FoodDonutHomer: 3 # Frontier - No more then 3
+#    FoodBoxDonut: 3 # Frontier - No more then 3
+    #box evidence
